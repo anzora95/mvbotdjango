@@ -1,0 +1,46 @@
+{% extends 'dashboard.html' %}
+{% block body %}
+    <br>
+    <div class="container">
+        <div class="card">
+        <div class="row">
+            <h3 class="center">Edit info account</h3>
+            <form class="col s12" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="input-field col s6">
+                      <input id="first_name" type="text" class="validate" value="{{ user.first_name }}">
+                      <label for="first_name">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="last_name" type="text" class="validate" value="{{ user.last_name }}">
+                      <label for="last_name">Last Name</label>
+                    </div>
+                </div>
+                <div class="row">
+                <div class="input-field col s12">
+                  <input id="username" type="text" class="validate" value="{{ user.username }}">
+                  <label for="username">Username</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="password" type="password" class="validate" value="{{ user.password }}">
+                  <label for="password">Password</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="email" type="email" class="validate" value="{{ user.email }}">
+                  <label for="email">Email</label>
+                </div>
+              </div>
+                <br>
+                <input class="btn" type="submit" value="Actualizar mis datos">
+                <br><br>
+            </form>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

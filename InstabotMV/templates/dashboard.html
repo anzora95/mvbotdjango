@@ -1,0 +1,183 @@
+{% extends 'base/base.html' %}
+{% block navbar %}
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <a href="{% url 'instabot:dashboard' %}"><h4 class="left navbar-text">Ngage Social</h4></a>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <h4 class="center navbar-text">CURRENT PLAN</h4>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">{{ user.username }} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'instabot:userAccounts' %}">Accounts</a></li>
+                            <li><a href="#">Billing Profile</a></li>
+                            <li><a href="#">Support</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{% url 'instabot:logout' %}">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h4 class="left">TASKS</h4>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <a href="{% url 'instabot:newTask' %}" class="btn btn-primary pull-right">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                Add new
+            </a>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <div id="exTab2" class="container">
+        <ul class="nav nav-tabs nav-justified">
+            <li class="active">
+                <a href="#1" data-toggle="tab">Results</a>
+            </li>
+            <li><a href="#2" data-toggle="tab">Targets</a>
+            </li>
+            <li><a href="#3" data-toggle="tab">Options</a>
+            </li>
+        </ul>
+
+        <div class="tab-content ">
+            <div class="tab-pane active" id="1">
+                {% include 'includes/tabs/results.html' %}
+            </div>
+            <div class="tab-pane" id="2">
+                {% include 'includes/tabs/targets.html' %}
+            </div>
+            <div class="tab-pane" id="3">
+                {% include 'includes/tabs/options.html' %}
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <form>    
+    <div class="text-center">
+        <div display="block-level-elements">
+        <span>
+        <button  class="btn btn-primary btn-lit-circle btn-xl" >
+            <i class="glyphicon glyphicon-pencil"></i>
+        </button>
+        </span>
+        <span>
+        <button  class="btn btn-primary btn-lit-circle btn-xl" >
+            <i class="glyphicon glyphicon-trash"></i>
+        </button>
+        </span>
+        </div>
+        <div>
+        <span>
+            <i>
+                <button type="button" class="btn btn-status-dash btn-xl" id="dis_heart">
+                    <i class="glyphicon glyphicon-heart"></i>
+                </button>
+            </i>
+            <i>
+                <button type="button" class="btn btn-status-dash btn-xl" id="dis_user" >
+                    <i class="glyphicon glyphicon-user"></i>
+                </button>
+            </i>
+            <i>
+                <button type="button" class="btn btn-status-dash btn-xl"  id="dis_eye">
+                    <i class="glyphicon glyphicon-eye-open"></i>
+                </button>
+            </i>
+            <i>
+                <button type="button" class="btn btn-status-dash btn-xl"  id="dis_sunglasses">
+                    <i class="glyphicon glyphicon-sunglasses"></i>
+                 </button>
+            </i>
+            <i>
+                <button type="button" class="btn btn-status-dash btn-xl" id="dash" >
+                    <i class="glyphicon glyphicon-dashboard"></i>
+                </button>
+            </i>
+
+        </span>
+        </div>
+    </div>
+</form>
+<form action="{% url 'instabot:start' %}" method="post" role="form">  
+    {% csrf_token %}
+    <div class="text-center" display="inline-block-elements">  
+        <div>
+            <span >
+                
+                <button type="submit" class="btn btn-play btn-primary btn-circle btn-xl" id="load" 
+                     data-loading-text="<i class='fa fa-refresh fa-spin'></i>">
+                    <i class='glyphicon glyphicon-play'></i>
+                </button>
+
+            </span>
+           <div class=" popupBubble ">
+                
+                    <button  class="btn btn-primary btn-lit-circle btn-xl " >
+                        <i class="glyphicon glyphicon-comment"></i>
+
+                    </button>
+                
+            </div>
+            <span>
+           <button type="button" class="btn btn-primary btn-lit-circle btn-xl" >
+               <i class="glyphicon glyphicon-heart-empty"></i>
+           </button>
+           </span>
+           <span>
+           <button type = "button" class="btn btn-primary btn-lit-circle btn-xl" >
+               <i class="glyphicon glyphicon-user"></i>
+           </button>
+           </span>
+
+           <span>
+               <p>{{status}}</p>
+           </span>
+                 
+        </div>
+    </div>
+            
+</form>
+
+
+   <div>
+   {% if object_list %}
+    {% for media in object_list %}
+        <li>{{ media.code }}</li>
+
+    {% endfor %}
+    {% else %}
+
+        <li>No media yet.</li>
+   {% endif %}
+
+   </div>
+
+<form role = "form" method="post" action="{% url 'instabot:stopBot' %}" >
+    {% csrf_token %}
+                
+                <button type="submit" class="btn btn-primary btn-circle btn-xl">
+                    <i class='glyphicon glyphicon-pause'></i>
+                </button>
+          
+    
+</form>
+
+{% endblock %}

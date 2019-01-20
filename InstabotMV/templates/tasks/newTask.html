@@ -1,0 +1,33 @@
+{% extends 'dashboard.html' %}
+{% block body %}
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h4 class="left">Task Type</h4>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <a href="{% url 'instabot:dashboard' %}" class="btn btn-primary pull-right">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                Back
+            </a>
+        </div>
+    </div>
+
+    <hr class="divider">
+    <h4 class="text-center"><b>Please choose your task type</b></h4>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <p>Select Like, Follow task, if you want to automatically Like/Follow targeted people by given criteria.</p>
+            <a href="{% url 'instabot:newFollowLike' %}" class="btn btn-primary">
+                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                CREATE NEW AUTOMATED LIKE, FOLLOW TASK
+            </a>
+        </div>
+        <div class="col-md-6">
+            <p>Select Unfollow task, if you want to automatically Unfollow your Following by given criteria.</p>
+            <a href="{% url 'instabot:unfollow_task'%}" class="btn btn-primary"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+                CREATE NEW AUTOMATED UNFOLLOW TASK
+            </a>
+        </div>
+    </div>
+{% endblock %}

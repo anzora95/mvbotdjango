@@ -1,0 +1,71 @@
+{% extends 'dashboard.html' %}
+
+{% block body %}
+    
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h4 class="left">NEW TASK</h4>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <a href="{% url 'instabot:newTask' %}" class="btn btn-primary pull-right">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                Back
+            </a>
+        </div>
+    </div>
+    
+    <hr class="divider">
+    <div id="target_user">
+    <h4 class="text-center"><b>Select users which you want to unfollow</b></h4>
+    <br>
+    <div class="row">
+        
+    </div>
+    </div>
+    <div id="features">
+        
+        <div class="row">
+            <div class="col-md-12">
+                <a href="#" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-hand-down"></span>
+                UNFOLLOW ONLY USER IS GHOST, NON ACTIVE  
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </div>
+        </div>
+    <br>
+        <div class="row">
+            <div class="col-md-12">
+                <a href="#" class=" btn btn-primary">
+                    <span class="glyphicon glyphicon-warning-sign"></span>
+                UNFOLLOW ONLY IF USER HAVEN'T FOLLOWED YOU BACK
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </div>
+         <br>
+         
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <a href="#" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-hourglass"></span>
+                START THGIS TASK AUTOMATICALLY WHEN INSTAGRAM FOLLOWING LIMIT REACHED
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+    <br>
+    <br>
+
+     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <a href="{% url 'instabot:dashboard' %}">
+            {% csrf_token %}
+            <input type="submit" name="submit" id="submit" class="btn btn-info" value="Save"/>
+            </a>
+        </div>
+    
+{% endblock %}

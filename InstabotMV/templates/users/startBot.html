@@ -1,0 +1,22 @@
+{% extends 'dashboard.html' %}
+
+{% block body %}
+    <main class="mdl-layout__content">
+        <div class="page-content container">
+            <br>
+            <h3>Start Bot</h3>
+
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="submit"
+                       class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button-accent"
+                       value="Start">
+            </form>
+
+
+            {% if output %}<h3>{{ output }}</h3>{% endif %}
+            {% if exit_code %}<h3>Your command returned an error: {{ error_msg }}</h3>{% endif %}
+
+        </div>
+    </main>
+{% endblock %}

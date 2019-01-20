@@ -1,0 +1,17 @@
+{% extends 'dashboard.html' %}
+
+{% block body %}
+    <main class="mdl-layout__content">
+    <div class="page-content container">
+    <br>
+<h3>Profile</h3>
+    <br>
+    <h5><b>First name:</b> {{ user.first_name }}</h5>
+    <h5><b>Last name:</b> {{ user.last_name }}</h5>
+    <h5><b>Username:</b> {{ user.username }}</h5>
+    <h5><b>Email</b> {{ user.email }}</h5>
+
+    <a href="{% url 'instabot:edit_profile' %}" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Editar</a>
+    </div>
+    </main>
+{% endblock %}

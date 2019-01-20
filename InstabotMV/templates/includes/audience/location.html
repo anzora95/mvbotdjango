@@ -1,0 +1,18 @@
+<br><br><br>
+
+
+
+<div class="col-md-12" >
+    <h4>Select your location targets</h4>
+    <span id="success_message"></span>
+    <form method="post" action="{% url 'instabot:storeTask' %}" role="form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="insta_tag">Select your audience</label>
+            <input type="text" name="insta_tag" id="insta_tag" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <input type="submit" name="submit" id="submit" class="btn btn-info" value="Save"/>
+        </div>
+    </form>
+</div>

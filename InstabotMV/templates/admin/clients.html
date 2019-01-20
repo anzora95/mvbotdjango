@@ -1,0 +1,47 @@
+{% extends 'dashboard.html' %}
+
+{% block body %}
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <br>
+            <div class="container">
+                <br><br>
+                <div class="mdl-grid">
+                    {% if users %}
+                        {% for user in users %}
+                            <div class="mdl-cell mdl-cell--3-col">
+                                <div class="container">
+                                    <div class="card z-depth-2">
+                                        <div class="card-title">
+                                            <br>
+                                            <h5 class="center"># {{ user.id }}</h5>
+                                        </div>
+                                        <div class="card-content">
+                                            <h5 class="center">{{ user.username }}</h5>
+                                            <h5 class="center">User account</h5>
+                                        </div>
+                                        <div class="card-action">
+                                            <a class="center" href="{% url 'instabot:manage'  user.id%}">Manage
+                                                Account</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <h3 class="center">No records find</h3>
+                    {% endif %}
+                </div>
+                <a href="#"
+                   id="add-client-btn"
+                   class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored z-depth-2 dialog-button">
+                    <i class="material-icons">add</i>
+                </a>
+                {% include 'includes/dialog.html' %}
+                {% include 'includes/settings.html' %}
+
+            </div>
+        </div>
+        </div>
+    </main>
+{% endblock %}

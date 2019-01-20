@@ -1,0 +1,19 @@
+{% extends 'users/dashboard.html' %}
+
+{% block body %}
+
+<form>
+
+    <div>
+        <ul>
+        {% for media in object_list  %} 
+        <li>{{ media.code }}</li>
+        {% endfor %}
+        </ul>
+
+    </div>
+    
+</form>
+
+
+{% endblock %}

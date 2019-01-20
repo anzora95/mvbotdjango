@@ -1,0 +1,60 @@
+<dialog id="dialog" class="mdl-dialog">
+  <h3 class="mdl-dialog__title center">Register new client account</h3>
+  <div class="mdl-dialog__content">
+      <form action="{% url 'instabot:create' %}" role="form" class="col s12" method="post">
+          {% csrf_token %}
+
+          <h4 class="center">Sistem Creds</h4>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <label class="mdl-textfield__label" for="id_first_name">First name:</label>
+              <input class="mdl-textfield__input" type="text" name="first_name" maxlength="30" required=""
+                     id="id_first_name">
+          </div>
+          <br>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <label class="mdl-textfield__label" for="id_last_name">Last name:</label>
+              <input class="mdl-textfield__input" type="text" name="last_name" maxlength="30" required=""
+                     id="id_last_name">
+          </div>
+          <br>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <label class="mdl-textfield__label" for="id_username">Username:</label>
+              <input class="mdl-textfield__input" type="text" name="username" maxlength="30" required=""
+                     id="id_username">
+          </div>
+          <br>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <label class="mdl-textfield__label" for="id_email">Email:</label>
+              <input class="mdl-textfield__input" type="email" name="email" maxlength="30" required=""
+                     id="id_email">
+          </div>
+          <br>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+              <input class="mdl-textfield__input" type="hidden" name="password" maxlength="30" required=""
+                     id="id_password" value="myinstagrambot">
+          </div>
+          <br>
+          <h4 class="center">Instagram Creds</h4>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <label class="mdl-textfield__label" for="id_insta_user">Insta user:</label>
+              <input class="mdl-textfield__input" type="text" name="insta_user" maxlength="30" required=""
+                     id="id_insta_user">
+          </div>
+          <br>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <label class="mdl-textfield__label" for="id_insta_pass">Insta pass:</label>
+              <input class="mdl-textfield__input" type="password" name="insta_pass" maxlength="30" required=""
+                     id="id_insta_pass">
+          </div>
+          <br>
+          <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit"
+                 value="Register">
+          <br><br>
+      </form>
+  </div>
+  <div class="mdl-dialog__actions">
+    <button type="button" class="mdl-button">Close</button>
+    <button type="button" class="mdl-button">Save</button>
+  </div>
+</dialog>

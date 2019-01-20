@@ -1,0 +1,86 @@
+<br><br><br>
+
+
+
+<div class="col-md-12" >
+    <h4>Type in Instagram usernames of users which followers or following you want to target</h4>
+    <span id="success_message"></span>
+    <form method="post" action="{% url 'instabot:storeTaskU' %}" role="form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="insta_us_name"></label>
+            <input placeholder="Instagram username" type="text" name="insta_us_name" id="insta_us_name" class="form-control"/>
+        </div>
+    </form>
+    
+    <div class="row">
+       {% csrf_token %} 
+       <div class="col-md-12">
+            <button href="#" class="btn btn-primary" >
+                <span class="glyphicon glyphicon-heart"></span>
+                LIKE MEDIA OF THIS TASK  
+                <span class="glyphicon glyphicon-ok" hidden ="true"></span>
+            </button>
+        </div>
+    </div>
+ 
+    <br>
+      <div class="row">
+        <div class="col-md-12">
+            <button href="#" class=" btn btn-primary" disabled="true" >
+                <span class="glyphicon glyphicon-user"></span>
+                FOLLOW USER OF THIS TASK MEDIA
+                <span class="glyphicon glyphicon-ok"></span>
+            </button>
+        </div>
+        
+    </div>
+    <br>
+    <br>
+    <P>Select features</P>
+    <div class="row">
+        <div class="col-md-12">
+            <button href="#" class=" btn btn-primary">
+                <span class="glyphicon glyphicon-eye-open"></span>
+                DONT LIKE MEDIA OF THE THE SAME USER SECOND TIME
+                <span class="glyphicon glyphicon-ok"></span>
+            </button>
+        </div>
+        
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col-md-12" >
+            <button href="#" class="btn btn-primary">
+                <span class="glyphicon glyphicon-sunglasses"></span>
+                DON´T FOLLOW PREVIOUSLY UNFOLLOWED USER
+                <span class="glyphicon glyphicon-ok"></span>
+            </button>
+        </div>
+        
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md-12">
+            <button href="#" class="btn btn-primary">
+            <span class="glyphicon glyphicon-dashboard"></span>
+            SEARCH FOR RECENTLY POSTED MEDIA ONLY
+            <span class="glyphicon glyphicon-ok"></span>
+            </button>
+        </div>
+        
+    </div>
+
+    <br>
+
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <a href="{% url 'instabot:dashload' %}">
+            {% csrf_token %}
+            <input type="submit" name="submit" id="submit" class="btn btn-info" value="Save"/>
+            </a>
+        </div>
+
+</div>

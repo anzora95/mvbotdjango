@@ -1,0 +1,54 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block navbar %}
+    <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <div class="mdl-layout-spacer"></div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                  mdl-textfield--floating-label mdl-textfield--align-right">
+        <label class="mdl-button mdl-js-button mdl-button--icon"
+               for="fixed-header-drawer-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="sample"
+                 id="fixed-header-drawer-exp">
+        </div>
+      </div>
+    </div>
+  </header>
+{% endblock %}
+
+    {% block sidepanel %}
+        <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+{#            <img class="center-img" src="{% static "img/ngage-web.png" %}" alt="" width="170" height="50">#}
+{#            <br><br>#}
+{#            <hr class="divider">#}
+            <div class="demo-list-action mdl-list">
+              <div class="mdl-list__item">
+                <span class="mdl-list__item-primary-content center-account-circle">
+                  <i class="material-icons mdl-list__item-avatar" id="accountInsta">person</i>
+                </span>
+              </div>
+                <h5 class="center">{{ user.username }}</h5>
+            </div>
+
+            <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+                <a class="mdl-navigation__link white-text" href="{% url 'instabot:dashboard' %}">
+                    <i class="material-icons">home</i>
+                    &nbsp;Home Client
+                </a>
+                <a class="mdl-navigation__link" href="{% url 'instabot:profile' %}">
+                    <i class="material-icons">person</i>
+                    &nbsp;My Profile
+                </a>
+                <a class="mdl-navigation__link" href="{% url 'instabot:logout' %}">
+                    <i class="material-icons">exit_to_app</i>
+                    &nbsp; Logout
+                </a>
+            </nav>
+        </div>
+    {% endblock %}
+{% block body %}
+{% endblock %}

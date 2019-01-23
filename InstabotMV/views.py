@@ -271,12 +271,19 @@ def NewTask(request):
     categories=HashtagList.objects.all()
     return render(request, 'tasks/newTask.html', {'categories':categories})
 import json
-def tags(request):
-    category = request.GET.get('category')
-    tags= List_Tag.objects.filter(category=category)
-    tags=[ tags_serializer(tag) for tag in tags]#Lista de diccionarios
-    return HttpResponse(json.dumps(tags),content_type='application/json')
+def tags(request,id_tag):
 
+    tags= List_Tag.objects.filter(category=id_tag)
+    qs_json=serializers.serialize('json', tags)
+    return HttpResponse(qs_json,content_type='application/json')
+class hashtags(TemplateView):
+
+    def get(self, request, *args, **kwargs):
+        idTag= request.GET['id']
+        tags = List_Tag.objects.filter(category=idTag)
+        data = serializers.serialize('json',tags,fields=('insta_tag','category'))
+        print(data)
+        return HttpResponse(data,content_type='application/json')
 
 def tags_serializer(tag):
     return {'id':tag.id,'name':tag.insta_tag}

@@ -1,19 +1,12 @@
-$(document).ready(function(){
-    $("#loadtags").submit(function(e){
-    e.preventDefault();
-    $.ajax({
-    url:$(this).attr('action'),
-    type: $(this).attr('method'),
-    data: $(this).serialize(),
-    success:function(json){
-    var output = document.getElementById('tags')
-    var txt=''
-     for ( i=0;i<json.length;i++) {
-       txt+=" "+json[i].name
-     }
-    output.innerHTML=txt
-    console.log(json)
-    }
-    })
-    })
-})
+function getTags(){
+var txt=''
+var id = document.querySelector('select');
+var tagname=id.options[id.selectedIndex].value;
+var xhttp = new XMLHttpRequest();
+xhttp.open("GET", "/instabotmv/tags/"+tagname+"/", true);
+    xhttp.send();
+var output = document.getElementById('tagx');
+output.innerHTML=tagname;
+console.log(tagname);
+
+}

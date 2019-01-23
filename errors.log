@@ -790,3 +790,523 @@ WARNING:django.request:Not Found: /favicon.ico
 WARNING:django.request:Not Found: /favicon.ico
 WARNING:django.request:Not Found: /instabotmv/
 WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /instabotmv/dashboard/task/new/follow-like/2
+WARNING:django.request:Not Found: /instabotmv/dashboard/task/new/follow-like/2
+WARNING:django.request:Not Found: /instabotmv/dashboard/task/new/follow-like/3
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/task/new/follow-like/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 296, in get
+    return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags})
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\defaulttags.py", line 442, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\urls\base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\urls\resolvers.py", line 622, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'tags' with no arguments not found. 1 pattern(s) tried: ['instabotmv\\/tags/(?P<produ>\\w{0,50})/$']
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/task/new/follow-like/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 296, in get
+    return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags})
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\defaulttags.py", line 442, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\urls\base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\urls\resolvers.py", line 622, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'tags' with no arguments not found. 1 pattern(s) tried: ['instabotmv\\/tags/(?P<category>\\w{0,50})/$']
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/task/new/follow-like/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 296, in get
+    return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags})
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\defaulttags.py", line 442, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\urls\base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\urls\resolvers.py", line 622, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'tags' with no arguments not found. 1 pattern(s) tried: ['instabotmv\\/tags/(?P<category>\\w{0,50})/$']
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/task/new/follow-like/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 296, in get
+    return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags})
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\defaulttags.py", line 442, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\urls\base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\urls\resolvers.py", line 622, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'tags' with no arguments not found. 1 pattern(s) tried: ['instabotmv\\/tags/(?P<category>\\w{0,50})/$']
+WARNING:django.request:Not Found: /instabotmv/tags/
+WARNING:django.request:Not Found: /instabotmv/
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/task/new/follow-like/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 296, in get
+    return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags})
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\defaulttags.py", line 442, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\urls\base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\urls\resolvers.py", line 622, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'tags' with no arguments not found. 1 pattern(s) tried: ['instabotmv\\/tags/(?P<id_tag>\\d+)/$']
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/task/new/follow-like/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 296, in get
+    return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags})
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\defaulttags.py", line 442, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\urls\base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\urls\resolvers.py", line 622, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'tags' with no arguments not found. 1 pattern(s) tried: ['instabotmv\\/tags/(?P<id_tag>\\d+)/$']
+WARNING:django.request:Not Found: /'instabotmv/tags/Select your audience/
+WARNING:django.request:Not Found: /'instabotmv/tags/Select your audience/
+WARNING:django.request:Not Found: /'instabotmv/tags/People using most popular tags/
+WARNING:django.request:Not Found: /'instabotmv/tags/Selfie HandSome Beutiful/
+WARNING:django.request:Not Found: /'instabotmv/tags/[object HTMLSelectElement]/
+WARNING:django.request:Not Found: /'instabotmv/tags/Select your audience/
+WARNING:django.request:Not Found: /'instabotmv/tags//
+WARNING:django.request:Not Found: /'instabotmv/tags/undefined/
+WARNING:django.request:Not Found: /'instabotmv/tags/undefined/
+WARNING:django.request:Not Found: /'instabotmv/tags/Select your audience/
+WARNING:django.request:Not Found: /'instabotmv/tags/1/
+WARNING:django.request:Not Found: /instabotmv/tags/Select your audience/
+WARNING:django.request:Not Found: /instabotmv/tags/People using most popular tags/
+WARNING:django.request:Not Found: /instabotmv/tags/Select your audience/
+WARNING:django.request:Not Found: /instabotmv/tags/[object HTMLSelectElement]/
+WARNING:django.request:Not Found: /instabotmv/tags/[object HTMLSelectElement]/
+WARNING:django.request:Not Found: /instabotmv/tags/Select your audience/
+WARNING:django.request:Not Found: /instabotmv/tags/null/
+WARNING:django.request:Not Found: /instabotmv/tags/[object HTMLSelectElement]/
+ERROR:django.request:Internal Server Error: /instabotmv/tags/1/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 278, in tags
+    return HttpResponse(json.dumps(tags),content_type='application/json')
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\json\encoder.py", line 180, in default
+    o.__class__.__name__)
+TypeError: Object of type 'QuerySet' is not JSON serializable
+ERROR:django.request:Internal Server Error: /instabotmv/tags/1/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 278, in tags
+    return HttpResponse(json.dumps(tags),content_type='application/json')
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\json\encoder.py", line 180, in default
+    o.__class__.__name__)
+TypeError: Object of type 'QuerySet' is not JSON serializable
+ERROR:django.request:Internal Server Error: /instabotmv/hashtag_ajax/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 137, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view InstabotMV.views.hashtags didn't return an HttpResponse object. It returned None instead.
+ERROR:django.request:Internal Server Error: /instabotmv/hashtag_ajax/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 137, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view InstabotMV.views.hashtags didn't return an HttpResponse object. It returned None instead.
+ERROR:django.request:Internal Server Error: /instabotmv/hashtag_ajax/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 137, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view InstabotMV.views.hashtags didn't return an HttpResponse object. It returned None instead.
+ERROR:django.request:Internal Server Error: /instabotmv/hashtag_ajax/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 137, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view InstabotMV.views.hashtags didn't return an HttpResponse object. It returned None instead.
+ERROR:django.request:Internal Server Error: /instabotmv/hashtag_ajax/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 137, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view InstabotMV.views.hashtags didn't return an HttpResponse object. It returned None instead.
+ERROR:django.request:Internal Server Error: /instabotmv/hashtag_ajax/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 285, in get
+    return HttpResponse(data,mimetype='application/json')
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\http\response.py", line 289, in __init__
+    super().__init__(*args, **kwargs)
+TypeError: __init__() got an unexpected keyword argument 'mimetype'
+ERROR:django.request:Internal Server Error: /instabotmv/hashtag_ajax/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 285, in get
+    return HttpResponse(data,mimetype='application/json')
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\http\response.py", line 289, in __init__
+    super().__init__(*args, **kwargs)
+TypeError: __init__() got an unexpected keyword argument 'mimetype'
+ERROR:django.request:Internal Server Error: /instabotmv/hashtag_ajax/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 285, in get
+    return HttpResponse(data,mimetype='application/json')
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\http\response.py", line 289, in __init__
+    super().__init__(*args, **kwargs)
+TypeError: __init__() got an unexpected keyword argument 'mimetype'
+ERROR:django.request:Internal Server Error: /instabotmv/hashtag_ajax/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 285, in get
+    return HttpResponse(data,mimetype='application/json')
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\http\response.py", line 289, in __init__
+    super().__init__(*args, **kwargs)
+TypeError: __init__() got an unexpected keyword argument 'mimetype'

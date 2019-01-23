@@ -2,20 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74ddfdd8-7c2d-4c33-a677-973160d83b09" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InstabotMV/static/js/ajax.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/ajax.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InstabotMV/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/InstabotMV/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InstabotMV/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/InstabotMV/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InstabotMV/migrations/0002_locatelist_taglist_uslist.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InstabotMV/migrations/0003_auto_20181221_1215.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InstabotMV/migrations/0004_auto_20190115_1557.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InstabotMV/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/InstabotMV/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InstabotMV/templates/includes/audience/hashtags.html" beforeDir="false" afterPath="$PROJECT_DIR$/InstabotMV/templates/includes/audience/hashtags.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InstabotMV/templates/tasks/followAndLike.html" beforeDir="false" afterPath="$PROJECT_DIR$/InstabotMV/templates/tasks/followAndLike.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InstabotMV/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/InstabotMV/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InstabotMV/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/InstabotMV/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webinstabot/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/webinstabot/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/errors.log" beforeDir="false" afterPath="$PROJECT_DIR$/errors.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/ajax.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +23,8 @@
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.11" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -39,7 +32,7 @@
           <entry key="css" value="1" />
           <entry key="html" value="25" />
           <entry key="js" value="10" />
-          <entry key="py" value="19" />
+          <entry key="py" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -47,21 +40,21 @@
           <entry key="CSS" value="1" />
           <entry key="HTML" value="25" />
           <entry key="JavaScript" value="10" />
-          <entry key="Python" value="19" />
+          <entry key="Python" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="552" />
-          <entry key="js" value="537" />
-          <entry key="py" value="625" />
+          <entry key="html" value="1256" />
+          <entry key="js" value="960" />
+          <entry key="py" value="897" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="552" />
-          <entry key="JavaScript" value="537" />
-          <entry key="Python" value="625" />
+          <entry key="HTML" value="1256" />
+          <entry key="JavaScript" value="960" />
+          <entry key="Python" value="897" />
         </counts>
       </usages-collector>
     </session>
@@ -71,8 +64,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/InstabotMV/templates/tasks/followAndLike.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="850">
-              <caret line="50" column="32" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
+            <state relative-caret-position="432">
+              <caret line="51" column="63" selection-start-line="51" selection-start-column="63" selection-end-line="51" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/InstabotMV/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="244">
+              <caret line="15" column="35" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -80,17 +85,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/ajax.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="2" lean-forward="true" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webinstabot/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2210">
-              <caret line="130" column="47" selection-start-line="130" selection-start-column="47" selection-end-line="130" selection-end-column="47" />
+            <state>
+              <caret selection-end-line="11" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -117,7 +113,7 @@
         <entry file="file://$PROJECT_DIR$/InstabotMV/templates/tasks/newTask.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
-              <caret line="20" column="55" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="55" />
+              <caret line="20" column="51" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -130,12 +126,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/InstabotMV/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4097">
-              <caret line="278" selection-start-line="278" selection-end-line="278" />
+            <state relative-caret-position="543">
+              <caret line="289" lean-forward="true" selection-start-line="289" selection-end-line="289" />
               <folding>
                 <element signature="e#1#44#0" expanded="true" />
-                <marker date="1548182761876" expanded="true" signature="9768:9770" ph="..." />
+                <marker date="1548243012451" expanded="true" signature="9655:9959" ph="..." />
+                <marker date="1548243012451" expanded="true" signature="10030:10032" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/InstabotMV/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="553">
+              <caret line="72" column="13" selection-start-line="72" selection-start-column="4" selection-end-line="72" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -153,6 +159,7 @@
       <find>newt</find>
       <find>list</find>
       <find>foll</find>
+      <find>buscar</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -163,18 +170,18 @@
       <list>
         <option value="$PROJECT_DIR$/InstabotMV/admin.py" />
         <option value="$PROJECT_DIR$/InstabotMV/models.py" />
-        <option value="$PROJECT_DIR$/InstabotMV/urls.py" />
-        <option value="$PROJECT_DIR$/InstabotMV/views.py" />
         <option value="$PROJECT_DIR$/webinstabot/settings.py" />
         <option value="$PROJECT_DIR$/InstabotMV/templates/includes/audience/hashtags.html" />
         <option value="$PROJECT_DIR$/InstabotMV/static/js/ajax.js" />
+        <option value="$PROJECT_DIR$/InstabotMV/urls.py" />
+        <option value="$PROJECT_DIR$/InstabotMV/views.py" />
         <option value="$PROJECT_DIR$/InstabotMV/templates/tasks/followAndLike.html" />
         <option value="$PROJECT_DIR$/static/js/ajax.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="713" />
+    <option name="x" value="705" />
     <option name="width" value="734" />
     <option name="height" value="867" />
   </component>
@@ -183,6 +190,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -195,11 +203,28 @@
               <item name="mvbotdjango" type="462c0819:PsiDirectoryNode" />
               <item name="InstabotMV" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="mvbotdjango" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mvbotdjango" type="462c0819:PsiDirectoryNode" />
+              <item name="InstabotMV" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mvbotdjango" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mvbotdjango" type="462c0819:PsiDirectoryNode" />
+              <item name="InstabotMV" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="tasks" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mvbotdjango" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mvbotdjango" type="462c0819:PsiDirectoryNode" />
+              <item name="webinstabot" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -239,7 +264,7 @@
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.5754584" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.47126436" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -257,25 +282,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28561354" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -331,20 +337,6 @@
     <entry file="file://$PROJECT_DIR$/InstabotMV/static/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/InstabotMV/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="584">
-          <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/InstabotMV/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="72" column="13" selection-start-line="72" selection-start-column="4" selection-end-line="72" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/InstabotMV/static/js/styles.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-78" />
@@ -385,24 +377,34 @@
     <entry file="file://$PROJECT_DIR$/InstabotMV/templates/list/medialist.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/InstabotMV/templates/tasks/followAndLike.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="50" column="32" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webinstabot/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2210">
+        <state relative-caret-position="1853">
           <caret line="130" column="47" selection-start-line="130" selection-start-column="47" selection-end-line="130" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/InstabotMV/static/js/ajax.js">
+    <entry file="file://$PROJECT_DIR$/webinstabot/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+        <state relative-caret-position="323">
+          <caret line="20" column="20" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/InstabotMV/templates/tasks/newTask.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="51" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/InstabotMV/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="15" column="35" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -413,10 +415,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/InstabotMV/templates/tasks/newTask.html">
+    <entry file="file://$PROJECT_DIR$/InstabotMV/static/js/ajax.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="55" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="55" />
+        <state relative-caret-position="102">
+          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -425,19 +427,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/InstabotMV/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4097">
-          <caret line="278" selection-start-line="278" selection-end-line="278" />
+        <state relative-caret-position="543">
+          <caret line="289" lean-forward="true" selection-start-line="289" selection-end-line="289" />
           <folding>
             <element signature="e#1#44#0" expanded="true" />
-            <marker date="1548182761876" expanded="true" signature="9768:9770" ph="..." />
+            <marker date="1548243012451" expanded="true" signature="9655:9959" ph="..." />
+            <marker date="1548243012451" expanded="true" signature="10030:10032" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/InstabotMV/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="553">
+          <caret line="72" column="13" selection-start-line="72" selection-start-column="4" selection-end-line="72" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/InstabotMV/templates/tasks/followAndLike.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="51" column="63" selection-start-line="51" selection-start-column="63" selection-end-line="51" selection-end-column="63" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/ajax.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="2" lean-forward="true" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
+        <state>
+          <caret selection-end-line="11" selection-end-column="1" />
         </state>
       </provider>
     </entry>

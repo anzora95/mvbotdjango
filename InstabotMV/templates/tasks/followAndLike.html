@@ -29,26 +29,36 @@
         <script type="text/javascript" src="{% static 'js/ajax.js' %}"></script>
         <div class="tab-content ">
             <div class="tab-pane active" id="1">
-               <!-- <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Type in your hashtags or select from a lis
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        {% for  Hasgtag in Hasgtags %}
-                    <li><a href="">{{Hasgtag.category}}</a></li>
-                        {% endfor%}
-                    </ul>
+                <h1>Hola</h1>
+                        <form met id="formulario" action="obtener()">
+                         <select onchange="getTags()">
+                <option>Seleccionar producto</option>
+                    {% for  Hasgtag in Hasgtags %}
+                <option value="{{Hasgtag.id}}">{{Hasgtag.category}}</option>
+                    {% endfor%}
+            </select>
+                           <script>
+                               $('select').on('change',inicio);
 
-                </div>-->
-                <form method="GET" action="{% url 'instabot:tags'%}" id="loadtags">
-                    <div>
-                        <input type="text" name="category">
-                        <input type="submit" value="buscar">
-                    </div>
+                               function inicio(){
+                               var id= $(this).val();
+                               $.ajax({
+                               data: {'id':id},
+                               url:'/instabotmv/hashtag_ajax/',
+                               type: 'get',
+                               success: function(data){
+                               var html=""
+                               for(var i=0;i<data.length;i++){
+                               html += data[i].fields.insta_tag+" "
+                               }
+                               $('#tagx').html(html);
+                               }
+                               });
+                               }
+                           </script>
                 </form>
                 <form>
-                    <h1 id="tags"></h1>
+                    <h1 id="tagx"></h1>
                     <input type="text" name="tags" id="tags" class="form-control" data-limit ="20" formmethod="post" />
                 </form>
                 {% include 'includes/audience/hashtags.html' %}

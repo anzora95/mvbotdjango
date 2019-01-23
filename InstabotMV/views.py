@@ -2,11 +2,12 @@
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.core import serializers
 
 from django.contrib.auth import authenticate, login as login_django, logout as logout_django
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
-
+from .models import *
 from InstabotMV.models import Creds, List_Tag, Media
 from .forms import LoginForm, CreateUserForm, TaglistForm, UserlistForm, ComboTagHijo
 from InstabotMV.forms import InstaCredsForm
@@ -260,17 +261,39 @@ class UserAccounts(LoginRequiredMixin, View):
         return render(request, self.template_name, args)
 
 
-class NewTask(LoginRequiredMixin, View):
-    login_url = 'instabot:login'
+#class NewTask(LoginRequiredMixin, View):
+#    login_url = 'instabot:login'
+#
+#    def get(self, request, *args, **kwargs):
+#
+#        return render(request, 'tasks/newTask.html', {})
+def NewTask(request):
+    categories=HashtagList.objects.all()
+    return render(request, 'tasks/newTask.html', {'categories':categories})
+import json
+def tags(request):
+    category = request.GET.get('category')
+    tags= List_Tag.objects.filter(category=category)
+    tags=[ tags_serializer(tag) for tag in tags]#Lista de diccionarios
+    return HttpResponse(json.dumps(tags),content_type='application/json')
 
-    def get(self, request, *args, **kwargs):
 
-        return render(request, 'tasks/newTask.html', {})
+def tags_serializer(tag):
+    return {'id':tag.id,'name':tag.insta_tag}
+
+def GetHashtags(request):
+    category=request.GET.get('category')
+    tags = List_Tag.objects.get(category=category)
+    qs_json = serializers.serialize('json', tags)
+
+    return HttpResponse(qs_json, content_type='application/json')
 
 
 class NewFollowLike(LoginRequiredMixin, View):
+
     def get(self, request, *args, **kwargs):
-        return render(request, 'tasks/followAndLike.html', {})
+        Hasgtags = HashtagList.objects.all()
+        return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags})
 
 class UnfollowTask(LoginRequiredMixin,View):
     def get(self,request, *args, **kwargs):

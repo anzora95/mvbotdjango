@@ -46,9 +46,15 @@ class BlackList(models.Model):
 
 
 class HashtagList(models.Model):
-    id_tag = models.IntegerField(primary_key= True)
-    catalogo = models.CharField(max_length=200)
-    hashtag_names =models.TextField()
+    category = models.CharField(max_length=200)
+
+    class Meta:
+        verbose_name = 'HashtagList'
+        verbose_name_plural = 'HashtagLists'
+
+    def __str__(self):
+        return '%s' % (self.category)
+
 
 
 class UsList(models.Model):
@@ -65,8 +71,15 @@ class LocateList(models.Model):
 
 class List_Tag(models.Model):
     insta_tag = models.CharField(max_length=100)
-    id_name = models.IntegerField()
-    num_catalog = models.ForeignKey(HashtagList, on_delete=models.CASCADE)
+    category = models.ForeignKey(HashtagList, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'List_Tag'
+        verbose_name_plural = 'List_Tags'
+
+    def __str__(self):
+        return '%s' % (self.insta_tag)
+
 
 
 class Features(models.Model):

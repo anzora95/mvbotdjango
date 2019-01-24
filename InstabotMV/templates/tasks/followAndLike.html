@@ -26,11 +26,20 @@
             </li>
         </ul>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
         <script type="text/javascript" src="{% static 'js/ajax.js' %}"></script>
+        <link href="https://fonts.googleapis.com/css?family=Hind" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.js"></script>
         <div class="tab-content ">
             <div class="tab-pane active" id="1">
-                <h1>Hola</h1>
-                        <form met id="formulario" action="obtener()">
+
+                        <form method="POST" id="formulario" >
+                        {% csrf_token %}
                          <select onchange="getTags()">
                 <option>Seleccionar producto</option>
                     {% for  Hasgtag in Hasgtags %}
@@ -49,26 +58,97 @@
                                success: function(data){
                                var html=""
                                for(var i=0;i<data.length;i++){
-                               html += data[i].fields.insta_tag+" "
+                               html += "<span class='tag'>"+data[i].fields.insta_tag+"<span class='close'></span></span>";
                                }
-                               $('#tagx').html(html);
+
+                               $('#xd').html(html);
                                }
                                });
                                }
                            </script>
+                            <h1 ></h1>
+                            <link rel="stylesheet" href="{% static 'css/tags.css' %}">
+                        <div  class="tags-input" data-name="tags-input">
+                            <div id="xd">
+
+                            </div>
+                            </div>
+                            <script src="{% static 'js/tags.js' %}"></script>
+            <input type="submit" name="submit" id="submit" class="btn btn-info" value="Save" />
+            </a>
+
+        </div>
                 </form>
-                <form>
-                    <h1 id="tagx"></h1>
-                    <input type="text" name="tags" id="tags" class="form-control" data-limit ="20" formmethod="post" />
-                </form>
-                {% include 'includes/audience/hashtags.html' %}
+
+
+                <p>Select action for current task</p>
+
+   <!-- <div class="row">
+        <div class="col-md-12">
+            <div>
+                <button type="checkbox" id="x" href="#" class="btn btn-primary" onclick="myFunction()">
+                    <span class="glyphicon glyphicon-heart" aria-hidden="false"></span>
+                    LIKE MEDIA OF THIS TASK
+                </button>
+                </div>
+            <script>
+function myFunction() {
+  document.getElementById("x").disabled = true;
+}
+</script>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <button href="#" class="btn btn-primary" disabled="true">
+                <span class="glyphicon glyphicon-user"></span>
+                FOLLOW USER OF THIS TASK MEDIA
+            </button>
+    <p>Select features</p>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <button href="#" class="btn btn-primary">
+                <span class=" icn-chang glyphicon glyphicon-eye-open "></span>
+                DON'T LIKE MEDIA OF THE SAME USER SECOND TIME
+            </button>
+        </div>
+
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+
+            <button href="#" class="btn btn-primary">
+                <span class="glyphicon glyphicon-sunglasses"></span>
+                DON'T FOLLOW PREVIOUSLY UNFOLLOWED USER
+            </button>
+        </div>
+
+    </div>
+
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <button href="#" class="btn btn-primary">
+                <span class="glyphicon glyphicon-dashboard"></span>
+                SEARCH FOR RECENTLY POSTED MEDIA ONLY
+            </button>
+
+        </div>
+    </div>
+
+    <br>
+
+    -->
+
             </div>
-            <div class="tab-pane" id="2">
-                {% include 'includes/audience/friendList.html' %}
-            </div>
-            <div class="tab-pane" id="3">
-                <h4>3</h4>
-            </div>
+
+
         </div>
     </div>
 {% endblock %}

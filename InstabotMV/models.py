@@ -5,7 +5,15 @@ from django.contrib.auth.models import User
 # class UserInsta(models.Model):
 # username_insta = models.CharField(max_length=30)
 # password_insta = models.CharField(max_length=30)
+class AppUser(User):
+   account=models.CharField(max_length=300)
 
+   class Meta:
+       verbose_name = 'AppUser'
+       verbose_name_plural = 'AppUsers'
+
+   def __str__(self):
+       return '%s' % (self.account)
 
 class Media(models.Model):
     media_id = models.CharField(max_length=300)
@@ -91,6 +99,22 @@ class ChildTag(models.Model):
     tag_name= models.CharField(max_length=100)
     hashtag_id = models.IntegerField(primary_key=True,)
     dad_tag = models.ForeignKey(HashtagList, on_delete=models.CASCADE)
+#Lectura de hasgtags para el task
+class Task(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    class Meta:
+        verbose_name = 'Task'
+        verbose_name_plural = 'Tasks'
 
+    def __str__(self):
+        return '%s' % (self.id)
 
+class TaskLine(models.Model):
+    Task=models.ForeignKey(Task,on_delete=models.CASCADE)
+    List_Tag=models.ForeignKey(List_Tag,on_delete=models.CASCADE)
+    class Meta:
+        verbose_name = 'TaskLine'
+        verbose_name_plural = 'TaskLines'
 
+    def __str__(self):
+        return '%s' % (self.id)

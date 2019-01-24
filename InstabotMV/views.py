@@ -59,13 +59,25 @@ def hashtag_read(request):
 
 
 def tag_child(request):
+    user = User.objects.get(id=request.user.id)
     if request.method == 'POST':
-        search_tag = request.POST.get('insta_class_tag')
-        insert_tag(search_tag,'tag_prueba')
+        task =Task()#inicializacion de task
+        task.user=user#Se le asigna un usuario a la task
+        task.save()
+
         return redirect('instabot:dashload')
 
     else:
        return redirect('create.html')
+
+def CreateTask(request):
+    user = User.objects.get(id=request.user.id)
+    if request.method == 'POST':
+        task = Task()  # inicializacion de task
+        task.user = user  # Se le asigna un usuario a la task
+        task.save()
+
+        return redirect('instabot:dashload')
 
 # def search(request):
 #     if request.method == 'POST':
@@ -172,7 +184,7 @@ class LoginView(View):
             return redirect('instabot:dashboard')
         elif user.is_superuser == 0:
             login_django(request, user)
-            return redirect('instabot:dashboard-client')
+            return redirect('instabot:dashboard')
         else:
             self.message = "Username o password incorrectos"
 
@@ -296,11 +308,15 @@ def GetHashtags(request):
     return HttpResponse(qs_json, content_type='application/json')
 
 
-class NewFollowLike(LoginRequiredMixin, View):
-
-    def get(self, request, *args, **kwargs):
-        Hasgtags = HashtagList.objects.all()
-        return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags})
+def NewFollowLike(request):
+    Hasgtags = HashtagList.objects.all()
+    user = User.objects.get(id=request.user.id)
+    if request.method == 'POST':
+        task = Task()  # inicializacion de task
+        task.user = user  # Se le asigna un usuario a la task
+        task.save()
+        return redirect('instabot:dashload')
+    return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags})
 
 class UnfollowTask(LoginRequiredMixin,View):
     def get(self,request, *args, **kwargs):

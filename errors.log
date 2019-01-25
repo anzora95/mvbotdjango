@@ -1630,3 +1630,419 @@ Traceback (most recent call last):
   File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 965, in get_prep_value
     return int(value)
 ValueError: invalid literal for int() with base 10: 'Seleccionar producto'
+WARNING:django.request:Not Found: /index
+WARNING:django.request:Not Found: /index
+ERROR:django.request:Internal Server Error: /admin/InstabotMV/task/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'webinstabot.instabotmv_task' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\options.py", line 604, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\options.py", line 1674, in changelist_view
+    cl = self.get_changelist_instance(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\options.py", line 742, in get_changelist_instance
+    sortable_by,
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\views\main.py", line 81, in __init__
+    self.get_results(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\views\main.py", line 209, in get_results
+    result_count = paginator.count
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\functional.py", line 37, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\paginator.py", line 87, in count
+    return self.object_list.count()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 383, in count
+    return self.query.get_count(using=self.db)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\query.py", line 498, in get_count
+    number = obj.get_aggregation(using, ['__count'])['__count']
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\query.py", line 483, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1065, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.ProgrammingError: (1146, "Table 'webinstabot.instabotmv_task' doesn't exist")
+WARNING:django.security.csrf:Forbidden (CSRF token missing or incorrect.): /instabotmv/dashboard/task/new/follow-like/
+WARNING:django.security.csrf:Forbidden (CSRF token missing or incorrect.): /instabotmv/dashboard/task/new/follow-like/
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/task/new/follow-like/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 326, in NewFollowLike
+    task.save()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 718, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 748, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 831, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 869, in _do_insert
+    using=using, raw=raw)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 1136, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1288, in execute_sql
+    for sql, params in self.as_sql():
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1241, in as_sql
+    for obj in self.query.objs
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1241, in <listcomp>
+    for obj in self.query.objs
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1240, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1182, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 790, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 785, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 1018, in get_prep_value
+    return self.to_python(value)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 1011, in to_python
+    params={'value': value},
+django.core.exceptions.ValidationError: ["'on' value must be either True or False."]
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/task/new/follow-like/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1048, "Column 'likemedia' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 320, in NewFollowLike
+    task.save()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 718, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 748, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 831, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 869, in _do_insert
+    using=using, raw=raw)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 1136, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1289, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.IntegrityError: (1048, "Column 'likemedia' cannot be null")
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/task/new/follow-like/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 320, in NewFollowLike
+    task.save()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 718, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 748, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 831, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 869, in _do_insert
+    using=using, raw=raw)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 1136, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1288, in execute_sql
+    for sql, params in self.as_sql():
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1241, in as_sql
+    for obj in self.query.objs
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1241, in <listcomp>
+    for obj in self.query.objs
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1240, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1182, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 790, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 785, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 1018, in get_prep_value
+    return self.to_python(value)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 1011, in to_python
+    params={'value': value},
+django.core.exceptions.ValidationError: ["'on' value must be either True or False."]
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/task/new/follow-like/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1048, "Column 'followuser' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 326, in NewFollowLike
+    task.save()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 718, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 748, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 831, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 869, in _do_insert
+    using=using, raw=raw)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 1136, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1289, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.IntegrityError: (1048, "Column 'followuser' cannot be null")
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/task/new/follow-like/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 327, in NewFollowLike
+    task.save()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 718, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 748, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 831, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 869, in _do_insert
+    using=using, raw=raw)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 1136, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1288, in execute_sql
+    for sql, params in self.as_sql():
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1241, in as_sql
+    for obj in self.query.objs
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1241, in <listcomp>
+    for obj in self.query.objs
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1240, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1182, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 790, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 785, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 1018, in get_prep_value
+    return self.to_python(value)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 1011, in to_python
+    params={'value': value},
+django.core.exceptions.ValidationError: ["'on' value must be either True or False."]
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/task/new/follow-like/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 331, in NewFollowLike
+    task.custowordfilterTrueOrFalse(request.POST.get('custom'))
+AttributeError: 'Task' object has no attribute 'custowordfilterTrueOrFalse'
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/task/new/follow-like/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 331, in NewFollowLike
+    task.custowordfilterTrueOrFalse(request.POST.get('custom'))
+AttributeError: 'Task' object has no attribute 'custowordfilterTrueOrFalse'
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/task/new/follow-like/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 333, in NewFollowLike
+    task.custowordfilterTrueOrFalse(request.POST.get('custom'))
+AttributeError: 'Task' object has no attribute 'custowordfilterTrueOrFalse'

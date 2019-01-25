@@ -308,14 +308,31 @@ def GetHashtags(request):
     return HttpResponse(qs_json, content_type='application/json')
 
 
+def TrueOrFalse(data):
+    if data=='on':
+
+        return True
+    else:
+        
+        return False
+
 def NewFollowLike(request):
     Hasgtags = HashtagList.objects.all()
     user = User.objects.get(id=request.user.id)
     if request.method == 'POST':
         task = Task()  # inicializacion de task
         task.user = user  # Se le asigna un usuario a la task
+        task.tags=request.POST.get('tags')
+        task.likemedia=TrueOrFalse(request.POST.get('like'))
+        task.followuser=TrueOrFalse(request.POST.get('follow'))
+        task.dontlikemedia=TrueOrFalse(request.POST.get('dont'))
+        task.dontfollow=TrueOrFalse(request.POST.get('dontfollow'))
+        task.randomlylike=TrueOrFalse(request.POST.get('randomly'))
+        task.search=TrueOrFalse(request.POST.get('search'))
+        task.antispamfilter=TrueOrFalse(request.POST.get('antispam'))
+        task.custowordfilter=TrueOrFalse(request.POST.get('custom'))
         task.save()
-        return redirect('instabot:dashload')
+        return redirect('instabot:dashboard')
     return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags})
 
 class UnfollowTask(LoginRequiredMixin,View):

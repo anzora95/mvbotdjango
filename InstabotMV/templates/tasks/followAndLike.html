@@ -38,7 +38,7 @@
         <div class="tab-content ">
             <div class="tab-pane active" id="1">
 
-                        <form method="POST" id="formulario" >
+
                         {% csrf_token %}
                          <select onchange="getTags()">
                 <option>Seleccionar producto</option>
@@ -69,19 +69,45 @@
                             <h1 ></h1>
                             <link rel="stylesheet" href="{% static 'css/tags.css' %}">
                         <div  class="tags-input" data-name="tags-input">
-                            <div id="xd">
+                            <section id="xd">
 
-                            </div>
+                            </section>
                             </div>
                             <script src="{% static 'js/tags.js' %}"></script>
             <input type="submit" name="submit" id="submit" class="btn btn-info" value="Save" />
             </a>
 
         </div>
-                </form>
+            <form method="POST" id="formulario" >
+                    {% csrf_token %}
+                <div class="input-group">
+                <span class="input-group" >Type in your hashtags or select from a list</span>
+                 <input type="text" id="tags" name="tags" class="form-control" placeholder="tags dividide by ," aria-describedby="basic-addon1">
+                </div>
+                <label>Selec actions for current task</label>
+                <br>
+                <label>LIKE MEDIA OF THIS TASK</label>
+                <input type="checkbox" id="like" name="like" aria-label="...">  <br>
+                <label>FOLLOW USERS OF THIS TASK MEDIA</label>
+                <input type="checkbox" id="follow" name="follow" aria-label="...">  <br>
+                <label>DON'T LIKE MEDIA OF THE SAME USER SECOND TIME</label>
+                <input type="checkbox" id="dont" name="dont" aria-label="...">  <br>
+                <label>DON'T FOLLOW PREVIOUSLY UNFOLLOWED USERS</label>
+                <input type="checkbox" id="dontfollow" name="dontfollow" aria-label="...">  <br>
+                <label>RANDOMLY LIKE 3 EXTRA MEDIA FOR EACH USER</label>
+                <input type="checkbox" id="randomly" name="randomly" aria-label="...">  <br>
+                <label>SEARCH FOR RECENTLY POSTED MEDIA ONLY</label>
+                <input type="checkbox"  id="search" name="search" aria-label="...">  <br>
+                <label>Antispam filter</label>
+                <input type="checkbox" id="antispam" name="antispam" aria-label="...">  <br>
+                <label>Custom wordfilter</label>
+                <input type="checkbox" id="custom" name="custom" aria-label="...">  <br>
+                <button type="submit" class="btn btn-primary">save</button>
+
+            </form>
 
 
-                <p>Select action for current task</p>
+
 
    <!-- <div class="row">
         <div class="col-md-12">

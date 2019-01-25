@@ -102,6 +102,15 @@ class ChildTag(models.Model):
 #Lectura de hasgtags para el task
 class Task(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
+    tags=models.CharField(max_length=1000)
+    likemedia=models.BooleanField()
+    followuser=models.BooleanField()
+    dontlikemedia=models.BooleanField()
+    dontfollow=models.BooleanField()
+    randomlylike=models.BooleanField()
+    search=models.BooleanField()
+    antispamfilter=models.BooleanField()
+    custowordfilter=models.BooleanField()
     class Meta:
         verbose_name = 'Task'
         verbose_name_plural = 'Tasks'
@@ -109,12 +118,3 @@ class Task(models.Model):
     def __str__(self):
         return '%s' % (self.id)
 
-class TaskLine(models.Model):
-    Task=models.ForeignKey(Task,on_delete=models.CASCADE)
-    List_Tag=models.ForeignKey(List_Tag,on_delete=models.CASCADE)
-    class Meta:
-        verbose_name = 'TaskLine'
-        verbose_name_plural = 'TaskLines'
-
-    def __str__(self):
-        return '%s' % (self.id)

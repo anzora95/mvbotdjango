@@ -41,7 +41,8 @@
 
                         {% csrf_token %}
                          <select onchange="getTags()">
-                <option>Seleccionar producto</option>
+                              <span class="input-group" >Type in your hashtags or select from a list</span>
+                <option>Select your audience</option>
                     {% for  Hasgtag in Hasgtags %}
                 <option value="{{Hasgtag.id}}">{{Hasgtag.category}}</option>
                     {% endfor%}
@@ -67,29 +68,28 @@
                                }
                            </script>
                             <h1 ></h1>
-                            <link rel="stylesheet" href="{% static 'css/tags.css' %}">
+
+
+            </a>
+
+        </div>
+            <form method="POST" id="formulario" >
+                    {% csrf_token %}
+                <link rel="stylesheet" href="{% static 'css/tags.css' %}">
                         <div  class="tags-input" data-name="tags-input">
                             <section id="xd">
 
                             </section>
                             </div>
                             <script src="{% static 'js/tags.js' %}"></script>
-            <input type="submit" name="submit" id="submit" class="btn btn-info" value="Save" />
-            </a>
 
-        </div>
-            <form method="POST" id="formulario" >
-                    {% csrf_token %}
-                <div class="input-group">
-                <span class="input-group" >Type in your hashtags or select from a list</span>
-                 <input type="text" id="tags" name="tags" class="form-control" placeholder="tags dividide by ," aria-describedby="basic-addon1">
-                </div>
-                <label>Selec actions for current task</label>
+                <h3>Selec actions for current task</h3>
                 <br>
                 <label>LIKE MEDIA OF THIS TASK</label>
                 <input type="checkbox" id="like" name="like" aria-label="...">  <br>
                 <label>FOLLOW USERS OF THIS TASK MEDIA</label>
                 <input type="checkbox" id="follow" name="follow" aria-label="...">  <br>
+                <h3>Selec features</h3>
                 <label>DON'T LIKE MEDIA OF THE SAME USER SECOND TIME</label>
                 <input type="checkbox" id="dont" name="dont" aria-label="...">  <br>
                 <label>DON'T FOLLOW PREVIOUSLY UNFOLLOWED USERS</label>
@@ -98,6 +98,7 @@
                 <input type="checkbox" id="randomly" name="randomly" aria-label="...">  <br>
                 <label>SEARCH FOR RECENTLY POSTED MEDIA ONLY</label>
                 <input type="checkbox"  id="search" name="search" aria-label="...">  <br>
+                <h3>check additional settings</h3>
                 <label>Antispam filter</label>
                 <input type="checkbox" id="antispam" name="antispam" aria-label="...">  <br>
                 <label>Custom wordfilter</label>

@@ -55,7 +55,7 @@
             <li><a href="#3" data-toggle="tab">Options</a>
             </li>
         </ul>
-
+{% for task in LT %}
         <div class="tab-content ">
             <div class="tab-pane active" id="1">
                 {% include 'includes/tabs/results.html' %}
@@ -66,12 +66,14 @@
             <div class="tab-pane" id="3">
                 {% include 'includes/tabs/options.html' %}
             </div>
+            <h3 class="text-center">#{{task.tags}}</h3>
         </div>
     </div>
     <br>
     <br>
     <br>
-    <form>    
+
+    <form>
     <div class="text-center">
         <div display="block-level-elements">
         <span>
@@ -117,25 +119,25 @@
         </div>
     </div>
 </form>
-<form action="{% url 'instabot:start' %}" method="post" role="form">  
+<form action="{% url 'instabot:start' %}" method="post" role="form">
     {% csrf_token %}
-    <div class="text-center" display="inline-block-elements">  
+    <div class="text-center" display="inline-block-elements">
         <div>
             <span >
-                
-                <button type="submit" class="btn btn-play btn-primary btn-circle btn-xl" id="load" 
+
+                <button type="submit" class="btn btn-play btn-primary btn-circle btn-xl" id="load"
                      data-loading-text="<i class='fa fa-refresh fa-spin'></i>">
                     <i class='glyphicon glyphicon-play'></i>
                 </button>
 
             </span>
            <div class=" popupBubble ">
-                
+
                     <button  class="btn btn-primary btn-lit-circle btn-xl " >
                         <i class="glyphicon glyphicon-comment"></i>
 
                     </button>
-                
+
             </div>
             <span>
            <button type="button" class="btn btn-primary btn-lit-circle btn-xl" >
@@ -151,12 +153,12 @@
            <span>
                <p>{{status}}</p>
            </span>
-                 
+
         </div>
     </div>
-            
-</form>
 
+</form>
+{% endfor%}
 
    <div>
    {% if object_list %}

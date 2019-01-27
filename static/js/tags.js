@@ -4,7 +4,7 @@
         tags = [];
     
     hiddenInput.setAttribute('type', 'hidden');
-     hiddenInput.setAttribute('id', 'tagx');
+
     hiddenInput.setAttribute('name', el.getAttribute('data-name'));
 
     mainInput.setAttribute('type', 'text');
@@ -31,7 +31,8 @@
     el.appendChild(mainInput);
     el.appendChild(hiddenInput);
 
-    //addTag('hello!');
+    addTag('follow');
+    addTag("me")
 
     function addTag (text) {
         let tag = {

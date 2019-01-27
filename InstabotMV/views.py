@@ -199,17 +199,28 @@ def logout(request):
     logout_django(request)
     return redirect('instabot:login')
 
+def DashboardView(request):
+    user = User.objects.get(id=request.user.id) #Get the current user logged in
+    AT=Task.objects.all() #Get All the Task in system
+    LT=[] ##Empty list for List of Task
+    for x in range(0,len(AT)):
+       if AT[x].user==user:#If the task has the current logged user add it to the LT list
+           #print(AT[x].user.username)
+           LT.append(AT[x])
 
-class DashboardView(LoginRequiredMixin, View):
-    login_url = 'instabot:login'
+    return render(request, 'dashboard.html', {'user':user,'LT':LT})
 
-    def get(self, request, *args, **kwargs):
 
-        context = {
-            'user': request.user
-            }
-
-        return render(request, 'dashboard.html', context)
+#class DashboardView(LoginRequiredMixin, View):
+ #   login_url = 'instabot:login'
+#
+ #   def get(self, request, *args, **kwargs):
+#
+ #       context = {
+  #          'user': request.user
+   #         }
+#
+ #       return render(request, 'dashboard.html', context)
 
 
 class DashTaskLoad(LoginRequiredMixin, View):  #vista que servira para redireccionar la task guardada en new task excepto paara los unfollows
@@ -313,7 +324,7 @@ def TrueOrFalse(data):
 
         return True
     else:
-        
+
         return False
 
 def NewFollowLike(request):
@@ -322,7 +333,7 @@ def NewFollowLike(request):
     if request.method == 'POST':
         task = Task()  # inicializacion de task
         task.user = user  # Se le asigna un usuario a la task
-        task.tags=request.POST.get('tags')
+        task.tags=request.POST.get('tags-input')
         task.likemedia=TrueOrFalse(request.POST.get('like'))
         task.followuser=TrueOrFalse(request.POST.get('follow'))
         task.dontlikemedia=TrueOrFalse(request.POST.get('dont'))

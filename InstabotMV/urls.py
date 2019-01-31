@@ -19,11 +19,11 @@ urlpatterns = [
     url('dashboard/task/new/follow-like/$', views.NewFollowLike, name='newFollowLike'),
     url('dashboard/task/new/unfollow-task/$', views.UnfollowTask.as_view(), name='unfollow_task'),
     url('dashboard/accounts/$', views.UserAccounts.as_view(), name='userAccounts'),
-    url('create/$', views.Create.as_view(), name='create'),
+    url('create/$', views.Create, name='create'),
     url('store-new-task/$', views.StoreTask.as_view(), name='storeTask'),
     url('store-new-task-u/$', views.StoreTaskUser.as_view(), name='storeTaskU'),
     # # ******************************** bot url's ************************************************************
-    url('start-bot/$', views.StartBot.as_view(), name='start'),
+    url('start-bot/$', views.StartBot.as_view(),name='start'),
     url('stop-bot/$', views.StopBot.as_view(), name='stopBot'),
 
 

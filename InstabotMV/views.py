@@ -179,6 +179,7 @@ class LoginView(View):
         username_post = request.POST['username']
         password_post = request.POST['password']
         user = authenticate(username=username_post, password=password_post)
+        print(user)
         if user.is_superuser == 1:
             login_django(request, user)
             return redirect('instabot:dashboard')
@@ -409,12 +410,13 @@ class StartBot(LoginRequiredMixin, View):
         return render(request, 'users/dashboard.html', {})
 
     def post(self, request, *args, **kwargs):
+        user=User.objects.get(id=request.user.id)
         bot = InstaBot(
             login=take_cred().insta_user,
             password=take_cred().insta_pass,
             like_per_day=1000,
             comments_per_day=0,
-            tag_list=['swag','selfie','pretty'],
+            tag_list=['mac4life'],
             tag_blacklist=['rain', 'thunderstorm'],
             user_blacklist={},
             max_like_for_one_tag=50,
@@ -474,7 +476,7 @@ class StartBot(LoginRequiredMixin, View):
 
             if mode == 0:
                 bot.new_auto_mod()
-                
+
 
             elif mode == 1:
                 check_status(bot)

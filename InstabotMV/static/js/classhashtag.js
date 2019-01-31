@@ -3,7 +3,7 @@
     var id_input=document.getElementById("insta_class_tag").value;
     $('#insta_class_tag').tokenfield({
             autocomplete: {
-                source: ['love', 'me','smile','follow','amazing','summer','fashion','instalike','bestoftheday','swag','selfie','tbt','happy','selfienation','pretty','hair','followme','igdaily','portrait','instalove','fun' ,'eyes','photo','pics','street','creative','pastedup','photos','pic','wallporn','graffiti','instagraff'],
+                source: ['retty','hair','followme','igdaily','portrait','instalove','fun' ,'eyes','photo','pics','street','creative','pastedup','photos','pic','wallporn','graffiti','instagraff'],
                 delay: 100
             },
             showAutocompleteOnFocus: true

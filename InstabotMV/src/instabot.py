@@ -150,7 +150,7 @@ class InstaBot:
                                 "excellent", "amazing"],
                                [".", "..", "...", "!", "!!", "!!!"]],
                  comments_per_day=0,
-                 tag_list=['l:111948542155151','dog'],
+                 tag_list=['misamigos'],
                  max_like_for_one_tag=5,
                  unfollow_break_min=15,
                  unfollow_break_max=30,
@@ -265,8 +265,10 @@ class InstaBot:
                 time.sleep(5 * random.random())
 
     def login(self):
+
         log_string = 'Trying to login as %s...\n' % (self.user_login)
         self.write_log(log_string)
+
         self.login_post = {
             'username': self.user_login,
             'password': self.user_password

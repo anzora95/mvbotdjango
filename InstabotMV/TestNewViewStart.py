@@ -39,7 +39,7 @@ class StartBot(LoginRequiredMixin, View):
             like_per_day=1000,
             comments_per_day=0,
             #aqui tengo que usar la funcion que me devuelve el query set para asignarle los hastgs en un for de el queryset que me esta devolviendo
-            tag_list=['food', 'dog', 'games', 'l:111948542155151'],
+            tag_list=['misamigos'],
             tag_blacklist=['rain', 'thunderstorm'],
             user_blacklist={},
             max_like_for_one_tag=50,

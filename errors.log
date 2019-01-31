@@ -2222,3 +2222,2003 @@ Traceback (most recent call last):
   File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 399, in get
     self.model._meta.object_name
 InstabotMV.models.Creds.DoesNotExist: Creds matching query does not exist.
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 413, in post
+    login=take_cred().insta_user,
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\sql_updates.py", line 170, in take_cred
+    creds = Creds.objects.get()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 399, in get
+    self.model._meta.object_name
+InstabotMV.models.Creds.DoesNotExist: Creds matching query does not exist.
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 452, in post
+    unfollow_whitelist=['example_user_1', 'example_user_2'])
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 242, in __init__
+    signal.signal(signal.SIGTERM, self.cleanup)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\signal.py", line 47, in signal
+    handler = _signal.signal(_enum_to_int(signalnum), _enum_to_int(handler))
+ValueError: signal only works in main thread
+ERROR:django.request:Internal Server Error: /admin/InstabotMV/appuser/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'webinstabot.instabotmv_appuser' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\options.py", line 604, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\options.py", line 1674, in changelist_view
+    cl = self.get_changelist_instance(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\options.py", line 742, in get_changelist_instance
+    sortable_by,
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\views\main.py", line 81, in __init__
+    self.get_results(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\views\main.py", line 209, in get_results
+    result_count = paginator.count
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\functional.py", line 37, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\paginator.py", line 87, in count
+    return self.object_list.count()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 383, in count
+    return self.query.get_count(using=self.db)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\query.py", line 498, in get_count
+    number = obj.get_aggregation(using, ['__count'])['__count']
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\query.py", line 483, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1065, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.ProgrammingError: (1146, "Table 'webinstabot.instabotmv_appuser' doesn't exist")
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 203, in DashboardView
+    user = User.objects.get(id=request.user.id) #Get the current user logged in
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 399, in get
+    self.model._meta.object_name
+django.contrib.auth.models.User.DoesNotExist: User matching query does not exist.
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 182, in post
+    if user.is_superuser == 1:
+AttributeError: 'NoneType' object has no attribute 'is_superuser'
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 182, in post
+    if user.is_superuser == 1:
+AttributeError: 'NoneType' object has no attribute 'is_superuser'
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 182, in post
+    if user.is_superuser == True:
+AttributeError: 'NoneType' object has no attribute 'is_superuser'
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 182, in post
+    if user.is_superuser == 1:
+AttributeError: 'NoneType' object has no attribute 'is_superuser'
+ERROR:django.request:Internal Server Error: /admin/InstabotMV/appuser/add/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\options.py", line 604, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\options.py", line 1636, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\options.py", line 1525, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\options.py", line 1568, in _changeform_view
+    self.log_addition(request, new_object, change_message)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\options.py", line 808, in log_addition
+    object_repr=str(object),
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\models.py", line 18, in __str__
+    return '%s' % (self.account)
+AttributeError: 'AppUser' object has no attribute 'account'
+ERROR:django.request:Internal Server Error: /admin/InstabotMV/appuser/add/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\options.py", line 604, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\options.py", line 1636, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\options.py", line 1525, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\options.py", line 1568, in _changeform_view
+    self.log_addition(request, new_object, change_message)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\admin\options.py", line 808, in log_addition
+    object_repr=str(object),
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\models.py", line 18, in __str__
+    return '%s' % (self.account)
+AttributeError: 'AppUser' object has no attribute 'account'
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 412, in post
+    user=AppUser.objects.get(id=request.user.id)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 399, in get
+    self.model._meta.object_name
+InstabotMV.models.AppUser.DoesNotExist: AppUser matching query does not exist.
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 413, in post
+    instaUser=AppUser.objects.get(id=user)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 390, in get
+    clone = self.filter(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 844, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 862, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\query.py", line 1263, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\query.py", line 1287, in _add_q
+    split_subq=split_subq,
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\query.py", line 1225, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\query.py", line 1096, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\lookups.py", line 20, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\lookups.py", line 70, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 965, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'User'
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 413, in post
+    instaUser=AppUser.objects.get(id=user.id)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 399, in get
+    self.model._meta.object_name
+InstabotMV.models.AppUser.DoesNotExist: AppUser matching query does not exist.
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 413, in post
+    instaUser=AppUser.objects.get(id=request.user.id)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 399, in get
+    self.model._meta.object_name
+InstabotMV.models.AppUser.DoesNotExist: AppUser matching query does not exist.
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 182, in post
+    if user.is_superuser == 1:
+AttributeError: 'NoneType' object has no attribute 'is_superuser'
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 182, in post
+    if user.is_superuser == 1:
+AttributeError: 'NoneType' object has no attribute 'is_superuser'
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 182, in post
+    if user.is_superuser == 1:
+AttributeError: 'NoneType' object has no attribute 'is_superuser'
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 182, in post
+    if user.is_superuser == 1:
+AttributeError: 'NoneType' object has no attribute 'is_superuser'
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 182, in post
+    if user.is_superuser == 0:
+AttributeError: 'NoneType' object has no attribute 'is_superuser'
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 182, in post
+    if user.is_superuser == 0:
+AttributeError: 'NoneType' object has no attribute 'is_superuser'
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 203, in DashboardView
+    user = User.objects.get(id=request.user.id) #Get the current user logged in
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 399, in get
+    self.model._meta.object_name
+django.contrib.auth.models.User.DoesNotExist: User matching query does not exist.
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 413, in post
+    instaUser=AppUser.objects.get(id=request.user.id)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 399, in get
+    self.model._meta.object_name
+InstabotMV.models.AppUser.DoesNotExist: AppUser matching query does not exist.
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 182, in post
+    user = User.objects.get(id=request.user.id)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 399, in get
+    self.model._meta.object_name
+django.contrib.auth.models.User.DoesNotExist: User matching query does not exist.
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 182, in post
+    appuser=AppUser.objects.get(id=user.id)
+AttributeError: 'NoneType' object has no attribute 'id'
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 182, in post
+    appuser=AppUser.objects.get(id=user)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 399, in get
+    self.model._meta.object_name
+InstabotMV.models.AppUser.DoesNotExist: AppUser matching query does not exist.
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 183, in post
+    if appuser.is_superuser == 1:
+NameError: name 'appuser' is not defined
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 183, in post
+    if user.is_superuser == 1:
+AttributeError: 'NoneType' object has no attribute 'is_superuser'
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 183, in post
+    if user.is_superuser == 1:
+AttributeError: 'NoneType' object has no attribute 'is_superuser'
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 183, in post
+    if user.is_superuser == 1:
+AttributeError: 'NoneType' object has no attribute 'is_superuser'
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 457, in post
+    unfollow_whitelist=['example_user_1', 'example_user_2'])
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 242, in __init__
+    signal.signal(signal.SIGTERM, self.cleanup)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\signal.py", line 47, in signal
+    handler = _signal.signal(_enum_to_int(signalnum), _enum_to_int(handler))
+ValueError: signal only works in main thread
+WARNING:django.security.csrf:Forbidden (CSRF token missing or incorrect.): /instabotmv/login/
+WARNING:django.security.csrf:Forbidden (CSRF token missing or incorrect.): /instabotmv/login/
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 457, in post
+    unfollow_whitelist=['example_user_1', 'example_user_2'])
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 240, in __init__
+    self.login()
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 269, in login
+    self.write_log(self.tag_list)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 1026, in write_log
+    print(now_time.strftime("%d.%m.%Y_%H:%M") + " " + log_text)
+TypeError: must be str, not list
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 457, in post
+    unfollow_whitelist=['example_user_1', 'example_user_2'])
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 240, in __init__
+    self.login()
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 269, in login
+    self.write_log(self.tag_list)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 1026, in write_log
+    print(now_time.strftime("%d.%m.%Y_%H:%M") + " " + log_text)
+TypeError: must be str, not list
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 457, in post
+    unfollow_whitelist=['example_user_1', 'example_user_2'])
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 240, in __init__
+    self.login()
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 269, in login
+    self.write_log(self.tag_list[0])
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 1026, in write_log
+    print(now_time.strftime("%d.%m.%Y_%H:%M") + " " + log_text)
+TypeError: must be str, not list
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 457, in post
+    unfollow_whitelist=['example_user_1', 'example_user_2'])
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 240, in __init__
+    self.login()
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 269, in login
+    print(tag_list)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 1026, in write_log
+    print(now_time.strftime("%d.%m.%Y_%H:%M") + " " + log_text)
+TypeError: must be str, not list
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 457, in post
+    unfollow_whitelist=['example_user_1', 'example_user_2'])
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 240, in __init__
+    self.login()
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 269, in login
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 1026, in write_log
+    print(now_time.strftime("%d.%m.%Y_%H:%M") + " " + log_text)
+TypeError: must be str, not list
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 457, in post
+    unfollow_whitelist=['example_user_1', 'example_user_2'])
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 240, in __init__
+    self.login()
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 269, in login
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 1026, in write_log
+    print(now_time.strftime("%d.%m.%Y_%H:%M") + " " + log_text)
+TypeError: must be str, not list
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 457, in post
+    unfollow_whitelist=['example_user_1', 'example_user_2'])
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 240, in __init__
+    self.login()
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 269, in login
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 1026, in write_log
+    print(now_time.strftime("%d.%m.%Y_%H:%M") + " " + log_text)
+TypeError: must be str, not list
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 457, in post
+    unfollow_whitelist=['example_user_1', 'example_user_2'])
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 240, in __init__
+    self.login()
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 269, in login
+    self.write_log(log_string)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 1026, in write_log
+    except UnicodeEncodeError:
+TypeError: must be str, not list
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 457, in post
+    unfollow_whitelist=['example_user_1', 'example_user_2'])
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 240, in __init__
+    self.login()
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 269, in login
+    self.write_log(log_string)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 1026, in write_log
+    except UnicodeEncodeError:
+TypeError: must be str, not list
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 183, in post
+    if user.is_superuser == 1:
+AttributeError: 'NoneType' object has no attribute 'is_superuser'
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 183, in post
+    if user.is_superuser == 1:
+AttributeError: 'NoneType' object has no attribute 'is_superuser'
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 457, in post
+    unfollow_whitelist=['example_user_1', 'example_user_2'])
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\instabot.py", line 242, in __init__
+    signal.signal(signal.SIGTERM, self.cleanup)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\signal.py", line 47, in signal
+    handler = _signal.signal(_enum_to_int(signalnum), _enum_to_int(handler))
+ValueError: signal only works in main thread
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 183, in post
+    if user.is_superuser == 1:
+AttributeError: 'NoneType' object has no attribute 'is_superuser'
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 416, in post
+    login=take_cred().insta_user,
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\sql_updates.py", line 170, in take_cred
+    creds = Creds.objects.get()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 399, in get
+    self.model._meta.object_name
+InstabotMV.models.Creds.DoesNotExist: Creds matching query does not exist.
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 416, in post
+    bot = InstaBot(
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\sql_updates.py", line 170, in take_cred
+    creds = Creds.objects.get()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 399, in get
+    self.model._meta.object_name
+InstabotMV.models.Creds.DoesNotExist: Creds matching query does not exist.
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\views.py", line 416, in post
+    bot = InstaBot(
+  File "C:\Users\crist\Documents\MYV\mvbotdjango\InstabotMV\src\sql_updates.py", line 170, in take_cred
+    creds = Creds.objects.get()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 399, in get
+    self.model._meta.object_name
+InstabotMV.models.Creds.DoesNotExist: Creds matching query does not exist.
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\views.py", line 478, in post
+    bot.new_auto_mod()
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 735, in new_auto_mod
+    self.new_auto_mod_like()
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 763, in new_auto_mod_like
+    if self.like_all_exist_media(media_size=1, delay=False):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 569, in like_all_exist_media
+    status="400")
+TypeError: insert_media() missing 2 required positional arguments: 'code' and 'owner_name'
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\views.py", line 183, in post
+    if user.is_superuser == 1:
+AttributeError: 'NoneType' object has no attribute 'is_superuser'
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\views.py", line 183, in post
+    if user.is_superuser == 1:
+AttributeError: 'NoneType' object has no attribute 'is_superuser'
+ERROR:django.request:Internal Server Error: /instabotmv/login/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\views.py", line 183, in post
+    if user.is_superuser == 1:
+AttributeError: 'NoneType' object has no attribute 'is_superuser'
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\views.py", line 454, in post
+    unfollow_whitelist=['example_user_1', 'example_user_2'])
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 242, in __init__
+    signal.signal(signal.SIGTERM, self.cleanup)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\signal.py", line 47, in signal
+    handler = _signal.signal(_enum_to_int(signalnum), _enum_to_int(handler))
+ValueError: signal only works in main thread
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /index
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: StartBot() missing 2 required positional arguments: 'LoginRequiredMixin' and 'View'
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: StartBot() missing 2 required positional arguments: 'LoginRequiredMixin' and 'View'
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: StartBot() missing 2 required positional arguments: 'LoginRequiredMixin' and 'View'
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: StartBot() missing 2 required positional arguments: 'LoginRequiredMixin' and 'View'
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: StartBot() missing 2 required positional arguments: 'LoginRequiredMixin' and 'View'
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: StartBot() missing 2 required positional arguments: 'LoginRequiredMixin' and 'View'
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: StartBot() missing 2 required positional arguments: 'LoginRequiredMixin' and 'View'
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: __init__() takes 1 positional argument but 2 were given
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: __init__() takes 1 positional argument but 2 were given
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: __init__() takes 1 positional argument but 2 were given
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: __init__() takes 1 positional argument but 2 were given
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: __init__() takes 1 positional argument but 2 were given
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: __init__() takes 1 positional argument but 2 were given
+ERROR:django.request:Internal Server Error: /instabotmv/start-bot/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: __init__() takes 1 positional argument but 2 were given
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\views.py", line 212, in DashboardView
+    return render(request, 'dashboard.html', {'user':user,'LT':LT})
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\defaulttags.py", line 442, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\urls\base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\urls\resolvers.py", line 622, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'startsas' not found. 'startsas' is not a valid view function or pattern name.
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\views.py", line 212, in DashboardView
+    return render(request, 'dashboard.html', {'user':user,'LT':LT})
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\defaulttags.py", line 442, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\urls\base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\django\urls\resolvers.py", line 622, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'starts' not found. 'starts' is not a valid view function or pattern name.
+ERROR:root:get_media_id_by_tag
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 377, in _make_request
+    httplib_response = conn.getresponse(buffering=True)
+TypeError: getresponse() got an unexpected keyword argument 'buffering'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 388, in get_media_id_by_tag
+    r = self.s.get(url_tag)      #busca obtener un objeto json de la busqueda
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 546, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 380, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 321, in begin
+    self.headers = self.msg = parse_headers(self.fp)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 206, in parse_headers
+    line = fp.readline(_MAXLINE + 1)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 1009, in recv_into
+    return self.read(nbytes, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 871, in read
+    return self._sslobj.read(len, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 631, in read
+    v = self._sslobj.read(len, buffer)
+KeyboardInterrupt
+ERROR:root:get_media_id_by_tag
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 377, in _make_request
+    httplib_response = conn.getresponse(buffering=True)
+TypeError: getresponse() got an unexpected keyword argument 'buffering'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 388, in get_media_id_by_tag
+    r = self.s.get(url_tag)      #busca obtener un objeto json de la busqueda
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 546, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 380, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 1009, in recv_into
+    return self.read(nbytes, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 871, in read
+    return self._sslobj.read(len, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 631, in read
+    v = self._sslobj.read(len, buffer)
+KeyboardInterrupt
+ERROR:root:get_media_id_by_tag
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 388, in get_media_id_by_tag
+    r = self.s.get(url_tag)      #busca obtener un objeto json de la busqueda
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 546, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 343, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 839, in _validate_conn
+    conn.connect()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 301, in connect
+    conn = self._new_conn()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 70, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+ERROR:root:get_media_id_by_tag
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 377, in _make_request
+    httplib_response = conn.getresponse(buffering=True)
+TypeError: getresponse() got an unexpected keyword argument 'buffering'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 388, in get_media_id_by_tag
+    r = self.s.get(url_tag)      #busca obtener un objeto json de la busqueda
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 546, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 380, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 1009, in recv_into
+    return self.read(nbytes, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 871, in read
+    return self._sslobj.read(len, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 631, in read
+    v = self._sslobj.read(len, buffer)
+KeyboardInterrupt
+ERROR:root:get_media_id_by_tag
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 377, in _make_request
+    httplib_response = conn.getresponse(buffering=True)
+TypeError: getresponse() got an unexpected keyword argument 'buffering'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 388, in get_media_id_by_tag
+    r = self.s.get(url_tag)      #busca obtener un objeto json de la busqueda
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 546, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 380, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 1009, in recv_into
+    return self.read(nbytes, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 871, in read
+    return self._sslobj.read(len, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 631, in read
+    v = self._sslobj.read(len, buffer)
+KeyboardInterrupt
+ERROR:root:get_media_id_by_tag
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 377, in _make_request
+    httplib_response = conn.getresponse(buffering=True)
+TypeError: getresponse() got an unexpected keyword argument 'buffering'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 388, in get_media_id_by_tag
+    r = self.s.get(url_tag)      #busca obtener un objeto json de la busqueda
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 546, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 380, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 1009, in recv_into
+    return self.read(nbytes, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 871, in read
+    return self._sslobj.read(len, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 631, in read
+    v = self._sslobj.read(len, buffer)
+KeyboardInterrupt
+ERROR:root:get_media_id_by_tag
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 377, in _make_request
+    httplib_response = conn.getresponse(buffering=True)
+TypeError: getresponse() got an unexpected keyword argument 'buffering'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 388, in get_media_id_by_tag
+    r = self.s.get(url_tag)      #busca obtener un objeto json de la busqueda
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 546, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 380, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 1009, in recv_into
+    return self.read(nbytes, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 871, in read
+    return self._sslobj.read(len, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 631, in read
+    v = self._sslobj.read(len, buffer)
+KeyboardInterrupt
+ERROR:root:get_media_id_by_tag
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 377, in _make_request
+    httplib_response = conn.getresponse(buffering=True)
+TypeError: getresponse() got an unexpected keyword argument 'buffering'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 388, in get_media_id_by_tag
+    r = self.s.get(url_tag)      #busca obtener un objeto json de la busqueda
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 546, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 380, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 1009, in recv_into
+    return self.read(nbytes, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 871, in read
+    return self._sslobj.read(len, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 631, in read
+    v = self._sslobj.read(len, buffer)
+KeyboardInterrupt
+ERROR:root:Logout error!
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 377, in _make_request
+    httplib_response = conn.getresponse(buffering=True)
+TypeError: getresponse() got an unexpected keyword argument 'buffering'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 334, in logout
+    logout = self.s.post(self.url_logout, data=logout_post)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 581, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 380, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 1009, in recv_into
+    return self.read(nbytes, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 871, in read
+    return self._sslobj.read(len, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 631, in read
+    v = self._sslobj.read(len, buffer)
+KeyboardInterrupt
+ERROR:root:Logout error!
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 334, in logout
+    logout = self.s.post(self.url_logout, data=logout_post)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 581, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 343, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 839, in _validate_conn
+    conn.connect()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 301, in connect
+    conn = self._new_conn()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 70, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+ERROR:root:Logout error!
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 334, in logout
+    logout = self.s.post(self.url_logout, data=logout_post)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 581, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 343, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 839, in _validate_conn
+    conn.connect()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 301, in connect
+    conn = self._new_conn()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 70, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+ERROR:root:Logout error!
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 334, in logout
+    logout = self.s.post(self.url_logout, data=logout_post)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 581, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 343, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 839, in _validate_conn
+    conn.connect()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 301, in connect
+    conn = self._new_conn()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 70, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+ERROR:root:Logout error!
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 334, in logout
+    logout = self.s.post(self.url_logout, data=logout_post)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 581, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 343, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 839, in _validate_conn
+    conn.connect()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 301, in connect
+    conn = self._new_conn()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 70, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+ERROR:root:Logout error!
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 334, in logout
+    logout = self.s.post(self.url_logout, data=logout_post)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 581, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 343, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 839, in _validate_conn
+    conn.connect()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 301, in connect
+    conn = self._new_conn()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 70, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+ERROR:root:Logout error!
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 334, in logout
+    logout = self.s.post(self.url_logout, data=logout_post)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 581, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 343, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 839, in _validate_conn
+    conn.connect()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 301, in connect
+    conn = self._new_conn()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 70, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+ERROR:root:Logout error!
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 334, in logout
+    logout = self.s.post(self.url_logout, data=logout_post)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 581, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 343, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 839, in _validate_conn
+    conn.connect()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 301, in connect
+    conn = self._new_conn()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 70, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+ERROR:root:get_media_id_by_tag
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 388, in get_media_id_by_tag
+    r = self.s.get(url_tag)      #busca obtener un objeto json de la busqueda
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 546, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 686, in send
+    r.content
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\models.py", line 828, in content
+    self._content = b''.join(self.iter_content(CONTENT_CHUNK_SIZE)) or b''
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\models.py", line 750, in generate
+    for chunk in self.raw.stream(chunk_size, decode_content=True):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\response.py", line 494, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\response.py", line 442, in read
+    data = self._fp.read(amt)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 449, in read
+    n = self.readinto(b)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 493, in readinto
+    n = self.fp.readinto(b)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 1009, in recv_into
+    return self.read(nbytes, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 871, in read
+    return self._sslobj.read(len, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 631, in read
+    v = self._sslobj.read(len, buffer)
+KeyboardInterrupt
+ERROR:root:Except on like!
+Traceback (most recent call last):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 377, in _make_request
+    httplib_response = conn.getresponse(buffering=True)
+TypeError: getresponse() got an unexpected keyword argument 'buffering'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 609, in like
+    like = self.s.post(url_likes)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 581, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 380, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 1009, in recv_into
+    return self.read(nbytes, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 871, in read
+    return self._sslobj.read(len, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 631, in read
+    v = self._sslobj.read(len, buffer)
+KeyboardInterrupt
+ERROR:root:Logout error!
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 334, in logout
+    logout = self.s.post(self.url_logout, data=logout_post)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 581, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 343, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 839, in _validate_conn
+    conn.connect()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 344, in connect
+    ssl_context=context)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\ssl_.py", line 344, in ssl_wrap_socket
+    return context.wrap_socket(sock, server_hostname=server_hostname)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 407, in wrap_socket
+    _context=self, _session=session)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 814, in __init__
+    self.do_handshake()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 1068, in do_handshake
+    self._sslobj.do_handshake()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 689, in do_handshake
+    self._sslobj.do_handshake()
+KeyboardInterrupt
+ERROR:root:Logout error!
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 334, in logout
+    logout = self.s.post(self.url_logout, data=logout_post)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 581, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 343, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 839, in _validate_conn
+    conn.connect()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 301, in connect
+    conn = self._new_conn()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 70, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+ERROR:root:get_media_id_by_tag
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 388, in get_media_id_by_tag
+    r = self.s.get(url_tag)      #busca obtener un objeto json de la busqueda
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 546, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 686, in send
+    r.content
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\models.py", line 828, in content
+    self._content = b''.join(self.iter_content(CONTENT_CHUNK_SIZE)) or b''
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\models.py", line 750, in generate
+    for chunk in self.raw.stream(chunk_size, decode_content=True):
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\response.py", line 494, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\response.py", line 442, in read
+    data = self._fp.read(amt)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 449, in read
+    n = self.readinto(b)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 493, in readinto
+    n = self.fp.readinto(b)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 1009, in recv_into
+    return self.read(nbytes, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 871, in read
+    return self._sslobj.read(len, buffer)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 631, in read
+    v = self._sslobj.read(len, buffer)
+KeyboardInterrupt
+ERROR:root:Logout error!
+Traceback (most recent call last):
+  File "C:\Users\crist\Documents\MYV\mvbotdjango2\InstabotMV\src\instabot.py", line 334, in logout
+    logout = self.s.post(self.url_logout, data=logout_post)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 581, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 343, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 839, in _validate_conn
+    conn.connect()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 301, in connect
+    conn = self._new_conn()
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\crist\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 70, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt

@@ -6,14 +6,16 @@ from django.contrib.auth.models import User
 # username_insta = models.CharField(max_length=30)
 # password_insta = models.CharField(max_length=30)
 class AppUser(User):
-   account=models.CharField(max_length=300)
+   insta_user = models.CharField(max_length=150)
+   insta_pass = models.CharField(max_length=50)
+
 
    class Meta:
        verbose_name = 'AppUser'
        verbose_name_plural = 'AppUsers'
 
    def __str__(self):
-       return '%s' % (self.account)
+       return '%s' % (self.username)
 
 class Media(models.Model):
     media_id = models.CharField(max_length=300)
@@ -38,7 +40,14 @@ class Settings(models.Model):
 class Creds(models.Model):
     insta_user = models.CharField(max_length=150)
     insta_pass = models.CharField(max_length=50)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Cred'
+        verbose_name_plural = 'Creds'
+
+    def __str__(self):
+        return '%s' % (self.user)
 
 
 class Comments(models.Model):

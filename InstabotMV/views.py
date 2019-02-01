@@ -240,6 +240,7 @@ class DashTaskLoad(LoginRequiredMixin, View):  #vista que servira para redirecci
 
 
 
+
 class DashboardClient(LoginRequiredMixin, View):
     login_url = 'instabot:login'
 
@@ -266,24 +267,28 @@ class UserAccounts(LoginRequiredMixin, View):
     template_name = 'users/mybot.html'
 
     def get(self, request, *args, **kwargs):
-        account = Creds.objects.get()
+        user=User.objects.get(id=request.user.id) #Obtencion del usuario logeado
+        creds = Creds.objects.all() #Obtencion de todas las credenciales 
+        lcreds=[] #Inicializacion de lista de credenciales
+        for x in range(0,len(creds)):
+            if creds[x].user==user:
+                lcreds.append(creds[x])
 
-        context = {'account': account}
-        return render(request, 'users/mybot.html', context)
+        
+        
+        return render(request, 'users/mybot.html', {'lcreds':lcreds})
 
     def post(self, request):
-        form = InstaCredsForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.user = request.user
-            post.save()
-
-            return redirect('instabot:dashboard')
-
-        args = {'form': form,
-                'text': text}
-        return render(request, self.template_name, args)
-
+        if request.method == 'POST':
+            user=User.objects.get(id=request.user.id) # Se toma el usuario django que eta logeado.
+            cred = Creds()  # inicializacion de Credentials
+            cred.user = user  # Se le asigna un usuario a la task
+            cred.insta_user=request.POST.get('insta_user')
+            cred.likemedia=TrueOrFalse(request.POST.get('insta_pass'))
+            cred.save()
+            return redirect('instabot:userAccounts')
+        
+        return redirect('instabot:dashboard')
 
 #class NewTask(LoginRequiredMixin, View):
 #    login_url = 'instabot:login'
@@ -412,7 +417,7 @@ class StartBot(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         user=User.objects.get(id=request.user.id)
         bot = InstaBot(
-            login=take_cred().insta_user,
+            login=user.username,
             password=take_cred().insta_pass,
             like_per_day=1000,
             comments_per_day=0,

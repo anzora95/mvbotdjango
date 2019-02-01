@@ -6,3 +6,6 @@ admin.site.register(List_Tag)
 admin.site.register(AppUser)
 admin.site.register(Task)
 admin.site.register(Creds)
+admin.site.register(LastLogin)
+
+LastLogin

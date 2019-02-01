@@ -38,16 +38,17 @@ class Settings(models.Model):
 
 
 class Creds(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     insta_user = models.CharField(max_length=150)
     insta_pass = models.CharField(max_length=50)
-    user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
+    
 
     class Meta:
         verbose_name = 'Cred'
         verbose_name_plural = 'Creds'
 
     def __str__(self):
-        return '%s' % (self.user)
+        return '%s' % (self.insta_user)
 
 
 class Comments(models.Model):
@@ -109,8 +110,9 @@ class ChildTag(models.Model):
     hashtag_id = models.IntegerField(primary_key=True,)
     dad_tag = models.ForeignKey(HashtagList, on_delete=models.CASCADE)
 #Lectura de hasgtags para el task
+
 class Task(models.Model):
-    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    creds=models.ForeignKey(Creds,on_delete=models.CASCADE)
     tags=models.CharField(max_length=1000)
     likemedia=models.BooleanField()
     followuser=models.BooleanField()
@@ -126,4 +128,14 @@ class Task(models.Model):
 
     def __str__(self):
         return '%s' % (self.id)
+
+class LastLogin(models.Model):
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
+    cred=models.ForeignKey(Creds,on_delete=models.CASCADE)
+    class Meta:
+        verbose_name = 'lastLogin'
+        verbose_name_plural = 'lastLogin'
+
+    def __str__(self):
+        return '%s' % (self.user)
 

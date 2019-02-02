@@ -17,11 +17,11 @@ import requests
 from .sql_updates import check_already_liked, check_already_followed
 from .sql_updates import insert_media, insert_username, insert_unfollow_count
 from .sql_updates import get_username_random
-from .sql_updates import check_and_insert_user_agent
 from fake_useragent import UserAgent
 import re
-from InstabotMV.models import Creds  # imprt de los modelos
 from .location_follow import get_us_id_by_location
+from InstabotMV.src.featuresbot.like_recently_media import like_recently_media
+from InstabotMV.src.featuresbot.no_like_same_us import no_like_same_us
 
 
 class InstaBot:
@@ -543,6 +543,38 @@ class InstaBot:
                             log_string = "Trying to like media: %s" % \
                                          (self.media_by_tag[i]['node']['id'])
                             self.write_log(log_string)
+
+#--------------------------------------------------------------------------------------------------- logica de las features para los likes----------------------------------------------------------------
+
+                        #if el boton de search recently media esta activo entrar a este if
+
+                                # if el botn de no dar like de nuevo a otro usuario esta activo que entre a esta iteracion
+
+                                    #recently = like_recently_media(self.media_by_tag[i]['node']['taken_at_timestamp'])
+                                    # same_us = no_like_same_us(self.media_by_tag[i]['node']['owner']['id'])
+
+                                    # if same_us and recently
+                                        # like = self.like(self.media_by_tag[i]['node']['id'])
+                                    #else:
+                                        #que no de like
+
+                                #else:
+                                #recently = like_recently_media(self.media_by_tag[i]['node']['taken_at_timestamp'])
+
+                                # if recently:
+                                # like = self.like(self.media_by_tag[i]['node']['id'])
+                        #else:
+                        # if el botn de no dar like de nuevo a otro usuario esta activo que entre a esta iteracion
+                             #same_us = no_like_same_us(self.media_by_tag[i]['node']['owner']['id'])
+                                #if same_us
+                                    # like = self.like(self.media_by_tag[i]['node']['id'])
+                                #else que no de like
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
                             like = self.like(self.media_by_tag[i]['node']['id'])
                             # comment = self.comment(self.media_by_tag[i]['id'], 'Cool!')
                             # follow = self.follow(self.media_by_tag[i]["owner"]["id"])

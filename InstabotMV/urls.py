@@ -16,6 +16,7 @@ urlpatterns = [
     url('hashtag_ajax/$', views.hashtags.as_view(), name='hashtags'),
     url('dashboard/task/new$', views.NewTask, name='newTask'),
     url('tags/(?P<id_tag>\d+)/$', views.tags, name='tags'),
+    url('change/(?P<cred>\d+)/$', views.changeAccount, name='changeAccount'),
     url('dashboard/task/new/follow-like/$', views.NewFollowLike, name='newFollowLike'),
     url('dashboard/task/new/unfollow-task/$', views.UnfollowTask.as_view(), name='unfollow_task'),
     url('dashboard/accounts/$', views.UserAccounts.as_view(), name='userAccounts'),

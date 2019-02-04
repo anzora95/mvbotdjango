@@ -74,7 +74,6 @@ class HashtagList(models.Model):
         return '%s' % (self.category)
 
 
-
 class UsList(models.Model):
     insta_us_name = models.TextField()
     timestamp = models.DateTimeField(auto_now=True)

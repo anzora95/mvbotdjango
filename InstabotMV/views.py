@@ -38,6 +38,7 @@ import datetime
 import logging
 import random
 
+aux=1
 
 # ****************************************************General***********************************************************
 
@@ -202,14 +203,24 @@ def logout(request):
 
 def DashboardView(request):
     user = User.objects.get(id=request.user.id) #Get the current user logged in
+    ll=LastLogin.objects.get(user=user)
+    cred=ll.cred
     AT=Task.objects.all() #Get All the Task in system
     LT=[] ##Empty list for List of Task
     for x in range(0,len(AT)):
-       if AT[x].user==user:#If the task has the current logged user add it to the LT list
+       if AT[x].creds==cred:#If the task has the current logged user add it to the LT list
            #print(AT[x].user.username)
            LT.append(AT[x])
 
-    return render(request, 'dashboard.html', {'user':user,'LT':LT})
+    return render(request, 'dashboard.html', {'ll':ll,'LT':LT})
+
+def changeAccount(request,cred):
+    user = User.objects.get(id=request.user.id)
+    ll=LastLogin.objects.get(id=user.id)
+    credex= Creds.objects.get(id=cred)
+    ll.cred=credex
+    ll.save()
+    return redirect('instabot:dashboard')
 
 
 #class DashboardView(LoginRequiredMixin, View):
@@ -336,9 +347,12 @@ def TrueOrFalse(data):
 def NewFollowLike(request):
     Hasgtags = HashtagList.objects.all()
     user = User.objects.get(id=request.user.id)
+    ll=LastLogin.objects.get(user=user)
+    cred=ll.cred
     if request.method == 'POST':
         task = Task()  # inicializacion de task
         task.user = user  # Se le asigna un usuario a la task
+        task.creds=cred
         task.tags=request.POST.get('tags-input')
         task.likemedia=TrueOrFalse(request.POST.get('like'))
         task.followuser=TrueOrFalse(request.POST.get('follow'))
@@ -416,12 +430,15 @@ class StartBot(LoginRequiredMixin, View):
 
     def post(self, request, *args, **kwargs):
         user=User.objects.get(id=request.user.id)
+        ll=LastLogin.objects.get(user=user)
+        cred=ll.cred
+        user=User.objects.get(id=request.user.id)
         bot = InstaBot(
-            login=user.username,
-            password=take_cred().insta_pass,
+            login=cred.insta_user,
+            password=cred.insta_pass,
             like_per_day=1000,
             comments_per_day=0,
-            tag_list=['mac4life'],
+            tag_list=['mac4life','macbook'],
             tag_blacklist=['rain', 'thunderstorm'],
             user_blacklist={},
             max_like_for_one_tag=50,

@@ -617,6 +617,8 @@ def start(request, task):
         if mode == 0:
             bot.new_auto_mod()
 
+            bot.saludo()
+
 
         elif mode == 1:
             check_status(bot)

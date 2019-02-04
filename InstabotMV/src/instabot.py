@@ -28,20 +28,14 @@ class InstaBot:
     """
     Instagram bot v 1.2.0
     like_per_day=1000 - How many likes set bot in one day.
-
     media_max_like=0 - Don't like media (photo or video) if it have more than
     media_max_like likes.
-
     media_min_like=0 - Don't like media (photo or video) if it have less than
     media_min_like likes.
-
     tag_list = ['cat', 'car', 'dog'] - Tag list to like.
-
     max_like_for_one_tag=5 - Like 1 to max_like_for_one_tag times by row.
-
     log_mod = 0 - Log mod: log_mod = 0 log to console, log_mod = 1 log to file,
     log_mod = 2 no log.
-
     https://github.com/LevPasha/instabot.py
     """
     database_name = "follows_db"
@@ -259,8 +253,7 @@ class InstaBot:
                 id_user = all_data['user']['id']
                 # Update the user_name with the user_id
                 self.user_blacklist[user] = id_user
-                log_string = "Blacklisted user %s added with ID: %s" % (user,
-                                                                        id_user)
+                log_string = "Blacklisted user %s added with ID: %s" % (user, id_user)
                 self.write_log(log_string)
                 time.sleep(5 * random.random())
 
@@ -655,6 +648,10 @@ class InstaBot:
                 logging.exception("Except on unlike!")
                 unlike = 0
             return unlike
+
+    def saludo(self):
+        print("hola")
+        return 0
 
     def comment(self, media_id, comment_text):
         """ Send http request to comment """

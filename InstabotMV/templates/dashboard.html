@@ -109,6 +109,8 @@
                     <i class="glyphicon glyphicon-sunglasses"></i>
                  </button>
             </i>
+
+            
             <i>
                 <button type="button" class="btn btn-status-dash btn-xl" id="dash" >
                     <i class="glyphicon glyphicon-dashboard"></i>
@@ -119,7 +121,7 @@
         </div>
     </div>
 </form>
-<form action="{% url 'instabot:start' %}" method="post" >
+<form action="{% url 'instabot:starter' task.id%}" method="post" >
     {% csrf_token %}
     <div class="text-center" display="inline-block-elements">
         <div>

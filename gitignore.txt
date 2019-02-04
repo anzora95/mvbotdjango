@@ -1,0 +1,6 @@
+
+\.idea/
+\mvbotdjango\manage.py
+\mvbotdjango\InstabotMV\migrations
+\mvbotdjango\InstabotMV\src\__pycache__
+\mvbotdjango\webinstabot\settings.py

@@ -25,6 +25,7 @@ urlpatterns = [
     url('store-new-task-u/$', views.StoreTaskUser.as_view(), name='storeTaskU'),
     # # ******************************** bot url's ************************************************************
     url('start-bot/$', views.StartBot.as_view(),name='start'),
+    url('start/(?P<task>\d+)/$', views.start,name='starter'),
     url('stop-bot/$', views.StopBot.as_view(), name='stopBot'),
 
 

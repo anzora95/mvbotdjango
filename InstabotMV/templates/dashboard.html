@@ -170,19 +170,10 @@
     {% endfor %}
     {% else %}
 
-        <li>No media yet.</li>
+
    {% endif %}
 
    </div>
 
-<form role = "form" method="post" action="{% url 'instabot:stopBot' %}" >
-    {% csrf_token %}
-                
-                <button type="submit" class="btn btn-primary btn-circle btn-xl">
-                    <i class='glyphicon glyphicon-pause'></i>
-                </button>
-          
-    
-</form>
 
 {% endblock %}

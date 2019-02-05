@@ -22,6 +22,7 @@ import re
 from .location_follow import get_us_id_by_location
 from InstabotMV.src.featuresbot.like_recently_media import like_recently_media
 from InstabotMV.src.featuresbot.no_like_same_us import no_like_same_us
+from InstabotMV.models import Task
 
 
 class InstaBot:
@@ -131,18 +132,7 @@ class InstaBot:
                  start_at_m=0,
                  end_at_h=23,
                  end_at_m=59,
-                 database_name='follows_db',
-                 comment_list=[["this", "the", "your"],
-                               ["photo", "picture", "pic", "shot", "snapshot"],
-                               ["is", "looks", "feels", "is really"],
-                               ["great", "super", "good", "very good", "good",
-                                "wow", "WOW", "cool", "GREAT", "magnificent",
-                                "magical", "very cool", "stylish", "beautiful",
-                                "so beautiful", "so stylish", "so professional",
-                                "lovely", "so lovely", "very lovely", "glorious",
-                                "so glorious", "very glorious", "adorable",
-                                "excellent", "amazing"],
-                               [".", "..", "...", "!", "!!", "!!!"]],
+                 comment_list=[],
                  comments_per_day=0,
                  tag_list=['misamigos'],
                  max_like_for_one_tag=5,
@@ -153,7 +143,12 @@ class InstaBot:
                  user_blacklist={},
                  tag_blacklist=[],
                  unwanted_username_list=[],
-                 unfollow_whitelist=[]):
+                 unfollow_whitelist=[],
+                 ft_like=False,
+                 ft_follow =False,
+                 ft_no_like=False,
+                 ft_no_follow=False,
+                 ft_src_rcntly=False):
 
         # self.database_name = database_name
         # self.follows_db = mysql.connector.connect(host="localhost", user="root", passwd="", database=database_name)
@@ -540,6 +535,7 @@ class InstaBot:
 #--------------------------------------------------------------------------------------------------- logica de las features para los likes----------------------------------------------------------------
 
                         #if el boton de search recently media esta activo entrar a este if
+
 
                                 # if el botn de no dar like de nuevo a otro usuario esta activo que entre a esta iteracion
 

@@ -546,8 +546,12 @@ def start(request, task):
     user=User.objects.get(id=request.user.id)
     ll=LastLogin.objects.get(user=user)
     cred=Creds.objects.get(id=ll.cred.id)
-    task=Task.objects.get(id=task)
-    strtask=task.tags
+    task=Task.objects.get(id=task) #pasarle el valor de el boleano de cada campo de la task como parametro y asi poder usar estas funciones en la instancia de instabot
+    #boleano para los like
+    #boleano para la feature de los follow
+    #boleano para que no de like al mismo usuario mas de una vez
+     #boleano  para que no de follow a usuarios qu ya se les dio unfollow
+     #boleano para comparar saber si la media es reciente o no
     hl=strtask.split(",")
     print(hl)
     user=User.objects.get(id=request.user.id)
@@ -569,29 +573,17 @@ def start(request, task):
         proxy='',
         # Lista de palabras de las cuales se generarán los comentarios
         # For example: "This shot feels wow!"
-        comment_list=[["this", "the", "your"],
-                      ["photo", "picture", "pic", "shot", "snapshot"],
-                      ["is", "looks", "feels", "is really"],
-                      ["great", "super", "good", "very good", "good", "wow",
-                       "WOW", "cool", "GREAT", "magnificent", "magical",
-                       "very cool", "stylish", "beautiful", "so beautiful",
-                       "so stylish", "so professional", "lovely",
-                       "so lovely", "very lovely", "glorious", "so glorious",
-                       "very glorious", "adorable", "excellent", "amazing"],
-                      [".", "..", "...", "!", "!!", "!!!"]],
+        comment_list=[],
         # Use unwanted_username_list to block usernames containing a string
         ## Will do partial matches; i.e. 'mozart' will block 'legend_mozart'
         ### 'free_followers' will be blocked because it contains 'free'
-        unwanted_username_list=[
-            'second', 'stuff', 'art', 'project', 'love', 'life', 'food', 'blog',
-            'free', 'keren', 'photo', 'graphy', 'indo', 'travel', 'art', 'shop',
-            'store', 'sex', 'toko', 'jual', 'online', 'murah', 'jam', 'kaos',
-            'case', 'baju', 'fashion', 'corp', 'tas', 'butik', 'grosir', 'karpet',
-            'sosis', 'salon', 'skin', 'care', 'cloth', 'tech', 'rental', 'kamera',
-            'beauty', 'express', 'kredit', 'collection', 'impor', 'preloved',
-            'follow', 'follower', 'gain', '.id', '_id', 'bags'
-        ],
-        unfollow_whitelist=['example_user_1', 'example_user_2'])
+        unwanted_username_list=[],
+        unfollow_whitelist=[],
+        ft_like=task.likemedia,
+        ft_follow =task.followuser,
+        ft_no_like=task.dontlikemedia,
+        ft_no_follow=task.dontfollow,
+        ft_src_rcntly = task.search)
     while True:
 
             # print("# MODE 0 = ORIGINAL MODE BY LEVPASHA")
@@ -617,7 +609,6 @@ def start(request, task):
         if mode == 0:
             bot.new_auto_mod()
 
-            bot.saludo()
 
 
         elif mode == 1:

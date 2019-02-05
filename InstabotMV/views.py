@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.core import serializers
+from threading import Thread
 
 from django.contrib.auth import authenticate, login as login_django, logout as logout_django
 from django.contrib.auth.decorators import login_required
@@ -37,7 +38,27 @@ from InstabotMV.models import HashtagList
 import datetime
 import logging
 import random
+from django.contrib.auth.models import User
+from django.contrib import messages
+from django.views.generic.edit import FormView
+from django.shortcuts import redirect
 
+from .forms import GenerateRandomUserForm
+from InstabotMV.task import create_random_user_accounts,imprimir
+
+class GenerateRandomUserView(FormView):
+    template_name = 'generate_random_users.html'
+    form_class = GenerateRandomUserForm
+
+    def form_valid(self, form):
+        total = form.cleaned_data.get('total')
+        create_random_user_accounts.delay(total)
+        messages.success(self.request, 'We are generating your random users! Wait a moment and refresh this page.')
+        return redirect('users_list')
+
+def pruebaimpresion(request):
+    imprimir.delay()
+    return redirect('instabot:dashboard')
 aux=1
 
 # ****************************************************General***********************************************************
@@ -542,6 +563,7 @@ class StartBot(LoginRequiredMixin, View):
 
         return render(request, 'dashboard.html', {})
 
+
 def start(request, task):
     user=User.objects.get(id=request.user.id)
     ll=LastLogin.objects.get(user=user)
@@ -592,6 +614,7 @@ def start(request, task):
             'follow', 'follower', 'gain', '.id', '_id', 'bags'
         ],
         unfollow_whitelist=['example_user_1', 'example_user_2'])
+    
     while True:
 
             # print("# MODE 0 = ORIGINAL MODE BY LEVPASHA")
@@ -607,7 +630,7 @@ def start(request, task):
 
             # DON'T USE MODE 5 FOR A LONG PERIOD. YOU RISK YOUR ACCOUNT FROM GETTING BANNED
             ## USE MODE 5 IN BURST MODE, USE IT TO UNFOLLOW PEOPLE AS MANY AS YOU WANT IN SHORT TIME PERIOD
-
+    
         mode = 0
 
             # print("You choose mode : %i" %(mode))

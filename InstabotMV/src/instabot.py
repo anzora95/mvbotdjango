@@ -14,6 +14,7 @@ import signal
 import sys
 import time
 import requests
+import unicodedata
 from .sql_updates import check_already_liked, check_already_followed
 from .sql_updates import insert_media, insert_username, insert_unfollow_count
 from .sql_updates import get_username_random
@@ -119,6 +120,13 @@ class InstaBot:
     # For new_auto_mod
     next_iteration = {"Like": 2, "Follow": 1, "Unfollow": 1, "Comments": 0}
 
+    #features
+    ft_like=False,
+    ft_follow = False,
+    ft_no_like = False,
+    ft_no_follow = False,
+    ft_src_rcntly = False
+
     def __init__(self,
                  login,
                  password,
@@ -150,11 +158,8 @@ class InstaBot:
                  ft_no_follow=False,
                  ft_src_rcntly=False):
 
-        # self.database_name = database_name
-        # self.follows_db = mysql.connector.connect(host="localhost", user="root", passwd="", database=database_name)
-        # self.follows_db_c = self.follows_db.cursor()
-        # check_and_update(self)
-        # las lineas anteriores son lineas para la coneccion directa con una base de datos sql que ya no se usaran debido a django
+
+
 
         fake_ua = UserAgent()
         self.user_agent = "Mozilla/5.0 (Windows; U; Windows NT 6.0; fr-FR) AppleWebKit/533.18.1 (KHTML, like Gecko) " \
@@ -531,39 +536,34 @@ class InstaBot:
                             log_string = "Trying to like media: %s" % \
                                          (self.media_by_tag[i]['node']['id'])
                             self.write_log(log_string)
-
 #--------------------------------------------------------------------------------------------------- logica de las features para los likes----------------------------------------------------------------
 
-                        #if el boton de search recently media esta activo entrar a este if
-
-
-                                # if el botn de no dar like de nuevo a otro usuario esta activo que entre a esta iteracion
-
-                                    #recently = like_recently_media(self.media_by_tag[i]['node']['taken_at_timestamp'])
-                                    # same_us = no_like_same_us(self.media_by_tag[i]['node']['owner']['id'])
-
-                                    # if same_us and recently
-                                        # like = self.like(self.media_by_tag[i]['node']['id'])
-                                    #else:
-                                        #que no de like
-
-                                #else:
-                                #recently = like_recently_media(self.media_by_tag[i]['node']['taken_at_timestamp'])
-
-                                # if recently:
-                                # like = self.like(self.media_by_tag[i]['node']['id'])
-                        #else:
-                        # if el botn de no dar like de nuevo a otro usuario esta activo que entre a esta iteracion
-                             #same_us = no_like_same_us(self.media_by_tag[i]['node']['owner']['id'])
-                                #if same_us
-                                    # like = self.like(self.media_by_tag[i]['node']['id'])
-                                #else que no de like
+                        # if self.ft_src_rcntly :    #if el boton de search recently media esta activo entrar a este if
+                        #
+                        #     if self.ft_no_like:   # if el botn de no dar like de nuevo a otro usuario esta activo que entre a esta iteracion
+                        #
+                        #             recently = like_recently_media(self.media_by_tag[i]['node']['taken_at_timestamp'])
+                        #             same_us = no_like_same_us(self.media_by_tag[i]['node']['owner']['id'])
+                        #
+                        #             if same_us and recently:
+                        #                  like = self.like(self.media_by_tag[i]['node']['id'])
+                        #             else:
+                        #                 pass#que no de like
+                        #
+                        #     else:
+                        #         recently = like_recently_media(self.media_by_tag[i]['node']['taken_at_timestamp'])
+                        #
+                        #         if recently:
+                        #             like = self.like(self.media_by_tag[i]['node']['id'])
+                        # else:
+                        #     if self.ft_no_like:# if el botn de no dar like de nuevo a otro usuario esta activo que entre a esta iteracion
+                        #         same_us = no_like_same_us(self.media_by_tag[i]['node']['owner']['id'])
+                        #         if same_us:
+                        #             like = self.like(self.media_by_tag[i]['node']['id'])
+                        #         else:
+                        #             pass
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
                             like = self.like(self.media_by_tag[i]['node']['id'])
                             # comment = self.comment(self.media_by_tag[i]['id'], 'Cool!')
                             # follow = self.follow(self.media_by_tag[i]["owner"]["id"])

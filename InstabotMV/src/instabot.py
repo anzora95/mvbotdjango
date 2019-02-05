@@ -118,7 +118,7 @@ class InstaBot:
     end_at_m = 59,
 
     # For new_auto_mod
-    next_iteration = {"Like": 2, "Follow": 1, "Unfollow": 1, "Comments": 0}
+    next_iteration = {"Like": 2, "Follow": 30, "Unfollow": 1, "Comments": 0}
 
     #features
     ft_like=False,
@@ -757,11 +757,11 @@ class InstaBot:
                         1, self.max_like_for_one_tag)
                     self.remove_already_liked()
                 # ------------------- Like -------------------
-                self.new_auto_mod_like()
+                self.new_auto_mod_follow()
                 # ------------------- Follow -------------------
-                self.mod_follow_by_locations()
+                #self.mod_follow_by_locations()
                 # ------------------- Unfollow -------------------
-                self.mod_follow_by_locations()
+                #self.mod_follow_by_locations()
                 # ------------------- Comment -------------------
                 #self.new_auto_mod_comments()
                 # Bot iteration in 1 sec

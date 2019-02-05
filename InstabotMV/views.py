@@ -444,7 +444,7 @@ class StartBot(LoginRequiredMixin, View):
             user_blacklist={},
             max_like_for_one_tag=50,
             follow_per_day=300,
-            follow_time=1 * 60,
+            follow_time=1 * 120,
             unfollow_per_day=300,
             unfollow_break_min=15,
             unfollow_break_max=30,
@@ -547,11 +547,7 @@ def start(request, task):
     ll=LastLogin.objects.get(user=user)
     cred=Creds.objects.get(id=ll.cred.id)
     task=Task.objects.get(id=task) #pasarle el valor de el boleano de cada campo de la task como parametro y asi poder usar estas funciones en la instancia de instabot
-    #boleano para los like
-    #boleano para la feature de los follow
-    #boleano para que no de like al mismo usuario mas de una vez
-     #boleano  para que no de follow a usuarios qu ya se les dio unfollow
-     #boleano para comparar saber si la media es reciente o no
+    strtask=task.tags
     hl=strtask.split(",")
     print(hl)
     user=User.objects.get(id=request.user.id)
@@ -565,7 +561,7 @@ def start(request, task):
         user_blacklist={},
         max_like_for_one_tag=50,
         follow_per_day=300,
-        follow_time=1 * 60,
+        follow_time=1 * 60 * 60,
         unfollow_per_day=300,
         unfollow_break_min=15,
         unfollow_break_max=30,

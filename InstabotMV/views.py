@@ -297,8 +297,11 @@ class UsersView(LoginRequiredMixin, View):
 class UserAccounts(LoginRequiredMixin, View):
     login_url = 'instabot:login'
     template_name = 'users/mybot.html'
-
+    
     def get(self, request, *args, **kwargs):
+        user = User.objects.get(id=request.user.id) #Get the current user logged in
+        ll=LastLogin.objects.get(user=user)
+        cred=ll.cred
         user=User.objects.get(id=request.user.id) #Obtencion del usuario logeado
         creds = Creds.objects.all() #Obtencion de todas las credenciales 
         lcreds=[] #Inicializacion de lista de credenciales
@@ -308,15 +311,18 @@ class UserAccounts(LoginRequiredMixin, View):
 
         
         
-        return render(request, 'users/mybot.html', {'lcreds':lcreds})
+        return render(request, 'users/mybot.html', {'lcreds':lcreds,'ll':ll})
 
     def post(self, request):
+        user = User.objects.get(id=request.user.id) #Get the current user logged in
+        ll=LastLogin.objects.get(user=user)
+        cred=ll.cred
         if request.method == 'POST':
             user=User.objects.get(id=request.user.id) # Se toma el usuario django que eta logeado.
             cred = Creds()  # inicializacion de Credentials
             cred.user = user  # Se le asigna un usuario a la task
             cred.insta_user=request.POST.get('insta_user')
-            cred.likemedia=TrueOrFalse(request.POST.get('insta_pass'))
+            cred.insta_pass=request.POST.get('insta_pass')
             cred.save()
             return redirect('instabot:userAccounts')
         
@@ -329,8 +335,10 @@ class UserAccounts(LoginRequiredMixin, View):
 #
 #        return render(request, 'tasks/newTask.html', {})
 def NewTask(request):
-    categories=HashtagList.objects.all()
-    return render(request, 'tasks/newTask.html', {'categories':categories})
+    user = User.objects.get(id=request.user.id) #Get the current user logged in
+    ll=LastLogin.objects.get(user=user)
+    cred=ll.cred
+    return render(request, 'tasks/newTask.html', {'ll':ll})
 import json
 def tags(request,id_tag):
 
@@ -385,7 +393,7 @@ def NewFollowLike(request):
         task.custowordfilter=TrueOrFalse(request.POST.get('custom'))
         task.save()
         return redirect('instabot:dashboard')
-    return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags})
+    return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags,'ll':ll})
 
 class UnfollowTask(LoginRequiredMixin,View):
     def get(self,request, *args, **kwargs):
@@ -571,6 +579,11 @@ def start(request, task):
     u=cred.insta_user
     p=cred.insta_pass
     task=Task.objects.get(id=task)
+    if task.active:
+        task.active=False
+    else:
+        task.active=True
+    task.save()
     strtask=task.tags
     hl=strtask.split(",")
     print(hl)

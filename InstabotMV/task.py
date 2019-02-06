@@ -18,9 +18,8 @@ def create_random_user_accounts(total):
 
 @shared_task
 def imprimir():
-    while True:
-        print("This prints once a minute.")
-        time.sleep(10)
+    for x in range(1000):
+        print(x)
     return '{} rimpresion'
 
 @shared_task

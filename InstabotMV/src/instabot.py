@@ -55,7 +55,7 @@ class InstaBot:
     url_login = 'https://www.instagram.com/accounts/login/ajax/'
     url_logout = 'https://www.instagram.com/accounts/logout/'
     url_media_detail = 'https://www.instagram.com/p/%s/?__a=1'
-    url_user_detail = 'https://www.instagram.com/%s/?__a=1'
+    url_user_detail = ''
     api_user_detail = 'https://i.instagram.com/api/v1/users/%s/info/'
 
     user_agent = "Mozilla/5.0 (Windows; U; Windows NT 6.0; fr-FR) AppleWebKit/533.18.1 (KHTML, like Gecko) " \
@@ -674,11 +674,10 @@ class InstaBot:
                 follow = self.s.post(url_follow)
                 if follow.status_code == 200:
                     self.follow_counter += 1
-                    log_string = "Followed: %s #%i." % (user_id,
-                                                        self.follow_counter)
+                    log_string = "Followed: %s #%i." % (user_id,self.follow_counter)
                     self.write_log(log_string)
                     username = self.get_username_by_user_id(user_id=user_id)
-                    insert_username(self, user_id=user_id, username=username)
+                    insert_username(self, username_id=user_id, username=username, unfollow=0)
                 return follow
             except:
                 logging.exception("Except on follow!")
@@ -759,7 +758,7 @@ class InstaBot:
                 # ------------------- Like -------------------
                 self.new_auto_mod_follow()
                 # ------------------- Follow -------------------
-                #self.mod_follow_by_locations()
+                self.new_auto_mod_like()
                 # ------------------- Unfollow -------------------
                 #self.mod_follow_by_locations()
                 # ------------------- Comment -------------------
@@ -796,26 +795,26 @@ class InstaBot:
             # Del first media_id
             del self.media_by_tag[0]
 
+
     def new_auto_mod_follow(self): # da follow en base a la media que tiene en media_by_tag
-        if time.time() > self.next_iteration["Follow"] and \
-                self.follow_per_day != 0 and len(self.media_by_tag) > 0:
-            if self.media_by_tag[0]['node']["owner"]["id"] == self.user_id:  #Esta parte de la funcion la ocupa para no autolikearse
+
+        if time.time() > self.next_iteration["Follow"] and self.follow_per_day != 0 and len(self.media_by_tag) > 0:
+
+            if self.media_by_tag [0]['node']["owner"]["id"]==self.user_id:  #Esta parte de la funcion la ocupa para no autolikearse
                 self.write_log("Keep calm - It's your own profile ;)")
                 return
+
             if check_already_followed(self, user_id=self.media_by_tag[0]['node']["owner"]["id"]) == 1:
                 self.write_log("Already followed before " + self.media_by_tag[0]['node']["owner"]["id"]) #aqui se cuestiona si el usuario ya fue followed para no darle follow de nuevo
-                self.next_iteration["Follow"] = time.time() + \
-                                                self.add_time(self.follow_delay / 2)
+                self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay / 2)
                 return
-            log_string = "Trying to follow: %s" % (
-                self.media_by_tag[0]['node']["owner"]["id"])
+
+            log_string = "Trying to follow: %s" % (self.media_by_tag[0]['node']["owner"]["id"])
             self.write_log(log_string)
 
-            if self.follow(self.media_by_tag[0]['node']["owner"]["id"]) != False:   
-                self.bot_follow_list.append(
-                    [self.media_by_tag[0]['node']["owner"]["id"], time.time()])      #en este if se agrega a la lista de usuarios ya seguidos en bot_follow_list
-                self.next_iteration["Follow"] = time.time() + \
-                                                self.add_time(self.follow_delay)     #aqui espera la siguiente iteracion
+            if self.follow(self.media_by_tag[0]['node']["owner"]["id"]) != False:
+                self.bot_follow_list.append([self.media_by_tag[0]['node']["owner"]["id"], time.time()])      #en este if se agrega a la lista de usuarios ya seguidos en bot_follow_list
+                self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay)     #aqui espera la siguiente iteracion
 
 
 

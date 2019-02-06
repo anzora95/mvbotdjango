@@ -58,14 +58,15 @@ def insert_media(self, media_id, status, code,owner_name):#push funcional
     med_insert.save()
 
 
-def insert_username(self, username_id, username):
+def insert_username(self, username_id, username, unfollow):
     """ insert user_id to usernames """
     now = datetime.now()
 
     user_insert = Username(
 
-        username_id=username_id,
         username=username,
+        username_id=username_id,
+        unfollow_count=unfollow,
         last_followed_time=str(now)
     )
 

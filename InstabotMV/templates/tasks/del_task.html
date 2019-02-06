@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+{% block navbar %}
+<nav class="navbar navbar-inverse">
+    {% csrf_token %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <a href="{% url 'instabot:dashboard' %}"><h4 class="left navbar-text">Ngage Social</h4></a>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <h4 class="center navbar-text">CURRENT PLAN</h4>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">{{ ll.cred.insta_user }} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'instabot:userAccounts' %}">Accounts</a></li>
+                            <li><a href="#">Billing Profile</a></li>
+                            <li><a href="#">Support</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{% url 'instabot:logout' %}">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+{% block body %}
+
+<form method="POST" action="">
+    {% csrf_token %}
+
+ <p>Esta seguro que desea eliminar la task?</p>
+  <input href="{% url 'instabot:dashboard'%}" type="submit" value="Eliminar">
+
+</form>
+
+{% endblock %}
+
+

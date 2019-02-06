@@ -304,7 +304,6 @@ class InstaBot:
                 self.user_id = ui.get_user_id_by_login(self.user_login)
                 self.login_status = True
                 log_string = '%s login success!' % (self.user_login)
-                log_extra = '%i this a tag'%(self.bot_mode)
                 self.write_log(log_string)
             else:
                 self.login_status = False
@@ -337,10 +336,8 @@ class InstaBot:
                 log_string = "Trying to unfollow: %s" % (f[0])
                 self.write_log(log_string)
                 self.unfollow_on_cleanup(f[0])
-                sleeptime = random.randint(self.unfollow_break_min,
-                                           self.unfollow_break_max)
-                log_string = "Pausing for %i seconds... %i of %i" % (
-                    sleeptime, self.unfollow_counter, self.follow_counter)
+                sleeptime = random.randint(self.unfollow_break_min, self.unfollow_break_max)
+                log_string = "Pausing for %i seconds... %i of %i" % (sleeptime, self.unfollow_counter, self.follow_counter)
                 self.write_log(log_string)
                 time.sleep(sleeptime)
                 self.bot_follow_list.remove(f)
@@ -756,7 +753,7 @@ class InstaBot:
                         1, self.max_like_for_one_tag)
                     self.remove_already_liked()
                 # ------------------- Like -------------------
-                self.new_auto_mod_follow()
+                #self.new_auto_mod_follow()
                 # ------------------- Follow -------------------
                 self.new_auto_mod_like()
                 # ------------------- Unfollow -------------------

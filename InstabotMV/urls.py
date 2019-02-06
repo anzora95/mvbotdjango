@@ -4,7 +4,6 @@ from . import views
 from InstabotMV.views import MediaList
 
 
-
 app_name = 'instabot'
 
 urlpatterns = [
@@ -23,6 +22,8 @@ urlpatterns = [
     url('create/$', views.Create, name='create'),
     url('store-new-task/$', views.StoreTask.as_view(), name='storeTask'),
     url('store-new-task-u/$', views.StoreTaskUser.as_view(), name='storeTaskU'),
+    url('delete_task/(?P<id_task>\d+)/$', views.DeleteTask,name="del_task"),
+
     # # ******************************** bot url's ************************************************************
     url('start-bot/$', views.StartBot.as_view(),name='start'),
     url('start/(?P<task>\d+)/$', views.start,name='starter'),

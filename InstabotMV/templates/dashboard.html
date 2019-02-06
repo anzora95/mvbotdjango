@@ -82,9 +82,16 @@
         </button>
         </span>
         <span>
-        <button  class="btn btn-primary btn-lit-circle btn-xl" >
-            <i class="glyphicon glyphicon-trash"></i>
-        </button>
+            <a href ="{% url 'instabot:del_task' task.id%}">
+                <button  class="btn btn-primary btn-lit-circle btn-xl"  >
+                    <i class="glyphicon glyphicon-trash"></i>
+                </button>
+            </a>
+
+
+             <a href ="{% url 'instabot:del_task' task.id%}">
+                 esto borra la task
+             </a>
         </span>
         </div>
         <div>

@@ -8,19 +8,16 @@ from django.contrib.auth import authenticate, login as login_django, logout as l
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from .models import *
-from InstabotMV.models import Creds, List_Tag, Media
+from InstabotMV.models import Creds, List_Tag, Media,HashtagList
 from .forms import LoginForm, CreateUserForm, TaglistForm, UserlistForm, ComboTagHijo
 from InstabotMV.forms import InstaCredsForm
 
-from django.views.generic import View, DetailView, CreateView, TemplateView, UpdateView, DeleteView, ListView
+from django.views.generic import View, DetailView, TemplateView, UpdateView, DeleteView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.utils import timezone
 from django.http import HttpResponse
-from django.template import RequestContext
 from django.shortcuts import redirect
 # *************************************************Bot imports**********************************************************
 
-import os
 import time
 
 from InstabotMV.src.instabot import InstaBot
@@ -28,10 +25,7 @@ from InstabotMV.src.check_status import check_status
 from InstabotMV.src.feed_scanner import feed_scanner
 from InstabotMV.src.follow_protocol import follow_protocol
 from InstabotMV.src.unfollow_protocol import unfollow_protocol
-from InstabotMV.src.sql_updates import take_cred
 from InstabotMV.forms import ComboTagHijo
-from InstabotMV.src.sql_updates import insert_tag
-from InstabotMV.models import HashtagList
 
 
 import datetime
@@ -648,6 +642,14 @@ def start(request, task):
 
     return render(request, 'dashboard.html', {})
 
+def DeleteTask(request, id_task):
+    if request.method == 'POST':
+        task=Task.objects.get(id=id_task)
+        task.delete()
+        return redirect('instabot:dashboard')
+    return render(request,'tasks/del_task.html')
+
+
 class StopBot(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
@@ -766,6 +768,9 @@ class Create(LoginRequiredMixin, TemplateView):
         return render(request, self.template_name, args)
 
 
+
+
+
 # **********************************************User Options************************************************************
 
 class Profile(LoginRequiredMixin, View):
@@ -806,3 +811,4 @@ class UserDelete(DeleteView):
 class MediaList(ListView):
     model=Media
     template_name = 'dashboard.html'
+

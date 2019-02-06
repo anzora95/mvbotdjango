@@ -589,7 +589,7 @@ def start(request, task):
     print(hl)
     user=User.objects.get(id=request.user.id)
     runbot.delay(u,p,hl)
-    return render(request, 'dashboard.html', {})
+    return redirect('instabot:dashboard')
 
 class StopBot(LoginRequiredMixin, View):
 

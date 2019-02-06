@@ -587,7 +587,7 @@ class InstaBot:
                                     self.write_log(log_string)                                   
                                     insert_media(self,
                                                  media_id=self.media_by_tag[i]['node']['id'],
-                                                 status="400")
+                                                 status="400", code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name = self.get_username_by_media_id(self.media_by_tag[i]['node']['id']))
                                     # Some error. If repeated - can be ban!
                                     if self.error_400 >= self.error_400_to_ban:
                                         # Look like you banned!
@@ -600,7 +600,7 @@ class InstaBot:
 
                                     insert_media(self,
                                                  media_id=self.media_by_tag[i]['node']['id'],
-                                                 status=str(like.status_code))
+                                                 status=str(like.status_code),code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name = self.get_username_by_media_id(self.media_by_tag[i]['node']['id']))
                                     log2extra="Estado del bot %i" %(self.bot_mode)
                                     self.write_log(log_string)                                 
                                     return False

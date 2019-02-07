@@ -1,9 +1,5 @@
-
-from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.core import serializers
-from threading import Thread
 
 from django.contrib.auth import authenticate, login as login_django, logout as logout_django
 from django.contrib.auth.decorators import login_required
@@ -16,7 +12,6 @@ from InstabotMV.forms import InstaCredsForm
 from django.views.generic import View, DetailView, TemplateView, UpdateView, DeleteView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
-from django.shortcuts import redirect
 # *************************************************Bot imports**********************************************************
 
 import time
@@ -95,85 +90,6 @@ def CreateTask(request):
 
         return redirect('instabot:dashload')
 
-# def search(request):
-#     if request.method == 'POST':
-#         search_id = request.POST.get('textfield', None)
-#         try:
-#             user = Person.objects.get(name = search_id)
-#             #do something with user
-#             html = ("<H1>%s</H1>", user)
-#             return HttpResponse(html)
-#         except Person.DoesNotExist:
-#             return HttpResponse("no such user")
-#     else:
-#         return render(request, 'form.html')def search(request):
-#     if request.method == 'POST':
-#         search_id = request.POST.get('textfield', None)
-#         try:
-#             user = Person.objects.get(name = search_id)
-#             #do something with user
-#             html = ("<H1>%s</H1>", user)
-#             return HttpResponse(html)
-#         except Person.DoesNotExist:
-#             return HttpResponse("no such user")
-#     else:
-#         return render(request, 'form.html')
-
-
-
-
- # class TaskSaveHashtag(LoginRequiredMixin, View): #sera la vista encargada de renderizarse cuando el task de hashtags este editado por el usuario y se presione el boton de save
- #
- #
- #
- #     def post(self, request, *args, **kwargs):
- #     bot = InstaBot(
- #         login=take_cred().insta_user,
- #         password=take_cred().insta_pass,
- #        like_per_day=1000,
- #         comments_per_day=0,
- #         tag_list=['pokemon', 'jmj', 'paladins', 'comic-con'],
- #         tag_blacklist=['rain', 'thunderstorm'],
- #         user_blacklist={},
- #         max_like_for_one_tag=50,
- #         follow_per_day=300,
- #         follow_time=1 * 60,
- #         unfollow_per_day=300,
- #         unfollow_break_min=15,
- #         unfollow_break_max=30,
- #         log_mod=0,
- #         proxy='',
- #         # Lista de palabras de las cuales se generarán los comentarios
- #         # For example: "This shot feels wow!"
- #         comment_list=[["this", "the", "your"],
- #                       ["photo", "picture", "pic", "shot", "snapshot"],
- #                       ["is", "looks", "feels", "is really"],
- #                       ["great", "super", "good", "very good", "good", "wow",
- #                        "WOW", "cool", "GREAT", "magnificent", "magical",
- #                        "very cool", "stylish", "beautiful", "so beautiful",
- #                        "so stylish", "so professional", "lovely",
- #                        "so lovely", "very lovely", "glorious", "so glorious",
- #                        "very glorious", "adorable", "excellent", "amazing"],
- #                       [".", "..", "...", "!", "!!", "!!!"]],
- #         # Use unwanted_username_list to block usernames containing a string
- #         ## Will do partial matches; i.e. 'mozart' will block 'legend_mozart'
- #         ### 'free_followers' will be blocked because it contains 'free'
- #         unwanted_username_list=[
- #             'second', 'stuff', 'art', 'project', 'love', 'life', 'food', 'blog',
- #             'free', 'keren', 'photo', 'graphy', 'indo', 'travel', 'art', 'shop',
- #            'store', 'sex', 'toko', 'jual', 'online', 'murah', 'jam', 'kaos',
- #            'case', 'baju', 'fashion', 'corp', 'tas', 'butik', 'grosir', 'karpet',
- #            'sosis', 'salon', 'skin', 'care', 'cloth', 'tech', 'rental', 'kamera',
- #            'beauty', 'express', 'kredit', 'collection', 'impor', 'preloved',
- #            'follow', 'follower', 'gain', '.id', '_id', 'bags'
- #        ],
- #        unfollow_whitelist=['example_user_1', 'example_user_2'])
- #
- #
- #        return render(request, 'dashboard.html',context)
-
-
-
 class ShowView(DetailView):
     model = User
     template_name = 'show.html'
@@ -238,16 +154,6 @@ def changeAccount(request,cred):
     return redirect('instabot:dashboard')
 
 
-#class DashboardView(LoginRequiredMixin, View):
- #   login_url = 'instabot:login'
-#
- #   def get(self, request, *args, **kwargs):
-#
- #       context = {
-  #          'user': request.user
-   #         }
-#
- #       return render(request, 'dashboard.html', context)
 
 
 class DashTaskLoad(LoginRequiredMixin, View):  #vista que servira para redireccionar la task guardada en new task excepto paara los unfollows
@@ -261,10 +167,6 @@ class DashTaskLoad(LoginRequiredMixin, View):  #vista que servira para redirecci
             }
 
         return render(request, 'dashboard.html', context)
-
-
-
-
 
 
 class DashboardClient(LoginRequiredMixin, View):
@@ -322,12 +224,7 @@ class UserAccounts(LoginRequiredMixin, View):
         
         return redirect('instabot:dashboard')
 
-#class NewTask(LoginRequiredMixin, View):
-#    login_url = 'instabot:login'
-#
-#    def get(self, request, *args, **kwargs):
-#
-#        return render(request, 'tasks/newTask.html', {})
+
 def NewTask(request):
     user = User.objects.get(id=request.user.id) #Get the current user logged in
     ll=LastLogin.objects.get(user=user)
@@ -367,6 +264,13 @@ def TrueOrFalse(data):
 
         return False
 
+def DeleteTask(request, id_task):
+    if request.method == 'POST':
+        task=Task.objects.get(id=id_task)
+        task.delete()
+        return redirect('instabot:dashboard')
+    return render(request,'tasks/del_task.html')
+
 def NewFollowLike(request):
     Hasgtags = HashtagList.objects.all()
     user = User.objects.get(id=request.user.id)
@@ -377,6 +281,7 @@ def NewFollowLike(request):
         task.user = user  # Se le asigna un usuario a la task
         task.creds=cred
         task.tags=request.POST.get('tags-input')
+        task.active = False
         task.likemedia=TrueOrFalse(request.POST.get('like'))
         task.followuser=TrueOrFalse(request.POST.get('follow'))
         task.dontlikemedia=TrueOrFalse(request.POST.get('dont'))
@@ -701,10 +606,6 @@ class Create(LoginRequiredMixin, TemplateView):
                 'form2': form2}
 
         return render(request, self.template_name, args)
-
-
-
-
 
 # **********************************************User Options************************************************************
 

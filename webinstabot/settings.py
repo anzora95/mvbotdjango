@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'webinstabot.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'instabot',
+        'NAME': 'mvdjangobot',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',

@@ -33,21 +33,3 @@ urlpatterns = [
 
 
 ]
-
-
-# url('show/(?P<pk>\d+)/$', views.ShowView.as_view(), name='show'),
-# url('dashboard-client/$', views.DashboardClient.as_view(), name='dashboard-client'),
-
-
-# url('store-new-task-location/$',views.StoreTaskLocation.as_view(),name= 'StoreTaskLocation'),
-# url('profile/$', views.Profile.as_view(), name='profile'),
-# url('users/$', views.UsersView.as_view(), name='user-list'),
-# url('users/manage/(?P<user_id>\d+)/$', views.ManageUsers.as_view(), name='manage'),
-# url('users/manage/edit/(?P<pk>\d+)/$', views.UserUpdate.as_view(), name='edit_profile'),
-# url('users/manage/delete/(?P<pk>\d+)/$', views.UserDelete.as_view(), name='delete-system-user'),
-
-# url('mybot/$', views.MyBot.as_view(), name='mybot'),
-
-# url('comment-list/$', views.CommentList.as_view(), name='comment-list'),
-# url('black-list/$', views.BlackList.as_view(), name='blacklist'),
-#url('leer-tags/$', views.hashtag_read(), name='leerhashtags'),

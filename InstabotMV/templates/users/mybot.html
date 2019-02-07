@@ -30,8 +30,7 @@
                 <br>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <label class="mdl-textfield__label" for="id_insta_pass">Insta pass:</label>
-                    <input class="mdl-textfield__input" type="password" name="insta_pass" id="insta_pass" maxlength="30" required=""
-                           id="id_insta_pass">
+                    <input class="mdl-textfield__input" type="password" name="insta_pass" id="insta_pass" maxlength="30" required="">
                 </div>
                 <br>
                 <input class="btn btn-primary" type="submit"
@@ -48,9 +47,9 @@
                     <div class="thumbnail">
                         <img src="{% static 'img/avatar.png' %}" alt="user-pic">
                         <div class="caption">
-                            <h4 class="text-center">{{cred.id}}</h4>
+                            <h4 class="text-center">{{cred.insta_user}}</h4>
                             <p>
-                                <a href="#" class="btn btn-primary center-block"  role="button">Current</a>
+                                <a href="{% url 'instabot:changeAccount' cred.id %}" class="btn btn-primary center-block"  role="button">Current</a>
                             </p>
                         </div>
                     </div>

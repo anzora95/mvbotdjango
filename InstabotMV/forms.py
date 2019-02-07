@@ -3,7 +3,16 @@ from django.contrib.auth.models import User
 
 
 from InstabotMV.models import Creds, List_Tag, UsList, HashtagList, Media
+from django import forms
+from django.core.validators import MinValueValidator, MaxValueValidator
 
+class GenerateRandomUserForm(forms.Form):
+    total = forms.IntegerField(
+        validators=[
+            MinValueValidator(50),
+            MaxValueValidator(500)
+        ]
+    )
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=20)

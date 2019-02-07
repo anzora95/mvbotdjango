@@ -74,7 +74,6 @@ class HashtagList(models.Model):
         return '%s' % (self.category)
 
 
-
 class UsList(models.Model):
     insta_us_name = models.TextField()
     timestamp = models.DateTimeField(auto_now=True)
@@ -113,6 +112,7 @@ class ChildTag(models.Model):
 
 class Task(models.Model):
     creds=models.ForeignKey(Creds,on_delete=models.CASCADE)
+    active=models.BooleanField()
     tags=models.CharField(max_length=1000)
     likemedia=models.BooleanField()
     followuser=models.BooleanField()
@@ -127,7 +127,7 @@ class Task(models.Model):
         verbose_name_plural = 'Tasks'
 
     def __str__(self):
-        return '%s' % (self.id)
+        return '%s' % (self.tags)
 
 class LastLogin(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)

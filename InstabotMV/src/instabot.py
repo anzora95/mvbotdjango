@@ -263,6 +263,8 @@ class InstaBot:
                                                                         id_user)
                 self.write_log(log_string)
                 time.sleep(5 * random.random())
+    def saludo(self):
+        print("Saludo")
 
     def login(self):
 

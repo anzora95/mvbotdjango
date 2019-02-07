@@ -16,6 +16,7 @@ urlpatterns = [
     url('hashtag_ajax/$', views.hashtags.as_view(), name='hashtags'),
     url('dashboard/task/new$', views.NewTask, name='newTask'),
     url('tags/(?P<id_tag>\d+)/$', views.tags, name='tags'),
+    url('change/(?P<cred>\d+)/$', views.changeAccount, name='changeAccount'),
     url('dashboard/task/new/follow-like/$', views.NewFollowLike, name='newFollowLike'),
     url('dashboard/task/new/unfollow-task/$', views.UnfollowTask.as_view(), name='unfollow_task'),
     url('dashboard/accounts/$', views.UserAccounts.as_view(), name='userAccounts'),
@@ -24,7 +25,10 @@ urlpatterns = [
     url('store-new-task-u/$', views.StoreTaskUser.as_view(), name='storeTaskU'),
     # # ******************************** bot url's ************************************************************
     url('start-bot/$', views.StartBot.as_view(),name='start'),
+    url('start/(?P<task>\d+)/$', views.start,name='starter'),
     url('stop-bot/$', views.StopBot.as_view(), name='stopBot'),
+    url('imprimir/$', views.pruebaimpresion, name='impresion'),
+    url('generate/$', views.GenerateRandomUserView.as_view(), name='generate')
 
 
 ]

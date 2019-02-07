@@ -83,9 +83,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'webinstabot',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
-        'PORT': 3306
+        'PORT': 8889
     }
 }
 
@@ -129,3 +129,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'),)
+
+#################TUTORIALcelery
+CELERY_BROKER_URL = 'amqp://localhost'

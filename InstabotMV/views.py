@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.core import serializers
+from threading import Thread
 
 from django.contrib.auth import authenticate, login as login_django, logout as logout_django
 from django.contrib.auth.decorators import login_required
@@ -37,7 +38,28 @@ from InstabotMV.models import HashtagList
 import datetime
 import logging
 import random
+from django.contrib.auth.models import User
+from django.contrib import messages
+from django.views.generic.edit import FormView
+from django.shortcuts import redirect
 
+from .forms import GenerateRandomUserForm
+from InstabotMV.task import create_random_user_accounts,imprimir,runbot
+
+class GenerateRandomUserView(FormView):
+    template_name = 'generate_random_users.html'
+    form_class = GenerateRandomUserForm
+
+    def form_valid(self, form):
+        total = form.cleaned_data.get('total')
+        create_random_user_accounts.delay(total)
+        messages.success(self.request, 'We are generating your random users! Wait a moment and refresh this page.')
+        return redirect('users_list')
+
+def pruebaimpresion(self):
+    imprimir.delay()
+    return redirect('instabot:dashboard')
+aux=1
 
 # ****************************************************General***********************************************************
 
@@ -202,14 +224,24 @@ def logout(request):
 
 def DashboardView(request):
     user = User.objects.get(id=request.user.id) #Get the current user logged in
+    ll=LastLogin.objects.get(user=user)
+    cred=ll.cred
     AT=Task.objects.all() #Get All the Task in system
     LT=[] ##Empty list for List of Task
     for x in range(0,len(AT)):
-       if AT[x].user==user:#If the task has the current logged user add it to the LT list
+       if AT[x].creds==cred:#If the task has the current logged user add it to the LT list
            #print(AT[x].user.username)
            LT.append(AT[x])
 
-    return render(request, 'dashboard.html', {'user':user,'LT':LT})
+    return render(request, 'dashboard.html', {'ll':ll,'LT':LT})
+
+def changeAccount(request,cred):
+    user = User.objects.get(id=request.user.id)
+    ll=LastLogin.objects.get(id=user.id)
+    credex= Creds.objects.get(id=cred)
+    ll.cred=credex
+    ll.save()
+    return redirect('instabot:dashboard')
 
 
 #class DashboardView(LoginRequiredMixin, View):
@@ -265,8 +297,11 @@ class UsersView(LoginRequiredMixin, View):
 class UserAccounts(LoginRequiredMixin, View):
     login_url = 'instabot:login'
     template_name = 'users/mybot.html'
-
+    
     def get(self, request, *args, **kwargs):
+        user = User.objects.get(id=request.user.id) #Get the current user logged in
+        ll=LastLogin.objects.get(user=user)
+        cred=ll.cred
         user=User.objects.get(id=request.user.id) #Obtencion del usuario logeado
         creds = Creds.objects.all() #Obtencion de todas las credenciales 
         lcreds=[] #Inicializacion de lista de credenciales
@@ -276,15 +311,18 @@ class UserAccounts(LoginRequiredMixin, View):
 
         
         
-        return render(request, 'users/mybot.html', {'lcreds':lcreds})
+        return render(request, 'users/mybot.html', {'lcreds':lcreds,'ll':ll})
 
     def post(self, request):
+        user = User.objects.get(id=request.user.id) #Get the current user logged in
+        ll=LastLogin.objects.get(user=user)
+        cred=ll.cred
         if request.method == 'POST':
             user=User.objects.get(id=request.user.id) # Se toma el usuario django que eta logeado.
             cred = Creds()  # inicializacion de Credentials
             cred.user = user  # Se le asigna un usuario a la task
             cred.insta_user=request.POST.get('insta_user')
-            cred.likemedia=TrueOrFalse(request.POST.get('insta_pass'))
+            cred.insta_pass=request.POST.get('insta_pass')
             cred.save()
             return redirect('instabot:userAccounts')
         
@@ -297,8 +335,10 @@ class UserAccounts(LoginRequiredMixin, View):
 #
 #        return render(request, 'tasks/newTask.html', {})
 def NewTask(request):
-    categories=HashtagList.objects.all()
-    return render(request, 'tasks/newTask.html', {'categories':categories})
+    user = User.objects.get(id=request.user.id) #Get the current user logged in
+    ll=LastLogin.objects.get(user=user)
+    cred=ll.cred
+    return render(request, 'tasks/newTask.html', {'ll':ll})
 import json
 def tags(request,id_tag):
 
@@ -336,9 +376,12 @@ def TrueOrFalse(data):
 def NewFollowLike(request):
     Hasgtags = HashtagList.objects.all()
     user = User.objects.get(id=request.user.id)
+    ll=LastLogin.objects.get(user=user)
+    cred=ll.cred
     if request.method == 'POST':
         task = Task()  # inicializacion de task
         task.user = user  # Se le asigna un usuario a la task
+        task.creds=cred
         task.tags=request.POST.get('tags-input')
         task.likemedia=TrueOrFalse(request.POST.get('like'))
         task.followuser=TrueOrFalse(request.POST.get('follow'))
@@ -350,7 +393,7 @@ def NewFollowLike(request):
         task.custowordfilter=TrueOrFalse(request.POST.get('custom'))
         task.save()
         return redirect('instabot:dashboard')
-    return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags})
+    return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags,'ll':ll})
 
 class UnfollowTask(LoginRequiredMixin,View):
     def get(self,request, *args, **kwargs):
@@ -416,12 +459,16 @@ class StartBot(LoginRequiredMixin, View):
 
     def post(self, request, *args, **kwargs):
         user=User.objects.get(id=request.user.id)
+        ll=LastLogin.objects.get(user=user)
+        cred=Creds.objects.get(id=ll.cred.id)
+        print(task)
+        user=User.objects.get(id=request.user.id)
         bot = InstaBot(
-            login=user.username,
-            password=take_cred().insta_pass,
+            login=cred.insta_user,
+            password=cred.insta_pass,
             like_per_day=1000,
             comments_per_day=0,
-            tag_list=['mac4life'],
+            tag_list=['mac4life','macbook'],
             tag_blacklist=['rain', 'thunderstorm'],
             user_blacklist={},
             max_like_for_one_tag=50,
@@ -524,6 +571,25 @@ class StartBot(LoginRequiredMixin, View):
 
         return render(request, 'dashboard.html', {})
 
+
+def start(request, task):
+    user=User.objects.get(id=request.user.id)
+    ll=LastLogin.objects.get(user=user)
+    cred=Creds.objects.get(id=ll.cred.id)
+    u=cred.insta_user
+    p=cred.insta_pass
+    task=Task.objects.get(id=task)
+    if task.active:
+        task.active=False
+    else:
+        task.active=True
+    task.save()
+    strtask=task.tags
+    hl=strtask.split(",")
+    print(hl)
+    user=User.objects.get(id=request.user.id)
+    runbot.delay(u,p,hl)
+    return redirect('instabot:dashboard')
 
 class StopBot(LoginRequiredMixin, View):
 

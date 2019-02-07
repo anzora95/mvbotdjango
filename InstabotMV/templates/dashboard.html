@@ -14,7 +14,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">{{ user.username }} <span class="caret"></span></a>
+                           aria-expanded="false">{{ ll.cred.insta_user }} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="{% url 'instabot:userAccounts' %}">Accounts</a></li>
                             <li><a href="#">Billing Profile</a></li>
@@ -109,6 +109,7 @@
                     <i class="glyphicon glyphicon-sunglasses"></i>
                  </button>
             </i>
+            
             <i>
                 <button type="button" class="btn btn-status-dash btn-xl" id="dash" >
                     <i class="glyphicon glyphicon-dashboard"></i>
@@ -119,16 +120,46 @@
         </div>
     </div>
 </form>
-<form action="{% url 'instabot:start' %}" method="post" >
+<form action="{% url 'instabot:starter' task.id%}" method="post" >
     {% csrf_token %}
     <div class="text-center" display="inline-block-elements">
         <div>
             <span >
 
+                
+                {% if task.active%}
+                <button type="submit" class="btn btn-played btn-primary btn-circle btn-xl" id="load"
+                     data-loading-text="<i class='fa fa-refresh fa-spin'></i>">
+                    <i class='glyphicon glyphicon-play'></i>
+                </button>
+                <style>
+                    .btn-played {
+                      border: 16px solid #f3f3f3;
+                      border-radius: 50%;
+                      border-top: 16px solid #3498db;
+                      width: 120px;
+                      height: 120px;
+                      -webkit-animation: spin 2s linear infinite; /* Safari */
+                      animation: spin 2s linear infinite;
+                    }
+                    
+                    /* Safari */
+                    @-webkit-keyframes spin {
+                      0% { -webkit-transform: rotate(0deg); }
+                      100% { -webkit-transform: rotate(360deg); }
+                    }
+                    
+                    @keyframes spin {
+                      0% { transform: rotate(0deg); }
+                      100% { transform: rotate(360deg); }
+                    }
+                    </style>
+                {%else%}
                 <button type="submit" class="btn btn-play btn-primary btn-circle btn-xl" id="load"
                      data-loading-text="<i class='fa fa-refresh fa-spin'></i>">
                     <i class='glyphicon glyphicon-play'></i>
                 </button>
+                {%endif%}
 
             </span>
            <div class=" popupBubble ">

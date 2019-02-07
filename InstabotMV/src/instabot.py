@@ -14,34 +14,30 @@ import signal
 import sys
 import time
 import requests
+import unicodedata
 from .sql_updates import check_already_liked, check_already_followed
 from .sql_updates import insert_media, insert_username, insert_unfollow_count
 from .sql_updates import get_username_random
-from .sql_updates import check_and_insert_user_agent
 from fake_useragent import UserAgent
 import re
-from InstabotMV.models import Creds  # imprt de los modelos
 from .location_follow import get_us_id_by_location
+from InstabotMV.src.featuresbot.like_recently_media import like_recently_media
+from InstabotMV.src.featuresbot.no_like_same_us import no_like_same_us
+from InstabotMV.models import Task
 
 
 class InstaBot:
     """
     Instagram bot v 1.2.0
     like_per_day=1000 - How many likes set bot in one day.
-
     media_max_like=0 - Don't like media (photo or video) if it have more than
     media_max_like likes.
-
     media_min_like=0 - Don't like media (photo or video) if it have less than
     media_min_like likes.
-
     tag_list = ['cat', 'car', 'dog'] - Tag list to like.
-
     max_like_for_one_tag=5 - Like 1 to max_like_for_one_tag times by row.
-
     log_mod = 0 - Log mod: log_mod = 0 log to console, log_mod = 1 log to file,
     log_mod = 2 no log.
-
     https://github.com/LevPasha/instabot.py
     """
     database_name = "follows_db"
@@ -59,7 +55,7 @@ class InstaBot:
     url_login = 'https://www.instagram.com/accounts/login/ajax/'
     url_logout = 'https://www.instagram.com/accounts/logout/'
     url_media_detail = 'https://www.instagram.com/p/%s/?__a=1'
-    url_user_detail = 'https://www.instagram.com/%s/?__a=1'
+    url_user_detail = ''
     api_user_detail = 'https://i.instagram.com/api/v1/users/%s/info/'
 
     user_agent = "Mozilla/5.0 (Windows; U; Windows NT 6.0; fr-FR) AppleWebKit/533.18.1 (KHTML, like Gecko) " \
@@ -122,7 +118,14 @@ class InstaBot:
     end_at_m = 59,
 
     # For new_auto_mod
-    next_iteration = {"Like": 2, "Follow": 1, "Unfollow": 1, "Comments": 0}
+    next_iteration = {"Like": 2, "Follow": 30, "Unfollow": 1, "Comments": 0}
+
+    #features
+    ft_like=False,
+    ft_follow = False,
+    ft_no_like = False,
+    ft_no_follow = False,
+    ft_src_rcntly = False
 
     def __init__(self,
                  login,
@@ -137,18 +140,7 @@ class InstaBot:
                  start_at_m=0,
                  end_at_h=23,
                  end_at_m=59,
-                 database_name='follows_db',
-                 comment_list=[["this", "the", "your"],
-                               ["photo", "picture", "pic", "shot", "snapshot"],
-                               ["is", "looks", "feels", "is really"],
-                               ["great", "super", "good", "very good", "good",
-                                "wow", "WOW", "cool", "GREAT", "magnificent",
-                                "magical", "very cool", "stylish", "beautiful",
-                                "so beautiful", "so stylish", "so professional",
-                                "lovely", "so lovely", "very lovely", "glorious",
-                                "so glorious", "very glorious", "adorable",
-                                "excellent", "amazing"],
-                               [".", "..", "...", "!", "!!", "!!!"]],
+                 comment_list=[],
                  comments_per_day=0,
                  tag_list=['misamigos'],
                  max_like_for_one_tag=5,
@@ -159,13 +151,15 @@ class InstaBot:
                  user_blacklist={},
                  tag_blacklist=[],
                  unwanted_username_list=[],
-                 unfollow_whitelist=[]):
+                 unfollow_whitelist=[],
+                 ft_like=False,
+                 ft_follow =False,
+                 ft_no_like=False,
+                 ft_no_follow=False,
+                 ft_src_rcntly=False):
 
-        # self.database_name = database_name
-        # self.follows_db = mysql.connector.connect(host="localhost", user="root", passwd="", database=database_name)
-        # self.follows_db_c = self.follows_db.cursor()
-        # check_and_update(self)
-        # las lineas anteriores son lineas para la coneccion directa con una base de datos sql que ya no se usaran debido a django
+
+
 
         fake_ua = UserAgent()
         self.user_agent = "Mozilla/5.0 (Windows; U; Windows NT 6.0; fr-FR) AppleWebKit/533.18.1 (KHTML, like Gecko) " \
@@ -259,8 +253,7 @@ class InstaBot:
                 id_user = all_data['user']['id']
                 # Update the user_name with the user_id
                 self.user_blacklist[user] = id_user
-                log_string = "Blacklisted user %s added with ID: %s" % (user,
-                                                                        id_user)
+                log_string = "Blacklisted user %s added with ID: %s" % (user, id_user)
                 self.write_log(log_string)
                 time.sleep(5 * random.random())
     def saludo(self):
@@ -313,7 +306,6 @@ class InstaBot:
                 self.user_id = ui.get_user_id_by_login(self.user_login)
                 self.login_status = True
                 log_string = '%s login success!' % (self.user_login)
-                log_extra = '%i this a tag'%(self.bot_mode)
                 self.write_log(log_string)
             else:
                 self.login_status = False
@@ -346,10 +338,8 @@ class InstaBot:
                 log_string = "Trying to unfollow: %s" % (f[0])
                 self.write_log(log_string)
                 self.unfollow_on_cleanup(f[0])
-                sleeptime = random.randint(self.unfollow_break_min,
-                                           self.unfollow_break_max)
-                log_string = "Pausing for %i seconds... %i of %i" % (
-                    sleeptime, self.unfollow_counter, self.follow_counter)
+                sleeptime = random.randint(self.unfollow_break_min, self.unfollow_break_max)
+                log_string = "Pausing for %i seconds... %i of %i" % (sleeptime, self.unfollow_counter, self.follow_counter)
                 self.write_log(log_string)
                 time.sleep(sleeptime)
                 self.bot_follow_list.remove(f)
@@ -545,6 +535,34 @@ class InstaBot:
                             log_string = "Trying to like media: %s" % \
                                          (self.media_by_tag[i]['node']['id'])
                             self.write_log(log_string)
+#--------------------------------------------------------------------------------------------------- logica de las features para los likes----------------------------------------------------------------
+
+                        # if self.ft_src_rcntly :    #if el boton de search recently media esta activo entrar a este if
+                        #
+                        #     if self.ft_no_like:   # if el botn de no dar like de nuevo a otro usuario esta activo que entre a esta iteracion
+                        #
+                        #             recently = like_recently_media(self.media_by_tag[i]['node']['taken_at_timestamp'])
+                        #             same_us = no_like_same_us(self.media_by_tag[i]['node']['owner']['id'])
+                        #
+                        #             if same_us and recently:
+                        #                  like = self.like(self.media_by_tag[i]['node']['id'])
+                        #             else:
+                        #                 pass#que no de like
+                        #
+                        #     else:
+                        #         recently = like_recently_media(self.media_by_tag[i]['node']['taken_at_timestamp'])
+                        #
+                        #         if recently:
+                        #             like = self.like(self.media_by_tag[i]['node']['id'])
+                        # else:
+                        #     if self.ft_no_like:# if el botn de no dar like de nuevo a otro usuario esta activo que entre a esta iteracion
+                        #         same_us = no_like_same_us(self.media_by_tag[i]['node']['owner']['id'])
+                        #         if same_us:
+                        #             like = self.like(self.media_by_tag[i]['node']['id'])
+                        #         else:
+                        #             pass
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
                             like = self.like(self.media_by_tag[i]['node']['id'])
                             # comment = self.comment(self.media_by_tag[i]['id'], 'Cool!')
                             # follow = self.follow(self.media_by_tag[i]["owner"]["id"])
@@ -568,7 +586,7 @@ class InstaBot:
                                     self.write_log(log_string)                                   
                                     insert_media(self,
                                                  media_id=self.media_by_tag[i]['node']['id'],
-                                                 status="400")
+                                                 status="400", code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name = self.get_username_by_media_id(self.media_by_tag[i]['node']['id']))
                                     # Some error. If repeated - can be ban!
                                     if self.error_400 >= self.error_400_to_ban:
                                         # Look like you banned!
@@ -581,7 +599,7 @@ class InstaBot:
 
                                     insert_media(self,
                                                  media_id=self.media_by_tag[i]['node']['id'],
-                                                 status=str(like.status_code))
+                                                 status=str(like.status_code),code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name = self.get_username_by_media_id(self.media_by_tag[i]['node']['id']))
                                     log2extra="Estado del bot %i" %(self.bot_mode)
                                     self.write_log(log_string)                                 
                                     return False
@@ -626,6 +644,10 @@ class InstaBot:
                 unlike = 0
             return unlike
 
+    def saludo(self):
+        print("hola")
+        return 0
+
     def comment(self, media_id, comment_text):
         """ Send http request to comment """
         if self.login_status:
@@ -651,11 +673,10 @@ class InstaBot:
                 follow = self.s.post(url_follow)
                 if follow.status_code == 200:
                     self.follow_counter += 1
-                    log_string = "Followed: %s #%i." % (user_id,
-                                                        self.follow_counter)
+                    log_string = "Followed: %s #%i." % (user_id,self.follow_counter)
                     self.write_log(log_string)
                     username = self.get_username_by_user_id(user_id=user_id)
-                    insert_username(self, user_id=user_id, username=username)
+                    insert_username(self, username_id=user_id, username=username, unfollow=0)
                 return follow
             except:
                 logging.exception("Except on follow!")
@@ -734,11 +755,11 @@ class InstaBot:
                         1, self.max_like_for_one_tag)
                     self.remove_already_liked()
                 # ------------------- Like -------------------
-                self.new_auto_mod_like()
+                #self.new_auto_mod_follow()
                 # ------------------- Follow -------------------
-                self.mod_follow_by_locations()
+                self.new_auto_mod_like()
                 # ------------------- Unfollow -------------------
-                self.mod_follow_by_locations()
+                #self.mod_follow_by_locations()
                 # ------------------- Comment -------------------
                 #self.new_auto_mod_comments()
                 # Bot iteration in 1 sec
@@ -773,26 +794,26 @@ class InstaBot:
             # Del first media_id
             del self.media_by_tag[0]
 
+
     def new_auto_mod_follow(self): # da follow en base a la media que tiene en media_by_tag
-        if time.time() > self.next_iteration["Follow"] and \
-                self.follow_per_day != 0 and len(self.media_by_tag) > 0:
-            if self.media_by_tag[0]['node']["owner"]["id"] == self.user_id:  #Esta parte de la funcion la ocupa para no autolikearse
+
+        if time.time() > self.next_iteration["Follow"] and self.follow_per_day != 0 and len(self.media_by_tag) > 0:
+
+            if self.media_by_tag [0]['node']["owner"]["id"]==self.user_id:  #Esta parte de la funcion la ocupa para no autolikearse
                 self.write_log("Keep calm - It's your own profile ;)")
                 return
+
             if check_already_followed(self, user_id=self.media_by_tag[0]['node']["owner"]["id"]) == 1:
                 self.write_log("Already followed before " + self.media_by_tag[0]['node']["owner"]["id"]) #aqui se cuestiona si el usuario ya fue followed para no darle follow de nuevo
-                self.next_iteration["Follow"] = time.time() + \
-                                                self.add_time(self.follow_delay / 2)
+                self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay / 2)
                 return
-            log_string = "Trying to follow: %s" % (
-                self.media_by_tag[0]['node']["owner"]["id"])
+
+            log_string = "Trying to follow: %s" % (self.media_by_tag[0]['node']["owner"]["id"])
             self.write_log(log_string)
 
-            if self.follow(self.media_by_tag[0]['node']["owner"]["id"]) != False:   
-                self.bot_follow_list.append(
-                    [self.media_by_tag[0]['node']["owner"]["id"], time.time()])      #en este if se agrega a la lista de usuarios ya seguidos en bot_follow_list
-                self.next_iteration["Follow"] = time.time() + \
-                                                self.add_time(self.follow_delay)     #aqui espera la siguiente iteracion
+            if self.follow(self.media_by_tag[0]['node']["owner"]["id"]) != False:
+                self.bot_follow_list.append([self.media_by_tag[0]['node']["owner"]["id"], time.time()])      #en este if se agrega a la lista de usuarios ya seguidos en bot_follow_list
+                self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay)     #aqui espera la siguiente iteracion
 
 
 

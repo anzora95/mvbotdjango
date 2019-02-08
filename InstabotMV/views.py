@@ -477,7 +477,7 @@ class StartBot(LoginRequiredMixin, View):
 def detener(self,t):
     t=thread.objects.get(task=t)
     stop.delay(t.codigo)
-    redirect('instabot:dashboard')
+    return redirect('instabot:dashboard')
 
 
 def start(request, task):
@@ -488,7 +488,6 @@ def start(request, task):
     p=cred.insta_pass
     task=Task.objects.get(id=task)
     ide=task.id
-    
     if task.active:
         task.active=False
     else:

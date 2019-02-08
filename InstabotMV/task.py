@@ -6,6 +6,7 @@ import time
 from InstabotMV.src.instabot import InstaBot
 from celery import shared_task
 from .models import *
+from webinstabot.celery import app
 from celery.task.control import revoke
 
 @shared_task

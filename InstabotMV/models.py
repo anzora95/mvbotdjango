@@ -139,3 +139,12 @@ class LastLogin(models.Model):
     def __str__(self):
         return '%s' % (self.user)
 
+class thread(models.Model):
+    task=models.ForeignKey(Task, on_delete=models.CASCADE)
+    codigo=models.CharField(max_length=1000)
+    class Meta:
+        verbose_name = 'thread'
+        verbose_name_plural = 'threads'
+
+    def __str__(self):
+        return '%s' % (self.task.tags)

@@ -27,7 +27,7 @@ urlpatterns = [
     # # ******************************** bot url's ************************************************************
     url('start-bot/$', views.StartBot.as_view(),name='start'),
     url('start/(?P<task>\d+)/$', views.start,name='starter'),
-    url('stop-bot/$', views.StopBot.as_view(), name='stopBot'),
+    url('stop-bot/(?P<t>\d+)/$', views.detener, name='detener'),
     url('imprimir/$', views.pruebaimpresion, name='impresion'),
     url('generate/$', views.GenerateRandomUserView.as_view(), name='generate')
 

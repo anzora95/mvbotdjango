@@ -6,6 +6,7 @@ import time
 from InstabotMV.src.instabot import InstaBot
 from celery import shared_task
 from .models import *
+from celery.task.control import revoke
 
 @shared_task
 def create_random_user_accounts(total):
@@ -23,8 +24,16 @@ def imprimir():
     return '{} rimpresion'
 
 @shared_task
-def runbot(user,p,hl):
-    
+def stop(codigo):
+    app.control.revoke(codigo,terminate=True,signal='TERM')
+    return 'Finished'
+
+@shared_task
+def runbot(user,p,hl,i):
+    tas=Task.objects.get(id=i)
+    t=thread.objects.get(task=tas)
+    t.codigo=runbot.request.id
+    t.save()
     bot = InstaBot(
         login=user,
         password=p,

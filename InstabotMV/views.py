@@ -298,6 +298,7 @@ def NewFollowLike(request):
         t=thread()
         t.task=task
         t.codigo=''
+        t.save()
         return redirect('instabot:dashboard')
     return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags,'ll':ll})
 

@@ -232,6 +232,7 @@ def NewTask(request):
     user = User.objects.get(id=request.user.id) #Get the current user logged in
     ll=LastLogin.objects.get(user=user)
     cred=ll.cred
+
     return render(request, 'tasks/newTask.html', {'ll':ll})
 import json
 def tags(request,id_tag):
@@ -294,6 +295,9 @@ def NewFollowLike(request):
         task.antispamfilter=TrueOrFalse(request.POST.get('antispam'))
         task.custowordfilter=TrueOrFalse(request.POST.get('custom'))
         task.save()
+        t=thread()
+        t.task=task
+        t.codigo=''
         return redirect('instabot:dashboard')
     return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags,'ll':ll})
 
@@ -475,6 +479,9 @@ class StartBot(LoginRequiredMixin, View):
 
 
 def detener(self,t):
+    task=Task.objects.get(id=t)
+    task.active=False
+    task.save()
     t=thread.objects.get(task=t)
     stop.delay(t.codigo)
     return redirect('instabot:dashboard')

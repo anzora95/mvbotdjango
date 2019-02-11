@@ -1,0 +1,111 @@
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+}
+
+.btn-circle {
+    width: 40px;
+    height: 40px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.42857;
+}
+
+
+.btn-lit-circle {
+    width: 40px;
+    height: 40px;
+    padding: 6px 0px;
+    margin:6px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.42857;
+}
+.list-inline li a{
+  font-size:20px;
+  text-decoration: none;
+  color: #757575;
+}
+
+.gradiente{
+  background-image: linear-gradient(to right, #2C7CB2, black);
+}
+.hashtags{
+  padding: 4px;
+  font-weight: normal;
+  color: white;
+}
+
+.btn-status-dash{
+    width: 10px;
+    height: 10px;
+    padding: 6px 0px;
+    margin:3px;
+    text-align: center;
+    font-size: 10px;
+}
+
+/*-------------------------------------------------------------POPUP--BUBBLE-------------------------------------------------------------*/
+
+.popupBubble{
+    position:relative;
+    display:inline;
+}
+.popupBubble .popup{
+    position:absolute;
+    display:none;
+    border:1px solid #AAA;
+    border-radius: 15px;
+    background:#FFF;
+    padding:5px;
+    width:25px;
+    height:25px;
+}
+
+/*--------------------------------------------------------------------TOOLTIP----------------------------------------------------------------*/
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;/* If you want dots under the hoverable text */
+  height: max-content;
+  width: max-content;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text - see examples below! */
+  /*position: absolute;
+  z-index: 1;*/
+}
+
+.tooltip .tooltiptext {
+  width: 120px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+}
+.simulating.h3{
+  color: #757575;
+}
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:checked .tooltiptext {
+  visibility: visible;
+}
+
+

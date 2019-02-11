@@ -33,7 +33,7 @@ from django.views.generic.edit import FormView
 from django.shortcuts import redirect
 
 from .forms import GenerateRandomUserForm
-from InstabotMV.task import create_random_user_accounts,imprimir,runbot
+from InstabotMV.task import create_random_user_accounts,imprimir,runbot,stop
 
 class GenerateRandomUserView(FormView):
     template_name = 'generate_random_users.html'
@@ -49,6 +49,9 @@ def pruebaimpresion(self):
     imprimir.delay()
     return redirect('instabot:dashboard')
 aux=1
+
+
+
 
 # ****************************************************General***********************************************************
 
@@ -229,6 +232,7 @@ def NewTask(request):
     user = User.objects.get(id=request.user.id) #Get the current user logged in
     ll=LastLogin.objects.get(user=user)
     cred=ll.cred
+
     return render(request, 'tasks/newTask.html', {'ll':ll})
 import json
 def tags(request,id_tag):
@@ -291,6 +295,10 @@ def NewFollowLike(request):
         task.antispamfilter=TrueOrFalse(request.POST.get('antispam'))
         task.custowordfilter=TrueOrFalse(request.POST.get('custom'))
         task.save()
+        t=thread()
+        t.task=task
+        t.codigo=''
+        t.save()
         return redirect('instabot:dashboard')
     return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags,'ll':ll})
 
@@ -471,6 +479,15 @@ class StartBot(LoginRequiredMixin, View):
         return render(request, 'dashboard.html', {})
 
 
+def detener(self,t):
+    task=Task.objects.get(id=t)
+    task.active=False
+    task.save()
+    t=thread.objects.get(task=t)
+    stop.delay(t.codigo)
+    return redirect('instabot:dashboard')
+
+
 def start(request, task):
     user=User.objects.get(id=request.user.id)
     ll=LastLogin.objects.get(user=user)
@@ -478,6 +495,7 @@ def start(request, task):
     u=cred.insta_user
     p=cred.insta_pass
     task=Task.objects.get(id=task)
+    ide=task.id
     if task.active:
         task.active=False
     else:
@@ -487,7 +505,7 @@ def start(request, task):
     hl=strtask.split(",")
     print(hl)
     user=User.objects.get(id=request.user.id)
-    runbot.delay(u,p,hl)
+    runbot.delay(u,p,hl,ide)
     return redirect('instabot:dashboard')
 
 class StopBot(LoginRequiredMixin, View):

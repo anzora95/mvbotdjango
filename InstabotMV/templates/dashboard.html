@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load static %}
 {% block navbar %}
 <nav class="navbar navbar-inverse">
     {% csrf_token %}
@@ -8,7 +9,7 @@
                 <a href="{% url 'instabot:dashboard' %}"><h4 class="left navbar-text">Ngage Social</h4></a>
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <h4 class="center navbar-text">CURRENT PLAN</h4>
+                <h4 class="navbar-text">CURRENT PLAN</h4>
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                 <ul class="nav navbar-nav navbar-right">
@@ -45,36 +46,57 @@
 
     <hr class="divider">
 
-    <div id="exTab2" class="container">
-        <ul class="nav nav-tabs nav-justified">
-            <li class="active">
-                <a href="#1" data-toggle="tab">Results</a>
-            </li>
-            <li><a href="#2" data-toggle="tab">Targets</a>
-            </li>
-            <li><a href="#3" data-toggle="tab">Options</a>
-            </li>
-        </ul>
+    
 {% for task in LT %}
+<div id="exTab2" class="container">
+        
+        <div class="row">
+                <div class="col-sm-4 col-sm-offset-4  text-center">
+<div class="gradiente">
+<p class="hashtags">{{task.tags}}</p>
+</div>
+
+                                <ul class="list-inline">
+                                        <li ><a href="#1" data-toggle="tab" >Results</a></li>
+                                        <li >|</li>
+                                        <li ><a href="#2" data-toggle="tab">Targets</a></li>
+                                        <li >|</li>
+                                        <li ><a href="#3" data-toggle="tab">Options</a></li>
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+
+</div>
+
         <div class="tab-content ">
             <div class="tab-pane active" id="1">
                 {% include 'includes/tabs/results.html' %}
             </div>
             <div class="tab-pane" id="2">
-                {% include 'includes/tabs/targets.html' %}
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-4  text-center">
+                {{task.tags}}
+                </div>
+                </div>
             </div>
             <div class="tab-pane" id="3">
                 {% include 'includes/tabs/options.html' %}
             </div>
-            <h3 class="text-center">#{{task.tags}}</h3>
+            
         </div>
     </div>
-    <br>
-    <br>
-    <br>
 
     <form>
     <div class="text-center">
+        {% if task.active%}
+       <div class="simulating">
+            <h3>Simulating human behaviour, swell is coming in 5 hour(s) 28 minute(s).
+                    Feel free to close this window. Task is running in Cloud.</h3>
+       </div>
+       {% endif%}
         <div display="block-level-elements">
         <span>
         <button  class="btn btn-primary btn-lit-circle btn-xl" >
@@ -127,14 +149,17 @@
         </div>
     </div>
 </form>
-<form action="{% url 'instabot:starter' task.id%}" method="post" >
-    {% csrf_token %}
+
+    
     <div class="text-center" display="inline-block-elements">
         <div>
             <span >
 
                 
                 {% if task.active%}
+                
+                <form action="{% url 'instabot:detener' task.id%}" method="post" >
+                        {% csrf_token %}
                 <button type="submit" class="btn btn-played btn-primary btn-circle btn-xl" id="load"
                      data-loading-text="<i class='fa fa-refresh fa-spin'></i>">
                     <i class='glyphicon glyphicon-play'></i>
@@ -162,6 +187,8 @@
                     }
                     </style>
                 {%else%}
+                <form action="{% url 'instabot:starter' task.id%}" method="post" >
+                        {% csrf_token %}
                 <button type="submit" class="btn btn-play btn-primary btn-circle btn-xl" id="load"
                      data-loading-text="<i class='fa fa-refresh fa-spin'></i>">
                     <i class='glyphicon glyphicon-play'></i>
@@ -196,6 +223,7 @@
     </div>
 
 </form>
+<hr class="divider">
 {% endfor%}
 
    <div>

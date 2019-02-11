@@ -16,11 +16,8 @@
     font-size: 15px;
     line-height: 1.42857;
 }
-.list-inline{display:inline-block;
-  font-size:50px;
-  padding-left:5px;
-  padding-right:5px
-}
+
+
 .btn-lit-circle {
     width: 40px;
     height: 40px;
@@ -30,6 +27,20 @@
     text-align: center;
     font-size: 15px;
     line-height: 1.42857;
+}
+.list-inline li a{
+  font-size:20px;
+  text-decoration: none;
+  color: #757575;
+}
+
+.gradiente{
+  background-image: linear-gradient(to right, #2C7CB2, black);
+}
+.hashtags{
+  padding: 4px;
+  font-weight: normal;
+  color: white;
 }
 
 .btn-status-dash{
@@ -89,7 +100,9 @@
   left: 50%;
   margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
 }
-
+.simulating.h3{
+  color: #757575;
+}
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:checked .tooltiptext {
   visibility: visible;

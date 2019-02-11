@@ -7,7 +7,9 @@ $('.btn-play').on('click', function() {
    },28800000);
 });
 
-
+function codeAddress() {
+	alert('ok');
+}
 
 
 $(function(){

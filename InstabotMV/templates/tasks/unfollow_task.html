@@ -16,19 +16,55 @@
     
     <hr class="divider">
     <div id="target_user">
-    <h4 class="text-center"><b>Select users which you want to unfollow</b></h4>
+
     <br>
-    <div class="row">
-        
+        <form class="form">
+
+<h4 class="text-center"><b>Select users which you want to unfollow</b></h4>
+  <div class="inputGroup">
+    <input id="radio1" name="radio" type="radio"/>
+    <label for="radio1">Users followed by Ngage Social</label>
+  </div>
+  <div class="inputGroup">
+    <input id="radio2" name="radio" type="radio"/>
+    <label for="radio2">All users</label>
+  </div>
+</form>
+
+    </div>
+
+
+
+<form method="POST" id="formulario" >
+                    {% csrf_token %}
+
+                <h3>Selec actions for current task</h3>
+                <br>
+                <label>START THIS TASK AUTOMATICALLY WHEN INSTAGRAM FOLLOWING LIMIT REACHED</label>
+                <input type="checkbox" id="start" name="dont" aria-label="...">  <br>
+                <label>UNFOLLOW ONLY USER IS GHOST, NON ACTIVE </label>
+                <input type="checkbox" id="ghost" name="dontfollow" aria-label="...">  <br>
+                <label>UNFOLLOW ONLY IF USER HAVEN'T FOLLOWED YOU BACK</label>
+                <input type="checkbox"  id="follow" name="search" aria-label="...">  <br>
+
+                <button type="submit" class="btn btn-primary">save</button>
+
+            </form>
+    
+{% endblock %}
+
+
+<!--<div class="row">
+
     </div>
     </div>
     <div id="features">
-        
+
         <div class="row">
             <div class="col-md-12">
                 <a href="#" class="btn btn-primary">
                     <span class="glyphicon glyphicon-hand-down"></span>
-                UNFOLLOW ONLY USER IS GHOST, NON ACTIVE  
+                UNFOLLOW ONLY USER IS GHOST, NON ACTIVE
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </div>
@@ -43,7 +79,7 @@
                 </a>
             </div>
          <br>
-         
+
         </div>
 
         <br>
@@ -55,7 +91,7 @@
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </div>
-            
+
         </div>
     </div>
     <br>
@@ -66,6 +102,4 @@
             {% csrf_token %}
             <input type="submit" name="submit" id="submit" class="btn btn-info" value="Save"/>
             </a>
-        </div>
-    
-{% endblock %}
+        </div>-->

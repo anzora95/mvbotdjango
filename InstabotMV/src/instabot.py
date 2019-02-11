@@ -753,10 +753,13 @@ class InstaBot:
                     self.this_tag_like_count = 0
                     self.max_tag_like_count = random.randint(
                         1, self.max_like_for_one_tag)
-                    self.remove_already_liked()
+                    #self.remove_already_liked()
                 # ------------------- Like -------------------
-                #self.new_auto_mod_follow()
+                #if follow que entre
+                self.new_auto_mod_follow()
+
                 # ------------------- Follow -------------------
+                #if like que entre
                 self.new_auto_mod_like()
                 # ------------------- Unfollow -------------------
                 #self.mod_follow_by_locations()

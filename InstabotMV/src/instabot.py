@@ -130,6 +130,7 @@ class InstaBot:
     def __init__(self,
                  login,
                  password,
+                 us,
                  like_per_day=1000,
                  media_max_like=50,
                  media_min_like=0,
@@ -160,7 +161,7 @@ class InstaBot:
 
 
 
-
+        self.us=us
         fake_ua = UserAgent()
         self.user_agent = "Mozilla/5.0 (Windows; U; Windows NT 6.0; fr-FR) AppleWebKit/533.18.1 (KHTML, like Gecko) " \
                           "Version/5.0.2 Safari/533.18.5"
@@ -576,7 +577,7 @@ class InstaBot:
                                                   self.like_counter)
                                     insert_media(self,
                                                  media_id=self.media_by_tag[i]['node']['id'],
-                                                 status="200", code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name = self.get_username_by_media_id(self.media_by_tag[i]['node']['id']))
+                                                 status="200", code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name=self.get_username_by_media_id(self.media_by_tag[i]['node']['id']), us=self.us)
                                     #log__string= "el url es  %s" %(url_media)
                                     #log__string=get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id'],True,None)   #se saca el url del media para poder ejecutarlo para asi ver el json para poder extraerel json del los datos del usuario
                                     self.write_log(log_string)
@@ -586,7 +587,7 @@ class InstaBot:
                                     self.write_log(log_string)                                   
                                     insert_media(self,
                                                  media_id=self.media_by_tag[i]['node']['id'],
-                                                 status="400", code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name = self.get_username_by_media_id(self.media_by_tag[i]['node']['id']))
+                                                 status="400", code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name = self.get_username_by_media_id(self.media_by_tag[i]['node']['id']),us=self.us)
                                     # Some error. If repeated - can be ban!
                                     if self.error_400 >= self.error_400_to_ban:
                                         # Look like you banned!
@@ -599,7 +600,7 @@ class InstaBot:
 
                                     insert_media(self,
                                                  media_id=self.media_by_tag[i]['node']['id'],
-                                                 status=str(like.status_code),code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name = self.get_username_by_media_id(self.media_by_tag[i]['node']['id']))
+                                                 status=str(like.status_code),code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name = self.get_username_by_media_id(self.media_by_tag[i]['node']['id']),us=self.us)
                                     log2extra="Estado del bot %i" %(self.bot_mode)
                                     self.write_log(log_string)                                 
                                     return False
@@ -676,7 +677,7 @@ class InstaBot:
                     log_string = "Followed: %s #%i." % (user_id,self.follow_counter)
                     self.write_log(log_string)
                     username = self.get_username_by_user_id(user_id=user_id)
-                    insert_username(self, username_id=user_id, username=username, unfollow=0)
+                    insert_username(self, username_id=user_id, username=username, unfollow=0,us=self.us)
                 return follow
             except:
                 logging.exception("Except on follow!")

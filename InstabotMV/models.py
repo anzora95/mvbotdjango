@@ -9,27 +9,12 @@ class AppUser(User):
    insta_user = models.CharField(max_length=150)
    insta_pass = models.CharField(max_length=50)
 
-
    class Meta:
        verbose_name = 'AppUser'
        verbose_name_plural = 'AppUsers'
 
    def __str__(self):
        return '%s' % (self.username)
-
-class Media(models.Model):
-    media_id = models.CharField(max_length=300)
-    status = models.IntegerField()
-    datetime = models.TextField()
-    code = models.TextField()
-    owner_name = models.CharField(max_length=100)
-
-
-class Username(models.Model):
-    username = models.CharField(max_length=300)
-    username_id = models.CharField(max_length=300)
-    unfollow_count = models.IntegerField()
-    last_followed_time = models.TextField()
 
 
 class Settings(models.Model):
@@ -41,7 +26,6 @@ class Creds(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     insta_user = models.CharField(max_length=150)
     insta_pass = models.CharField(max_length=50)
-    
 
     class Meta:
         verbose_name = 'Cred'
@@ -50,6 +34,22 @@ class Creds(models.Model):
     def __str__(self):
         return '%s' % (self.insta_user)
 
+
+class Media(models.Model):
+    media_id = models.CharField(max_length=300)
+    status = models.IntegerField()
+    datetime = models.TextField()
+    code = models.TextField()
+    owner_name = models.CharField(max_length=100)
+    cred_us = models.CharField(max_length=100)
+
+
+class Username(models.Model):
+    username = models.CharField(max_length=300)
+    username_id = models.CharField(max_length=300)
+    unfollow_count = models.IntegerField()
+    last_followed_time = models.TextField()
+    cred_us = models.CharField(max_length=100)
 
 class Comments(models.Model):
     insta_comment = models.CharField(max_length=200)

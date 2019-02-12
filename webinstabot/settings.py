@@ -28,7 +28,7 @@ SECRET_KEY = 'xjusaa+z03h91v+@6+ix&t^54wmziq0wglz+xv8z44y+e^9rth'
 DEBUG = True
 #DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'webinstabot.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'webinstabot2',
+        'NAME': 'data_bot',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': '',
         'HOST': 'localhost',
-        'PORT': 8889
+        'PORT': 3306
     }
 }
 

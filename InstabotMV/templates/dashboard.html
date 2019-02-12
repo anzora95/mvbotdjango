@@ -57,11 +57,11 @@
 </div>
 
                                 <ul class="list-inline">
-                                        <li ><a href="#1" data-toggle="tab" >Results</a></li>
+                                        <li ><a href="#1{{task.id}}" data-toggle="tab" >Results</a></li>
                                         <li >|</li>
-                                        <li ><a href="#2" data-toggle="tab">Targets</a></li>
+                                        <li ><a href="#2{{task.id}}" data-toggle="tab">Targets</a></li>
                                         <li >|</li>
-                                        <li ><a href="#3" data-toggle="tab">Options</a></li>
+                                        <li ><a href="#3{{task.id}}" data-toggle="tab">Options</a></li>
                                 </ul>
                         </div>
                     </div>
@@ -72,17 +72,17 @@
 </div>
 
         <div class="tab-content ">
-            <div class="tab-pane active" id="1">
+            <div class="tab-pane active" id="1{{task.id}}">
                 {% include 'includes/tabs/results.html' %}
             </div>
-            <div class="tab-pane" id="2">
+            <div class="tab-pane" id="2{{task.id}}">
                 <div class="row">
                     <div class="col-sm-4 col-sm-offset-4  text-center">
                 {{task.tags}}
                 </div>
                 </div>
             </div>
-            <div class="tab-pane" id="3">
+            <div class="tab-pane" id="3{{task.id}}">
                 {% include 'includes/tabs/options.html' %}
             </div>
             
@@ -93,7 +93,7 @@
     <div class="text-center">
         {% if task.active%}
        <div class="simulating">
-            <h3>Simulating human behaviour, swell is coming in 5 hour(s) 28 minute(s).
+            <h3>Simulating human behaviour.
                     Feel free to close this window. Task is running in Cloud.</h3>
        </div>
        {% endif%}

@@ -26,7 +26,7 @@ def imprimir():
 
 @shared_task
 def stop(codigo):
-    app.control.revoke(codigo,terminate=True,signal='TERM')
+    app.control.revoke(codigo,terminate=True,signal='KILL')
     return 'Finished'
 
 @shared_task

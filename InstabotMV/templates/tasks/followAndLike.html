@@ -129,24 +129,7 @@
                     {% endfor%}
             </select>
                            <script>
-                               $('select').on('change',inicio);
-
-                               function inicio(){
-                               var id= $(this).val();
-                               $.ajax({
-                               data: {'id':id},
-                               url:'/instabotmv/hashtag_ajax/',
-                               type: 'get',
-                               success: function(data){
-                               var html=""
-                               for(var i=0;i<data.length;i++){
-                               html += "<span class='tag'>"+data[i].fields.insta_tag+"<span class='close'></span></span>";
-                               }
-
-                               $('#xd').html(html);
-                               }
-                               });
-                               }
+                               
                            </script>
                             <h1 ></h1>
 

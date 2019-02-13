@@ -14,6 +14,7 @@
     border-radius: 15px;
     text-align: center;
     font-size: 15px;
+    
     line-height: 1.42857;
 }
 
@@ -24,7 +25,7 @@
     height: 40px;
     padding: 6px 0px;
     margin:6px;
-    border-radius: 15px;
+    border-radius: 100px;
     text-align: center;
     font-size: 15px;
     line-height: 1.42857;
@@ -33,6 +34,13 @@
   font-size:20px;
   text-decoration: none;
   color: #757575;
+}
+
+.glyphicon{
+  
+  
+  vertical-align: middle;
+  text-align: center;
 }
 
 .gradiente{

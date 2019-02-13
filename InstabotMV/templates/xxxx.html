@@ -1,0 +1,92 @@
+<div class="text-center" display="inline-block-elements">
+        <div>
+            
+                    {% if task.active%}
+                            <span>
+                                    <button type="button" class="btn btn-primary btn-lit-circle btn-xl" >
+                                        <i class="glyphicon glyphicon-heart-empty"></i>
+                                    </button>
+                                   
+                        <span>
+                                <button  class="btn btn-primary btn-lit-circle btn-xl " >
+                                    <i class="glyphicon glyphicon-user"></i>
+            
+                                </button>
+                        </span>
+                        <form action="{% url 'instabot:detener' task.id%}" method="post" >
+                            {% csrf_token %}
+
+                    <button type="submit" class="btn btn-played btn-primary btn-circle btn-xl" id="load"
+                         data-loading-text="<i class='fa fa-refresh fa-spin'></i>">
+                        <i class='glyphicon glyphicon-play'></i>
+                    </button>
+                
+                    <style>
+                        .btn-played {
+                          border: 16px solid #f3f3f3;
+                          border-radius: 50%;
+                          border-top: 16px solid #3498db;
+                          width: 120px;
+                          height: 120px;
+                          -webkit-animation: spin 2s linear infinite; /* Safari */
+                          animation: spin 2s linear infinite;
+                        }
+                        
+                        /* Safari */
+                        @-webkit-keyframes spin {
+                          0% { -webkit-transform: rotate(0deg); }
+                          100% { -webkit-transform: rotate(360deg); }
+                        }
+                        
+                        @keyframes spin {
+                          0% { transform: rotate(0deg); }
+                          100% { transform: rotate(360deg); }
+                        }
+                        </style>
+                        </form>
+                    {%else%}
+                    
+                    
+
+                <span>
+                        <button type="button" class="btn btn-primary btn-lit-circle btn-xl" >
+                            <i class="glyphicon glyphicon-heart-empty"></i>
+                        </button>
+                       
+            <span>
+                    <button  class="btn btn-primary btn-lit-circle btn-xl " >
+                        <i class="glyphicon glyphicon-user"></i>
+
+                    </button>
+            </span>
+                            {% csrf_token %}
+                            <form action="{% url 'instabot:starter' task.id%}" method="post" >
+                    <button type="submit" class="btn btn-play btn-primary btn-circle btn-xl" id="load"
+                         data-loading-text="<i class='fa fa-refresh fa-spin'></i>">
+                        <i class='glyphicon glyphicon-play'></i>
+                    </button>
+                </form>
+            
+                    {%endif%}
+    
+                
+                    
+            <span>         
+                <button  class="btn btn-primary btn-lit-circle btn-xl">
+                        <a href ="{% url 'instabot:del_task' task.id%}"></a>
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </button>
+            </span>
+            <span>         
+                    <button  class="btn btn-primary btn-lit-circle btn-xl">
+                            <a href ="{% url 'instabot:del_task' task.id%}"></a>
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </button>
+                </span>
+
+           <span>
+               <p>{{status}}</p>
+           </span>
+
+        </div>
+    </div>

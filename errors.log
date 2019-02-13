@@ -14896,3 +14896,281 @@ Traceback (most recent call last):
   File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/models/fields/__init__.py", line 965, in get_prep_value
     return int(value)
 ValueError: invalid literal for int() with base 10: 'Select your audience'
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: 'endif'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 149, in DashboardView
+    return render(request, 'dashboard.html', {'ll':ll,'LT':LT})
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 810, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 528, in invalid_block_tag
+    get_text_list(["'%s'" % p for p in parse_until], 'or'),
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 106: 'endif', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/stop-bot/15/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 493, in detener
+    stop.delay(t.codigo)
+AttributeError: 'function' object has no attribute 'delay'
+ERROR:django.request:Internal Server Error: /instabotmv/stop-bot/14/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 493, in detener
+    stop(t.codigo)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/task.py", line 29, in stop
+    app.control.revoke(codigo,terminate=True,signal='KILL')
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/celery/app/control.py", line 228, in revoke
+    }, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/celery/app/control.py", line 454, in broadcast
+    limit, callback, channel=channel,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/pidbox.py", line 315, in _broadcast
+    serializer=serializer)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/pidbox.py", line 290, in _publish
+    serializer=serializer,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/messaging.py", line 181, in publish
+    exchange_name, declare,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/messaging.py", line 203, in _publish
+    mandatory=mandatory, immediate=immediate,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/channel.py", line 1763, in _basic_publish
+    self.connection.drain_events(timeout=0)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/connection.py", line 500, in drain_events
+    while not self.blocking_read(timeout):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/connection.py", line 505, in blocking_read
+    frame = self.transport.read_frame()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/transport.py", line 256, in read_frame
+    frame_header = read(7, True)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/transport.py", line 448, in _read
+    raise IOError('Server unexpectedly closed connection')
+OSError: Server unexpectedly closed connection
+ERROR:django.request:Internal Server Error: /instabotmv/stop-bot/12/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 493, in detener
+    stop(t.codigo)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/task.py", line 29, in stop
+    app.control.revoke(codigo,terminate=True,signal='KILL')
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/celery/app/control.py", line 228, in revoke
+    }, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/celery/app/control.py", line 454, in broadcast
+    limit, callback, channel=channel,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/pidbox.py", line 315, in _broadcast
+    serializer=serializer)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/pidbox.py", line 290, in _publish
+    serializer=serializer,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/messaging.py", line 181, in publish
+    exchange_name, declare,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/messaging.py", line 203, in _publish
+    mandatory=mandatory, immediate=immediate,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/channel.py", line 1763, in _basic_publish
+    self.connection.drain_events(timeout=0)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/connection.py", line 500, in drain_events
+    while not self.blocking_read(timeout):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/connection.py", line 505, in blocking_read
+    frame = self.transport.read_frame()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/transport.py", line 256, in read_frame
+    frame_header = read(7, True)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/transport.py", line 448, in _read
+    raise IOError('Server unexpectedly closed connection')
+OSError: Server unexpectedly closed connection
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 139, in DashboardView
+    user = User.objects.get(id=request.user.id) #Get the current user logged in
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/models/query.py", line 399, in get
+    self.model._meta.object_name
+django.contrib.auth.models.User.DoesNotExist: User matching query does not exist.
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/stop-bot/9/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 493, in detener
+    stop(t.codigo)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/task.py", line 29, in stop
+    app.control.revoke(codigo,terminate=True,signal='KILL')
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/celery/app/control.py", line 228, in revoke
+    }, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/celery/app/control.py", line 454, in broadcast
+    limit, callback, channel=channel,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/pidbox.py", line 315, in _broadcast
+    serializer=serializer)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/pidbox.py", line 290, in _publish
+    serializer=serializer,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/messaging.py", line 181, in publish
+    exchange_name, declare,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/messaging.py", line 203, in _publish
+    mandatory=mandatory, immediate=immediate,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/channel.py", line 1763, in _basic_publish
+    self.connection.drain_events(timeout=0)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/connection.py", line 500, in drain_events
+    while not self.blocking_read(timeout):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/connection.py", line 505, in blocking_read
+    frame = self.transport.read_frame()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/transport.py", line 256, in read_frame
+    frame_header = read(7, True)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/transport.py", line 448, in _read
+    raise IOError('Server unexpectedly closed connection')
+OSError: Server unexpectedly closed connection
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/stop-bot/14/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 493, in detener
+    stop(t.codigo)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/task.py", line 29, in stop
+    app.control.revoke(codigo,terminate=True,signal='KILL')
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/celery/app/control.py", line 228, in revoke
+    }, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/celery/app/control.py", line 454, in broadcast
+    limit, callback, channel=channel,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/pidbox.py", line 315, in _broadcast
+    serializer=serializer)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/pidbox.py", line 290, in _publish
+    serializer=serializer,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/messaging.py", line 181, in publish
+    exchange_name, declare,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/messaging.py", line 203, in _publish
+    mandatory=mandatory, immediate=immediate,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/channel.py", line 1763, in _basic_publish
+    self.connection.drain_events(timeout=0)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/connection.py", line 500, in drain_events
+    while not self.blocking_read(timeout):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/connection.py", line 505, in blocking_read
+    frame = self.transport.read_frame()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/transport.py", line 256, in read_frame
+    frame_header = read(7, True)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/transport.py", line 448, in _read
+    raise IOError('Server unexpectedly closed connection')
+OSError: Server unexpectedly closed connection
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/stop-bot/10/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 493, in detener
+    stop(t.codigo)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/task.py", line 29, in stop
+    app.control.revoke(codigo,terminate=True,signal='KILL')
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/celery/app/control.py", line 228, in revoke
+    }, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/celery/app/control.py", line 454, in broadcast
+    limit, callback, channel=channel,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/pidbox.py", line 315, in _broadcast
+    serializer=serializer)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/pidbox.py", line 290, in _publish
+    serializer=serializer,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/messaging.py", line 181, in publish
+    exchange_name, declare,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/messaging.py", line 203, in _publish
+    mandatory=mandatory, immediate=immediate,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/channel.py", line 1763, in _basic_publish
+    self.connection.drain_events(timeout=0)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/connection.py", line 500, in drain_events
+    while not self.blocking_read(timeout):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/connection.py", line 505, in blocking_read
+    frame = self.transport.read_frame()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/transport.py", line 256, in read_frame
+    frame_header = read(7, True)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/transport.py", line 448, in _read
+    raise IOError('Server unexpectedly closed connection')
+OSError: Server unexpectedly closed connection

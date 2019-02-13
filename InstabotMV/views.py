@@ -490,7 +490,7 @@ def detener(self,t):
     task.active=False
     task.save()
     t=thread.objects.get(task=t)
-    stop.delay(t.codigo)
+    stop(t.codigo)
     return redirect('instabot:dashboard')
 
 

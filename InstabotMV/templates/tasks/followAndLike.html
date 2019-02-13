@@ -86,12 +86,7 @@
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <h4 class="left">New Task</h4>
         </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <a href="{% url 'instabot:newTask' %}" class="btn btn-primary pull-right">  <!--Se invoca la view para volver -->
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                Back
-            </a>
-        </div>
+        
     </div>
 
     <hr class="divider">
@@ -140,35 +135,166 @@
             <form method="POST" id="formulario" >
                     {% csrf_token %}
                 <link rel="stylesheet" href="{% static 'css/tags.css' %}">
-                        <div  class="tags-input" data-name="tags-input">
+                        <div style="width:100%;" class="tags-input" data-name="tags-input">
                             <section id="xd">
 
                             </section>
                             </div>
                             <script src="{% static 'js/tags.js' %}"></script>
+                
+                <p>Select actions for current task</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a  style="overflow:auto; border-radius: 5px;border: 2px solid#2C7CB2;" id="btnlike"class="btn btn-primary btn-block">
+                            <span style="float:left;"class="glyphicon glyphicon-hand-down"></span>
+                            <p style="float:left;">LIKE MEDIA OF THIS TASK</p>
+                            <input name="like" id="like" value="like" type="hidden">
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet" />
+                            <script>
+                            $(document).ready(function() {
+  var toggleText = $("#ip").val();
+  $("#btnlike").click(function() {
+    if ($("#like").val() != 'none') {
+      toggleText = $("#like").val();
+      $("#like").val('none');
+    } else
+      $("#like").val(toggleText);
+    $(this).toggleClass('btn-default').toggleClass('btn-link');
 
-                <h3>Selec actions for current task</h3>
+  });
+});
+                            </script>
+                           
+                        </a>
+                    </div>
+                </div>
                 <br>
-                <label>LIKE MEDIA OF THIS TASK</label>
-                <input type="checkbox" id="like" name="like" aria-label="...">  <br>
-                <label>FOLLOW USERS OF THIS TASK MEDIA</label>
-                <input type="checkbox" id="follow" name="follow" aria-label="...">  <br>
-                <h3>Selec features</h3>
-                <label>DON'T LIKE MEDIA OF THE SAME USER SECOND TIME</label>
-                <input type="checkbox" id="dont" name="dont" aria-label="...">  <br>
-                <label>DON'T FOLLOW PREVIOUSLY UNFOLLOWED USERS</label>
-                <input type="checkbox" id="dontfollow" name="dontfollow" aria-label="...">  <br>
-                <label>RANDOMLY LIKE 3 EXTRA MEDIA FOR EACH USER</label>
-                <input type="checkbox" id="randomly" name="randomly" aria-label="...">  <br>
-                <label>SEARCH FOR RECENTLY POSTED MEDIA ONLY</label>
-                <input type="checkbox"  id="search" name="search" aria-label="...">  <br>
-                <h3>check additional settings</h3>
-                <label>Antispam filter</label>
-                <input type="checkbox" id="antispam" name="antispam" aria-label="...">  <br>
-                <label>Custom wordfilter</label>
-                <input type="checkbox" id="custom" name="custom" aria-label="...">  <br>
-                <button type="submit" class="btn btn-primary">save</button>
-
+                <div class="row">
+                    <div class="col-md-12">
+                        <a style="overflow:auto;border-radius: 5px; border: 2px solid#2C7CB2;" id="btnfollow"style="overflow:auto;" class="btn btn-primary btn-block">
+                            <span style="float:left;"class="glyphicon glyphicon-hand-down"></span>
+                            <input name="follow" id="follow" value="follow" type="hidden">
+                            <script>
+                                    $(document).ready(function() {
+          var toggleText = $("#ip").val();
+          $("#btnfollow").click(function() {
+            if ($("#follow").val() != 'none') {
+              toggleText = $("#follow").val();
+              $("#follow").val('none');
+            } else
+              $("#follow").val(toggleText);
+            $(this).toggleClass('btn-default').toggleClass('btn-link');
+        
+          });
+        });
+                                    </script>
+                            <p style="float:left;">FOLLOW USERS OF THIS TASK MEDIA</p>
+                            
+                        </a>
+                    </div>
+                </div>
+                <p>Select Features</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a style="overflow:auto; border-radius: 5px;border: 2px solid#2C7CB2;" style="overflow:auto;" id="btndont" class="btn btn-primary btn-block">
+                            <span style="float:left;" class="glyphicon glyphicon-hand-down"></span>
+                            <input name="dont" id="dont" value="dont" type="hidden">
+                            <script>
+                                    $(document).ready(function() {
+          var toggleText = $("#ip").val();
+          $("#btndont").click(function() {
+            if ($("#dont").val() != 'none') {
+              toggleText = $("#dont").val();
+              $("#dont").val('none');
+            } else
+              $("#dont").val(toggleText);
+            $(this).toggleClass('btn-default').toggleClass('btn-link');
+        
+          });
+        });
+                                    </script>
+                            <p style="float:left;">DON'T LIKE MEDIA OF THE SAME USER SECOND TIME</p>
+                           
+                        </a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a style="overflow:auto; border-radius: 5px;border: 2px solid#2C7CB2;" style="overflow:auto;" id="btndontfollow" class="btn btn-primary btn-block">
+                            <span style="float:left;" class="glyphicon glyphicon-hand-down"></span>
+                            <input name="dontfollow" id="dontfollow" value="dontfollow" type="hidden">
+                            <script>
+                                    $(document).ready(function() {
+          var toggleText = $("#ip").val();
+          $("#btndontfollow").click(function() {
+            if ($("#dontfollow").val() != 'none') {
+              toggleText = $("#dontfollow").val();
+              $("#dontfollow").val('none');
+            } else
+              $("#dontfollow").val(toggleText);
+            $(this).toggleClass('btn-default').toggleClass('btn-link');
+        
+          });
+        });
+                                    </script>
+                            <p style="float:left;">DON'T FOLLOW PREVIOUSLY UNFOLLOWED USERS</p>
+                            
+                        </a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a style="overflow:auto; border-radius: 5px; border: 2px solid#2C7CB2;" style="overflow:auto;" id="btnsearch" class="btn btn-primary btn-block">
+                            <span  style="float:left;" class="glyphicon glyphicon-hand-down"></span>
+                            <input name="search" id="search" value="search" type="hidden">
+                            <script>
+                                    $(document).ready(function() {
+          var toggleText = $("#ip").val();
+          $("#btnsearch").click(function() {
+            if ($("#search").val() != 'none') {
+              toggleText = $("#search").val();
+              $("#search").val('none');
+            } else
+              $("#search").val(toggleText);
+            $(this).toggleClass('btn-default').toggleClass('btn-link');
+        
+          });
+        });
+                                    </script>
+                            <p style="float:left;">SEARCH FOR RECENTLY POSTED MEDIA ONLY</p>
+                            
+                        </a>
+                    </div>
+                </div>
+                
+                
+                
+                
+                
+                <input style="opacity:0; position:absolute; left:9999px;"type="checkbox" id="randomly" name="randomly" aria-label="...">  <br>
+                
+                
+                
+                
+                <input style="opacity:0; position:absolute; left:9999px;" type="checkbox" id="antispam" name="antispam" aria-label="...">  <br>
+                
+                <input style="opacity:0; position:absolute; left:9999px;" type="checkbox" id="custom" name="custom" aria-label="...">  <br>
+                <br>
+                <div class="row">
+                        <div class="x">
+                <button style="float: right;"type="submit" class="btn btn-primary">save</button>
+            </div>
+            <div class="y">
+                    <a href="{% url 'instabot:newTask' %}" class="btn btn-primary ">  <!--Se invoca la view para volver -->
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        Back
+                    </a>
+                </div></div>
+            
             </form>
 
 

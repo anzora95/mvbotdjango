@@ -24,6 +24,7 @@ from .location_follow import get_us_id_by_location
 from InstabotMV.src.featuresbot.like_recently_media import like_recently_media
 from InstabotMV.src.featuresbot.no_like_same_us import no_like_same_us
 from InstabotMV.models import Task
+from InstabotMV.models import *
 
 
 class InstaBot:
@@ -438,6 +439,27 @@ class InstaBot:
                 return False
         else:
             return False
+    def imagen(username,self):
+        url_user_detail='https://www.instagram.com/%s/?__a=1'
+        if True:
+            if True:
+                url_user_detail='https://www.instagram.com/%s/?__a=1'
+                url_info = self.url_user_detail % (username)
+                try:
+                    
+                    r = self.s.get(url_info)
+                    all_data = json.loads(r.text)
+                    user_info = all_data['user']['profile_pic_url']
+                    c=Creds.objects.get(username=username)
+                    c.imgUrl=user_info
+                    c.save()
+                    return None
+                    return user_info    #aqui retorna el user info con todos los valores llenos si el usuario targeteado no sigue a nuestra cuenta
+                except:
+                    logging.exception("Except on get_userinfo_by_name")
+                    return False
+            else:
+                return False
 
     def get_userinfo_by_name(self, username):
         """ Get user info by name """

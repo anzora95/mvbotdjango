@@ -41,6 +41,7 @@ class Creds(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     insta_user = models.CharField(max_length=150)
     insta_pass = models.CharField(max_length=50)
+    imgUrl=models.TextField()
     
 
     class Meta:

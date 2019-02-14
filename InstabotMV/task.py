@@ -24,7 +24,7 @@ def imprimir():
         print(x)
     return '{} rimpresion'
 
-
+@shared_task
 def stop(codigo):
     app.control.revoke(codigo,terminate=True,signal='KILL')
     return 'Finished'

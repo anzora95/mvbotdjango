@@ -15174,3 +15174,482 @@ Traceback (most recent call last):
   File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/transport.py", line 448, in _read
     raise IOError('Server unexpectedly closed connection')
 OSError: Server unexpectedly closed connection
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/start/9/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 514, in start
+    runbot(u,p,hl,ide)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/task.py", line 36, in runbot
+    t.codigo=runbot.request.id
+AttributeError: 'function' object has no attribute 'request'
+ERROR:django.request:Internal Server Error: /instabotmv/start/9/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 514, in start
+    runbot(u,p,hl,ide)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/task.py", line 36, in runbot
+    t.codigo=runbot.request.id
+AttributeError: 'function' object has no attribute 'request'
+ERROR:django.request:Internal Server Error: /instabotmv/start/9/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1048, "Column 'codigo' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 514, in start
+    runbot(u,p,hl,ide)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/celery/local.py", line 191, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/celery/app/task.py", line 375, in __call__
+    return self.run(*args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/task.py", line 37, in runbot
+    t.save()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/models/base.py", line 718, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/models/base.py", line 748, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/models/base.py", line 812, in _save_table
+    forced_update)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/models/base.py", line 861, in _do_update
+    return filtered._update(values) > 0
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/models/query.py", line 712, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/models/sql/compiler.py", line 1383, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/models/sql/compiler.py", line 1065, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.IntegrityError: (1048, "Column 'codigo' cannot be null")
+ERROR:django.request:Internal Server Error: /instabotmv/start/9/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1048, "Column 'codigo' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 514, in start
+    runbot(u,p,hl,ide)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/celery/local.py", line 191, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/celery/app/task.py", line 375, in __call__
+    return self.run(*args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/task.py", line 37, in runbot
+    t.save()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/models/base.py", line 718, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/models/base.py", line 748, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/models/base.py", line 812, in _save_table
+    forced_update)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/models/base.py", line 861, in _do_update
+    return filtered._update(values) > 0
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/models/query.py", line 712, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/models/sql/compiler.py", line 1383, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/models/sql/compiler.py", line 1065, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.IntegrityError: (1048, "Column 'codigo' cannot be null")
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/stop-bot/9/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 493, in detener
+    stop(t.codigo)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/task.py", line 29, in stop
+    app.control.revoke(codigo,terminate=True,signal='KILL')
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/celery/app/control.py", line 228, in revoke
+    }, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/celery/app/control.py", line 454, in broadcast
+    limit, callback, channel=channel,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/pidbox.py", line 315, in _broadcast
+    serializer=serializer)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/pidbox.py", line 290, in _publish
+    serializer=serializer,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/messaging.py", line 181, in publish
+    exchange_name, declare,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/messaging.py", line 203, in _publish
+    mandatory=mandatory, immediate=immediate,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/channel.py", line 1763, in _basic_publish
+    self.connection.drain_events(timeout=0)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/connection.py", line 500, in drain_events
+    while not self.blocking_read(timeout):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/connection.py", line 505, in blocking_read
+    frame = self.transport.read_frame()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/transport.py", line 256, in read_frame
+    frame_header = read(7, True)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/transport.py", line 448, in _read
+    raise IOError('Server unexpectedly closed connection')
+OSError: Server unexpectedly closed connection
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/stop-bot/9/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 493, in detener
+    stop(t.codigo)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/task.py", line 29, in stop
+    app.control.revoke(codigo,terminate=True,signal='KILL')
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/celery/app/control.py", line 228, in revoke
+    }, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/celery/app/control.py", line 454, in broadcast
+    limit, callback, channel=channel,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/pidbox.py", line 315, in _broadcast
+    serializer=serializer)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/pidbox.py", line 290, in _publish
+    serializer=serializer,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/messaging.py", line 181, in publish
+    exchange_name, declare,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/messaging.py", line 203, in _publish
+    mandatory=mandatory, immediate=immediate,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/channel.py", line 1763, in _basic_publish
+    self.connection.drain_events(timeout=0)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/connection.py", line 500, in drain_events
+    while not self.blocking_read(timeout):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/connection.py", line 505, in blocking_read
+    frame = self.transport.read_frame()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/transport.py", line 256, in read_frame
+    frame_header = read(7, True)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/transport.py", line 448, in _read
+    raise IOError('Server unexpectedly closed connection')
+OSError: Server unexpectedly closed connection
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/stop-bot/20/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 493, in detener
+    stop(t.codigo)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/task.py", line 29, in stop
+    app.control.revoke(codigo,terminate=True,signal='KILL')
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/celery/app/control.py", line 228, in revoke
+    }, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/celery/app/control.py", line 454, in broadcast
+    limit, callback, channel=channel,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/pidbox.py", line 315, in _broadcast
+    serializer=serializer)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/pidbox.py", line 290, in _publish
+    serializer=serializer,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/messaging.py", line 181, in publish
+    exchange_name, declare,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/kombu/messaging.py", line 203, in _publish
+    mandatory=mandatory, immediate=immediate,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/channel.py", line 1763, in _basic_publish
+    self.connection.drain_events(timeout=0)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/connection.py", line 500, in drain_events
+    while not self.blocking_read(timeout):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/connection.py", line 505, in blocking_read
+    frame = self.transport.read_frame()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/transport.py", line 256, in read_frame
+    frame_header = read(7, True)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/amqp/transport.py", line 448, in _read
+    raise IOError('Server unexpectedly closed connection')
+OSError: Server unexpectedly closed connection
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/accounts/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 201, in get
+    from six.moves.urllib.request import urlopen
+ModuleNotFoundError: No module named 'six'
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/accounts/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 205, in get
+    profile=myfile['user']['profile_pic_url']
+TypeError: byte indices must be integers or slices, not str
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/accounts/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 206, in get
+    user = User.objects.get(id=request.user.id) #Get the current user logged in
+AttributeError: 'str' object has no attribute 'user'
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/accounts/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 203, in get
+    request = requests.get("https://i.instagram.com/api/v1/users/402761121/info/").text
+NameError: name 'requests' is not defined
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/accounts/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 206, in get
+    user = User.objects.get(id=request.user.id) #Get the current user logged in
+AttributeError: 'str' object has no attribute 'user'
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico

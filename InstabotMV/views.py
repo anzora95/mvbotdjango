@@ -227,6 +227,8 @@ class UserAccounts(LoginRequiredMixin, View):
             cred.insta_user=request.POST.get('insta_user')
             cred.insta_pass=request.POST.get('insta_pass')
             cred.save()
+            
+            
             return redirect('instabot:userAccounts')
         
         return redirect('instabot:dashboard')

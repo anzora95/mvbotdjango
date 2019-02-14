@@ -308,7 +308,7 @@ class InstaBot:
                 self.user_id = ui.get_user_id_by_login(self.user_login)
                 self.login_status = True
                 log_string = '%s login success!' % (self.user_login)
-                self.write_log(log_string)
+                self.write_log(log_string)#aqui deberia ir la funcion de guardar la url de la imagen con un if que compruebe si ya esta en la base de datos o no
             else:
                 self.login_status = False
                 self.write_log('Login error! Check your login data!')

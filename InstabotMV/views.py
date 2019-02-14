@@ -198,15 +198,19 @@ class UserAccounts(LoginRequiredMixin, View):
     template_name = 'users/mybot.html'
     
     def get(self, request, *args, **kwargs):
+        
         user = User.objects.get(id=request.user.id) #Get the current user logged in
         ll=LastLogin.objects.get(user=user)
         cred=ll.cred
         user=User.objects.get(id=request.user.id) #Obtencion del usuario logeado
         creds = Creds.objects.all() #Obtencion de todas las credenciales 
         lcreds=[] #Inicializacion de lista de credenciales
+
         for x in range(0,len(creds)):
             if creds[x].user==user:
                 lcreds.append(creds[x])
+                
+                
 
         
         
@@ -261,11 +265,13 @@ def GetHashtags(request):
 
 
 def TrueOrFalse(data):
-    if data=='on':
-
+    if (data == 'like' or data == 'follow' or 
+       data == 'dontfollow' or data == 'search' or
+       data=='dont' ):
+        print(data)
         return True
     else:
-
+        print(data)
         return False
 
 def DeleteTask(request, id_task):
@@ -484,7 +490,7 @@ def detener(self,t):
     task.active=False
     task.save()
     t=thread.objects.get(task=t)
-    stop.delay(t.codigo)
+    stop(t.codigo)
     return redirect('instabot:dashboard')
 
 

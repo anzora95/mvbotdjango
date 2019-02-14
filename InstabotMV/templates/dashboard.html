@@ -57,11 +57,11 @@
 </div>
 
                                 <ul class="list-inline">
-                                        <li ><a href="#1" data-toggle="tab" >Results</a></li>
+                                        <li ><a href="#1{{task.id}}" data-toggle="tab" >Results</a></li>
                                         <li >|</li>
-                                        <li ><a href="#2" data-toggle="tab">Targets</a></li>
+                                        <li ><a href="#2{{task.id}}" data-toggle="tab">Targets</a></li>
                                         <li >|</li>
-                                        <li ><a href="#3" data-toggle="tab">Options</a></li>
+                                        <li ><a href="#3{{task.id}}" data-toggle="tab">Options</a></li>
                                 </ul>
                         </div>
                     </div>
@@ -72,17 +72,17 @@
 </div>
 
         <div class="tab-content ">
-            <div class="tab-pane active" id="1">
+            <div class="tab-pane active" id="1{{task.id}}">
                 {% include 'includes/tabs/results.html' %}
             </div>
-            <div class="tab-pane" id="2">
+            <div class="tab-pane" id="2{{task.id}}">
                 <div class="row">
                     <div class="col-sm-4 col-sm-offset-4  text-center">
                 {{task.tags}}
                 </div>
                 </div>
             </div>
-            <div class="tab-pane" id="3">
+            <div class="tab-pane" id="3{{task.id}}">
                 {% include 'includes/tabs/options.html' %}
             </div>
             
@@ -93,78 +93,23 @@
     <div class="text-center">
         {% if task.active%}
        <div class="simulating">
-            <h3>Simulating human behaviour, swell is coming in 5 hour(s) 28 minute(s).
+            <h3>Simulating human behaviour.
                     Feel free to close this window. Task is running in Cloud.</h3>
        </div>
+
        {% endif%}
-        <div display="block-level-elements">
-        <span>
-        <button  class="btn btn-primary btn-lit-circle btn-xl" >
-            <i class="glyphicon glyphicon-pencil"></i>
-        </button>
-        </span>
-        <span>
-            <a href ="{% url 'instabot:del_task' task.id%}">
-                <button  class="btn btn-primary btn-lit-circle btn-xl"  >
-                    <i class="glyphicon glyphicon-trash"></i>
-                </button>
-            </a>
+       <div class="text-center" display="inline-block-elements">
 
-
-             <a href ="{% url 'instabot:del_task' task.id%}">
-                 esto borra la task
-             </a>
-        </span>
-        </div>
-        <div>
-        <span>
-            <i>
-                <button type="button" class="btn btn-status-dash btn-xl" id="dis_heart">
-                    <i class="glyphicon glyphicon-heart"></i>
-                </button>
-            </i>
-            <i>
-                <button type="button" class="btn btn-status-dash btn-xl" id="dis_user" >
+            <a href="#link" class="btn btn-primary btn-lit-circle" role="button">
+                    <i class="glyphicon glyphicon-heart-empty"></i>
+            <a href="#link" class="btn btn-primary btn-lit-circle" role="button">
                     <i class="glyphicon glyphicon-user"></i>
-                </button>
-            </i>
-            <i>
-                <button type="button" class="btn btn-status-dash btn-xl"  id="dis_eye">
-                    <i class="glyphicon glyphicon-eye-open"></i>
-                </button>
-            </i>
-            <i>
-                <button type="button" class="btn btn-status-dash btn-xl"  id="dis_sunglasses">
-                    <i class="glyphicon glyphicon-sunglasses"></i>
-                 </button>
-            </i>
-            
-            <i>
-                <button type="button" class="btn btn-status-dash btn-xl" id="dash" >
-                    <i class="glyphicon glyphicon-dashboard"></i>
-                </button>
-            </i>
-
-        </span>
-        </div>
-    </div>
-</form>
-
-    
-    <div class="text-center" display="inline-block-elements">
-        <div>
-            <span >
-
-                
-                {% if task.active%}
-                
-                <form action="{% url 'instabot:detener' task.id%}" method="post" >
-                        {% csrf_token %}
-                <button type="submit" class="btn btn-played btn-primary btn-circle btn-xl" id="load"
-                     data-loading-text="<i class='fa fa-refresh fa-spin'></i>">
+            </a>
+            {% if task.active%}
+            <a href="{% url 'instabot:detener' task.id%}" class="btn btn-played btn-primary btn-circle btn-xl" role="button">
                     <i class='glyphicon glyphicon-play'></i>
-                </button>
-                <style>
+            </a>
+            <style>
                     .btn-played {
                       border: 16px solid #f3f3f3;
                       border-radius: 50%;
@@ -186,43 +131,18 @@
                       100% { transform: rotate(360deg); }
                     }
                     </style>
-                {%else%}
-                <form action="{% url 'instabot:starter' task.id%}" method="post" >
-                        {% csrf_token %}
-                <button type="submit" class="btn btn-play btn-primary btn-circle btn-xl" id="load"
-                     data-loading-text="<i class='fa fa-refresh fa-spin'></i>">
+            {% else%}
+            <a href="{% url 'instabot:starter' task.id%}" class="btn btn-play btn-primary btn-circle btn-xl" role="button">
                     <i class='glyphicon glyphicon-play'></i>
-                </button>
-                {%endif%}
-
-            </span>
-           <div class=" popupBubble ">
-
-                    <button  class="btn btn-primary btn-lit-circle btn-xl " >
-                        <i class="glyphicon glyphicon-comment"></i>
-
-                    </button>
-
-            </div>
-            <span>
-           <button type="button" class="btn btn-primary btn-lit-circle btn-xl" >
-               <i class="glyphicon glyphicon-heart-empty"></i>
-           </button>
-           </span>
-           <span>
-           <button type = "button" class="btn btn-primary btn-lit-circle btn-xl" >
-               <i class="glyphicon glyphicon-user"></i>
-           </button>
-           </span>
-
-           <span>
-               <p>{{status}}</p>
-           </span>
-
-        </div>
-    </div>
-
-</form>
+            </a>
+            {%endif%}
+            <a href="#link" class="btn btn-primary btn-lit-circle" role="button">
+                    <i class="glyphicon glyphicon-pencil"></i>
+            </a>
+            <a href="#link" class="btn btn-primary btn-lit-circle" role="button">
+                    <i class="glyphicon glyphicon-trash"></i>
+            </a>
+       </div>
 <hr class="divider">
 {% endfor%}
 

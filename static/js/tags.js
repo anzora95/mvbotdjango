@@ -31,8 +31,28 @@
     el.appendChild(mainInput);
     el.appendChild(hiddenInput);
 
-    addTag('follow');
-    addTag("me")
+    addTag('trend');
+    
+    $('select').on('change',inicio);
+
+                               function inicio(){
+                               var id= $(this).val();
+                               $.ajax({
+                               data: {'id':id},
+                               url:'/instabotmv/hashtag_ajax/',
+                               type: 'get',
+                               success: function(data){
+                               var html=""
+                               var lista=[]
+                               for(var i=0;i<data.length;i++){
+                               addTag(data[i].fields.insta_tag);
+                               }
+                               
+                               
+                               $('#xd').html(html);
+                               }
+                               });
+                               }
 
     function addTag (text) {
         let tag = {

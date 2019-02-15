@@ -6,6 +6,10 @@
     font-size: 24px;
     line-height: 1.33;
 }
+.divider{
+  background-image: linear-gradient(to right, #2C7CB2, black);
+}
+
 
 .btn-circle {
     width: 40px;

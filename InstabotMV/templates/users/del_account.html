@@ -31,21 +31,17 @@
 {% endblock %}
 
 {% block body %}
-{%if task.active%}
-<h2>Please first stop the task</h2>
-<a href="{% url 'instabot:dashboard'%}" style="float:left;"   class="btn btn-primary" >Back</a>
-{%else%}
 <hr class="divider">
 <form method="POST" action="">
     {% csrf_token %}
 
- <h2>Are you sure to delete the task?</h2>
- <h3>Hashtags: {{task.tags}}</h3>
- <a href="{% url 'instabot:dashboard'%}" style="float:left;"   class="btn btn-primary" >Back</a>
+ <h2>Are you sure to delete this account?</h2>
+ <h3>{{cred.insta_user}}</h3>
+ <a href="{% url 'instabot:userAccounts'%}" style="float:left;"   class="btn btn-primary" >Back</a>
   <input class="btn btn-danger" style="float:right "href="{% url 'instabot:dashboard'%}" type="submit" value="Yes, Delete!">
 
 </form>
-{%endif%}
+
 {% endblock %}
 
 

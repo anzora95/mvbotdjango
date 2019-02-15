@@ -134,7 +134,7 @@ class LoginView(View):
 def logout(request):
     logout_django(request)
     return redirect('instabot:login')
-
+@login_required(login_url='/instabotmv/login')
 def DashboardView(request):
     user = User.objects.get(id=request.user.id) #Get the current user logged in
     ll=LastLogin.objects.get(user=user)

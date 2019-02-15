@@ -16914,3 +16914,6 @@ Traceback (most recent call last):
   File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
     raise errorclass(errno, errval)
 django.db.utils.IntegrityError: (1048, "Column 'unfollow' cannot be null")
+WARNING:django.request:Not Found: /login
+WARNING:django.request:Not Found: /login
+WARNING:django.request:Not Found: /instabot/login

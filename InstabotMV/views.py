@@ -145,6 +145,10 @@ def DashboardView(request):
        if AT[x].creds==cred:#If the task has the current logged user add it to the LT list
            #print(AT[x].user.username)
            LT.append(AT[x])
+    if len(LT)==0:
+        empty=True
+        print(LT)
+        return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'empty':empty}) 
 
     return render(request, 'dashboard.html', {'ll':ll,'LT':LT})
 
@@ -189,7 +193,6 @@ class UsersView(LoginRequiredMixin, View):
         context = {
             'users': users_in_system
         }
-
         return render(request, 'admin/clients.html', context)
 
 
@@ -227,7 +230,7 @@ class UserAccounts(LoginRequiredMixin, View):
             cred.insta_user=request.POST.get('insta_user')
             cred.insta_pass=request.POST.get('insta_pass')
             cred.save()
-            
+
             
             return redirect('instabot:userAccounts')
         
@@ -269,7 +272,7 @@ def GetHashtags(request):
 def TrueOrFalse(data):
     if (data == 'like' or data == 'follow' or 
        data == 'dontfollow' or data == 'search' or
-       data=='dont' ):
+       data=='dont' or data=='ghost' or data=='back'):
         print(data)
         return True
     else:
@@ -277,11 +280,29 @@ def TrueOrFalse(data):
         return False
 
 def DeleteTask(request, id_task):
+    user = User.objects.get(id=request.user.id)
+    ll=LastLogin.objects.get(user=user)
+    task=Task.objects.get(id=id_task)
     if request.method == 'POST':
         task=Task.objects.get(id=id_task)
         task.delete()
         return redirect('instabot:dashboard')
-    return render(request,'tasks/del_task.html')
+    return render(request,'tasks/del_task.html',{'task':task,'ll':ll})
+
+def DeleteAccount(request,id_cred):
+    user = User.objects.get(id=request.user.id)
+    cred=Creds.objects.get(id=id_cred)
+    ll=LastLogin.objects.get(user=user)
+    if request.method == 'POST':
+        cred=Creds.objects.get(id=id_cred)
+        cred.delete()
+        ll=LastLogin.objects.get(user=user)
+        user = User.objects.get(id=request.user.id)
+        c=Creds.objects.all()
+        ll.cred=c[1]
+        ll.save()
+        return redirect('instabot:userAccounts')
+    return render(request,'users/del_account.html',{'cred':cred,'ll':ll})
 
 def NewFollowLike(request):
     Hasgtags = HashtagList.objects.all()
@@ -301,6 +322,9 @@ def NewFollowLike(request):
         task.randomlylike=TrueOrFalse(request.POST.get('randomly'))
         task.search=TrueOrFalse(request.POST.get('search'))
         task.antispamfilter=TrueOrFalse(request.POST.get('antispam'))
+        task.unfollow=False
+        task.ghost=False
+        task.back=False
         task.custowordfilter=TrueOrFalse(request.POST.get('custom'))
         task.save()
         t=thread()
@@ -310,9 +334,35 @@ def NewFollowLike(request):
         return redirect('instabot:dashboard')
     return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags,'ll':ll})
 
-class UnfollowTask(LoginRequiredMixin,View):
-    def get(self,request, *args, **kwargs):
-        return render(request,'tasks/unfollow_task.html',{})
+def UnfollowTask(request):
+    Hasgtags = HashtagList.objects.all()
+    user = User.objects.get(id=request.user.id)
+    ll=LastLogin.objects.get(user=user)
+    cred=ll.cred
+    if request.method == 'POST':
+        task = Task()  # inicializacion de task
+        task.user = user  # Se le asigna un usuario a la task
+        task.creds=cred
+        task.tags="All users followed by Instaswell"
+        task.active = False
+        task.likemedia=False
+        task.followuser=False
+        task.dontlikemedia=False
+        task.dontfollow=False
+        task.randomlylike=False
+        task.search=False
+        task.antispamfilter=False
+        task.custowordfilter=False
+        task.unfollow=True
+        task.ghost=TrueOrFalse(request.POST.get('ghost'))
+        task.back=TrueOrFalse(request.POST.get('back'))
+        task.save()
+        t=thread()
+        t.task=task
+        t.codigo=''
+        t.save()
+        return redirect('instabot:dashboard')
+    return render(request, 'tasks/unfollow_task.html', {'Hasgtags': Hasgtags,'ll':ll})
 
 # **************************************************Bot****************************************************************
 

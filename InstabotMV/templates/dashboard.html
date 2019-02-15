@@ -44,11 +44,18 @@
         </div>
     </div>
 
-    <hr class="divider">
+  
+    {% if empty%}
+    <h3 class="text-center">Please create a new task to start Ngage.</h3>
 
+    {%endif%}
     
 {% for task in LT %}
-<div id="exTab2" class="container">
+
+
+<hr class="divider">
+
+
         
         <div class="row">
                 <div class="col-sm-4 col-sm-offset-4  text-center">
@@ -82,8 +89,8 @@
                 </div>
                 </div>
             </div>
-            <div class="tab-pane" id="3{{task.id}}">
-                {% include 'includes/tabs/options.html' %}
+            <div class="tab-pane disabled" id="3{{task.id}}">
+                <!--{% include 'includes/tabs/options.html' %}-->
             </div>
             
         </div>
@@ -96,15 +103,21 @@
             <h3>Simulating human behaviour.
                     Feel free to close this window. Task is running in Cloud.</h3>
        </div>
-
+       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
        {% endif%}
        <div class="text-center" display="inline-block-elements">
 
-            <a href="#link" class="btn btn-primary btn-lit-circle" role="button">
+            <a href="#link" class="btn btn-primary disabled btn-lit-circle" role="button">
                     <i class="glyphicon glyphicon-heart-empty"></i>
-            <a href="#link" class="btn btn-primary btn-lit-circle" role="button">
-                    <i class="glyphicon glyphicon-user"></i>
-            </a>
+                    {% if task.unfollow%}
+                    <a href="#link" class="btn btn-primary disabled btn-lit-circle" role="button">
+                        <i class="fas fa-user-minus"></i>
+                </a>
+            {%else %}
+            <a href="#link" class="btn btn-primary disabled btn-lit-circle" role="button">
+                <i class="fas fa-user-plus"></i>
+        </a>
+            {%endif%}
             {% if task.active%}
             <a href="{% url 'instabot:detener' task.id%}" class="btn btn-played btn-primary btn-circle btn-xl" role="button">
                     <i class='glyphicon glyphicon-play'></i>
@@ -132,20 +145,20 @@
                     }
                     </style>
             {% else%}
-            <a href="{% url 'instabot:starter' task.id%}" class="btn btn-play btn-primary btn-circle btn-xl" role="button">
+            <a href="{% url 'instabot:starter' task.id%}" class="btn btn-play btn-primary  btn-circle btn-xl" role="button">
                     <i class='glyphicon glyphicon-play'></i>
             </a>
             {%endif%}
-            <a href="#link" class="btn btn-primary btn-lit-circle" role="button">
+            <a href="#link" class="btn btn-primary disabled btn-lit-circle" role="button">
                     <i class="glyphicon glyphicon-pencil"></i>
             </a>
-            <a href="#link" class="btn btn-primary btn-lit-circle" role="button">
+            <a href="{% url 'instabot:del_task' task.id%}" class="btn btn-primary btn-lit-circle" role="button">
                     <i class="glyphicon glyphicon-trash"></i>
             </a>
        </div>
-<hr class="divider">
-{% endfor%}
 
+{% endfor%}
+<br>
    <div>
    {% if object_list %}
     {% for media in object_list %}

@@ -31,9 +31,25 @@
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <label class="mdl-textfield__label" for="id_insta_pass">Insta pass:</label>
                     <input class="mdl-textfield__input" type="password" name="insta_pass" id="insta_pass" maxlength="30" required="">
+                    <input type="checkbox" onclick="myFunction()">Show Password
+                </div>
+                <div>
+                    <br>
+                        <p  for="id_insta_pass">Please check your credentials</p>
                 </div>
                 <br>
+                <script>
+                        function myFunction() {
+                          var x = document.getElementById("insta_pass");
+                          if (x.type === "password") {
+                            x.type = "text";
+                          } else {
+                            x.type = "password";
+                          }
+                        }
+                        </script>
                 <input class="btn btn-primary" type="submit"
+                
                        value="Add account">
                 <br><br>
             </form>
@@ -45,11 +61,20 @@
                     {% for cred in lcreds %}
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img style="border-radius: 50%;" src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt="user-pic">
+                        <img style="border-radius: 50%;" src="{% static 'img/avatar.png' %}" alt="user-pic">
                         <div class="caption">
                             <h4 class="text-center">{{cred.insta_user}}</h4>
                             <p>
-                                <a href="{% url 'instabot:changeAccount' cred.id %}" class="btn btn-primary center-block"  role="button">Current</a>
+                                    {% if ll.cred.insta_user == cred.insta_user%}
+                                <a href="{% url 'instabot:changeAccount' cred.id %}" class="btn btn-primary center-block"  
+                                role="button">Current</a>
+                                {%else%}
+                                <a href="{% url 'instabot:changeAccount' cred.id %}" class="btn btn-success center-block"  
+                                role="button">Switch</a>
+                                {%endif%}
+                                <br>
+                                <a href="{% url 'instabot:delaccount' cred.id %}" class="btn btn-danger center-block"  
+                                role="button">Delete</a>
                             </p>
                         </div>
                     </div>

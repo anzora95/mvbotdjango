@@ -121,6 +121,9 @@ class Task(models.Model):
     dontfollow=models.BooleanField()
     randomlylike=models.BooleanField()
     search=models.BooleanField()
+    unfollow=models.BooleanField()
+    ghost=models.BooleanField()
+    back=models.BooleanField()
     antispamfilter=models.BooleanField()
     custowordfilter=models.BooleanField()
     class Meta:
@@ -132,7 +135,7 @@ class Task(models.Model):
 
 class LastLogin(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
-    cred=models.ForeignKey(Creds,on_delete=models.CASCADE)
+    cred=models.ForeignKey(Creds,on_delete=models.SET_NULL, null=True)
     class Meta:
         verbose_name = 'lastLogin'
         verbose_name_plural = 'lastLogin'

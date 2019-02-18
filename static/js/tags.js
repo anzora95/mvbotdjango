@@ -31,7 +31,7 @@
     el.appendChild(mainInput);
     el.appendChild(hiddenInput);
 
-    addTag('trend');
+    
     
     $('select').on('change',inicio);
 
@@ -44,9 +44,18 @@
                                success: function(data){
                                var html=""
                                var lista=[]
+                               
                                for(var i=0;i<data.length;i++){
+                                
                                addTag(data[i].fields.insta_tag);
+                               lista[i]=i;
                                }
+                               for(var i=0;i<lista.length;i++){
+                                
+                                removeTag(i);
+                                
+                                }
+
                                
                                
                                $('#xd').html(html);

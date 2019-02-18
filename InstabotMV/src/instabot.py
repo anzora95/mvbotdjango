@@ -779,13 +779,13 @@ class InstaBot:
                     #self.remove_already_liked()
                 # ------------------- Like -------------------
                 #if follow que entre
-                #self.new_auto_mod_follow()
+                self.new_auto_mod_follow()
 
                 # ------------------- Follow -------------------
                 #if like que entre
-                #self.new_auto_mod_like()
+                self.new_auto_mod_like()
                 # ------------------- Unfollow -------------------
-                self.new_auto_mod_unfollow()
+                #self.new_auto_mod_unfollow()
                 # ------------------- Comment -------------------
                 #self.new_auto_mod_comments()
                 # Bot iteration in 1 sec

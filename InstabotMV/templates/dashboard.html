@@ -60,6 +60,7 @@
         <div class="row">
                 <div class="col-sm-4 col-sm-offset-4  text-center">
 <div class="gradiente">
+    
 <p class="hashtags">{{task.tags}}</p>
 </div>
 
@@ -83,11 +84,11 @@
                 {% include 'includes/tabs/results.html' %}
             </div>
             <div class="tab-pane" id="2{{task.id}}">
-                <div class="row">
-                    <div class="col-sm-4 col-sm-offset-4  text-center">
-                {{task.tags}}
-                </div>
-                </div>
+                
+                    <div class="row">
+                            <div class="col-sm-4 col-sm-offset-4  text-center">{{task.tags}}
+                            </div>
+                        </div>
             </div>
             <div class="tab-pane disabled" id="3{{task.id}}">
                 <!--{% include 'includes/tabs/options.html' %}-->

@@ -135,9 +135,9 @@ class InstaBot:
                  like_per_day=1000,
                  media_max_like=50,
                  media_min_like=0,
-                 follow_per_day=0,
+                 follow_per_day=300,
                  follow_time=5 * 60 * 60,
-                 unfollow_per_day=0,
+                 unfollow_per_day=300,
                  start_at_h=0,
                  start_at_m=0,
                  end_at_h=23,
@@ -931,13 +931,13 @@ class InstaBot:
             return False
 
     def auto_unfollow(self):
-        checking = True
-        while checking:
-            username_row = Username.objects.all()
+        #checking = True
+        #while checking:
+            username_row = Username.objects.filter(cred_us = self.us )
             unl=[]
             for x in range(0,len(username_row)):
                 unl.append(username_row[x])
-                print(unl[x].username_id)
+                self.unfollow(unl[x].username_id)
             #if not username_row:
              #   self.write_log("Looks like there is nobody to unfollow.")
               #  return False
@@ -1042,7 +1042,7 @@ class InstaBot:
             #        or self.is_follower is not True
             #):
              
-            self.write_log(current_user)
+            #self.write_log(current_user)
                 #self.unfollow(current_id)
                 #insert_unfollow_count(self, user_id=current_id)
 

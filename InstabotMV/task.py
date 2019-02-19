@@ -38,6 +38,7 @@ def runbot(user,p,hl,i):
     bot = InstaBot(
         login=user,
         password=p,
+        us=user,
         like_per_day=1000,
         comments_per_day=0,
         tag_list=hl,

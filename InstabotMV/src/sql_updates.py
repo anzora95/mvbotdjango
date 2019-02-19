@@ -75,7 +75,7 @@ def insert_username(self, username_id, username, unfollow, us):
     user_insert.save()
 
 
-def insert_unfollow_count(self, user_id=False, user=False):
+def insert_unfollow_count(user_id=False, user=False):
     """ track unfollow count for new futures """
 
     if user_id:

@@ -122,11 +122,8 @@ class InstaBot:
     next_iteration = {"Like": 2, "Follow": 30, "Unfollow": 1, "Comments": 0}
 
     #features
-    ft_like=False,
-    ft_follow = False,
-    ft_no_like = False,
-    ft_no_follow = False,
-    ft_src_rcntly = False
+    
+    
 
     def __init__(self,
                  login,
@@ -180,6 +177,8 @@ class InstaBot:
 
         self.time_in_day = 24 * 60 * 60
         # Like
+        self.ftlike=ft_like
+        self.ftfollow=ft_follow
         self.like_per_day = like_per_day
         if self.like_per_day != 0:
             self.like_delay = self.time_in_day / self.like_per_day
@@ -933,11 +932,18 @@ class InstaBot:
     def auto_unfollow(self):
         #checking = True
         #while checking:
-            username_row = Username.objects.filter(cred_us = self.us )
+            username_row = Username.objects.filter(cred_us = self.us , unfollow_count = 0)
             unl=[]
-            for x in range(0,len(username_row)):
-                unl.append(username_row[x])
-                self.unfollow(unl[x].username_id)
+            if len(username_row)!=0:
+                for x in range(0,len(username_row)):
+                    unl.append(username_row[x])
+                    self.unfollow(unl[x].username_id)
+                    #llenar una variable con un numero random luego evaluar si ese numero no es tan exagerado y luego multiplicarlo po 60 que en segundos equivale a un minuto
+                    time.sleep(60)
+                    insert_unfollow_count(user_id=unl[x].username_id)
+            else:
+                self.write_log("Looks like there is nobody to unfollow.")
+
             #if not username_row:
              #   self.write_log("Looks like there is nobody to unfollow.")
               #  return False

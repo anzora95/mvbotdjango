@@ -119,7 +119,7 @@
                         {% csrf_token %}
                          <select style="width: 100%;" onchange="getTags()">
                               <span class="input-group" >Type in your hashtags or select from a list</span>
-                <option>Select your audience</option>
+                
                     {% for  Hasgtag in Hasgtags %}
                 <option value="{{Hasgtag.id}}">{{Hasgtag.category}}</option>
                     {% endfor%}

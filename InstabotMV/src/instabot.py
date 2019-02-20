@@ -155,7 +155,8 @@ class InstaBot:
                  ft_follow =False,
                  ft_no_like=False,
                  ft_no_follow=False,
-                 ft_src_rcntly=False):
+                 ft_src_rcntly=False,
+                 ft_unfollow=False):
 
 
 
@@ -178,18 +179,19 @@ class InstaBot:
         self.time_in_day = 24 * 60 * 60
         # Like
         self.ftlike=ft_like
-        self.ftfollow=ft_follow
         self.like_per_day = like_per_day
         if self.like_per_day != 0:
             self.like_delay = self.time_in_day / self.like_per_day
 
         # Follow
+        self.ftfollow=ft_follow
         self.follow_time = follow_time
         self.follow_per_day = follow_per_day
         if self.follow_per_day != 0:
             self.follow_delay = self.time_in_day / self.follow_per_day
 
         # Unfollow
+        self.ftunfollow=ft_unfollow
         self.unfollow_per_day = unfollow_per_day
         if self.unfollow_per_day != 0:
             self.unfollow_delay = self.time_in_day / self.unfollow_per_day
@@ -777,14 +779,15 @@ class InstaBot:
                         1, self.max_like_for_one_tag)
                     #self.remove_already_liked()
                 # ------------------- Like -------------------
-                #if follow que entre
-                #self.new_auto_mod_follow()
+                if self.ftfollow:
+                    self.new_auto_mod_follow()
 
                 # ------------------- Follow -------------------
-                #if like que entre
-                #self.new_auto_mod_like()
+                if self.ftlike:
+                    self.new_auto_mod_like()
                 # ------------------- Unfollow -------------------
-                self.new_auto_mod_unfollow()
+                if self.ftunfollow:
+                    self.new_auto_mod_unfollow()
                 # ------------------- Comment -------------------
                 #self.new_auto_mod_comments()
                 # Bot iteration in 1 sec

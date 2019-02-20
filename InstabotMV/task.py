@@ -30,11 +30,14 @@ def stop(codigo):
     return 'Finished'
 
 @shared_task
-def runbot(user,p,hl,i):
+def runbot(user,p,hl,i,like,follow,unfollow):
     tas=Task.objects.get(id=i)
     t=thread.objects.get(task=tas)
     t.codigo=runbot.request.id
     t.save()
+    ft_like=like
+    ft_follow=follow
+    ft_unfollow=unfollow
     bot = InstaBot(
         login=user,
         password=p,
@@ -76,7 +79,9 @@ def runbot(user,p,hl,i):
             'beauty', 'express', 'kredit', 'collection', 'impor', 'preloved',
             'follow', 'follower', 'gain', '.id', '_id', 'bags'
         ],
-        unfollow_whitelist=['example_user_1', 'example_user_2'])
+        unfollow_whitelist=['example_user_1', 'example_user_2'],ft_like=like,
+        ft_follow=follow,
+        ft_unfollow=unfollow)
     
     while True:
 

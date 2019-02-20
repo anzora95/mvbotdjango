@@ -554,6 +554,9 @@ def start(request, task):
     p=cred.insta_pass
     task=Task.objects.get(id=task)
     ide=task.id
+    ftLike=task.likemedia
+    ftFollow=task.followuser
+    ftUnfollow =task.unfollow
     if task.active:
         task.active=False
     else:
@@ -563,7 +566,7 @@ def start(request, task):
     hl=strtask.split(",")
     print(hl)
     user=User.objects.get(id=request.user.id)
-    runbot.delay(u,p,hl,ide)
+    runbot.delay(u,p,hl,ide,ftLike,ftFollow,ftUnfollow)
     return redirect('instabot:dashboard')
 
 class StopBot(LoginRequiredMixin, View):

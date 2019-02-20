@@ -56,23 +56,24 @@
         </div>
         {% load static %}
         
-        <div class="col-md-8">
+        
             <div class="row">
                     {% for cred in lcreds %}
-                <div class="col-md-3">
+                <div class="col-md-3" style="margin-right:-100px;margin-left: px;">
                     <div class="thumbnail">
-                        <img style="border-radius: 50%;" src="{% static 'img/avatar.png' %}" alt="user-pic">
+                        <img style="border-radius: 50%; width: 75px;
+                        height: 75px;" src="{{cred.imgUrl}}" alt="user-pic">
                         <div class="caption">
                             <h4 class="text-center">{{cred.insta_user}}</h4>
                             <p>
                                     {% if ll.cred.insta_user == cred.insta_user%}
-                                <a href="{% url 'instabot:changeAccount' cred.id %}" class="btn btn-primary center-block"  
+                                <a href="{% url 'instabot:changeAccount' cred.id %}" style="margin-bottom: 3px;" class="btn btn-primary center-block"  
                                 role="button">Current</a>
                                 {%else%}
-                                <a href="{% url 'instabot:changeAccount' cred.id %}" class="btn btn-success center-block"  
+                                <a href="{% url 'instabot:changeAccount' cred.id %}" style="margin-bottom: 3px;" class="btn btn-success center-block"  
                                 role="button">Switch</a>
                                 {%endif%}
-                                <br>
+                                
                                 <a href="{% url 'instabot:delaccount' cred.id %}" class="btn btn-danger center-block"  
                                 role="button">Delete</a>
                             </p>
@@ -81,7 +82,7 @@
                 </div>
                 {% endfor %}
             </div>
-        </div>
+        
         
 
     </div>

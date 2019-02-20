@@ -1,0 +1,176 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block navbar %}
+<nav class="navbar navbar-inverse">
+    {% csrf_token %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <a href="{% url 'instabot:dashboard' %}"><h4 class="left navbar-text">Ngage Social</h4></a>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <h4 class="navbar-text"></h4>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">{{ ll.cred.insta_user }} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'instabot:userAccounts' %}">Accounts</a></li>
+                            <li><a href="#">Billing Profile</a></li>
+                            <li><a href="#">Support</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{% url 'instabot:logout' %}">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h4 class="left">TASKS</h4>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <a href="{% url 'instabot:newTask' %}" class="btn btn-primary pull-right">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                Add new
+            </a>
+        </div>
+    </div>
+
+  
+    {% if empty%}
+    <h3 class="text-center">Please create a new task to start Ngage.</h3>
+
+    {%endif%}
+    
+{% for task in LT %}
+
+
+<hr class="divider">
+
+
+        
+        <div class="row">
+                <div class="col-sm-4 col-sm-offset-4  text-center">
+<div class="gradiente">
+<p class="hashtags">{{task.tags}}</p>
+</div>
+
+                                <ul class="list-inline">
+                                        <li ><a href="#1{{task.id}}" data-toggle="tab" >Results</a></li>
+                                        <li >|</li>
+                                        <li ><a href="#2{{task.id}}" data-toggle="tab">Targets</a></li>
+                                        <li >|</li>
+                                        <li ><a href="#3{{task.id}}" data-toggle="tab">Options</a></li>
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+
+</div>
+
+        <div class="tab-content ">
+            <div class="tab-pane active" id="1{{task.id}}">
+                
+            </div>
+            <div class="tab-pane" id="2{{task.id}}">
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-4  text-center">
+                {{task.tags}}
+                </div>
+                </div>
+            </div>
+            <div class="tab-pane disabled" id="3{{task.id}}">
+                <!--{% include 'includes/tabs/options.html' %}-->
+            </div>
+            
+        </div>
+    </div>
+
+    <form>
+    <div class="text-center">
+        {% if task.active%}
+       <div class="simulating">
+            <h3>Simulating human behaviour.
+                    Feel free to close this window. Task is running in Cloud.</h3>
+       </div>
+       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+       {% endif%}
+       <div class="text-center" display="inline-block-elements">
+
+            <a href="#link" class="btn btn-primary disabled btn-lit-circle" role="button">
+                    <i class="glyphicon glyphicon-heart-empty"></i>
+                    {% if task.unfollow%}
+                    <a href="#link" class="btn btn-primary disabled btn-lit-circle" role="button">
+                        <i class="fas fa-user-minus"></i>
+                </a>
+            {%else %}
+            <a href="#link" class="btn btn-primary disabled btn-lit-circle" role="button">
+                <i class="fas fa-user-plus"></i>
+        </a>
+            {%endif%}
+            {% if task.active%}
+            <a href="{% url 'instabot:detener' task.id%}" class="btn btn-played btn-primary btn-circle btn-xl" role="button">
+                    <i class='glyphicon glyphicon-play'></i>
+            </a>
+            <style>
+                    .btn-played {
+                      border: 16px solid #f3f3f3;
+                      border-radius: 50%;
+                      border-top: 16px solid #3498db;
+                      width: 120px;
+                      height: 120px;
+                      -webkit-animation: spin 2s linear infinite; /* Safari */
+                      animation: spin 2s linear infinite;
+                    }
+                    
+                    /* Safari */
+                    @-webkit-keyframes spin {
+                      0% { -webkit-transform: rotate(0deg); }
+                      100% { -webkit-transform: rotate(360deg); }
+                    }
+                    
+                    @keyframes spin {
+                      0% { transform: rotate(0deg); }
+                      100% { transform: rotate(360deg); }
+                    }
+                    </style>
+            {% else%}
+            <a href="{% url 'instabot:starter' task.id%}" class="btn btn-play btn-primary  btn-circle btn-xl" role="button">
+                    <i class='glyphicon glyphicon-play'></i>
+            </a>
+            {%endif%}
+            <a href="#link" class="btn btn-primary disabled btn-lit-circle" role="button">
+                    <i class="glyphicon glyphicon-pencil"></i>
+            </a>
+            <a href="{% url 'instabot:del_task' task.id%}" class="btn btn-primary btn-lit-circle" role="button">
+                    <i class="glyphicon glyphicon-trash"></i>
+            </a>
+       </div>
+
+{% endfor%}
+<br>
+   <div>
+   {% if object_list %}
+    {% for media in object_list %}
+        <li>{{ media.code }}</li>
+
+    {% endfor %}
+    {% else %}
+
+
+   {% endif %}
+
+   </div>
+
+
+{% endblock %}

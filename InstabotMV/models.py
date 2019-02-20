@@ -36,23 +36,50 @@ class Creds(models.Model):
     def __str__(self):
         return '%s' % (self.insta_user)
 
+class Task(models.Model):
+    creds=models.ForeignKey(Creds,on_delete=models.CASCADE)
+    active=models.BooleanField()
+    tags=models.CharField(max_length=1000)
+    likemedia=models.BooleanField()
+    followuser=models.BooleanField()
+    dontlikemedia=models.BooleanField()
+    dontfollow=models.BooleanField()
+    randomlylike=models.BooleanField()
+    search=models.BooleanField()
+    unfollow=models.BooleanField()
+    ghost=models.BooleanField()
+    back=models.BooleanField()
+    antispamfilter=models.BooleanField()
+    custowordfilter=models.BooleanField()
+    class Meta:
+        verbose_name = 'Task'
+        verbose_name_plural = 'Tasks'
+
+    def __str__(self):
+        return '%s' % (self.tags)
+
 
 class Media(models.Model):
+    task=models.ForeignKey(Task, on_delete=models.CASCADE) 
     media_id = models.CharField(max_length=300)
     status = models.IntegerField()
     datetime = models.TextField()
     code = models.TextField()
     owner_name = models.CharField(max_length=100)
     cred_us = models.CharField(max_length=100)
+    picUrl=models.TextField()
+    
 
 
 class Username(models.Model):
+    task=models.ForeignKey(Task, on_delete=models.CASCADE)
     username = models.CharField(max_length=300)
     username_id = models.CharField(max_length=300)
     unfollow_count = models.IntegerField()
     last_followed_time = models.TextField()
     cred_us = models.CharField(max_length=100)
-
+    picUrl=models.TextField()
+    
 class Comments(models.Model):
     insta_comment = models.CharField(max_length=200)
     timestamp = models.DateTimeField()
@@ -112,27 +139,7 @@ class ChildTag(models.Model):
     dad_tag = models.ForeignKey(HashtagList, on_delete=models.CASCADE)
 #Lectura de hasgtags para el task
 
-class Task(models.Model):
-    creds=models.ForeignKey(Creds,on_delete=models.CASCADE)
-    active=models.BooleanField()
-    tags=models.CharField(max_length=1000)
-    likemedia=models.BooleanField()
-    followuser=models.BooleanField()
-    dontlikemedia=models.BooleanField()
-    dontfollow=models.BooleanField()
-    randomlylike=models.BooleanField()
-    search=models.BooleanField()
-    unfollow=models.BooleanField()
-    ghost=models.BooleanField()
-    back=models.BooleanField()
-    antispamfilter=models.BooleanField()
-    custowordfilter=models.BooleanField()
-    class Meta:
-        verbose_name = 'Task'
-        verbose_name_plural = 'Tasks'
 
-    def __str__(self):
-        return '%s' % (self.tags)
 
 class LastLogin(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
@@ -153,3 +160,4 @@ class thread(models.Model):
 
     def __str__(self):
         return '%s' % (self.task.tags)
+        

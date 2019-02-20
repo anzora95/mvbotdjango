@@ -34,41 +34,27 @@
     
     
     $('select').on('change',inicio);
-    var contador;
+
                                function inicio(){
                                var id= $(this).val();
                                $.ajax({
                                data: {'id':id},
                                url:'/instabotmv/hashtag_ajax/',
                                type: 'get',
-                               
                                success: function(data){
                                var html=""
                                var lista=[]
                                
-                               
-                               
-                               if(tags.length>0){
-                                   
-                               for(var j=0;j<tags.length;j++){
-                                   
-                              
-                                removeTag(j);
-                                  
-                                
-                               }}
-                               
-                               
-                               for(var i=0;i<=data.length;i++){
-                               
+                               for(var i=0;i<data.length;i++){
                                 
                                addTag(data[i].fields.insta_tag);
-                               contador=data.length;
-                                
-                               
-                               
+                               lista[i]=i;
                                }
-                               
+                               for(var i=0;i<lista.length;i++){
+                                
+                                removeTag(i);
+                                
+                                }
 
                                
                                
@@ -77,7 +63,6 @@
                                });
                                }
 
-                            
     function addTag (text) {
         let tag = {
             text: text,

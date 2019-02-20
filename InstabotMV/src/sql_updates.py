@@ -43,7 +43,7 @@ def check_already_followed(self, user_id):
             return 0
 
 
-def insert_media(self, media_id, status, code,owner_name, us):#push funcional
+def insert_media(self, media_id, status, code,owner_name, us, picUrl, task_id):#push funcional
     """ insert media to medias """
     now = datetime.now()
     med_insert = Media(
@@ -52,14 +52,16 @@ def insert_media(self, media_id, status, code,owner_name, us):#push funcional
         datetime=str(now),
         code=code,
         owner_name=owner_name,
-        cred_us=us
+        cred_us=us,
+        picUrl=picUrl,
+        task_id=task_id
 
     )
 
     med_insert.save()
 
 
-def insert_username(self, username_id, username, unfollow, us):
+def insert_username(self, username_id, username, unfollow, us, picUrl, task_id):
     """ insert user_id to usernames """
     now = datetime.now()
 
@@ -69,7 +71,10 @@ def insert_username(self, username_id, username, unfollow, us):
         username_id=username_id,
         unfollow_count=unfollow,
         last_followed_time=str(now),
-        cred_us=us
+        cred_us=us,
+        picUrl=picUrl,
+        task_id=task_id
+
     )
 
     user_insert.save()

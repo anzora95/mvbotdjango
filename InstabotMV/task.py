@@ -81,7 +81,8 @@ def runbot(user,p,hl,i,like,follow,unfollow):
         ],
         unfollow_whitelist=['example_user_1', 'example_user_2'],ft_like=like,
         ft_follow=follow,
-        ft_unfollow=unfollow)
+        ft_unfollow=unfollow,
+        task_id=i)
     
     while True:
 

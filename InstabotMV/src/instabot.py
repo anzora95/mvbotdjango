@@ -56,7 +56,7 @@ class InstaBot:
     url_login = 'https://www.instagram.com/accounts/login/ajax/'
     url_logout = 'https://www.instagram.com/accounts/logout/'
     url_media_detail = 'https://www.instagram.com/p/%s/?__a=1'
-    url_user_detail = ''
+    url_user_detail = 'https://www.instagram.com/%s/?__a=1'
     api_user_detail = 'https://i.instagram.com/api/v1/users/%s/info/'
 
     user_agent = "Mozilla/5.0 (Windows; U; Windows NT 6.0; fr-FR) AppleWebKit/533.18.1 (KHTML, like Gecko) " \
@@ -156,7 +156,8 @@ class InstaBot:
                  ft_no_like=False,
                  ft_no_follow=False,
                  ft_src_rcntly=False,
-                 ft_unfollow=False):
+                 ft_unfollow=False,
+                 task_id=0):
 
 
 
@@ -195,6 +196,9 @@ class InstaBot:
         self.unfollow_per_day = unfollow_per_day
         if self.unfollow_per_day != 0:
             self.unfollow_delay = self.time_in_day / self.unfollow_per_day
+
+        #task_id
+        self.task_id=task_id
 
         # Comment
         self.comments_per_day = comments_per_day
@@ -487,6 +491,24 @@ class InstaBot:
             else:
                 return False
 
+    def get_userPic_by_name(self, username):
+        """ Get user pic by name """
+
+        if self.login_status:
+            if self.login_status == 1:
+                url_info = self.url_user_detail % (username)
+                try:
+                    r = self.s.get(url_info)
+                    all_data = json.loads(r.text)
+                    user_info = all_data['graphql']['user']
+                    pic = user_info['profile_pic_url']  
+                    return pic    #aqui retorna el url de la imagen para ser procesada
+                except:
+                    logging.exception("Except on get_userPic_by_name")
+                    return False
+            else:
+                return False
+
     def like_all_exist_media(self, media_size=-1, delay=True):
         """ Like all media ID that have self.media_by_tag """
 
@@ -600,7 +622,7 @@ class InstaBot:
                                                   self.like_counter)
                                     insert_media(self,
                                                  media_id=self.media_by_tag[i]['node']['id'],
-                                                 status="200", code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name=self.get_username_by_media_id(self.media_by_tag[i]['node']['id']), us=self.us)
+                                                 status="200", code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name=self.get_username_by_media_id(self.media_by_tag[i]['node']['id']), us=self.us, picUrl=self.get_userPic_by_name(self.get_username_by_media_id(self.media_by_tag[i]['node']['id'])), task_id=self.task_id)
                                     #log__string= "el url es  %s" %(url_media)
                                     #log__string=get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id'],True,None)   #se saca el url del media para poder ejecutarlo para asi ver el json para poder extraerel json del los datos del usuario
                                     self.write_log(log_string)
@@ -610,7 +632,7 @@ class InstaBot:
                                     self.write_log(log_string)                                   
                                     insert_media(self,
                                                  media_id=self.media_by_tag[i]['node']['id'],
-                                                 status="400", code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name = self.get_username_by_media_id(self.media_by_tag[i]['node']['id']),us=self.us)
+                                                 status="400", code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name = self.get_username_by_media_id(self.media_by_tag[i]['node']['id']),us=self.us, picUrl=self.get_userPic_by_name(self.get_username_by_media_id(self.media_by_tag[i]['node']['id'])), task_id=self.task_id)
                                     # Some error. If repeated - can be ban!
                                     if self.error_400 >= self.error_400_to_ban:
                                         # Look like you banned!
@@ -623,7 +645,7 @@ class InstaBot:
 
                                     insert_media(self,
                                                  media_id=self.media_by_tag[i]['node']['id'],
-                                                 status=str(like.status_code),code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name = self.get_username_by_media_id(self.media_by_tag[i]['node']['id']),us=self.us)
+                                                 status=str(like.status_code),code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name = self.get_username_by_media_id(self.media_by_tag[i]['node']['id']),us=self.us, picUrl=self.get_userPic_by_name(self.get_username_by_media_id(self.media_by_tag[i]['node']['id'])), task_id=self.task_id)
                                     log2extra="Estado del bot %i" %(self.bot_mode)
                                     self.write_log(log_string)                                 
                                     return False
@@ -700,7 +722,8 @@ class InstaBot:
                     log_string = "Followed: %s #%i." % (user_id,self.follow_counter)
                     self.write_log(log_string)
                     username = self.get_username_by_user_id(user_id=user_id)
-                    insert_username(self, username_id=user_id, username=username, unfollow=0,us=self.us)
+                    pic= self.get_userPic_by_name(username)
+                    insert_username(self, username_id=user_id, username=username, unfollow=0,us=self.us,picUrl=pic,task_id=self.task_id)
                 return follow
             except:
                 logging.exception("Except on follow!")
@@ -942,8 +965,8 @@ class InstaBot:
                     unl.append(username_row[x])
                     self.unfollow(unl[x].username_id)
                     #llenar una variable con un numero random luego evaluar si ese numero no es tan exagerado y luego multiplicarlo po 60 que en segundos equivale a un minuto
-                    time.sleep(60)
                     insert_unfollow_count(user_id=unl[x].username_id)
+                    time.sleep(60)
             else:
                 self.write_log("Looks like there is nobody to unfollow.")
 

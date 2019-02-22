@@ -35,7 +35,10 @@
   text-decoration: none;
   color: #757575;
 }
-
+.centrar{
+  text-align:center;
+  word-wrap: break-word;
+}
 .divider{
   
     display:block;

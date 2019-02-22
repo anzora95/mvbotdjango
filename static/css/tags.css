@@ -7,6 +7,13 @@
     display: inline-block;
     border-radius: 15px; border: 10px solid#2C7CB2;
 }
+.friendsearch {
+    border: 1px solid #333;
+    display: inline-block;
+    border-radius: 15px; border: 10px solid#2C7CB2;
+    width:100%;
+}
+
 
 .tags-input .tag {
     font-size: 85%;

@@ -59,18 +59,19 @@
         
         <div class="row">
                 <div class="col-sm-4 col-sm-offset-4  text-center">
-<div class="gradiente">
+                    <div class="gradiente">
     
-<p class="hashtags">{{task.tags}}</p>
+                        <p class="hashtags">{{task.tags}}</p>
 </div>
 
                                 <ul class="list-inline">
                                         
-                                        <li ><a href="#2{{task.id}}" data-toggle="modal" data-target="#myModal">Results</a></li>
-                                        <li >|</li>
-                                        <li ><a href="#2{{task.id}}" data-toggle="tab">Targets</a></li>
-                                        <li >|</li>
-                                        <li ><a href="#3{{task.id}}" data-toggle="tab">Options</a></li>
+                                    <li><a class="btn dropdown" data-toggle="collapse" data-target="#1{{task.id}}" data-parent="#myGroup"><i class="icon-chevron-right"></i> Results</a></li>
+                                    <li>|</li>
+            <li><a class="btn dropdown" data-toggle="collapse" data-target="#2{{task.id}}" data-parent="#myGroup"><i class="icon-chevron-right"></i> Targets</a></li>
+            <li>|</li>
+        <li><a class="btn dropdown" data-toggle="collapse" data-target="#3{{task.id}}" data-parent="#myGroup"><i class="icon-chevron-right"></i> Options</a></li>
+            
                                 </ul>
                         </div>
                     </div>
@@ -80,227 +81,35 @@
 
 </div>
 
-        <div class="tab-content ">
-            <div class="tab-pane active" id="1{{task.id}}">
-                    <!-- Modal -->
-<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Following</h4>
-            </div>
-            <div class="modal-body">
-                
-                    <a href="https://www.w3schools.com">
-                    <img style="border-radius: 50%; width: 70px;
-                    height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                    <a href="https://www.w3schools.com">
-                        <img style="border-radius: 50%; width: 70px;
-                        height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                    <a href="https://www.w3schools.com">
-                        <img style="border-radius: 50%; width: 70px;
-                        height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                        <a href="https://www.w3schools.com">
-                            <img style="border-radius: 50%; width: 70px;
-                            height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                            <a href="https://www.w3schools.com">
-                                <img style="border-radius: 50%; width: 70px;
-                                height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                <a href="https://www.w3schools.com">
-                                    <img style="border-radius: 50%; width: 70px;
-                                    height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                    <a href="https://www.w3schools.com">
-                                        <img style="border-radius: 50%; width: 70px;
-                                        height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                        <a href="https://www.w3schools.com">
-                                            <img style="border-radius: 50%; width: 70px;
-                                            height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                            <a href="https://www.w3schools.com">
-                                                <img style="border-radius: 50%; width: 70px;
-                                                height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                <a href="https://www.w3schools.com">
-                                                    <img style="border-radius: 50%; width: 70px;
-                                                    height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                    <a href="https://www.w3schools.com">
-                                                        <img style="border-radius: 50%; width: 70px;
-                                                        height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                        <a href="https://www.w3schools.com">
-                                                            <img style="border-radius: 50%; width: 70px;
-                                                            height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                            <a href="https://www.w3schools.com">
-                                                                <img style="border-radius: 50%; width: 70px;
-                                                                height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                                <a href="https://www.w3schools.com">
-                                                                    <img style="border-radius: 50%; width: 70px;
-                                                                    height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                                    <a href="https://www.w3schools.com">
-                                                                        <img style="border-radius: 50%; width: 70px;
-                                                                        height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                                        <a href="https://www.w3schools.com">
-                                                                            <img style="border-radius: 50%; width: 70px;
-                                                                            height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                                            <a href="https://www.w3schools.com">
-                                                                                <img style="border-radius: 50%; width: 70px;
-                                                                                height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                                                <a href="https://www.w3schools.com">
-                                                                                    <img style="border-radius: 50%; width: 70px;
-                                                                                    height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                                                    <a href="https://www.w3schools.com">
-                                                                                        <img style="border-radius: 50%; width: 70px;
-                                                                                        height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                                                        <a href="https://www.w3schools.com">
-                                                                                            <img style="border-radius: 50%; width: 70px;
-                                                                                            height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                                                            <a href="https://www.w3schools.com">
-                                                                                                <img style="border-radius: 50%; width: 70px;
-                                                                                                height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                                                                <a href="https://www.w3schools.com">
-                                                                                                    <img style="border-radius: 50%; width: 70px;
-                                                                                                    height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                                                                    <a href="https://www.w3schools.com">
-                                                                                                        <img style="border-radius: 50%; width: 70px;
-                                                                                                        height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                                                                        <a href="https://www.w3schools.com">
-                                                                                                            <img style="border-radius: 50%; width: 70px;
-                                                                                                            height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                                                                            <a href="https://www.w3schools.com">
-                                                                                                                <img style="border-radius: 50%; width: 70px;
-                                                                                                                height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                                                                                <a href="https://www.w3schools.com">
-                                                                                                                    <img style="border-radius: 50%; width: 70px;
-                                                                                                                    height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                                                                                    <a href="https://www.w3schools.com">
-                                                                                                                        <img style="border-radius: 50%; width: 70px;
-                                                                                                                        height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                                                                                        <a href="https://www.w3schools.com">
-                    <img style="border-radius: 50%; width: 70px;
-                    height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                    <a href="https://www.w3schools.com">
-                    <img style="border-radius: 50%; width: 70px;
-                    height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                    <a href="https://www.w3schools.com">
-                    <img style="border-radius: 50%; width: 70px;
-                    height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                    <a href="https://www.w3schools.com">
-                        <img style="border-radius: 50%; width: 70px;
-                        height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                        <a href="https://www.w3schools.com">
-                            <img style="border-radius: 50%; width: 70px;
-                            height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                            <a href="https://www.w3schools.com">
-                                <img style="border-radius: 50%; width: 70px;
-                                height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                <a href="https://www.w3schools.com">
-                    <img style="border-radius: 50%; width: 70px;
-                    height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                    <a href="https://www.w3schools.com">
-                        <img style="border-radius: 50%; width: 70px;
-                        height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                        <a href="https://www.w3schools.com">
-                            <img style="border-radius: 50%; width: 70px;
-                            height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                            <a href="https://www.w3schools.com">
-                                <img style="border-radius: 50%; width: 70px;
-                                height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                <a href="https://www.w3schools.com">
-                                    <img style="border-radius: 50%; width: 70px;
-                                    height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                    <a href="https://www.w3schools.com">
-                                        <img style="border-radius: 50%; width: 70px;
-                                        height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                        <a href="https://www.w3schools.com">
-                                            <img style="border-radius: 50%; width: 70px;
-                                            height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                            <a href="https://www.w3schools.com">
-                                                <img style="border-radius: 50%; width: 70px;
-                                                height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                <a href="https://www.w3schools.com">
-                                                    <img style="border-radius: 50%; width: 70px;
-                                                    height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                    <a href="https://www.w3schools.com">
-                                                        <img style="border-radius: 50%; width: 70px;
-                                                        height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                        <a href="https://www.w3schools.com">
-                                                            <img style="border-radius: 50%; width: 70px;
-                                                            height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                            <a href="https://www.w3schools.com">
-                                                                <img style="border-radius: 50%; width: 70px;
-                                                                height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                                <a href="https://www.w3schools.com">
-                                                                    <img style="border-radius: 50%; width: 70px;
-                                                                    height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                                    <a href="https://www.w3schools.com">
-                                                                        <img style="border-radius: 50%; width: 70px;
-                                                                        height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                                        <a href="https://www.w3schools.com">
-                                                                            <img style="border-radius: 50%; width: 70px;
-                                                                            height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                                            <a href="https://www.w3schools.com">
-                                                                                <img style="border-radius: 50%; width: 70px;
-                                                                                height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                                                <a href="https://www.w3schools.com">
-                                                                                    <img style="border-radius: 50%; width: 70px;
-                                                                                    height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                                                                    <a href="https://www.w3schools.com">
-                    <img style="border-radius: 50%; width: 70px;
-                    height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                    <a href="https://www.w3schools.com">
-                        <img style="border-radius: 50%; width: 70px;
-                        height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                        <a href="https://www.w3schools.com">
-                            <img style="border-radius: 50%; width: 70px;
-                            height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                            <a href="https://www.w3schools.com">
-                                <img style="border-radius: 50%; width: 70px;
-                                height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                                <a href="https://www.w3schools.com">
-                    <img style="border-radius: 50%; width: 70px;
-                    height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a><a href="https://www.w3schools.com">
-                    <img style="border-radius: 50%; width: 70px;
-                    height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                    <a href="https://www.w3schools.com">
-                        <img style="border-radius: 50%; width: 70px;
-                        height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-
-<a href="https://www.w3schools.com">
-    <img style="border-radius: 50%; width: 70px;
-    height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-    <a href="https://www.w3schools.com">
-        <img style="border-radius: 50%; width: 70px;
-        height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-        <a href="https://www.w3schools.com">
-            <img style="border-radius: 50%; width: 70px;
-            height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-            <a href="https://www.w3schools.com">
-                <img style="border-radius: 50%; width: 70px;
-                height: 70px;" src="{% static 'img/avatar.png' %}"  alt="user-pic"></a>
-                    
-                    
 
 
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-      
-            </div>
-            <div class="tab-pane" id="2{{task.id}}">
-                
-                    <div class="row">
-                            <div class="col-sm-4 col-sm-offset-4  text-center">{{task.tags}}
-                            </div>
-                        </div>
-            </div>
-            <div class="tab-pane disabled" id="3{{task.id}}">
-                <!--{% include 'includes/tabs/options.html' %}-->
-            </div>
+<div class="row">
+    <div class="col-sm-4 col-sm-offset-4  text-center">
+        <div id="myGroup">
             
+            <div class="accordion-group">
+                <div class="collapse indent" id="1{{task.id}}">
+                        <div class="centrar">
+                                {{task.tags}}
+                                 </div>
+                </div>
+            
+                <div class="collapse indent text-center" id="2{{task.id}}">
+                    <div class="centrar">
+                        {{task.tags}}
+                         </div>
+                </div>
+            
+                <div class="collapse" id="3{{task.id}}">
+                        <div class="centrar">
+                                
+                                 </div>
+                </div>
+            </div>
         </div>
+    </div>
+  </div>
+  
     </div>
 
     <form>

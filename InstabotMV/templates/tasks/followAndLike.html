@@ -147,14 +147,31 @@
             
                    
                     <div class="tab-pane " id="2">
-                            <h4>Type in Instagram username of user which followers or following you want to target</h4>
+                           <!-- <h4>Type in Instagram username of user which followers or following you want to target</h4>
                             <div class="row">
 
                                     <div class="col-xs-8 col-sm-10 pr0">
                                             <input type="text" name="friend_search" id="friend_search" class="friendsearch" placeholder="Instagram username">
                                         </div>
                                         <div class="col-xs-4 col-sm-2 pl5"><button style="float: right; margin-top:4px;width:100%;"type="submit" class="btn btn-primary">Search</button></div>
-                            </div>
+                            </div>-->
+                            <p id="demo">Click me.</p>
+
+<script>
+document.getElementById("demo").addEventListener("click", inicio2);
+
+function inicio2(){
+                               var id= $(this).val();
+                               $.ajax({
+                               
+                               url:'/instabotmv/hashtag_ajax/',
+                               type: 'get',
+                               success: function(){
+                               
+                               }
+                               });
+                               }
+</script>
                         </div>
                     </div>
 

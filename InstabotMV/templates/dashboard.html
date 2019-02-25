@@ -89,20 +89,30 @@
             
             <div class="accordion-group">
                 <div class="collapse indent" id="1{{task.id}}">
-                        <div class="centrar">
-                                {{task.tags}}
+                        <div class="tick">
+                                {% for u in UN%}
+                                {% if ll.cred.insta_user == u.cred_us%}
+                                {% if task.id == u.task.id%}
+                                <a  href="https://www.instagram.com/{{u.username}}/">
+                                <img class="ticker" style="border-radius: 50%; width: 40px;
+                        height: 40px;" src="{{u.picUrl}}" alt="user-pic">
+                        </a>
+                                {% endif%}
+                                {% endif%}
+                                {% endfor%}
                                  </div>
                 </div>
             
                 <div class="collapse indent text-center" id="2{{task.id}}">
-                    <div class="centrar">
+                    <div class="centrar" style="text-align:center;
+                    word-wrap: break-word;">
                         {{task.tags}}
                          </div>
                 </div>
             
                 <div class="collapse" id="3{{task.id}}">
                         <div class="centrar">
-                                
+                                <h1>Hola</h1>
                                  </div>
                 </div>
             </div>

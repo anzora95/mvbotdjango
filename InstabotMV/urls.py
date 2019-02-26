@@ -13,6 +13,7 @@ urlpatterns = [
     url('dashboard/$', views.DashboardView, name='dashboard'),
     url('dashboard/$', views.tag_child, name='dashload'),
     url('hashtag_ajax/$', views.hashtags.as_view(), name='hashtags'),
+    url('prueba_ajax/$', views.prueba.as_view(), name='prueba'),
     url('dashboard/task/new$', views.NewTask, name='newTask'),
     url('tags/(?P<id_tag>\d+)/$', views.tags, name='tags'),
     url('change/(?P<cred>\d+)/$', views.changeAccount, name='changeAccount'),

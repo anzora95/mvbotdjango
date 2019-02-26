@@ -35,7 +35,38 @@
   text-decoration: none;
   color: #757575;
 }
+.tick{
+  width: 100vw;
+ position: relative;
+ margin-left: -50vw;
+ height: 300px;
+ overflow: scroll;
+ left: 50%;
+ margin-bottom: 5px;
+ 
+}
+.ticker {
+  
+  opacity: 1;
+  
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+.ticker:hover {opacity: 0.3}*/
+/*.ticker{
+  
+  transition: transform .2s;
+ 
+  
+}
+.ticker:hover {-ms-transform: scale(3); /* IE 9 */
+  /*-webkit-transform: scale(3); /* Safari 3-8 */
+ /* transform: scale(3); }*/
 
+.centrar{
+  text-align:center;
+  word-wrap: break-word;
+}
 .divider{
   
     display:block;

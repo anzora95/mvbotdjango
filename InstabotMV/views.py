@@ -141,6 +141,8 @@ def DashboardView(request):
     cred=ll.cred
     AT=Task.objects.all() #Get All the Task in system
     LT=[] ##Empty list for List of Task
+    UN=Username.objects.all()
+    print(len(UN))
     for x in range(0,len(AT)):
        if AT[x].creds==cred:#If the task has the current logged user add it to the LT list
            #print(AT[x].user.username)
@@ -148,9 +150,9 @@ def DashboardView(request):
     if len(LT)==0:
         empty=True
         print(LT)
-        return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'empty':empty}) 
+        return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'empty':empty,'UN':UN}) 
 
-    return render(request, 'dashboard.html', {'ll':ll,'LT':LT})
+    return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'UN':UN})
 
 def changeAccount(request,cred):
     user = User.objects.get(id=request.user.id)
@@ -257,6 +259,12 @@ class hashtags(TemplateView):
         data = serializers.serialize('json',tags,fields=('insta_tag','category'))
         print(data)
         return HttpResponse(data,content_type='application/json')
+
+class prueba(TemplateView):
+
+    def get(self, request, *args, **kwargs):
+        print("EXITO")
+        return HttpResponse(content_type='application/json')
 
 def tags_serializer(tag):
     return {'id':tag.id,'name':tag.insta_tag}

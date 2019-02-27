@@ -21,6 +21,7 @@ from InstabotMV.src.check_status import check_status
 from InstabotMV.src.feed_scanner import feed_scanner
 from InstabotMV.src.follow_protocol import follow_protocol
 from InstabotMV.src.unfollow_protocol import unfollow_protocol
+from InstabotMV.src.bsScarp import scrapImg
 from InstabotMV.forms import ComboTagHijo
 
 
@@ -231,6 +232,7 @@ class UserAccounts(LoginRequiredMixin, View):
             cred.user = user  # Se le asigna un usuario a la task
             cred.insta_user=request.POST.get('insta_user')
             cred.insta_pass=request.POST.get('insta_pass')
+            cred.imgUrl=scrapImg(request.POST.get('insta_user'))
             cred.save()
 
             

@@ -17,6 +17,12 @@ class AppUser(User):
        return '%s' % (self.username)
 
 
+class Packages(models.Model):  #PAQUETES DE USUARIO
+    pack_name= models.CharField(max_length=30)
+    follows_by_pack=models.IntegerField()
+    like_by_pack=models.IntegerField()
+    
+
 class Settings(models.Model):
     settings_name = models.TextField()
     settings_val = models.TextField()
@@ -27,6 +33,7 @@ class Creds(models.Model):
     insta_user = models.CharField(max_length=150)
     insta_pass = models.CharField(max_length=50)
     imgUrl=models.TextField()
+    pack=models.ForeignKey(Packages, on_delete=models.CASCADE) #TIPO DE PAQUETE QUE HA ELEGIDO EL USUARIO
     
 
     class Meta:
@@ -160,4 +167,6 @@ class thread(models.Model):
 
     def __str__(self):
         return '%s' % (self.task.tags)
+
+
         

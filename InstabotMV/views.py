@@ -297,6 +297,20 @@ def DeleteTask(request, id_task):
         return redirect('instabot:dashboard')
     return render(request,'tasks/del_task.html',{'task':task,'ll':ll})
 
+def EditTask(request,id_task):
+    Hasgtags = HashtagList.objects.all()
+    user = User.objects.get(id=request.user.id)
+    ll=LastLogin.objects.get(user=user)
+    task=Task.objects.get(id=id_task)
+    json_tags = json.dumps(task.tags)
+    if request.method == 'POST':
+        
+        
+        return redirect('instabot:dashboard')
+    return render(request,'tasks/edittask.html',{'Hasgtags':Hasgtags,'task':task,'ll':ll,"tags" : json_tags})
+
+
+
 def DeleteAccount(request,id_cred):
     user = User.objects.get(id=request.user.id)
     cred=Creds.objects.get(id=id_cred)

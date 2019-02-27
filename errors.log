@@ -18244,3 +18244,1070 @@ WARNING:django.request:Not Found: /favicon.ico
 WARNING:django.request:Not Found: /favicon.ico
 WARNING:django.request:Not Found: /favicon.ico
 WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/smartif.py", line 175, in translate_token
+    op = OPERATORS[token]
+KeyError: 'is_empty(u)'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 155, in DashboardView
+    return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'UN':UN})
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 810, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 810, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 950, in do_if
+    condition = TemplateIfParser(parser, bits).parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 883, in __init__
+    super().__init__(*args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/smartif.py", line 166, in __init__
+    mapped_tokens.append(self.translate_token(token))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/smartif.py", line 177, in translate_token
+    return self.create_var(token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 886, in create_var
+    return TemplateLiteral(self.template_parser.compile_filter(value), value)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 563, in compile_filter
+    return FilterExpression(token, self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 663, in __init__
+    "from '%s'" % (token[upto:], token))
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '(u)' from 'is_empty(u)'
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 155, in DashboardView
+    return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'UN':UN})
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 810, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 809, in do_for
+    sequence = parser.compile_filter(bits[in_index + 1])
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 563, in compile_filter
+    return FilterExpression(token, self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 663, in __init__
+    "from '%s'" % (token[upto:], token))
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '(40,len(UN)' from 'range(40,len(UN)'
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: 'name=name+1'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 155, in DashboardView
+    return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'UN':UN})
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 810, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 1471, in do_with
+    nodelist = parser.parse(('endwith',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 810, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 951, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 951, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 528, in invalid_block_tag
+    get_text_list(["'%s'" % p for p in parse_until], 'or'),
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 97: 'name=name+1', expected 'elif', 'else' or 'endif'. Did you forget to register or load this tag?
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: 'name+=1'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 155, in DashboardView
+    return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'UN':UN})
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 810, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 1471, in do_with
+    nodelist = parser.parse(('endwith',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 810, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 951, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 951, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 528, in invalid_block_tag
+    get_text_list(["'%s'" % p for p in parse_until], 'or'),
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 98: 'name+=1', expected 'elif', 'else' or 'endif'. Did you forget to register or load this tag?
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/edit_task/2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 301, in EditTask
+    user = User.objects.get(id=request.user.id)
+NameError: name 'request' is not defined
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/edit_task/5/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 301, in EditTask
+    user = User.objects.get(id=request.user.id)
+NameError: name 'request' is not defined
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/edit_task/2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 308, in EditTask
+    return render(request,'tasks/ediitask.html',{'task':task,'ll':ll})
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/ediitask.html
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/edit_task/2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 308, in EditTask
+    return render(request,'tasks/edittask.html',{'task':task,'ll':ll})
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 965, in do_if
+    nodelist = parser.parse(('endif',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 528, in invalid_block_tag
+    get_text_list(["'%s'" % p for p in parse_until], 'or'),
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 59: 'static', expected 'endif'. Did you forget to register or load this tag?
+ERROR:django.request:Internal Server Error: /instabotmv/edit_task/2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 308, in EditTask
+    return render(request,'tasks/edittask.html',{'task':task,'ll':ll})
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 965, in do_if
+    nodelist = parser.parse(('endif',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 528, in invalid_block_tag
+    get_text_list(["'%s'" % p for p in parse_until], 'or'),
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 59: 'static', expected 'endif'. Did you forget to register or load this tag?
+ERROR:django.request:Internal Server Error: /instabotmv/edit_task/2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 308, in EditTask
+    return render(request,'tasks/edittask.html',{'task':task,'ll':ll})
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 965, in do_if
+    nodelist = parser.parse(('endif',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 205, in do_block
+    raise TemplateSyntaxError("'%s' tag with name '%s' appears more than once" % (bits[0], block_name))
+django.template.exceptions.TemplateSyntaxError: 'block' tag with name 'navbar' appears more than once
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/edit_task/2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 308, in EditTask
+    return render(request,'tasks/edittask.html',{'task':task,'ll':ll})
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 965, in do_if
+    nodelist = parser.parse(('endif',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 205, in do_block
+    raise TemplateSyntaxError("'%s' tag with name '%s' appears more than once" % (bits[0], block_name))
+django.template.exceptions.TemplateSyntaxError: 'block' tag with name 'body' appears more than once
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/edit_task/2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 309, in EditTask
+    return render(request,'tasks/edittask.html',{'Hashtags':Hashtags,'task':task,'ll':ll})
+NameError: name 'Hashtags' is not defined
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/edit_task/2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: 'endif'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 309, in EditTask
+    return render(request,'tasks/edittask.html',{'Hasgtags':Hasgtags,'task':task,'ll':ll})
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 965, in do_if
+    nodelist = parser.parse(('endif',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 528, in invalid_block_tag
+    get_text_list(["'%s'" % p for p in parse_until], 'or'),
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 335: 'endif', expected 'endblock'. Did you forget to register or load this tag?
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/edit_task/2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: 'endif'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 309, in EditTask
+    return render(request,'tasks/edittask.html',{'Hasgtags':Hasgtags,'task':task,'ll':ll})
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 965, in do_if
+    nodelist = parser.parse(('endif',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 528, in invalid_block_tag
+    get_text_list(["'%s'" % p for p in parse_until], 'or'),
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 335: 'endif', expected 'endblock'. Did you forget to register or load this tag?
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/edit_task/2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 309, in EditTask
+    return render(request,'tasks/edittask.html',{'Hasgtags':Hasgtags,'task':task,'ll':ll})
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 965, in do_if
+    nodelist = parser.parse(('endif',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 528, in invalid_block_tag
+    get_text_list(["'%s'" % p for p in parse_until], 'or'),
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 445: 'endblock', expected 'endif'. Did you forget to register or load this tag?
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/edit_task/2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 309, in EditTask
+    return render(request,'tasks/edittask.html',{'Hasgtags':Hasgtags,'task':task,'ll':ll})
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 965, in do_if
+    nodelist = parser.parse(('endif',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 449, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 447, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 563, in compile_filter
+    return FilterExpression(token, self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 657, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 569, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'Safe'
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/edit_task/2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 310, in EditTask
+    return render(request,'tasks/edittask.html',{'Hasgtags':Hasgtags,'task':task,'ll':ll,"tags" : json_tags})
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 53, in render
+    result = self.nodelist.render(context)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 309, in render
+    return nodelist.render(context)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 165, in render
+    values = list(values)
+TypeError: 'Task' object is not iterable
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/edit_task/2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: 'endfor'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 310, in EditTask
+    return render(request,'tasks/edittask.html',{'Hasgtags':Hasgtags,'task':task,'ll':ll,"tags" : json_tags})
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 965, in do_if
+    nodelist = parser.parse(('endif',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 528, in invalid_block_tag
+    get_text_list(["'%s'" % p for p in parse_until], 'or'),
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 248: 'endfor', expected 'endif'. Did you forget to register or load this tag?
+ERROR:django.request:Internal Server Error: /instabotmv/edit_task/2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 310, in EditTask
+    return render(request,'tasks/edittask.html',{'Hasgtags':Hasgtags,'task':task,'ll':ll,"tags" : json_tags})
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 965, in do_if
+    nodelist = parser.parse(('endif',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 809, in do_for
+    sequence = parser.compile_filter(bits[in_index + 1])
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 563, in compile_filter
+    return FilterExpression(token, self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 663, in __init__
+    "from '%s'" % (token[upto:], token))
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '(6%)' from 'range(6%)'
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/edit_task/2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 310, in EditTask
+    return render(request,'tasks/edittask.html',{'Hasgtags':Hasgtags,'task':task,'ll':ll,"tags" : json_tags})
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 965, in do_if
+    nodelist = parser.parse(('endif',))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/defaulttags.py", line 809, in do_for
+    sequence = parser.compile_filter(bits[in_index + 1])
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 563, in compile_filter
+    return FilterExpression(token, self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 663, in __init__
+    "from '%s'" % (token[upto:], token))
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '(6)' from 'range(6)'
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico

@@ -108,7 +108,16 @@
             <form method="POST" id="formulario" >
                     {% csrf_token %}
                 <link rel="stylesheet" href="{% static 'css/tags.css' %}">
-                        
+                <p>Select users which you want to unfollow</p>
+                <div class="row" style="text-align:center;">
+
+                    <label class="radio-inline">
+                        <input  style="transform: scale(2);" type="radio" name="optradio" checked>Users followed by Ngage Social 
+                      </label>
+                      <label  class="radio-inline">
+                        <input style="transform: scale(2);"type="radio" name="optradio" disabled>All users 
+                </div>
+                        <br>
                             <script src="{% static 'js/tags.js' %}"></script>
                 
                 <p>You can target your unfollowing more accurately with additional features</p>

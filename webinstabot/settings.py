@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'webinstabot.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'data_bot',
+        'NAME': 'webinstabot2',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
-        'PORT': 3306
+        'PORT': 8889
     }
 }
 

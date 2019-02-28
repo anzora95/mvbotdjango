@@ -58,6 +58,7 @@ class Task(models.Model):
     back=models.BooleanField()
     antispamfilter=models.BooleanField()
     custowordfilter=models.BooleanField()
+    allusers=models.BooleanField()
     class Meta:
         verbose_name = 'Task'
         verbose_name_plural = 'Tasks'

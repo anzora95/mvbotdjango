@@ -214,5 +214,9 @@ code {
   padding: 0 8px;
 }
 
+.r2 {
+  transform: scale(2);
+}
+
 
 

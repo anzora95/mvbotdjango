@@ -303,17 +303,33 @@ function inicio2(){
                     <a  style="overflow:auto; border-radius: 5px;border: 2px solid#2C7CB2;" id="btnlike"class="{% if task.likemedia%} btn btn-primary btn-block{%else%}btn btn-primary btn-block btn-default btn-link {%endif%}">
                         <span style="float:left; margin-right: 5px;"class="glyphicon glyphicon-heart"></span>
                         <p style="float:left;"> LIKE MEDIA OF THIS TASK</p>
-                        <input name="like" id="like" value="like" type="hidden">
+                        <input name="like" id="like" value="{% if task.likemedia%}like{%else%}none{%endif%}" type="hidden">
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet" />
+                        {%if task.likemedia%}
                         <script>
+                                $(document).ready(function() {
+        var toggleText = $("#ip").val();
+        $("#btnlike").click(function() {
+        if ($("#like").val() != 'none') {
+          toggleText = $("#like").val();
+          $("#like").val('none');
+        } else
+          $("#like").val(toggleText);
+        $(this).toggleClass('btn-default').toggleClass('btn-link');
+        
+        });
+        });
+                                </script>
+                        {%else%}
+<script>
                         $(document).ready(function() {
 var toggleText = $("#ip").val();
 $("#btnlike").click(function() {
-if ($("#like").val() != 'none') {
+if ($("#like").val() != 'like') {
   toggleText = $("#like").val();
-  $("#like").val('none');
+  $("#like").val('like');
 } else
   $("#like").val(toggleText);
 $(this).toggleClass('btn-default').toggleClass('btn-link');
@@ -321,6 +337,7 @@ $(this).toggleClass('btn-default').toggleClass('btn-link');
 });
 });
                         </script>
+                        {%endif%}
                        
                     </a>
                 </div>
@@ -328,9 +345,10 @@ $(this).toggleClass('btn-default').toggleClass('btn-link');
             <br>
             <div class="row">
                 <div class="col-md-12">
-                    <a style="overflow:auto;border-radius: 5px; border: 2px solid#2C7CB2;" id="btnfollow"style="overflow:auto;" class="{% if task.follow%} btn btn-primary btn-block{%else%}btn btn-primary btn-block btn-default btn-link {%endif%}">
+                    <a style="overflow:auto;border-radius: 5px; border: 2px solid#2C7CB2;" id="btnfollow"style="overflow:auto;" class="{% if task.followuser%} btn btn-primary btn-block{%else%}btn btn-primary btn-block btn-default btn-link {%endif%}">
                         <span style="float:left; margin-right: 5px;"class="glyphicon glyphicon-user"></span>
-                        <input name="follow" id="follow" value="follow" type="hidden">
+                        <input name="follow" id="follow" value="{% if task.followuser%}follow{%else%}none{%endif%}" type="hidden">
+                        {%if task.followuser%}
                         <script>
                                 $(document).ready(function() {
       var toggleText = $("#ip").val();
@@ -345,6 +363,22 @@ $(this).toggleClass('btn-default').toggleClass('btn-link');
       });
     });
                                 </script>
+                        {%else%}
+                        <script>
+                                $(document).ready(function() {
+      var toggleText = $("#ip").val();
+      $("#btnfollow").click(function() {
+        if ($("#follow").val() != 'follow') {
+          toggleText = $("#follow").val();
+          $("#follow").val('follow');
+        } else
+          $("#follow").val(toggleText);
+        $(this).toggleClass('btn-default').toggleClass('btn-link');
+    
+      });
+    });
+                                </script>
+                        {%endif%}
                         <p style="float:left;">FOLLOW USERS OF THIS TASK MEDIA</p>
                         
                     </a>
@@ -353,9 +387,10 @@ $(this).toggleClass('btn-default').toggleClass('btn-link');
             <p>Select Features</p>
             <div class="row">
                 <div class="col-md-12">
-                    <a style="overflow:auto; border-radius: 5px;border: 2px solid#2C7CB2;" style="overflow:auto;" id="btndont" class="{% if task.dont%} btn btn-primary btn-block{%else%}btn btn-primary btn-block btn-default btn-link {%endif%}">
+                    <a style="overflow:auto; border-radius: 5px;border: 2px solid#2C7CB2;" style="overflow:auto;" id="btndont" class="{% if task.dontlikemedia%} btn btn-primary btn-block{%else%}btn btn-primary btn-block btn-default btn-link {%endif%}">
                         <span style="float:left; margin-right: 5px;"  class="glyphicon glyphicon-heart-empty"></span>
-                        <input name="dont" id="dont" value="dont" type="hidden">
+                        <input name="dont" id="dont" value="{% if task.dontlikemedia%}dont{%else%}none{%endif%}" type="hidden">
+                        {%if task.dontlikemedia%}
                         <script>
                                 $(document).ready(function() {
       var toggleText = $("#ip").val();
@@ -370,6 +405,22 @@ $(this).toggleClass('btn-default').toggleClass('btn-link');
       });
     });
                                 </script>
+                        {%else%}
+                        <script>
+                                $(document).ready(function() {
+      var toggleText = $("#ip").val();
+      $("#btndont").click(function() {
+        if ($("#dont").val() != 'dont') {
+          toggleText = $("#dont").val();
+          $("#dont").val('dont');
+        } else
+          $("#dont").val(toggleText);
+        $(this).toggleClass('btn-default').toggleClass('btn-link');
+    
+      });
+    });
+                                </script>
+                        {%endif%}
                         <p style="float:left;">DON'T LIKE MEDIA OF THE SAME USER SECOND TIME</p>
                        
                     </a>
@@ -380,7 +431,8 @@ $(this).toggleClass('btn-default').toggleClass('btn-link');
                 <div class="col-md-12">
                     <a style="overflow:auto; border-radius: 5px;border: 2px solid#2C7CB2;" style="overflow:auto;" id="btndontfollow" class="{% if task.dontfollow%} btn btn-primary btn-block{%else%}btn btn-primary btn-block btn-default btn-link {%endif%}">
                         <span style="float:left; margin-right: 5px;" class="glyphicon glyphicon-sunglasses"></span>
-                        <input name="dontfollow" id="dontfollow" value="dontfollow" type="hidden">
+                        <input name="dontfollow" id="dontfollow" value="{% if task.dontfollow%}dontfollow{%else%}none{%endif%}" type="hidden">
+                        {%if task.dontfollow%}
                         <script>
                                 $(document).ready(function() {
       var toggleText = $("#ip").val();
@@ -395,6 +447,22 @@ $(this).toggleClass('btn-default').toggleClass('btn-link');
       });
     });
                                 </script>
+                        {%else%}
+                        <script>
+                                $(document).ready(function() {
+      var toggleText = $("#ip").val();
+      $("#btndontfollow").click(function() {
+        if ($("#dontfollow").val() != 'dontfollow') {
+          toggleText = $("#dontfollow").val();
+          $("#dontfollow").val('dontfollow');
+        } else
+          $("#dontfollow").val(toggleText);
+        $(this).toggleClass('btn-default').toggleClass('btn-link');
+    
+      });
+    });
+                                </script>
+                        {%endif%}
                         <p style="float:left;">DON'T FOLLOW PREVIOUSLY UNFOLLOWED USERS</p>
                         
                     </a>
@@ -405,7 +473,8 @@ $(this).toggleClass('btn-default').toggleClass('btn-link');
                 <div class="col-md-12">
                     <a style="overflow:auto; border-radius: 5px; border: 2px solid#2C7CB2;" style="overflow:auto;" id="btnsearch" class="{% if task.search%} btn btn-primary btn-block{%else%}btn btn-primary btn-block btn-default btn-link {%endif%}">
                         <span  style="float:left; margin-right: 5px;" class="glyphicon glyphicon-time"></span>
-                        <input name="search" id="search" value="search" type="hidden">
+                        <input name="search" id="search" value="{% if task.search%}search{%else%}none{%endif%}" type="hidden">
+                        {%if task.search%}
                         <script>
                                 $(document).ready(function() {
       var toggleText = $("#ip").val();
@@ -420,6 +489,22 @@ $(this).toggleClass('btn-default').toggleClass('btn-link');
       });
     });
                                 </script>
+                        {%else%}
+                        <script>
+                                $(document).ready(function() {
+      var toggleText = $("#ip").val();
+      $("#btnsearch").click(function() {
+        if ($("#search").val() != 'search') {
+          toggleText = $("#search").val();
+          $("#search").val('search');
+        } else
+          $("#search").val(toggleText);
+        $(this).toggleClass('btn-default').toggleClass('btn-link');
+    
+      });
+    });
+                                </script>
+                        {%endif%}
                         <p style="float:left;">SEARCH FOR RECENTLY POSTED MEDIA ONLY</p>
                         
                     </a>
@@ -439,7 +524,7 @@ $(this).toggleClass('btn-default').toggleClass('btn-link');
             <button style="float: right;"type="submit" class="btn btn-primary">save</button>
         </div>
         <div class="y">
-                <a href="{% url 'instabot:newTask' %}" class="btn btn-primary ">  <!--Se invoca la view para volver -->
+                <a href="{% url 'instabot:dashboard' %}" class="btn btn-primary ">  <!--Se invoca la view para volver -->
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                     Back
                 </a>

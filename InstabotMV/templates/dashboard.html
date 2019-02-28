@@ -176,7 +176,7 @@
                     <i class='glyphicon glyphicon-play'></i>
             </a>
             {%endif%}
-            <a href="#link" class="btn btn-primary disabled btn-lit-circle" role="button">
+            <a href="{% url 'instabot:edit_task' task.id%}" class="btn btn-primary  btn-lit-circle" role="button">
                     <i class="glyphicon glyphicon-pencil"></i>
             </a>
             <a href="{% url 'instabot:del_task' task.id%}" class="btn btn-primary btn-lit-circle" role="button">

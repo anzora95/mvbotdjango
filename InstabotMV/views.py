@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login as login_django, logout as l
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from .models import *
-from InstabotMV.models import Creds, List_Tag, Media,HashtagList
+from InstabotMV.models import Creds, List_Tag, Media,HashtagList,Packages
 from .forms import LoginForm, CreateUserForm, TaglistForm, UserlistForm, ComboTagHijo
 from InstabotMV.forms import InstaCredsForm
 
@@ -21,6 +21,7 @@ from InstabotMV.src.check_status import check_status
 from InstabotMV.src.feed_scanner import feed_scanner
 from InstabotMV.src.follow_protocol import follow_protocol
 from InstabotMV.src.unfollow_protocol import unfollow_protocol
+from InstabotMV.src.bsScarp import scrapImg
 from InstabotMV.forms import ComboTagHijo
 
 
@@ -202,11 +203,13 @@ class UserAccounts(LoginRequiredMixin, View):
     login_url = 'instabot:login'
     template_name = 'users/mybot.html'
     
+    
     def get(self, request, *args, **kwargs):
         
         user = User.objects.get(id=request.user.id) #Get the current user logged in
         ll=LastLogin.objects.get(user=user)
         cred=ll.cred
+        packs= Packages.objects.all()
         user=User.objects.get(id=request.user.id) #Obtencion del usuario logeado
         creds = Creds.objects.all() #Obtencion de todas las credenciales 
         lcreds=[] #Inicializacion de lista de credenciales
@@ -214,12 +217,8 @@ class UserAccounts(LoginRequiredMixin, View):
         for x in range(0,len(creds)):
             if creds[x].user==user:
                 lcreds.append(creds[x])
-                
-                
-
         
-        
-        return render(request, 'users/mybot.html', {'lcreds':lcreds,'ll':ll})
+        return render(request, 'users/mybot.html', {'lcreds':lcreds,'ll':ll, 'packs':packs})
 
     def post(self, request):
         user = User.objects.get(id=request.user.id) #Get the current user logged in
@@ -231,6 +230,8 @@ class UserAccounts(LoginRequiredMixin, View):
             cred.user = user  # Se le asigna un usuario a la task
             cred.insta_user=request.POST.get('insta_user')
             cred.insta_pass=request.POST.get('insta_pass')
+            cred.imgUrl=scrapImg(request.POST.get('insta_user'))
+            cred.pack_id=request.POST.get('pack')
             cred.save()
 
             
@@ -587,8 +588,12 @@ def start(request, task):
     cred=Creds.objects.get(id=ll.cred.id)
     u=cred.insta_user
     p=cred.insta_pass
+    pa=cred.pack_id #id de el paquete que ha elegido el usuario para asignar los like por dia y follows por dia
     task=Task.objects.get(id=task)
     ide=task.id
+    ftLike=task.likemedia
+    ftFollow=task.followuser
+    ftUnfollow =task.unfollow
     if task.active:
         task.active=False
     else:
@@ -598,7 +603,7 @@ def start(request, task):
     hl=strtask.split(",")
     print(hl)
     user=User.objects.get(id=request.user.id)
-    runbot.delay(u,p,hl,ide)
+    runbot.delay(u,p,hl,ide,ftLike,ftFollow,ftUnfollow,pa)
     return redirect('instabot:dashboard')
 
 class StopBot(LoginRequiredMixin, View):

@@ -30,22 +30,28 @@ def stop(codigo):
     return 'Finished'
 
 @shared_task
-def runbot(user,p,hl,i):
+def runbot(user,p,hl,i,like,follow,unfollow,pa):
+    pack=Packages.objects.get(id=pa)
+    pak_follows=pack.follows_by_pack
+    pak_like=pack.like_by_pack
     tas=Task.objects.get(id=i)
     t=thread.objects.get(task=tas)
     t.codigo=runbot.request.id
     t.save()
+    ft_like=like
+    ft_follow=follow
+    ft_unfollow=unfollow
     bot = InstaBot(
         login=user,
         password=p,
         us=user,
-        like_per_day=1000,
+        like_per_day=pak_like,
         comments_per_day=0,
         tag_list=hl,
         tag_blacklist=['rain', 'thunderstorm'],
         user_blacklist={},
         max_like_for_one_tag=50,
-        follow_per_day=300,
+        follow_per_day=pak_follows,
         follow_time=1 * 60,
         unfollow_per_day=300,
         unfollow_break_min=15,
@@ -76,7 +82,10 @@ def runbot(user,p,hl,i):
             'beauty', 'express', 'kredit', 'collection', 'impor', 'preloved',
             'follow', 'follower', 'gain', '.id', '_id', 'bags'
         ],
-        unfollow_whitelist=['example_user_1', 'example_user_2'])
+        unfollow_whitelist=['example_user_1', 'example_user_2'],ft_like=like,
+        ft_follow=follow,
+        ft_unfollow=unfollow,
+        task_id=i)
     
     while True:
 

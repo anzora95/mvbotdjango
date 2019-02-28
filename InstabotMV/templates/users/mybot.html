@@ -40,11 +40,11 @@
                         <p  for="id_insta_pass">Please select your package</p>
                 </div>
                 {% csrf_token %}
-                <select style="width: 100%;" >
+                <select style="width: 100%;", name="pack" >
                     <span class="input-group" >Type in your hashtags or select from a list</span>
       
                     {% for  pack in packs %}
-                    <option value="{{packs.id}}">{{packs.pack_name}}</option>
+                    <option value="{{pack.id}}">{{pack.pack_name}}</option>
                     {% endfor%}
                 </select><!-- -->
                 <br>

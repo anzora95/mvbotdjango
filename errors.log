@@ -19636,3 +19636,6 @@ Traceback (most recent call last):
   File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/base.py", line 497, in extend_nodelist
     token, '%r must be the first tag in the template.' % node,
 django.template.exceptions.TemplateSyntaxError: <ExtendsNode: extends 'dashboard.html'> must be the first tag in the template.
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico

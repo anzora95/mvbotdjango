@@ -180,8 +180,8 @@ $(this).toggleClass('btn-default').toggleClass('btn-link');
             </div>
             <br>
             <div class="row">
-                <div class="col-md-12">
-                    <a style="overflow:auto;border-radius: 5px; border: 2px solid#2C7CB2;" id="btnfollow"style="overflow:auto;" class="btn btn-primary btn-block">
+                <div class="col-md-6">
+                    <a style=" overflow:auto;border-radius: 5px; border: 2px solid#2C7CB2;" id="btnfollow"style="overflow:auto;" class="btn btn-primary btn-block">
                         <span style="float:left; margin-right: 5px;"class="glyphicon glyphicon-user"></span>
                         <input name="follow" id="follow" value="follow" type="hidden">
                         <script>
@@ -201,6 +201,12 @@ $(this).toggleClass('btn-default').toggleClass('btn-link');
                         <p style="float:left;">FOLLOW USERS OF THIS TASK MEDIA</p>
                         
                     </a>
+                </div>
+                <div class="col-md-6">
+                    <div class="radio">
+                        <label style="padding-right: 60px;padding-left: 90px;"><input type="radio" name="optradio" >Follow limit:</label>
+                        <input type="text" id="limit"name="FirstName" value="">
+                      </div>
                 </div>
             </div>
             <p>Select Features</p>

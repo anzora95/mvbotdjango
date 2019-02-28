@@ -203,11 +203,13 @@ class UserAccounts(LoginRequiredMixin, View):
     login_url = 'instabot:login'
     template_name = 'users/mybot.html'
     
+    
     def get(self, request, *args, **kwargs):
         
         user = User.objects.get(id=request.user.id) #Get the current user logged in
         ll=LastLogin.objects.get(user=user)
         cred=ll.cred
+        packs= Packages.objects.all()
         user=User.objects.get(id=request.user.id) #Obtencion del usuario logeado
         creds = Creds.objects.all() #Obtencion de todas las credenciales 
         lcreds=[] #Inicializacion de lista de credenciales
@@ -220,7 +222,7 @@ class UserAccounts(LoginRequiredMixin, View):
 
         
         
-        return render(request, 'users/mybot.html', {'lcreds':lcreds,'ll':ll})
+        return render(request, 'users/mybot.html', {'lcreds':lcreds,'ll':ll, 'packs':packs})
 
     def post(self, request):
         user = User.objects.get(id=request.user.id) #Get the current user logged in

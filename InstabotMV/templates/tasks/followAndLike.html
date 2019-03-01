@@ -1,4 +1,3 @@
-{% extends 'dashboard.html' %}
 {% load static %}
 
 <head>
@@ -50,7 +49,36 @@
 <script>window.jQuery || document.write('<script src="/js/jquery-1.12.4.min.js">\x3C/script>')</script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
+{% block navbar %}
+<nav class="navbar navbar-inverse">
+    {% csrf_token %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <a href="{% url 'instabot:dashboard' %}"><h4 class="left navbar-text">Ngage Social</h4></a>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <h4 class="navbar-text" style="padding-left: 63px;">Current Plan: {{ll.cred.pack.pack_name}}</h4>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">{{ ll.cred.insta_user }} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'instabot:userAccounts' %}">Accounts</a></li>
+                            <li><a href="#">Billing Profile</a></li>
+                            <li><a href="#">Support</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{% url 'instabot:logout' %}">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+{% endblock %}
 
 <div class="container">
 {% block body %}
@@ -276,8 +304,7 @@
             
                    
                     <div class="tab-pane " id="2">
-                            <link rel="stylesheet" href="{% static 'css/tags.css' %}">
-                            <script src="{% static 'js/tags.js' %}"></script>
+                            
                             <form method="POST" id="formulario" >
                                     {% csrf_token %}
                             <h3 >Type in Instagram  <span style="color:#2C7CB2;">username </span>which followers or following you want to <span style="color:#2C7CB2;">target</span> </h3>

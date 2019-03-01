@@ -23,6 +23,7 @@ from InstabotMV.src.follow_protocol import follow_protocol
 from InstabotMV.src.unfollow_protocol import unfollow_protocol
 from InstabotMV.src.bsScarp import scrapImg
 from InstabotMV.forms import ComboTagHijo
+from InstabotMV.src.us_scrap import scrapUsr
 
 
 import datetime
@@ -345,6 +346,10 @@ def NewFollowLike(request):
     user = User.objects.get(id=request.user.id)
     ll=LastLogin.objects.get(user=user)
     cred=ll.cred
+    scrap=[]
+    scrap = scrapUsr("arielzelayat") #Devulve un arreglo 1 url 2 username 3 N#followers
+    print(scrap[0])
+    
     if request.method == 'POST':
         task = Task()  # inicializacion de task
         task.user = user  # Se le asigna un usuario a la task
@@ -376,7 +381,7 @@ def NewFollowLike(request):
         t.codigo=''
         t.save()
         return redirect('instabot:dashboard')
-    return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags,'ll':ll})
+    return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags,'ll':ll,'scrap':scrap})
 
 def UnfollowTask(request):
     Hasgtags = HashtagList.objects.all()

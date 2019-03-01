@@ -351,13 +351,21 @@ def NewFollowLike(request):
         task.creds=cred
         task.tags=request.POST.get('tags-input')
         task.active = False
-        task.likemedia=TrueOrFalse(request.POST.get('like'))
-        task.followuser=TrueOrFalse(request.POST.get('follow'))
-        task.dontlikemedia=TrueOrFalse(request.POST.get('dont'))
-        task.dontfollow=TrueOrFalse(request.POST.get('dontfollow'))
-        task.randomlylike=TrueOrFalse(request.POST.get('randomly'))
-        task.search=TrueOrFalse(request.POST.get('search'))
+        if request.POST.get('friend')!="friend":
+
+            task.likemedia=TrueOrFalse(request.POST.get('like'))
+            task.followuser=TrueOrFalse(request.POST.get('follow'))
+            task.dontlikemedia=TrueOrFalse(request.POST.get('dont'))
+            task.dontfollow=TrueOrFalse(request.POST.get('dontfollow'))
+            task.search=TrueOrFalse(request.POST.get('search'))
+        else:
+            task.likemedia=TrueOrFalse(request.POST.get('like2'))
+            task.followuser=TrueOrFalse(request.POST.get('follow2'))
+            task.dontlikemedia=TrueOrFalse(request.POST.get('dont2'))
+            task.dontfollow=TrueOrFalse(request.POST.get('dontfollow2'))
+            task.search=TrueOrFalse(request.POST.get('search2'))
         task.antispamfilter=TrueOrFalse(request.POST.get('antispam'))
+        task.randomlylike=TrueOrFalse(request.POST.get('randomly'))
         task.unfollow=False
         task.ghost=False
         task.back=False

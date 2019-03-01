@@ -34,8 +34,8 @@ class Creds(models.Model):
     insta_pass = models.CharField(max_length=50)
     imgUrl=models.TextField()
     pack=models.ForeignKey(Packages, on_delete=models.CASCADE) #TIPO DE PAQUETE QUE HA ELEGIDO EL USUARIO
-    ceiling=models.BooleanField()
-    number_ceiling= models.IntegerField()
+    ceiling=models.BooleanField(default=False)
+    number_ceiling= models.IntegerField(null=True)
     
 
     class Meta:
@@ -60,7 +60,7 @@ class Task(models.Model):
     back=models.BooleanField()
     antispamfilter=models.BooleanField()
     custowordfilter=models.BooleanField()
-    allusers=models.BooleanField()
+    allusers=models.BooleanField(default=False)
     class Meta:
         verbose_name = 'Task'
         verbose_name_plural = 'Tasks'

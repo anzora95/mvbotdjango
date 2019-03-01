@@ -589,6 +589,9 @@ def start(request, task):
     u=cred.insta_user
     p=cred.insta_pass
     pa=cred.pack_id #id de el paquete que ha elegido el usuario para asignar los like por dia y follows por dia
+    ceil=cred.ceiling#sera un booleano que dira si el input del ceiling est activado
+    n_ceil= cred.number_ceiling # sera el numero entero que tendra el input de la cuenta
+    #hacer un if si ceil esta activo que a runbot le pase n_ceil else que le pase simplemente el numero de paquete para lo use runbot
     task=Task.objects.get(id=task)
     ide=task.id
     ftLike=task.likemedia

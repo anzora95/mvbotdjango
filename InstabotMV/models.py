@@ -34,6 +34,8 @@ class Creds(models.Model):
     insta_pass = models.CharField(max_length=50)
     imgUrl=models.TextField()
     pack=models.ForeignKey(Packages, on_delete=models.CASCADE) #TIPO DE PAQUETE QUE HA ELEGIDO EL USUARIO
+    ceiling=models.BooleanField()
+    number_ceiling= models.IntegerField()
     
 
     class Meta:

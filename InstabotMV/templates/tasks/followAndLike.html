@@ -276,6 +276,8 @@
             
                    
                     <div class="tab-pane " id="2">
+                            <link rel="stylesheet" href="{% static 'css/tags.css' %}">
+                            <script src="{% static 'js/tags.js' %}"></script>
                             <form method="POST" id="formulario" >
                                     {% csrf_token %}
                             <h3 >Type in Instagram  <span style="color:#2C7CB2;">username </span>which followers or following you want to <span style="color:#2C7CB2;">target</span> </h3>
@@ -286,8 +288,25 @@
                                     <div class="col-xs-8 col-sm-10 pr0">
                                             <input type="text" name="tags-input" id="tags-input" class="friendsearch" placeholder="Instagram username">
                                         </div>
-                                        <div class="col-xs-4 col-sm-2 pl5"><button style="float: right; margin-top:4px;width:100%;"type="submit" class="btn btn-primary">Search</button></div>
+                                        
+                                        <div class="col-xs-4 col-sm-2 pl5"><button style="float: right; margin-top:4px;width:100%;"type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Search</button></div>
+                                        
+                                        <div id="demo" class="collapse col-md-12" style="float:left;">
+                                                <br>
+                                                <div class="col-md-1"><img style="border-radius: 50%; width: 65px;
+                                                    height: 65px;" src="https://t2.uc.ltmcdn.com/images/5/4/4/img_como_moderar_comentarios_en_instagram_44445_600.jpg" alt="user-pic">
+                                                  </div>
+                                                <div class="col-md-9" style="padding-top: 8px;">
+                                                    <p style="padding-bottom:-3px;"><b>Username</b></p>
+                                                    <p style="margin-top: -10px;">Followers</p></div>
+                                                <div class="col-md-2" style="padding-top: 15px;">
+                                                        <button type="button" class="btn btn-success">Add to task</button>
+                                                </div>
+                                                <hr class="divider">
+                                            </div>
+                                            
                             </div>
+                            <br>
                             <p>Select actions for current task</p>
                             <div class="row">
                                 <div class="col-md-12">

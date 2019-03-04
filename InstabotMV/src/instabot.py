@@ -18,6 +18,7 @@ import unicodedata
 from .sql_updates import check_already_liked, check_already_followed
 from .sql_updates import insert_media, insert_username, insert_unfollow_count
 from .sql_updates import get_username_random
+from .sql_updates import count_ngage
 from fake_useragent import UserAgent
 import re
 from .location_follow import get_us_id_by_location
@@ -157,10 +158,11 @@ class InstaBot:
                  ft_no_follow=False,
                  ft_src_rcntly=False,
                  ft_unfollow=False,
-                 task_id=0):
+                 task_id=0,
+                 ceil=0):
 
 
-
+        self.ceiling_number=ceil
         self.us=us
         fake_ua = UserAgent()
         self.user_agent = "Mozilla/5.0 (Windows; U; Windows NT 6.0; fr-FR) AppleWebKit/533.18.1 (KHTML, like Gecko) " \
@@ -814,6 +816,11 @@ class InstaBot:
                 # ------------------- Comment -------------------
                 #self.new_auto_mod_comments()
                 # Bot iteration in 1 sec
+                if self.ceiling_number !=0:
+                    if count_ngage(self.task_id)==self.ceiling_number:
+                        self.cleanup()
+                else:
+                    self.write_log("No hay techo de followers")
                 time.sleep(3)
                 # print("Tic!")
             else:

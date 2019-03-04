@@ -196,3 +196,8 @@ def insert_tag(self, catalogo, hashtags_names):
 #
 #
 #     return
+
+def count_ngage(task_id):
+    us=Username.objects.count(unfollow_count=0, task_id=task_id)
+    return us
+

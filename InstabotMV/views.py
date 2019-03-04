@@ -623,7 +623,7 @@ def start(request, task):
     hl=strtask.split(",")
     print(hl)
     user=User.objects.get(id=request.user.id)
-    runbot.delay(u,p,hl,ide,ftLike,ftFollow,ftUnfollow,pa)
+    runbot.delay(u,p,hl,ide,ftLike,ftFollow,ftUnfollow,pa,n_ceil)
     return redirect('instabot:dashboard')
 
 class StopBot(LoginRequiredMixin, View):

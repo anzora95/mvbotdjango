@@ -30,7 +30,8 @@ def stop(codigo):
     return 'Finished'
 
 @shared_task
-def runbot(user,p,hl,i,like,follow,unfollow,pa):
+def runbot(user,p,hl,i,like,follow,unfollow,pa,n_ceil):
+    ceiling=n_ceil
     pack=Packages.objects.get(id=pa)
     pak_follows=pack.follows_by_pack
     pak_like=pack.like_by_pack
@@ -85,7 +86,8 @@ def runbot(user,p,hl,i,like,follow,unfollow,pa):
         unfollow_whitelist=['example_user_1', 'example_user_2'],ft_like=like,
         ft_follow=follow,
         ft_unfollow=unfollow,
-        task_id=i)
+        task_id=i,
+        ceil=ceiling)
     
     while True:
 

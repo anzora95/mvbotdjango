@@ -352,7 +352,13 @@ def NewFollowLike(request):
     user = User.objects.get(id=request.user.id)
     ll=LastLogin.objects.get(user=user)
     cred=ll.cred
+    user_inst=Creds.objects.get(id=cred.id)
+    if user_inst.number_ceiling!=None:
+        ceil_number=user_inst.number_ceiling
+    else:
+        ceil_number=0
     if request.method == 'POST':
+        #Task
         task = Task()  # inicializacion de task
         task.user = user  # Se le asigna un usuario a la task
         task.creds=cred
@@ -370,12 +376,16 @@ def NewFollowLike(request):
         task.back=False
         task.custowordfilter=TrueOrFalse(request.POST.get('custom'))
         task.save()
+        #thread 
         t=thread()
         t.task=task
         t.codigo=''
         t.save()
+        #Ceiling user instagram
+        user_inst.number_ceiling=request.POST.get('Ceiling')
+        user_inst.save()
         return redirect('instabot:dashboard')
-    return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags,'ll':ll})
+    return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags,'ll':ll,'ceil_number':ceil_number})
 
 def UnfollowTask(request):
     Hasgtags = HashtagList.objects.all()

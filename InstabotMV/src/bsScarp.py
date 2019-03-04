@@ -13,3 +13,15 @@ def scrapImg(username):
     url = tag2.replace('<meta content="', '')
     link=url.replace('" property="og:image"/>','')
     return(link)
+
+def scrap_us(username):
+    my_url = 'https://www.instagram.com/%s/' % (username)
+#    return(us_info)
+
+    uClient= uReq(my_url)
+    page_html = uClient.read()
+    s=soup(page_html, "html.parser")
+    container=s.findAll("meta",{"property":"og:description"})
+    valor=str(container).replace('<meta content="', '')
+    valor2=valor[0:33]
+    return(valor2)

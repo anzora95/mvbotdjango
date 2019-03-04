@@ -70,12 +70,15 @@
         
             <div class="row">
                     {% for cred in lcreds %}
+                    
                 <div class="col-md-3" style="margin-right:-100px;margin-left: px;">
                     <div class="thumbnail">
                         <img style="border-radius: 50%; width: 75px;
                         height: 75px;" src="{{cred.imgUrl}}" alt="user-pic">
                         <div class="caption">
                             <h4 class="text-center">{{cred.insta_user}}</h4>
+                            <p>Followers: {{cred.insta_followers}}</p>
+                            <p>Followings: {{cred.insta_followings}}</p>
                             <p>
                                     {% if ll.cred.insta_user == cred.insta_user%}
                                 <a href="{% url 'instabot:changeAccount' cred.id %}" style="margin-bottom: 3px;" class="btn btn-primary center-block"  
@@ -91,6 +94,7 @@
                         </div>
                     </div>
                 </div>
+                
                 {% endfor %}
             </div>
         

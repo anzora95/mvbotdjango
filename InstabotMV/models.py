@@ -36,8 +36,9 @@ class Creds(models.Model):
     pack=models.ForeignKey(Packages, on_delete=models.CASCADE) #TIPO DE PAQUETE QUE HA ELEGIDO EL USUARIO
     ceiling=models.BooleanField(default=False)
     number_ceiling= models.IntegerField(null=True)
+    insta_followers=models.CharField(max_length=20)
+    insta_followings=models.CharField(max_length=20)
     
-
     class Meta:
         verbose_name = 'Cred'
         verbose_name_plural = 'Creds'

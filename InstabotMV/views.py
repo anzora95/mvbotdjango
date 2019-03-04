@@ -21,7 +21,7 @@ from InstabotMV.src.check_status import check_status
 from InstabotMV.src.feed_scanner import feed_scanner
 from InstabotMV.src.follow_protocol import follow_protocol
 from InstabotMV.src.unfollow_protocol import unfollow_protocol
-from InstabotMV.src.bsScarp import scrapImg
+from InstabotMV.src.bsScarp import scrapImg, scrap_us
 from InstabotMV.forms import ComboTagHijo
 
 
@@ -213,18 +213,23 @@ class UserAccounts(LoginRequiredMixin, View):
         user=User.objects.get(id=request.user.id) #Obtencion del usuario logeado
         creds = Creds.objects.all() #Obtencion de todas las credenciales 
         lcreds=[] #Inicializacion de lista de credenciales
+        finfo=[]
 
         for x in range(0,len(creds)):
             if creds[x].user==user:
                 lcreds.append(creds[x])
-        
-        return render(request, 'users/mybot.html', {'lcreds':lcreds,'ll':ll, 'packs':packs})
+                finfo=scrap_us(creds[x].insta_user)
+                creds[x].insta_followers=finfo[0]
+                creds[x].insta_followings=finfo[2]
+       
+        return render(request, 'users/mybot.html', {'lcreds':lcreds,'ll':ll, 'packs':packs,})
 
     def post(self, request):
         user = User.objects.get(id=request.user.id) #Get the current user logged in
         ll=LastLogin.objects.get(user=user)
         cred=ll.cred
-        if request.method == 'POST':
+        fo_info=scrap_us(request.POST.get('insta_user'))
+        if request.method == 'POST':            
             user=User.objects.get(id=request.user.id) # Se toma el usuario django que eta logeado.
             cred = Creds()  # inicializacion de Credentials
             cred.user = user  # Se le asigna un usuario a la task
@@ -232,6 +237,8 @@ class UserAccounts(LoginRequiredMixin, View):
             cred.insta_pass=request.POST.get('insta_pass')
             cred.imgUrl=scrapImg(request.POST.get('insta_user'))
             cred.pack_id=request.POST.get('pack')
+            cred.insta_followers=fo_info[0]
+            cred.insta_followings=fo_info[1]
             cred.save()
 
             

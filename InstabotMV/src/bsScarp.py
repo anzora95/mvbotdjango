@@ -1,6 +1,7 @@
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 
+
 def scrapImg(username):
     my_url = 'https://www.instagram.com/%s/' % (username)
 
@@ -22,6 +23,7 @@ def scrap_us(username):
     page_html = uClient.read()
     s=soup(page_html, "html.parser")
     container=s.findAll("meta",{"property":"og:description"})
-    valor=str(container).replace('<meta content="', '')
+    valor=str(container).replace('[<meta content="', '')
     valor2=valor[0:33]
-    return(valor2)
+    ul=valor2.split(" ")
+    return(ul)

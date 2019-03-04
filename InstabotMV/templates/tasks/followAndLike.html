@@ -116,6 +116,7 @@
             <br>
             <div class="tab-content">
             <div class="tab-pane fade in active" id="1">
+
                     <form method="POST" id="formulario" >
                 <h3 >Type in  your <span style="color:#2C7CB2;">Hashtags </span>or select from a <span style="color:#2C7CB2;">list</span> </h3>
                 <br>
@@ -503,4 +504,16 @@
             
             
     </div>
+    <script>
+    document.getElementById("formulario").onkeypress = function(e) {
+  var key = e.charCode || e.keyCode || 0;     
+  if (key == 13) {
+    
+    e.preventDefault();
+    
+  }
+}</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script></script>
+
 {% endblock %}

@@ -12,6 +12,7 @@ from InstabotMV.forms import InstaCredsForm
 from django.views.generic import View, DetailView, TemplateView, UpdateView, DeleteView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
+from django.http import JsonResponse
 # *************************************************Bot imports**********************************************************
 
 import time
@@ -274,6 +275,15 @@ class prueba(TemplateView):
     def get(self, request, *args, **kwargs):
         print("EXITO")
         return HttpResponse(content_type='application/json')
+
+def test(request):
+    username = request.GET.get('username', None)
+    scrap=[]
+    scrap = scrapUsr(username) #Devulve un arreglo 1 url 2 username 3 N#followers
+    print(scrap[0])
+    data = scrap
+    return HttpResponse(json.dumps(data), content_type="application/json")
+    
 
 def tags_serializer(tag):
     return {'id':tag.id,'name':tag.insta_tag}

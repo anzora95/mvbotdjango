@@ -195,15 +195,12 @@
                             
                         </a>
                     </div>
-                <div class="col-md-6">
-                    <div class="radio">
-                        <label style="padding-right: 60px;padding-left: 90px;"><input type="checkbox" name="ceili" value="True" id="ceili"> Follow limit:</label>
-                        <input type="text" id="Ceiling" name="Ceiling" value="{{ceil_number}}" disabled>
-                        <script>
-                        document.getElementById('ceili').onchange = function() {
-                          document.getElementById('Ceiling').disabled = !this.checked;
-                      };</script>
-                      </div>
+                    <div class="col-md-6">
+                        <div class="radio">
+                            <label style="padding-right: 60px;padding-left: 90px;"><input type="radio" name="optradio" >Follow limit:</label>
+                            <input type="text" id="limit"name="FirstName" value="">
+                          </div>
+                    </div>
                 </div>
                 <p>Select Features</p>
             <div class="row">
@@ -317,24 +314,46 @@
                             <div class="row">
 
                                     <div class="col-xs-8 col-sm-10 pr0">
-                                            <input type="text" name="tags-input" id="tags-input" class="friendsearch" placeholder="Instagram username">
+                                            <input type="text" name="username" id="tags-input" class="friendsearch" placeholder="Instagram username">
                                         </div>
                                         
                                         <div class="col-xs-4 col-sm-2 pl5"><button style="float: right; margin-top:4px;width:100%;"type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Search</button></div>
                                         
                                         <div id="demo" class="collapse col-md-12" style="float:left;">
                                                 <br>
-                                                <div class="col-md-1"><img style="border-radius: 50%; width: 65px;
-                                                    height: 65px;" src="https://t2.uc.ltmcdn.com/images/5/4/4/img_como_moderar_comentarios_en_instagram_44445_600.jpg" alt="user-pic">
+                                                <div class="col-md-1"><img id="imgurl"style="border-radius: 50%; width: 65px;
+                                                    height: 65px;" src="" alt="user-pic">
                                                   </div>
                                                 <div class="col-md-9" style="padding-top: 8px;">
-                                                    <p style="padding-bottom:-3px;"><b>Username</b></p>
-                                                    <p style="margin-top: -10px;">Followers</p></div>
+                                                    <p style="padding-bottom:-3px;"><b id="username"></b></p>
+                                                    <p id="followers"style="margin-top: -10px;">{{scrap.2}}</p></div>
                                                 <div class="col-md-2" style="padding-top: 15px;">
                                                         <button type="button" class="btn btn-success">Add to task</button>
                                                 </div>
                                                 <hr class="divider">
                                             </div>
+                                            <script>
+                                              $("#tags-input").change(function () {
+                                                var username = $(this).val();
+
+      $.ajax({
+        url: '/instabotmv/ajax/validate_username/',
+        data: {
+          'username': username
+        },
+        dataType: 'json',
+        success: function (data) {
+          
+            
+            document.getElementById('username').innerHTML =data[1];
+            document.getElementById('followers').innerHTML =data[2];
+            document.getElementById("imgurl").src = data[0]; 
+          
+        }
+      });
+
+    });
+                                            </script>
                                             
                             </div>
                             <br>

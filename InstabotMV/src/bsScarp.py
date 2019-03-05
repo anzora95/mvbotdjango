@@ -1,8 +1,7 @@
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 
-
-def scrapImg(username):
+def scrapImg(username): #Devulve un arreglo 1 url 2 username 3 N#followers
     my_url = 'https://www.instagram.com/%s/' % (username)
 
     uClient= uReq(my_url)

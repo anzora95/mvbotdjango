@@ -23,6 +23,7 @@ from InstabotMV.src.follow_protocol import follow_protocol
 from InstabotMV.src.unfollow_protocol import unfollow_protocol
 from InstabotMV.src.bsScarp import scrapImg, scrap_us
 from InstabotMV.forms import ComboTagHijo
+from InstabotMV.src.us_scrap import scrapUsr
 
 
 import datetime
@@ -357,6 +358,10 @@ def NewFollowLike(request):
         ceil_number=user_inst.number_ceiling
     else:
         ceil_number=0
+    scrap=[]
+    scrap = scrapUsr("arielzelayat") #Devulve un arreglo 1 url 2 username 3 N#followers
+    print(scrap[0])
+    
     if request.method == 'POST':
         #Task
         task = Task()  # inicializacion de task
@@ -364,13 +369,21 @@ def NewFollowLike(request):
         task.creds=cred
         task.tags=request.POST.get('tags-input')
         task.active = False
-        task.likemedia=TrueOrFalse(request.POST.get('like'))
-        task.followuser=TrueOrFalse(request.POST.get('follow'))
-        task.dontlikemedia=TrueOrFalse(request.POST.get('dont'))
-        task.dontfollow=TrueOrFalse(request.POST.get('dontfollow'))
-        task.randomlylike=TrueOrFalse(request.POST.get('randomly'))
-        task.search=TrueOrFalse(request.POST.get('search'))
+        if request.POST.get('friend')!="friend":
+
+            task.likemedia=TrueOrFalse(request.POST.get('like'))
+            task.followuser=TrueOrFalse(request.POST.get('follow'))
+            task.dontlikemedia=TrueOrFalse(request.POST.get('dont'))
+            task.dontfollow=TrueOrFalse(request.POST.get('dontfollow'))
+            task.search=TrueOrFalse(request.POST.get('search'))
+        else:
+            task.likemedia=TrueOrFalse(request.POST.get('like2'))
+            task.followuser=TrueOrFalse(request.POST.get('follow2'))
+            task.dontlikemedia=TrueOrFalse(request.POST.get('dont2'))
+            task.dontfollow=TrueOrFalse(request.POST.get('dontfollow2'))
+            task.search=TrueOrFalse(request.POST.get('search2'))
         task.antispamfilter=TrueOrFalse(request.POST.get('antispam'))
+        task.randomlylike=TrueOrFalse(request.POST.get('randomly'))
         task.unfollow=False
         task.ghost=False
         task.back=False
@@ -385,7 +398,7 @@ def NewFollowLike(request):
         user_inst.number_ceiling=request.POST.get('Ceiling')
         user_inst.save()
         return redirect('instabot:dashboard')
-    return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags,'ll':ll,'ceil_number':ceil_number})
+    return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags,'ll':ll,'ceil_number':ceil_number,'scrap':scrap})
 
 def UnfollowTask(request):
     Hasgtags = HashtagList.objects.all()

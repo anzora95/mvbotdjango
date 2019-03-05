@@ -10,7 +10,7 @@
     mainInput.setAttribute('type', 'text');
     mainInput.classList.add('main-input');
     mainInput.addEventListener('input', function () {
-        let enteredTags = mainInput.value.split(' ');
+        let enteredTags = mainInput.value.split(" ");
         if (enteredTags.length > 1) {
             enteredTags.forEach(function (t) {
                 let filteredTag = filterTag(t);
@@ -21,11 +21,14 @@
         }
     });
 
+    
+
     mainInput.addEventListener('keydown', function (e) {
         let keyCode = e.which || e.keyCode;
         if (keyCode === 8 && mainInput.value.length === 0 && tags.length > 0) {
             removeTag(tags.length - 1);
         }
+        
     });
 
     el.appendChild(mainInput);

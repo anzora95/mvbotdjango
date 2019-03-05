@@ -145,32 +145,11 @@
         </a>
             {%endif%}
             {% if task.active%}
-            <a href="{% url 'instabot:detener' task.id%}" class="btn btn-played btn-primary btn-circle btn-xl" role="button">
-                    <i class='glyphicon glyphicon-play'></i>
+            <a href="{% url 'instabot:detener' task.id%}"  class="btn btn-played btn-primary btn-circle  btn-xl" role="button">
+                    <i  style="margin-top: 7px;margin-left: 3px;" class='glyphicon glyphicon-pause'></i>
             </a>
-            <style>
-                
-                    .btn-played {
-                      border: 16px solid #f3f3f3;
-                      border-radius: 50%;
-                      border-top: 16px solid #3498db;
-                      width: 120px;
-                      height: 120px;
-                      -webkit-animation: spin 2s linear infinite; /* Safari */
-                      animation: spin 2s linear infinite;
-                    }
-                    
-                    /* Safari */
-                    @-webkit-keyframes spin {
-                      0% { -webkit-transform: rotate(0deg); }
-                      100% { -webkit-transform: rotate(360deg); }
-                    }
-                    
-                    @keyframes spin {
-                      0% { transform: rotate(0deg); }
-                      100% { transform: rotate(360deg); }
-                    }
-                    </style>
+
+            
             {% else%}
             <a href="{% url 'instabot:starter' task.id%}" class="btn btn-play btn-primary  btn-circle btn-xl" role="button">
                     <i class='glyphicon glyphicon-play'></i>
@@ -179,10 +158,17 @@
             <a href="{% url 'instabot:edit_task' task.id%}" class="btn btn-primary  btn-lit-circle" role="button">
                     <i class="glyphicon glyphicon-pencil"></i>
             </a>
+            
             <a href="{% url 'instabot:del_task' task.id%}" class="btn btn-primary btn-lit-circle" role="button">
                     <i class="glyphicon glyphicon-trash"></i>
             </a>
        </div>
+       {% if task.active%}
+       <div  style="margin-left: 135px;margin-top: -16px;" class="text-center">
+            <i style="color:#2C7CB2;" class='glyphicon  rotor glyphicon-refresh' style=""></i>
+            <label style="color:#2C7CB2;">running</label>
+       </div>
+       {%endif%}
 
 {% endfor%}
 <br>

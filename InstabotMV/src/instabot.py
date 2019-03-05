@@ -816,11 +816,12 @@ class InstaBot:
                 # ------------------- Comment -------------------
                 #self.new_auto_mod_comments()
                 # Bot iteration in 1 sec
-                if self.ceiling_number !=0:
-                    if count_ngage(self.task_id)==self.ceiling_number:
-                        self.cleanup()
-                else:
-                    self.write_log("No hay techo de followers")
+                #if self.ceiling_number !=0:
+                #    print(count_ngage(self.task_id))
+                #    if count_ngage(self.task_id)>=self.ceiling_number:
+                #        self.cleanup()
+                #else:
+                #    self.write_log("No hay techo de followers")
                 time.sleep(3)
                 # print("Tic!")
             else:

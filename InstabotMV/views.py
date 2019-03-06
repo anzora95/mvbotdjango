@@ -391,6 +391,7 @@ def NewFollowLike(request):
             task.followuser=TrueOrFalse(request.POST.get('follow2'))
             task.dontlikemedia=TrueOrFalse(request.POST.get('dont2'))
             task.dontfollow=TrueOrFalse(request.POST.get('dontfollow2'))
+            task.tags=request.POST.get('tags-inputs')
             task.search=TrueOrFalse(request.POST.get('search2'))
         task.antispamfilter=TrueOrFalse(request.POST.get('antispam'))
         task.randomlylike=TrueOrFalse(request.POST.get('randomly'))

@@ -306,7 +306,16 @@
                    
                     <div class="tab-pane " id="2">
                             
-                            <form method="POST" id="formulario" >
+                            <form method="POST" id="formu" >
+                                <script>
+                                    document.getElementById("formu").onkeypress = function(e) {
+                                  var key = e.charCode || e.keyCode || 0;     
+                                  if (key == 13) {
+                                    
+                                    e.preventDefault();
+                                    
+                                  }
+                                }</script>
                                     {% csrf_token %}
                             <h3 >Type in Instagram  <span style="color:#2C7CB2;">username </span>which followers or following you want to <span style="color:#2C7CB2;">target</span> </h3>
                
@@ -314,7 +323,7 @@
                             <div class="row">
 
                                     <div class="col-xs-8 col-sm-10 pr0">
-                                            <input type="text" name="username" id="tags-input" class="friendsearch" placeholder="Instagram username">
+                                            <input type="text" name="username" style="margin-top: 6px;"id="tags-input" class="friendsearch" placeholder="Instagram username">
                                         </div>
                                         
                                         <div class="col-xs-4 col-sm-2 pl5"><button style="float: right; margin-top:4px;width:100%;"type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Search</button></div>
@@ -322,18 +331,72 @@
                                         <div id="demo" class="collapse col-md-12" style="float:left;">
                                                 <br>
                                                 <div class="col-md-1"><img id="imgurl"style="border-radius: 50%; width: 65px;
-                                                    height: 65px;" src="" alt="user-pic">
-                                                  </div>
+                                                  height: 65px;" src="" alt="">
+                                                </div>
+                                                
+                                                  
                                                 <div class="col-md-9" style="padding-top: 8px;">
                                                     <p style="padding-bottom:-3px;"><b id="username"></b></p>
-                                                    <p id="followers"style="margin-top: -10px;">{{scrap.2}}</p></div>
+                                                    <p id="followers"style="margin-top: -10px;"></p></div>
                                                 <div class="col-md-2" style="padding-top: 15px;">
-                                                        <button type="button" class="btn btn-success">Add to task</button>
+                                                        <button data-toggle="collapse" data-target="#demo2" type="button" onclick="mifuncion()" class="btn btn-success">Add to task</button>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    
+
+                                                    <div id="demo2" class="collapse">
+                                                        <div style="width:100%;" class="tags-inputs" data-name="tags-inputs">
+                                                            <section id="xd">
+                                            
+                                                            </section>
+                                                            </div>
+                                                        
+                                        <script>
+                                        </script>
+                                                    </div> 
                                                 </div>
                                                 <hr class="divider">
                                             </div>
                                             <script>
-                                              $("#tags-input").change(function () {
+[].forEach.call(document.getElementsByClassName('tags-inputs'), function (el) {
+    let hiddenInput = document.createElement('input'),
+        mainInput = document.createElement('input'),
+        tags = [];
+    
+    hiddenInput.setAttribute('type', 'hidden');
+
+    hiddenInput.setAttribute('name', el.getAttribute('data-name'));
+
+    mainInput.setAttribute('type', 'text');
+    mainInput.classList.add('main-input');
+    mainInput.addEventListener('input', function () {
+        let enteredTags = mainInput.value.split(" ");
+        if (enteredTags.length > 1) {
+            enteredTags.forEach(function (t) {
+                let filteredTag = filterTag(t);
+                if (filteredTag.length > 0)
+                    addTag(filteredTag);
+            });
+            mainInput.value = '';
+        }
+    });
+
+    
+
+    mainInput.addEventListener('keydown', function (e) {
+        let keyCode = e.which || e.keyCode;
+        if (keyCode === 8 && mainInput.value.length === 0 && tags.length > 0) {
+            removeTag(tags.length - 1);
+        }
+        
+    });
+
+    el.appendChild(mainInput);
+    el.appendChild(hiddenInput);
+
+    
+    
+    $("#tags-input").change(function () {
                                                 var username = $(this).val();
 
       $.ajax({
@@ -343,18 +406,64 @@
         },
         dataType: 'json',
         success: function (data) {
-          
-            
+         
             document.getElementById('username').innerHTML =data[1];
             document.getElementById('followers').innerHTML =data[2];
-            document.getElementById("imgurl").src = data[0]; 
-          
+            document.getElementById("imgurl").src = data[0];
+            addTag(username);
+            
+           
         }
       });
 
     });
+                     
+    function addTag (text) {
+        let tag = {
+            text: text,
+            element: document.createElement('span'),
+        };
+
+        tag.element.classList.add('tag');
+        tag.element.textContent = tag.text;
+
+        let closeBtn = document.createElement('span');
+        closeBtn.classList.add('close');
+        closeBtn.addEventListener('click', function () {
+            removeTag(tags.indexOf(tag));
+        });
+        tag.element.appendChild(closeBtn);
+
+        tags.push(tag);
+
+        el.insertBefore(tag.element, mainInput);
+
+        refreshTags();
+    }
+    
+    function removeTag (index) {
+        let tag = tags[index];
+        tags.splice(index, 1);
+        el.removeChild(tag.element);
+        refreshTags();
+    }
+
+    function refreshTags () {
+        let tagsList = [];
+        tags.forEach(function (t) {
+            tagsList.push(t.text);
+        });
+        hiddenInput.value = tagsList.join(',');
+    }
+
+    function filterTag (tag) {
+        return tag.replace(/[^\w -]/g, '').trim().replace(/\W+/g, '-');
+    }
+});
+
+                                              
                                             </script>
-                                            
+                                                               
                             </div>
                             <br>
                             <p>Select actions for current task</p>

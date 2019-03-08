@@ -146,14 +146,28 @@
                 <p>Select actions for current task</p>
                 <div class="row">
                     <div class="col-md-12">
-                        <a  style="overflow:auto; border-radius: 5px;border: 2px solid#2C7CB2;" id="btnlike"class="btn btn-primary btn-block">
+                        <a  onclick="toggle_visibility('check');"style="overflow:auto; border: none;" id="btnlike"class="btn btn-block btn-primary">
+            
                             <span style="float:left; margin-right: 5px;"class="glyphicon glyphicon-heart"></span>
+                            
                             <p style="float:left;"> LIKE MEDIA OF THIS TASK</p>
                             <input name="like" id="like" value="like" type="hidden">
+                            <div style="float:right;
+                            width:100px;"class="col-md-2">
+                                <span id="check" class="fa fa-check fa-2x"   aria-hidden="true"></span>
+                              </div>
                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet" />
                             <script>
+                           function toggle_visibility(id) {
+var e = document.getElementById(id);
+e.style.display = ((e.style.display!='none') ? 'none' : 'block');
+}
+
+                            </script>
+                            <script>
+                              
                             $(document).ready(function() {
     var toggleText = $("#ip").val();
     $("#btnlike").click(function() {
@@ -162,11 +176,13 @@
       $("#like").val('none');
     } else
       $("#like").val(toggleText);
-    $(this).toggleClass('btn-default').toggleClass('btn-link');
+    $(this).toggleClass('grey');
+    document.getElementById("fa fa-check fa-2x").style.display = 'none';
     
     });
     });
                             </script>
+                            
                            
                         </a>
                     </div>
@@ -174,9 +190,21 @@
                 <br>
                 <div class="row">
                     <div class="col-md-6">
-                        <a style=" overflow:auto;border-radius: 5px; border: 2px solid#2C7CB2;" id="btnfollow"style="overflow:auto;" class="btn btn-primary btn-block">
+                        <a onclick="toggle_visibility('check2');"style=" overflow:auto;border-radius: 5px; border:none;" id="btnfollow"style="overflow:auto;" class="btn btn-primary btn-block">
                             <span style="float:left; margin-right: 5px;"class="glyphicon glyphicon-user"></span>
                             <input name="follow" id="follow" value="follow" type="hidden">
+                            <p style="float:left;">FOLLOW USERS OF THIS TASK MEDIA</p>
+                            <div style="float:right;
+                            width:100px;"class="col-md-2">
+                                <span id="check2" class="check2 fa fa-check fa-2x"   aria-hidden="true"></span>
+                              </div>
+                              <script>
+                                  function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       e.style.display = ((e.style.display!='none') ? 'none' : 'block');
+       }
+       
+                                   </script>
                             <script>
                                     $(document).ready(function() {
           var toggleText = $("#ip").val();
@@ -186,28 +214,44 @@
               $("#follow").val('none');
             } else
               $("#follow").val(toggleText);
-            $(this).toggleClass('btn-default').toggleClass('btn-link');
+              $(this).toggleClass('grey');
         
           });
         });
                                     </script>
-                            <p style="float:left;">FOLLOW USERS OF THIS TASK MEDIA</p>
+                            
                             
                         </a>
                     </div>
                     <div class="col-md-6">
                         <div class="radio">
-                            <label style="padding-right: 60px;padding-left: 90px;"><input type="radio" name="optradio" >Follow limit:</label>
-                            <input type="text" id="limit"name="FirstName" value="">
+                            <label style="padding-right: 60px;padding-left: 90px;"><input type="checkbox" name="ceili" value="True" id="ceili"> Follow limit:</label>
+                                      <input type="text" id="Ceiling" name="Ceiling" value="{{ceil_number}}" disabled>
+                                      <script>
+                                      document.getElementById('ceili').onchange = function() {
+                                        document.getElementById('Ceiling').disabled = !this.checked;
+                                    };</script>
                           </div>
                     </div>
                 </div>
                 <p>Select Features</p>
             <div class="row">
                 <div class="col-md-12">
-                    <a style="overflow:auto; border-radius: 5px;border: 2px solid#2C7CB2;" style="overflow:auto;" id="btndont" class="btn btn-primary btn-block">
+                    <a onclick="toggle_visibility('check3');"style="overflow:auto; border-radius: 5px;border:none;" style="overflow:auto;" id="btndont" class="btn btn-primary btn-block">
                         <span style="float:left; margin-right: 5px;"  class="glyphicon glyphicon-heart-empty"></span>
                         <input name="dont" id="dont" value="dont" type="hidden">
+                        <p style="float:left;">DON'T LIKE MEDIA OF THE SAME USER SECOND TIME</p>
+                        <div style="float:right;
+                        width:100px;"class="col-md-2">
+                            <span id="check3" class="check3 fa fa-check fa-2x"   aria-hidden="true"></span>
+                          </div>
+                          <script>
+                              function toggle_visibility(id) {
+   var e = document.getElementById(id);
+   e.style.display = ((e.style.display!='none') ? 'none' : 'block');
+   }
+   
+                               </script>
                         <script>
                                 $(document).ready(function() {
       var toggleText = $("#ip").val();
@@ -217,12 +261,12 @@
           $("#dont").val('none');
         } else
           $("#dont").val(toggleText);
-        $(this).toggleClass('btn-default').toggleClass('btn-link');
+          $(this).toggleClass('grey');
     
       });
     });
                                 </script>
-                        <p style="float:left;">DON'T LIKE MEDIA OF THE SAME USER SECOND TIME</p>
+                        
                        
                     </a>
                 </div>
@@ -230,9 +274,22 @@
             <br>
             <div class="row">
                 <div class="col-md-12">
-                    <a style="overflow:auto; border-radius: 5px;border: 2px solid#2C7CB2;" style="overflow:auto;" id="btndontfollow" class="btn btn-primary btn-block">
+                    <a  onclick="toggle_visibility('check4');"style="overflow:auto; border-radius: 5px;border:none;" style="overflow:auto;" id="btndontfollow" class="btn btn-primary btn-block">
                         <span style="float:left; margin-right: 5px;" class="glyphicon glyphicon-sunglasses"></span>
                         <input name="dontfollow" id="dontfollow" value="dontfollow" type="hidden">
+                        <p style="float:left;">DON'T FOLLOW PREVIOUSLY UNFOLLOWED USERS</p>
+                        
+                        <div style="float:right;
+                        width:100px;"class="col-md-2">
+                            <span id="check4" class="check4 fa fa-check fa-2x"   aria-hidden="true"></span>
+                          </div>
+                          <script>
+                              function toggle_visibility(id) {
+   var e = document.getElementById(id);
+   e.style.display = ((e.style.display!='none') ? 'none' : 'block');
+   }
+   
+                               </script>
                         <script>
                                 $(document).ready(function() {
       var toggleText = $("#ip").val();
@@ -242,12 +299,11 @@
           $("#dontfollow").val('none');
         } else
           $("#dontfollow").val(toggleText);
-        $(this).toggleClass('btn-default').toggleClass('btn-link');
+          $(this).toggleClass('grey');
     
       });
     });
                                 </script>
-                        <p style="float:left;">DON'T FOLLOW PREVIOUSLY UNFOLLOWED USERS</p>
                         
                     </a>
                 </div>
@@ -255,9 +311,21 @@
             <br>
             <div class="row">
                 <div class="col-md-12">
-                    <a style="overflow:auto; border-radius: 5px; border: 2px solid#2C7CB2;" style="overflow:auto;" id="btnsearch" class="btn btn-primary btn-block">
+                    <a  onclick="toggle_visibility('check5');"style="overflow:auto; border-radius: 5px; border:none;" style="overflow:auto;" id="btnsearch" class="btn btn-primary btn-block">
                         <span  style="float:left; margin-right: 5px;" class="glyphicon glyphicon-time"></span>
                         <input name="search" id="search" value="search" type="hidden">
+                        <p style="float:left;">SEARCH FOR RECENTLY POSTED MEDIA ONLY</p>
+                        <div style="float:right;
+                        width:100px;" class="col-md-2">
+                            <span id="check5" class="check5 fa fa-check fa-2x"  aria-hidden="true"></span>
+                          </div>
+                          <script>
+                              function toggle_visibility(id) {
+   var e = document.getElementById(id);
+   e.style.display = ((e.style.display!='none') ? 'none' : 'block');
+   }
+   
+                               </script>
                         <script>
                                 $(document).ready(function() {
       var toggleText = $("#ip").val();
@@ -267,12 +335,12 @@
           $("#search").val('none');
         } else
           $("#search").val(toggleText);
-        $(this).toggleClass('btn-default').toggleClass('btn-link');
+          $(this).toggleClass('grey');
     
       });
     });
                                 </script>
-                        <p style="float:left;">SEARCH FOR RECENTLY POSTED MEDIA ONLY</p>
+                        
                         
                     </a>
                 </div>
@@ -469,10 +537,14 @@
                             <p>Select actions for current task</p>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <a  style="overflow:auto; border-radius: 5px;border: 2px solid#2C7CB2;" id="btnlike2"class="btn btn-primary btn-block">
+                                    <a onclick="toggle_visibility('check6');" style="overflow:auto; border-radius: 5px;border:none;" id="btnlike2"class="btn btn-primary btn-block">
                                         <span style="float:left; margin-right: 5px;"class="glyphicon glyphicon-heart"></span>
                                         <p style="float:left;"> LIKE MEDIA OF THIS TASK</p>
                                         <input name="like2" id="like2" value="like" type="hidden">
+                                        <div style="float:right;
+                                        width:100px;"class="col-md-2">
+                                            <span id="check6" class="check6 fa fa-check fa-2x"   aria-hidden="true"></span>
+                                          </div>
                                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.js"></script>
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet" />
@@ -485,7 +557,7 @@
                   $("#like2").val('none');
                 } else
                   $("#like2").val(toggleText);
-                $(this).toggleClass('btn-default').toggleClass('btn-link');
+                $(this).toggleClass('grey');
                 
                 });
                 });
@@ -497,9 +569,20 @@
                             <br>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <a style=" overflow:auto;border-radius: 5px; border: 2px solid#2C7CB2;" id="btnfollow2"style="overflow:auto;" class="btn btn-primary btn-block">
+                                    <a onclick="toggle_visibility('check7');"style=" overflow:auto;border-radius: 5px; border:none;" id="btnfollow2"style="overflow:auto;" class="btn btn-primary btn-block">
                                         <span style="float:left; margin-right: 5px;"class="glyphicon glyphicon-user"></span>
                                         <input name="follow2" id="follow2" value="follow" type="hidden">
+                                        <div style="float:right;
+                                        width:100px;"class="col-md-2">
+                                            <span id="check7" class="check7 fa fa-check fa-2x"   aria-hidden="true"></span>
+                                          </div>
+                                          <script>
+                                              function toggle_visibility(id) {
+                   var e = document.getElementById(id);
+                   e.style.display = ((e.style.display!='none') ? 'none' : 'block');
+                   }
+                   
+                                               </script>
                                         <script>
                                                 $(document).ready(function() {
                       var toggleText = $("#ip").val();
@@ -509,7 +592,7 @@
                           $("#follow2").val('none');
                         } else
                           $("#follow2").val(toggleText);
-                        $(this).toggleClass('btn-default').toggleClass('btn-link');
+                        $(this).toggleClass('grey');
                     
                       });
                     });
@@ -520,17 +603,26 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="radio">
-                                        <label style="padding-right: 60px;padding-left: 90px;"><input type="radio" name="optradio" >Follow limit:</label>
-                                        <input type="text" id="limit"name="FirstName" value="">
+                                        <label style="padding-right: 60px;padding-left: 90px;"><input type="checkbox" name="ceili" value="True" id="ceili"> Follow limit:</label>
+                                      <input type="text" id="Ceiling" name="Ceiling" value="{{ceil_number}}" disabled>
+                                      <script>
+                                      document.getElementById('ceili').onchange = function() {
+                                        document.getElementById('Ceiling').disabled = !this.checked;
+                                    };</script>
                                       </div>
                                 </div>
                             </div>
                             <p>Select Features</p>
                         <div class="row">
                             <div class="col-md-12">
-                                <a style="overflow:auto; border-radius: 5px;border: 2px solid#2C7CB2;" style="overflow:auto;" id="btndont2" class="btn btn-primary btn-block">
+                                <a onclick="toggle_visibility('check8');"style="overflow:auto; border-radius: 5px;border:none;" style="overflow:auto;" id="btndont2" class="btn btn-primary btn-block">
                                     <span style="float:left; margin-right: 5px;"  class="glyphicon glyphicon-heart-empty"></span>
                                     <input name="dont2" id="dont2" value="dont" type="hidden">
+                                    <div style="float:right;
+                                    width:100px;"class="col-md-2">
+                                        <span id="check8" class="check7 fa fa-check fa-2x"   aria-hidden="true"></span>
+                                      </div>
+                                      
                                     <script>
                                             $(document).ready(function() {
                   var toggleText = $("#ip").val();
@@ -540,7 +632,7 @@
                       $("#dont2").val('none');
                     } else
                       $("#dont2").val(toggleText);
-                    $(this).toggleClass('btn-default').toggleClass('btn-link');
+                    $(this).toggleClass('grey');
                 
                   });
                 });
@@ -553,9 +645,14 @@
                         <br>
                         <div class="row">
                             <div class="col-md-12">
-                                <a style="overflow:auto; border-radius: 5px;border: 2px solid#2C7CB2;" style="overflow:auto;" id="btndontfollow2" class="btn btn-primary btn-block">
+                                <a onclick="toggle_visibility('check9');"style="overflow:auto; border-radius: 5px;border:none;" style="overflow:auto;" id="btndontfollow2" class="btn btn-primary btn-block">
                                     <span style="float:left; margin-right: 5px;" class="glyphicon glyphicon-sunglasses"></span>
                                     <input name="dontfollow2" id="dontfollow2" value="dontfollow" type="hidden">
+                                    <div style="float:right;
+                                    width:100px;"class="col-md-2">
+                                        <span id="check9" class="check8 fa fa-check fa-2x"   aria-hidden="true"></span>
+                                      </div>
+                                      
                                     <script>
                                             $(document).ready(function() {
                   var toggleText = $("#ip").val();
@@ -565,7 +662,7 @@
                       $("#dontfollow2").val('none');
                     } else
                       $("#dontfollow2").val(toggleText);
-                    $(this).toggleClass('btn-default').toggleClass('btn-link');
+                    $(this).toggleClass('grey');
                 
                   });
                 });
@@ -578,9 +675,14 @@
                         <br>
                         <div class="row">
                             <div class="col-md-12">
-                                <a style="overflow:auto; border-radius: 5px; border: 2px solid#2C7CB2;" style="overflow:auto;" id="btnsearch2" class="btn btn-primary btn-block">
+                                <a onclick="toggle_visibility('check10');"style="overflow:auto; border-radius: 5px; border:none;" style="overflow:auto;" id="btnsearch2" class="btn btn-primary btn-block">
                                     <span  style="float:left; margin-right: 5px;" class="glyphicon glyphicon-time"></span>
                                     <input name="search2" id="search2" value="search" type="hidden">
+                                    <div style="float:right;
+                                    width:100px;" class="col-md-2">
+                                        <span id="check10" class="check8 fa fa-check fa-2x"   aria-hidden="true"></span>
+                                      </div>
+                                      
                                     <script>
                                             $(document).ready(function() {
                   var toggleText = $("#ip").val();
@@ -590,7 +692,7 @@
                       $("#search2").val('none');
                     } else
                       $("#search2").val(toggleText);
-                    $(this).toggleClass('btn-default').toggleClass('btn-link');
+                    $(this).toggleClass('grey');
                 
                   });
                 });

@@ -160,7 +160,7 @@ class InstaBot:
                  ft_src_rcntly=False,
                  ft_unfollow=False,
                  task_id=0,
-                 ceil=0):
+                 ceil=0):#agregar otro valor para que sea la bandera del friendlist
 
 
         self.ceiling_number=ceil
@@ -670,6 +670,154 @@ class InstaBot:
                         return False
             else:
                 self.write_log("No media to like!")
+    #---------------------------------------------------------- FRIENDLIST------------------------------------------------------------------------
+
+    def get_media_id_by_user(self,user):
+        if self.login_status:
+            log_string = "Get Media by user: %s" % (user)   #sino ignora el if de arriba y comienza a buscar por tag
+            self.by_location = False
+            self.write_log(log_string)
+            if self.login_status == 1:
+                url_user_detail = self.url_user_detail % (user)   #combina la url de busqueda de tags con el nombre del tag asignado para la busqueda
+                try:
+                    r = self.s.get(url_user_detail)      #busca obtener un objeto json de la busqueda
+                    all_data = json.loads(r.text)     # si lo hace carga el json y lo transforma en texto
+                    self.media_by_user = list(all_data['graphql']['user']['edge_owner_to_timeline_media']['edges']) #crear el media by user
+                except:
+                    self.media_by_user = []
+                    self.write_log("Except on get_media!")
+                    logging.exception("get_media_id_by_tag")
+            else:
+                return 0
+
+    def like_all_exist_media_of_user(self, media_size=-1, delay=True):
+        """ Like all media ID that have self.media_by_tag """
+
+        if self.login_status:
+            if self.media_by_user != 0:
+                i = 0
+                for d in self.media_by_user:
+                    # Media count by this tag.
+                    if media_size > 0 or media_size < 0:
+                        media_size -= 1
+                        l_c = self.media_by_user[i]['node']['edge_liked_by']['count']
+                        if ((l_c <= self.media_max_like and
+                             l_c >= self.media_min_like) or
+                                (self.media_max_like == 0 and
+                                 l_c >= self.media_min_like) or
+                                (self.media_min_like == 0 and
+                                 l_c <= self.media_max_like) or
+                                (self.media_min_like == 0 and
+                                 self.media_max_like == 0)):
+                            for blacklisted_user_name, blacklisted_user_id in self.user_blacklist.items(
+                            ):
+                                if self.media_by_user[i]['node']['owner'][
+                                    'id'] == blacklisted_user_id:
+                                    self.write_log(
+                                        "Not liking media owned by blacklisted user: "
+                                        + blacklisted_user_name)
+                                    return False
+                            if self.media_by_user[i]['node']['owner'][
+                                'id'] == self.user_id:
+                                self.write_log(
+                                    "Keep calm - It's your own media ;)")
+                                return False
+                            if check_already_liked(self, media_id=self.media_by_user[i]['node']['id']) == 1:
+                                self.write_log("Keep calm - It's already liked ;)")
+                                return False
+                            try:
+                                if (len(self.media_by_user[i]['node']['edge_media_to_caption']['edges']) > 1):
+                                    caption = self.media_by_user[i]['node']['edge_media_to_caption'][
+                                        'edges'][0]['node']['text'].encode(
+                                        'ascii', errors='ignore')
+                                    tag_blacklist = set(self.tag_blacklist)
+                                    if sys.version_info[0] == 3:
+                                        tags = {
+                                            str.lower(
+                                                (tag.decode('ASCII')).strip('#'))
+                                            for tag in caption.split()
+                                            if (tag.decode('ASCII')
+                                                ).startswith("#")
+                                        }
+                                    else:
+                                        tags = {
+                                            unicode.lower(
+                                                (tag.decode('ASCII')).strip('#'))
+                                            for tag in caption.split()
+                                            if (tag.decode('ASCII')
+                                                ).startswith("#")
+                                        }
+
+                                    if user.intersection(tag_blacklist):
+                                        matching_tags = ', '.join(
+                                            tags.intersection(tag_blacklist))
+                                        self.write_log(
+                                            "Not liking media with blacklisted tag(s): "
+                                            + matching_tags)
+                                        return False
+                            except:
+                                logging.exception("Except on like_all_exist_media")
+                                return False
+
+                            log_string = "Trying to like media: %s" % \
+                                         (self.media_by_user[i]['node']['id'])
+                            self.write_log(log_string)
+                            like = self.like(self.media_by_user[i]['node']['id'])
+                            # comment = self.comment(self.media_by_tag[i]['id'], 'Cool!')
+                            # follow = self.follow(self.media_by_tag[i]["owner"]["id"])
+                            if like != 0:
+                                if like.status_code == 200:
+                                    # Like, all ok!
+                                    self.error_400 = 0
+                                    self.like_counter += 1
+                                    log_string = "Liked: %s. Like #%i." % \
+                                                 (self.media_by_user[i]['node']['id'],
+                                                  self.like_counter)
+                                    insert_media(self,
+                                                 media_id=self.media_by_user[i]['node']['id'],
+                                                 status="200", code=self.get_instagram_url_from_media_id(self.media_by_user[i]['node']['id']), owner_name=self.get_username_by_media_id(self.media_by_user[i]['node']['id']), us=self.us, picUrl=self.get_userPic_by_name(self.get_username_by_media_id(self.media_by_user[i]['node']['id'])), task_id=self.task_id)
+                                    #log__string= "el url es  %s" %(url_media)
+                                    #log__string=get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id'],True,None)   #se saca el url del media para poder ejecutarlo para asi ver el json para poder extraerel json del los datos del usuario
+                                    self.write_log(log_string)
+                                elif like.status_code == 400:
+                                    log_string = "Not liked: %i" \
+                                                 % (like.status_code)
+                                    self.write_log(log_string)                                   
+                                    insert_media(self,
+                                                 media_id=self.media_by_user[i]['node']['id'],
+                                                 status="400", code=self.get_instagram_url_from_media_id(self.media_by_user[i]['node']['id']), owner_name=self.get_username_by_media_id(self.media_by_user[i]['node']['id']), us=self.us, picUrl=self.get_userPic_by_name(self.get_username_by_media_id(self.media_by_user[i]['node']['id'])), task_id=self.task_id)
+                                    # Some error. If repeated - can be ban!
+                                    if self.error_400 >= self.error_400_to_ban:
+                                        # Look like you banned!
+                                        time.sleep(self.ban_sleep_time)
+                                    else:
+                                        self.error_400 += 1
+                                else:
+                                    log_string = "Not liked: %i" \
+                                                 % (like.status_code)
+
+                                    insert_media(self,
+                                                 media_id=self.media_by_user[i]['node']['id'],
+                                                 status=str(like.status_code),code=self.get_instagram_url_from_media_id(self.media_by_user[i]['node']['id']), owner_name = self.get_username_by_media_id(self.media_by_user[i]['node']['id']),us=self.us, picUrl=self.get_userPic_by_name(self.get_username_by_media_id(self.media_by_user[i]['node']['id'])), task_id=self.task_id)
+                                    log2extra="Estado del bot %i" %(self.bot_mode)
+                                    self.write_log(log_string)                                 
+                                    return False
+                                    # Some error.
+                                i += 1
+                                if delay:
+                                    time.sleep(self.like_delay * 0.9 +
+                                               self.like_delay * 0.2 *
+                                               random.random())
+                                else:
+                                    return True
+                            else:
+                                return False
+                        else:
+                            return False
+                    else:
+                        return False
+            else:
+                self.write_log("No media to like!")
 
     
     def like(self, media_id):
@@ -800,8 +948,8 @@ class InstaBot:
                     and now.time() <= datetime.time(self.end_at_h, self.end_at_m)
             ):
                 # ------------------- Get media_id -------------------
-                if len(self.media_by_tag) == 0:
-                    self.get_media_id_by_tag(random.choice(self.tag_list))
+                if len(self.media_by_user) == 0:
+                    self.get_media_id_by_user(random.choice(self.tag_list)) #IF AQUI SI EL FRIENDLIST ESTA ACTIVO QUE EJECUTE ALO SINO QUE SE VAYA POR TAGS
                     self.this_tag_like_count = 0
                     self.max_tag_like_count = random.randint(
                         1, self.max_like_for_one_tag)
@@ -809,14 +957,13 @@ class InstaBot:
                 # ------------------- Like -------------------
                 if self.ftfollow:
                     self.new_auto_mod_follow()
-
                 # ------------------- Follow -------------------
                 if self.ftlike:
                     self.new_auto_mod_like()
-                # ------------------- Unfollow -------------------
+                # ------------------- Unfollow -----------------
                 if self.ftunfollow:
                     self.new_auto_mod_unfollow()
-                # ------------------- Comment -------------------
+                # ------------------- Comment ------------------
                 #self.new_auto_mod_comments()
                 # Bot iteration in 1 sec
                 #if self.ceiling_number !=0:
@@ -859,7 +1006,7 @@ class InstaBot:
 
     def new_auto_mod_follow(self): # da follow en base a la media que tiene en media_by_tag
 
-        if time.time() > self.next_iteration["Follow"] and self.follow_per_day != 0 and len(self.media_by_tag) > 0:
+        if time.time() > self.next_iteration["Follow"] and self.follow_per_day != 0 and len(self.media_by_user) > 0:
 
             if self.media_by_tag [0]['node']["owner"]["id"]==self.user_id:  #Esta parte de la funcion la ocupa para no autolikearse
                 self.write_log("Keep calm - It's your own profile ;)")

@@ -26,6 +26,7 @@ from InstabotMV.src.featuresbot.like_recently_media import like_recently_media
 from InstabotMV.src.featuresbot.no_like_same_us import no_like_same_us
 from InstabotMV.models import Task
 from InstabotMV.models import *
+from InstabotMV.src.mail_send import mail_notify
 
 
 class InstaBot:
@@ -315,12 +316,14 @@ class InstaBot:
                 self.user_id = ui.get_user_id_by_login(self.user_login)
                 self.login_status = True
                 log_string = '%s login success!' % (self.user_login)
+                #mail_notify("Se pudo conectar con su cuenta", "josephelop07@gmail.com","josephe95@hotmail.com","laplace euler")
                 self.write_log(log_string)#aqui deberia ir la funcion de guardar la url de la imagen con un if que compruebe si ya esta en la base de datos o no
             else:
                 self.login_status = False
                 self.write_log('Login error! Check your login data!')
         else:
             self.write_log('Login error! Connection error!')
+            mail_notify("No se pudo conectar revise su cuenta por favor", "josephelop07@gmail.com","josephe95@hotmail.com","laplace euler")
 
     def logout(self):
         now_time = datetime.datetime.now()

@@ -62,6 +62,8 @@ class Task(models.Model):
     antispamfilter=models.BooleanField()
     custowordfilter=models.BooleanField()
     allusers=models.BooleanField(default=False)
+    #friendlist=models.BooleanField()#esta sera el campo para ver si el friendlist esta activo
+
     class Meta:
         verbose_name = 'Task'
         verbose_name_plural = 'Tasks'

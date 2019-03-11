@@ -644,7 +644,7 @@ def start(request, task):
     ftLike=task.likemedia
     ftFollow=task.followuser
     ftUnfollow =task.unfollow
-    friend=task.friendList #bandera para saber si es friendlist o no tiene que guardarse en runbot e inicializarse dentro de instabot
+    friend=task.friendlist #bandera para saber si es friendlist o no tiene que guardarse en runbot e inicializarse dentro de instabot
     if task.active:
         task.active=False
     else:

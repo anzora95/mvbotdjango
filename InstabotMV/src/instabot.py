@@ -27,6 +27,7 @@ from InstabotMV.src.featuresbot.no_like_same_us import no_like_same_us
 from InstabotMV.models import Task
 from InstabotMV.models import *
 from InstabotMV.src.mail_send import mail_notify
+from InstabotMV.src.friendListscrap import friendScrapi
 
 
 class InstaBot:
@@ -681,8 +682,9 @@ class InstaBot:
                 url_user_detail = self.url_user_detail % (user)   #combina la url de busqueda de tags con el nombre del tag asignado para la busqueda
                 try:
                     r = self.s.get(url_user_detail)      #busca obtener un objeto json de la busqueda
-                    all_data = json.loads(r.text)     # si lo hace carga el json y lo transforma en texto
-                    self.media_by_user = list(all_data['graphql']['user']['edge_owner_to_timeline_media']['edges']) #crear el media by user
+                    all_data = json.loads(r.text) 
+                    self.write_log(all_data)    # si lo hace carga el json y lo transforma en texto
+                    #self.media_by_user = list(all_data['graphql']['user']['edge_owner_to_timeline_media']['edges']) #crear el media by user
                 except:
                     self.media_by_user = []
                     self.write_log("Except on get_media!")
@@ -949,17 +951,20 @@ class InstaBot:
             ):
                 # ------------------- Get media_id -------------------
                 if len(self.media_by_user) == 0:
-                    self.get_media_id_by_user(random.choice(self.tag_list)) #IF AQUI SI EL FRIENDLIST ESTA ACTIVO QUE EJECUTE ALO SINO QUE SE VAYA POR TAGS
+                    users_scrapy_list=friendScrapi(self.user_login,self.user_password,random.choice(self.tag_list))
+                    #aqui tengo que hacer el scrap para poder pasarle una lista a la funcion para poder leer cada uno de esos usuarios
+                    self.get_media_id_by_user(random.choice(users_scrapy_list)) #IF AQUI SI EL FRIENDLIST ESTA ACTIVO QUE EJECUTE ALO SINO QUE SE VAYA POR TAGS
+                    #en la linea anterior se debera dar un usuario ya scrapeado para poder jugar con el 
                     self.this_tag_like_count = 0
                     self.max_tag_like_count = random.randint(
                         1, self.max_like_for_one_tag)
                     #self.remove_already_liked()
                 # ------------------- Like -------------------
-                if self.ftfollow:
-                    self.new_auto_mod_follow()
+                #if self.ftfollow:
+                #    self.new_auto_mod_follow()
                 # ------------------- Follow -------------------
                 if self.ftlike:
-                    self.new_auto_mod_like()
+                    self.new_auto_mod_like_user()
                 # ------------------- Unfollow -----------------
                 if self.ftunfollow:
                     self.new_auto_mod_unfollow()
@@ -993,6 +998,21 @@ class InstaBot:
                 and len(self.media_by_tag) > 0:
             # You have media_id to like:
             if self.like_all_exist_media(media_size=1, delay=False):
+                # If like go to sleep:
+                self.next_iteration["Like"] = time.time() + \
+                                              self.add_time(self.like_delay)
+                # Count this tag likes:
+                self.this_tag_like_count += 1
+                if self.this_tag_like_count >= self.max_tag_like_count:
+                    self.media_by_tag = [0]
+            # Del first media_id
+            del self.media_by_tag[0]
+
+    def new_auto_mod_like_user(self):
+        if time.time() > self.next_iteration["Like"] and self.like_per_day != 0 \
+                and len(self.media_by_tag) > 0:
+            # You have media_id to like:
+            if self.like_all_exist_media_of_user(media_size=1, delay=False):
                 # If like go to sleep:
                 self.next_iteration["Like"] = time.time() + \
                                               self.add_time(self.like_delay)

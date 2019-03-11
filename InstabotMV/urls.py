@@ -12,7 +12,7 @@ urlpatterns = [
     url('logout/$', views.logout, name='logout'),
     url('dashboard/$', views.DashboardView, name='dashboard'),
     url('dashboard/$', views.tag_child, name='dashload'),
-    
+    url('reports/$', views.report, name='report'),
     url('ajax/validate_username/$', views.test, name='test2'),
     url('hashtag_ajax/$', views.hashtags.as_view(), name='hashtags'),
     url('prueba_ajax/$', views.prueba.as_view(), name='prueba'),

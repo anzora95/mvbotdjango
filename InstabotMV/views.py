@@ -410,6 +410,28 @@ def NewFollowLike(request):
         user_inst.save()
         return redirect('instabot:dashboard')
     return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags,'ll':ll,'ceil_number':ceil_number,'scrap':scrap})
+def report(request):
+    scrap=[]
+    u_account='thon_charm'
+    scrap = scrapUsr(u_account) #Devulve un arreglo 1 url 2 username 3 N#followers
+    
+    cred =Creds.objects.get(insta_user=u_account)
+    packa=cred.pack.pack_name
+    media=Media.objects.all()
+    followers=0
+    following=0
+    likes=0
+    for x in media:
+        if x.cred_us==u_account:
+            likes+=1
+    print(cred.pack.pack_name)
+    u=Username.objects.all()
+    
+    for x in u:
+        if x.cred_us == u_account:
+            following+=1
+    return render(request,'reports.html',{'u_account':u_account,'followers':followers,'following':following,'scrap':scrap,'packa':packa,'likes':likes})
+
 
 def UnfollowTask(request):
     Hasgtags = HashtagList.objects.all()

@@ -29,36 +29,39 @@ def friendScrapi(sc_us, sc_pas,sc_account):
     # Load page
     driver.get("https://www.instagram.com/accounts/login/")
     driver.minimize_window()
-    sleep(6)
-
+    driver.implicitly_wait(10)
+    #sleep(5)
 
     # Login
     driver.find_element_by_css_selector("input[name='username']").send_keys(username)
+    #sleep(2)
     driver.find_element_by_css_selector("input[name='password']").send_keys(password)
+    #sleep(2)
     driver.find_element_by_css_selector("button[type='submit']").click()
     sleep(4)
     #chase target
     driver.get("https://www.instagram.com/%s/" %(sc_account))
-    sleep(6)
+    sleep(4)
     #Select followers or followings links on profile target page
     fol=driver.find_element_by_css_selector("a[href*='followers'] span")
     fol.click()
-
     sleep(4)
+    
     #Select div class of the followings/followers
     fal=driver.find_element_by_class_name("isgrP")
-
-    sleep(4)
+    sleep(2)
+    
     #first scroll into a popup div
     driver.execute_script("arguments[0].scrollTop=arguments[1];",fal,500)
-    sleep(4)
+    sleep(2)
+    
     last_height=driver.execute_script("return arguments[0].scrollHeight;", fal)
     print(last_height)
     while True:
         count=0
         #second scroll on the popup
         driver.execute_script("arguments[0].scrollTop=arguments[1];",fal,1000)
-        sleep(4)
+        sleep(2)
         new_height=driver.execute_script("return arguments[0].scrollHeight;",fal)
 
         if new_height == last_height:  
@@ -69,14 +72,13 @@ def friendScrapi(sc_us, sc_pas,sc_account):
             count=count+1
 
 
-    sleep(2)
+    
     #
     _followers: List = driver.find_elements_by_css_selector(list_css)
-    str(_followers)
     followers = [i.text for i in _followers]
-    sleep(5)
-    driver.close()
     return(followers)
+    driver.close()
+    #print("por aqui ya paso")
 
 
 

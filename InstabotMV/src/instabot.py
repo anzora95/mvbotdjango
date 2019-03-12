@@ -194,6 +194,7 @@ class InstaBot:
         self.follow_per_day = follow_per_day
         if self.follow_per_day != 0:
             self.follow_delay = self.time_in_day / self.follow_per_day
+        self.scraped_user=0#lista de usuarios scrapeados 
 
         # Unfollow
         self.ftunfollow=ft_unfollow
@@ -473,6 +474,26 @@ class InstaBot:
             else:
                 return False
 
+    def get_userID_by_name(self, username):
+        url_user_detail='https://www.instagram.com/%s/?__a=1'
+        if True:
+            if True:
+                url_user_detail='https://www.instagram.com/%s/?__a=1'
+                url_info = self.url_user_detail % (username)
+                try:
+                    
+                    r = self.s.get(url_info)
+                    all_data = json.loads(r.text)
+                    usuario_id = all_data['user']['id']
+                    return usuario_id    #aqui retorna el user info con todos los valores llenos si el usuario targeteado no sigue a nuestra cuenta
+                except:
+                    logging.exception("Except on get id of user")
+                    return False
+            else:
+                return False
+
+
+
     def get_userinfo_by_name(self, username):
         """ Get user info by name """
 
@@ -680,11 +701,15 @@ class InstaBot:
             self.write_log(log_string)
             if self.login_status == 1:
                 url_user_detail = self.url_user_detail % (user)   #combina la url de busqueda de tags con el nombre del tag asignado para la busqueda
+                self.write_log(url_user_detail)
                 try:
+                    
                     r = self.s.get(url_user_detail)      #busca obtener un objeto json de la busqueda
                     all_data = json.loads(r.text) 
-                    self.write_log(all_data)    # si lo hace carga el json y lo transforma en texto
-                    #self.media_by_user = list(all_data['graphql']['user']['edge_owner_to_timeline_media']['edges']) #crear el media by user
+                    #self.write_log(all_data)    # si lo hace carga el json y lo transforma en texto
+                    self.media_by_user = list(all_data['graphql']['user']['edge_owner_to_timeline_media']['edges']) #crear el media by user
+                    #self.write_log(self.media_by_user)
+                    print(len(self.media_by_user))
                 except:
                     self.media_by_user = []
                     self.write_log("Except on get_media!")
@@ -963,11 +988,11 @@ class InstaBot:
                 #if self.ftfollow:
                 #    self.new_auto_mod_follow()
                 # ------------------- Follow -------------------
-                if self.ftlike:
-                    self.new_auto_mod_like_user()
+                #if self.ftlike:
+                self.new_auto_mod_like_user()
                 # ------------------- Unfollow -----------------
-                if self.ftunfollow:
-                    self.new_auto_mod_unfollow()
+                #if self.ftunfollow:
+                #    self.new_auto_mod_unfollow()
                 # ------------------- Comment ------------------
                 #self.new_auto_mod_comments()
                 # Bot iteration in 1 sec
@@ -980,8 +1005,7 @@ class InstaBot:
                 time.sleep(3)
                 # print("Tic!")
             else:
-                print("sleeping until {hour}:{min}".format(hour=self.start_at_h,
-                                                           min=self.start_at_m), end="\r")
+                print("sleeping until {hour}:{min}".format(hour=self.start_at_h,min=self.start_at_m), end="\r")
                 time.sleep(100)
 
     def remove_already_liked(self):
@@ -1010,7 +1034,7 @@ class InstaBot:
 
     def new_auto_mod_like_user(self):
         if time.time() > self.next_iteration["Like"] and self.like_per_day != 0 \
-                and len(self.media_by_tag) > 0:
+                and len(self.media_by_user) > 0:
             # You have media_id to like:
             if self.like_all_exist_media_of_user(media_size=1, delay=False):
                 # If like go to sleep:
@@ -1019,9 +1043,9 @@ class InstaBot:
                 # Count this tag likes:
                 self.this_tag_like_count += 1
                 if self.this_tag_like_count >= self.max_tag_like_count:
-                    self.media_by_tag = [0]
+                    self.media_by_user = [0]
             # Del first media_id
-            del self.media_by_tag[0]
+            del self.media_by_user[0]
 
 
     def new_auto_mod_follow(self): # da follow en base a la media que tiene en media_by_tag

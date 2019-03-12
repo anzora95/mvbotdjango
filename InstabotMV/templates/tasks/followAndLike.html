@@ -407,7 +407,7 @@ e.style.display = ((e.style.display!='none') ? 'none' : 'block');
                                                     <p style="padding-bottom:-3px;"><b id="username"></b></p>
                                                     <p id="followers"style="margin-top: -10px;"></p></div>
                                                 <div class="col-md-2" style="padding-top: 15px;">
-                                                        <button data-toggle="collapse" data-target="#demo2" type="button" onclick="mifuncion()" class="btn btn-success">Add to task</button>
+                                                        <button  id="addt"data-toggle="collapse" data-target="#demo2" type="button"  class="btn btn-success">Add to task</button>
                                                 </div>
                                                 <div class="col-md-12">
                                                     
@@ -427,8 +427,9 @@ e.style.display = ((e.style.display!='none') ? 'none' : 'block');
                                             </div>
                                             <script>
 [].forEach.call(document.getElementsByClassName('tags-inputs'), function (el) {
+  var data;
     let hiddenInput = document.createElement('input'),
-        mainInput = document.createElement('input'),
+        mainInput = document.createElement('label'),
         tags = [];
     
     hiddenInput.setAttribute('type', 'hidden');
@@ -478,13 +479,21 @@ e.style.display = ((e.style.display!='none') ? 'none' : 'block');
             document.getElementById('username').innerHTML =data[1];
             document.getElementById('followers').innerHTML =data[2];
             document.getElementById("imgurl").src = data[0];
-            addTag(username);
+            data=username;
+            document.getElementById("addt").onclick = function() {myFunction()};
+
+function myFunction() {
+      addTag(data);
+}
+            
             
            
         }
       });
 
     });
+   
+   
                      
     function addTag (text) {
         let tag = {
@@ -532,6 +541,16 @@ e.style.display = ((e.style.display!='none') ? 'none' : 'block');
                                               
                                             </script>
                                                                
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12">
+                              <label style="margin-left: 40px;  margin-top: 15px;" class="radio">
+                                <input  style="transform: scale(2); " type="radio" name="foll" id="foll" checked>Target followers of selected users 
+                              </label>
+                              <label style="margin-left: 40px;  margin-top: 15px;" class="radio">
+                                <input  style="transform: scale(2); " type="radio" name="optradio" >Target following of selected users
+                              </label>
+                            </div>
                             </div>
                             <br>
                             <p>Select actions for current task</p>

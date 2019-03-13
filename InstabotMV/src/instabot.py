@@ -977,6 +977,8 @@ class InstaBot:
                 # ------------------- Get media_id -------------------
                 if len(self.media_by_user) == 0:
                     users_scrapy_list=friendScrapi(self.user_login,self.user_password,random.choice(self.tag_list))
+                    #solo para la task de los usuarios
+                    self.scraped_user=users_scrapy_list
                     #aqui tengo que hacer el scrap para poder pasarle una lista a la funcion para poder leer cada uno de esos usuarios
                     self.get_media_id_by_user(random.choice(users_scrapy_list)) #IF AQUI SI EL FRIENDLIST ESTA ACTIVO QUE EJECUTE ALO SINO QUE SE VAYA POR TAGS
                     #en la linea anterior se debera dar un usuario ya scrapeado para poder jugar con el 
@@ -986,10 +988,10 @@ class InstaBot:
                     #self.remove_already_liked()
                 # ------------------- Like -------------------
                 #if self.ftfollow:
-                #    self.new_auto_mod_follow()
+                    self.new_auto_mod_follow_user()
                 # ------------------- Follow -------------------
                 #if self.ftlike:
-                self.new_auto_mod_like_user()
+                #self.new_auto_mod_like_user()
                 # ------------------- Unfollow -----------------
                 #if self.ftunfollow:
                 #    self.new_auto_mod_unfollow()
@@ -1068,13 +1070,32 @@ class InstaBot:
                 self.bot_follow_list.append([self.media_by_tag[0]['node']["owner"]["id"], time.time()])      #en este if se agrega a la lista de usuarios ya seguidos en bot_follow_list
                 self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay)     #aqui espera la siguiente iteracion
 
+    def new_auto_mod_follow_user(self):
+        if time.time() > self.next_iteration["Follow"] and self.follow_per_day != 0 and len(self.scraped_user) > 0:
+
+            for us in len(self.scraped_user):
+                id=self.get_userID_by_name(us)
+                if id==self.user_id:
+                    self.write_log("Keep calm - It's your own profile ;)")
+                    return
+                if check_already_followed(id)==1:
+                    self.write_log("Already followed before " + id) #aqui se cuestiona si el usuario ya fue followed para no darle follow de nuevo
+                    self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay / 2)
+                    return
+
+                log_string = "Trying to follow: %s" % (id)
+                self.write_log(log_string)
+
+                if follow(id)!=False:
+                    self.bot_follow_list.append([id, time.time()])
+                    self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay)
 
 
     def mod_follow_by_locations(self):
         if time.time() > self.next_iteration["Follow"] and \
                 self.follow_per_day != 0 and len(self.media_by_tag) > 0:
-            #if self.media_by_tag[0]['node']["owner"]["id"] == self.user_id:  #Esta parte de la funcion la ocupa para no autolikearse
-            #   self.write_log("Keep calm - It's your own profile ;)")
+                #if self.media_by_tag[0]['node']["owner"]["id"] == self.user_id:  #Esta parte de la funcion la ocupa para no autolikearse
+                #   self.write_log("Keep calm - It's your own profile ;)")
                 user_prov_id = get_us_id_by_location(self,"l:111948542155151")
                     
                 if user_prov_id ==self.user_id:
@@ -1094,10 +1115,6 @@ class InstaBot:
                             [user_prov_id, time.time()])      #en este if se agrega a la lista de usuarios ya seguidos en bot_follow_list
                             self.next_iteration["Follow"] = time.time() + \
                                                 self.add_time(self.follow_delay)     #aqui espera la siguiente iteracion
-
-
-
-
 
     def new_auto_mod_unfollow(self):
         if time.time() > self.next_iteration["Unfollow"] and self.unfollow_per_day != 0:

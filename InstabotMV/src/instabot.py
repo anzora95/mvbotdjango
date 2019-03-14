@@ -153,16 +153,33 @@ class InstaBot:
                  user_blacklist={},
                  tag_blacklist=[],
                  unwanted_username_list=[],
-                 unfollow_whitelist=[],
-                 ft_like=False,
-                 ft_follow =False,
-                 ft_no_like=False,
-                 ft_no_follow=False,
-                 ft_src_rcntly=False,
-                 ft_unfollow=False,
+                 unfollow_whitelist=[],                     
+                 ft_like=False, #like en cualquier task
+                 ft_follow =False, #follow en cualquier task
+                 ft_no_like=False, #Dont like media of the same user second time
+                 ft_no_follow=False, #Dont follow previously unfollowed users
+                 ft_src_rcntly=False, #Search recently posted media only
+                 ft_unfollow=False, #unfollow task
+                 ft_friendList=False,
+                 ft_followers_us=False,
+                 ft_following_us=False,
+                 #features de los unfollow
+                 ft_gosht=False,
+                 ft_back=False, #unfollow gosht
+                 ft_all=False,# unfollow by all user
+                 ft_ngag_user=False,#unfollow ngage user
                  task_id=0,
                  ceil=0):#agregar otro valor para que sea la bandera del friendlist
 
+
+        self.ft_followers_us=ft_followers_us
+        self.ft_following_us=ft_following_us
+        self.ft_gosht=ft_gosht
+        self.ft_back=ft_back
+        self.ft_all=ft_all
+        self.ft_ngag_user=ft_ngag_user
+
+        self.ft_friendList=ft_friendList
 
         self.ceiling_number=ceil
         self.us=us
@@ -209,6 +226,11 @@ class InstaBot:
         self.comments_per_day = comments_per_day
         if self.comments_per_day != 0:
             self.comments_delay = self.time_in_day / self.comments_per_day
+
+        #timer
+        self.sec=range(10,51)
+        self.min=range(1,61)
+        self.hour=range(1,11)
 
         # Don't like if media have more than n likes.
         self.media_max_like = media_max_like
@@ -481,10 +503,9 @@ class InstaBot:
                 url_user_detail='https://www.instagram.com/%s/?__a=1'
                 url_info = self.url_user_detail % (username)
                 try:
-                    
                     r = self.s.get(url_info)
                     all_data = json.loads(r.text)
-                    usuario_id = all_data['user']['id']
+                    usuario_id = all_data['graphql']['user']['id']
                     return usuario_id    #aqui retorna el user info con todos los valores llenos si el usuario targeteado no sigue a nuestra cuenta
                 except:
                     logging.exception("Except on get id of user")
@@ -976,7 +997,8 @@ class InstaBot:
             ):
                 # ------------------- Get media_id -------------------
                 if len(self.media_by_user) == 0:
-                    users_scrapy_list=friendScrapi(self.user_login,self.user_password,random.choice(self.tag_list))
+                    #users_scrapy_list=friendScrapi(self.user_login,self.user_password,random.choice(self.tag_list))
+                    users_scrapy_list=friendScrapi(self.user_login,self.user_password,self.user_login)
                     #solo para la task de los usuarios
                     self.scraped_user=users_scrapy_list
                     #aqui tengo que hacer el scrap para poder pasarle una lista a la funcion para poder leer cada uno de esos usuarios
@@ -993,8 +1015,8 @@ class InstaBot:
                 #if self.ftlike:
                 #self.new_auto_mod_like_user()
                 # ------------------- Unfollow -----------------
-                #if self.ftunfollow:
-                #    self.new_auto_mod_unfollow()
+                if self.ftunfollow:
+                    self.unfollow_all()
                 # ------------------- Comment ------------------
                 #self.new_auto_mod_comments()
                 # Bot iteration in 1 sec
@@ -1072,13 +1094,14 @@ class InstaBot:
 
     def new_auto_mod_follow_user(self):
         if time.time() > self.next_iteration["Follow"] and self.follow_per_day != 0 and len(self.scraped_user) > 0:
+            print(self.scraped_user)
 
-            for us in len(self.scraped_user):
+            for us in self.scraped_user:
                 id=self.get_userID_by_name(us)
                 if id==self.user_id:
                     self.write_log("Keep calm - It's your own profile ;)")
                     return
-                if check_already_followed(id)==1:
+                if check_already_followed(self,id)==1:
                     self.write_log("Already followed before " + id) #aqui se cuestiona si el usuario ya fue followed para no darle follow de nuevo
                     self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay / 2)
                     return
@@ -1086,9 +1109,12 @@ class InstaBot:
                 log_string = "Trying to follow: %s" % (id)
                 self.write_log(log_string)
 
-                if follow(id)!=False:
+                if self.follow(id)!=False:
                     self.bot_follow_list.append([id, time.time()])
-                    self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay)
+
+                time.sleep(random.choice(self.sec))
+                    
+                self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay)
 
 
     def mod_follow_by_locations(self):
@@ -1173,6 +1199,20 @@ class InstaBot:
             insert_media(self, self.media_by_tag[0]['node']['id'], str(check_comment.status_code))
             self.media_by_tag.remove(self.media_by_tag[0])
             return False
+
+    def unfollow_all(self):
+                
+        if len(self.scraped_user)!=0:
+            for use in self.scraped_user:
+                id=self.get_userID_by_name(use)
+                self.unfollow(id)
+                #llenar una variable con un numero random luego evaluar si ese numero no es tan exagerado y luego multiplicarlo po 60 que en segundos equivale a un minuto
+                insert_unfollow_count(user_id=id)
+                time.sleep(random.choice(self.sec))
+        else:
+            self.write_log("Looks like there is nobody to unfollow.")
+
+
 
     def auto_unfollow(self):
         #checking = True

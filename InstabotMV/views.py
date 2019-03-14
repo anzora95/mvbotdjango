@@ -426,10 +426,11 @@ def UnfollowTask(request):
         task = Task()  # inicializacion de task
         task.user = user  # Se le asigna un usuario a la task
         task.creds=cred
-        task.tags="All users followed by Instaswell"
+        
         task.active = False
         task.likemedia=False
         task.followuser=False
+        task.friendlist=False
         task.dontlikemedia=False
         task.dontfollow=False
         task.randomlylike=False
@@ -439,6 +440,12 @@ def UnfollowTask(request):
         task.unfollow=True
         task.ghost=TrueOrFalse(request.POST.get('ghost'))
         task.back=TrueOrFalse(request.POST.get('back'))
+        if request.POST.get('optradio')=='True':
+            task.allusers=False
+            task.tags="All users followed by Ngage"
+        else:
+            task.allusers=True
+            task.tags="All users"
         task.save()
         t=thread()
         t.task=task

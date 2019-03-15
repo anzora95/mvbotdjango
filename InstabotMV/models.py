@@ -59,8 +59,8 @@ class Task(models.Model):
     unfollow=models.BooleanField()
     ghost=models.BooleanField()
     back=models.BooleanField()
-    antispamfilter=models.BooleanField()
-    custowordfilter=models.BooleanField()
+    follwers_user=models.BooleanField(default=False)
+    followeds_user=models.BooleanField(default=False)
     allusers=models.BooleanField(default=False)
     friendlist=models.BooleanField()#esta sera el campo para ver si el friendlist esta activo
 

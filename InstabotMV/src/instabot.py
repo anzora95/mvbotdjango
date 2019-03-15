@@ -993,7 +993,7 @@ class InstaBot:
         while True:
             now = datetime.datetime.now()
             if (
-                    datetime.time(self.start_at_h, self.start_at_m) <= now.time()
+                    datetime.time(self.start_at_h, self.start_at_m) <= now.time() #funcion simulating human pordria usarse aqui
                     and now.time() <= datetime.time(self.end_at_h, self.end_at_m)
             ):
                 # ------------------- Get media_id -------------------
@@ -1206,11 +1206,12 @@ class InstaBot:
         if len(self.scraped_user)!=0:
             for use in self.scraped_user:
                 id=self.get_userID_by_name(use)
-                #followed_ngage(id)
                 self.unfollow(id)
+                self.scraped_user.remove(use)
+                time.sleep(random.choice(self.sec))
                 #llenar una variable con un numero random luego evaluar si ese numero no es tan exagerado y luego multiplicarlo po 60 que en segundos equivale a un minuto
                 #insert_unfollow_count(user_id=id)
-                time.sleep(random.choice(self.sec))
+                #followed_ngage(id)
         else:
             self.write_log("Looks like there is nobody to unfollow.")
 

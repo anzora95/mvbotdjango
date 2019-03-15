@@ -19,7 +19,10 @@
 }
 
 
-
+.grey, .grey:hover, .grey:active, .grey:visited {
+  background-color: rgb(214,219,223) !important;
+ border: rgb(214,219,223);
+}
 .btn-lit-circle {
     width: 40px;
     height: 40px;

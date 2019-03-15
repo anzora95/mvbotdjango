@@ -19,6 +19,7 @@ from .sql_updates import check_already_liked, check_already_followed
 from .sql_updates import insert_media, insert_username, insert_unfollow_count
 from .sql_updates import get_username_random
 from .sql_updates import count_ngage
+from .sql_updates import followed_ngage
 from fake_useragent import UserAgent
 import re
 from .location_follow import get_us_id_by_location
@@ -1009,7 +1010,7 @@ class InstaBot:
                         1, self.max_like_for_one_tag)
                     #self.remove_already_liked()
                 # ------------------- Like -------------------
-                #if self.ftfollow:
+                if self.ftfollow:
                     self.new_auto_mod_follow_user()
                 # ------------------- Follow -------------------
                 #if self.ftlike:
@@ -1205,9 +1206,10 @@ class InstaBot:
         if len(self.scraped_user)!=0:
             for use in self.scraped_user:
                 id=self.get_userID_by_name(use)
+                #followed_ngage(id)
                 self.unfollow(id)
                 #llenar una variable con un numero random luego evaluar si ese numero no es tan exagerado y luego multiplicarlo po 60 que en segundos equivale a un minuto
-                insert_unfollow_count(user_id=id)
+                #insert_unfollow_count(user_id=id)
                 time.sleep(random.choice(self.sec))
         else:
             self.write_log("Looks like there is nobody to unfollow.")

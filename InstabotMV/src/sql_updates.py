@@ -202,3 +202,14 @@ def count_ngage(task_id):
 
     return len(us)
 
+def followed_ngage(usr_id):
+
+    try:
+        username=Username.objects.get(username_id=usr_id)
+    except Username.DoesNotExist:
+        username = None
+
+    if username:
+        insert_unfollow_count(usr_id)
+    else:
+        print("Usuario no seguido por ngage")

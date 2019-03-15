@@ -43,7 +43,7 @@ def friendScrapi(sc_us, sc_pas,sc_account):
     driver.get("https://www.instagram.com/%s/" %(sc_account))
     sleep(4)
     #Select followers or followings links on profile target page
-    fol=driver.find_element_by_css_selector("a[href*='followers'] span")
+    fol=driver.find_element_by_css_selector("a[href*='following'] span")
     fol.click()
     sleep(4)
     
@@ -76,6 +76,7 @@ def friendScrapi(sc_us, sc_pas,sc_account):
     #
     _followers: List = driver.find_elements_by_css_selector(list_css)
     followers = [i.text for i in _followers]
+    print(followers)
     return(followers)
     driver.close()
     #print("por aqui ya paso")

@@ -142,13 +142,15 @@ def DashboardView(request):
     user = User.objects.get(id=request.user.id) #Get the current user logged in
     ll=LastLogin.objects.get(user=user)
     cred=ll.cred
+    ticklimit=0
     AT=Task.objects.all() #Get All the Task in system
     LT=[] ##Empty list for List of Task
-    UN=Username.objects.all()
+    UN=Username.objects.all().order_by('-id')[:250] #Limit the ticker number.
     print(len(UN))
     for x in range(0,len(AT)):
        if AT[x].creds==cred:#If the task has the current logged user add it to the LT list
            #print(AT[x].user.username)
+           
            LT.append(AT[x])
     if len(LT)==0:
         empty=True
@@ -412,26 +414,34 @@ def NewFollowLike(request):
     return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags,'ll':ll,'ceil_number':ceil_number,'scrap':scrap})
 def report(request):
     scrap=[]
-    u_account='thon_charm'
+    u_account='mercadomanhattanbeach'
     scrap = scrapUsr(u_account) #Devulve un arreglo 1 url 2 username 3 N#followers
     
     cred =Creds.objects.get(insta_user=u_account)
     packa=cred.pack.pack_name
-    media=Media.objects.all()
+    media=Media.objects.filter(cred_us=u_account)
     followers=0
     following=0
-    likes=0
-    for x in media:
-        if x.cred_us==u_account:
-            likes+=1
-    print(cred.pack.pack_name)
+    likes=len(media)
+    query=[]
+    filterdate="2019-03-08"
+    query=filterby(u_account,filterdate)
+    follows=(len(query))
     u=Username.objects.all()
     
     for x in u:
         if x.cred_us == u_account:
             following+=1
-    return render(request,'reports.html',{'u_account':u_account,'followers':followers,'following':following,'scrap':scrap,'packa':packa,'likes':likes})
+    #u_account=Account
+    #scrap2.followers
+    #Packa=Package
+    #filterdate=Filtered date
+    return render(request,'reports.html',{'u_account':u_account,'followers':followers,'following':following,'scrap':scrap,'packa':packa,'likes':likes,'follows':follows,'filterdate':filterdate})
 
+def filterby(account,filter):
+    u=Username.objects.filter(cred_us=account,last_followed_time__startswith=filter)
+    
+    return u
 
 def UnfollowTask(request):
     Hasgtags = HashtagList.objects.all()

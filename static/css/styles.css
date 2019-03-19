@@ -269,9 +269,3 @@
 .tooltip:checked .tooltiptext {
   visibility: visible;
 }
-
-.r2 {
-   transform: scale(2);
-}
-
-

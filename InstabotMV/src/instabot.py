@@ -161,26 +161,27 @@ class InstaBot:
                  ft_no_follow=False, #Dont follow previously unfollowed users
                  ft_src_rcntly=False, #Search recently posted media only
                  ft_unfollow=False, #unfollow task
-                 ft_friendList=False,
-                 ft_followers_us=False,
-                 ft_following_us=False,
+                 ft_friendlist=False, #friendlist activate
+                 ft_followers_us=False, #friendlist follwers
+                 ft_following_us=False, #friendlist following
                  #features de los unfollow
-                 ft_gosht=False,
-                 ft_back=False, #unfollow gosht
+                 ft_gosht=False,#unfollow gosht
+                 ft_back=False, #unfollow no back
                  ft_all=False,# unfollow by all user
                  ft_ngag_user=False,#unfollow ngage user
-                 task_id=0,
+                 task_id=0, #id de la task
                  ceil=0):#agregar otro valor para que sea la bandera del friendlist
 
-
+        self.ft_friendlist=ft_friendlist
         self.ft_followers_us=ft_followers_us
         self.ft_following_us=ft_following_us
         self.ft_gosht=ft_gosht
         self.ft_back=ft_back
         self.ft_all=ft_all
         self.ft_ngag_user=ft_ngag_user
+        self.ft_unfollow=ft_unfollow
 
-        self.ft_friendList=ft_friendList
+        
 
         self.ceiling_number=ceil
         self.us=us
@@ -268,8 +269,8 @@ class InstaBot:
         self.write_log(log_string)
         self.login()
         self.populate_user_blacklist()
-        signal.signal(signal.SIGTERM, self.cleanup)
-        atexit.register(self.cleanup)
+        #signal.signal(signal.SIGTERM, self.cleanup)
+        #atexit.register(self.cleanup)
 
     def populate_user_blacklist(self):
         for user in self.user_blacklist:
@@ -341,14 +342,13 @@ class InstaBot:
                 self.user_id = ui.get_user_id_by_login(self.user_login)
                 self.login_status = True
                 log_string = '%s login success!' % (self.user_login)
-                #mail_notify("Se pudo conectar con su cuenta", "josephelop07@gmail.com","josephe95@hotmail.com","laplace euler")
                 self.write_log(log_string)#aqui deberia ir la funcion de guardar la url de la imagen con un if que compruebe si ya esta en la base de datos o no
             else:
                 self.login_status = False
                 self.write_log('Login error! Check your login data!')
         else:
             self.write_log('Login error! Connection error!')
-            mail_notify("No se pudo conectar revise su cuenta por favor", "josephelop07@gmail.com","josephe95@hotmail.com","laplace euler")
+            mail_notify("No Se pudo conectar con su cuenta", "cristianarielzelaya@hotmail.com","ariel@mvagency.co","Canela12mojarro")
 
     def logout(self):
         now_time = datetime.datetime.now()
@@ -996,39 +996,88 @@ class InstaBot:
                     datetime.time(self.start_at_h, self.start_at_m) <= now.time() #funcion simulating human pordria usarse aqui
                     and now.time() <= datetime.time(self.end_at_h, self.end_at_m)
             ):
-                # ------------------- Get media_id -------------------
-                if len(self.media_by_user) == 0:
-                    #users_scrapy_list=friendScrapi(self.user_login,self.user_password,random.choice(self.tag_list))
-                    users_scrapy_list=friendScrapi(self.user_login,self.user_password,self.user_login)
-                    #solo para la task de los usuarios
-                    self.scraped_user=users_scrapy_list
-                    #aqui tengo que hacer el scrap para poder pasarle una lista a la funcion para poder leer cada uno de esos usuarios
-                    self.get_media_id_by_user(random.choice(users_scrapy_list)) #IF AQUI SI EL FRIENDLIST ESTA ACTIVO QUE EJECUTE ALO SINO QUE SE VAYA POR TAGS
-                    #en la linea anterior se debera dar un usuario ya scrapeado para poder jugar con el 
-                    self.this_tag_like_count = 0
-                    self.max_tag_like_count = random.randint(
+                # ------------------- TASK BY HASHTAG -------------------
+                if self.ft_friendlist ==False and self.ft_unfollow== False:
+
+                    if len(self.media_by_tag) == 0:
+                        #self.get_media_id_by_user() #IF AQUI SI EL FRIENDLIST ESTA ACTIVO QUE EJECUTE ALO SINO QUE SE VAYA POR TAGS
+                        self.get_media_id_by_tag(random.choice(self.tag_list))
+                        self.this_tag_like_count = 0
+                        self.max_tag_like_count = random.randint(
                         1, self.max_like_for_one_tag)
-                    #self.remove_already_liked()
-                # ------------------- Like -------------------
-                if self.ftfollow:
-                    self.new_auto_mod_follow_user()
-                # ------------------- Follow -------------------
-                #if self.ftlike:
-                #self.new_auto_mod_like_user()
-                # ------------------- Unfollow -----------------
-                if self.ftunfollow:
-                    self.unfollow_all()
-                # ------------------- Comment ------------------
-                #self.new_auto_mod_comments()
-                # Bot iteration in 1 sec
-                #if self.ceiling_number !=0:
-                #    print(count_ngage(self.task_id))
-                #    if count_ngage(self.task_id)>=self.ceiling_number:
-                #        self.cleanup()
-                #else:
-                #    self.write_log("No hay techo de followers")
-                time.sleep(3)
-                # print("Tic!")
+                        #self.remove_already_liked()
+                        # ------------------- Follow -------------------
+                    if self.ftlike:
+                        self.new_auto_mod_like()
+                    # ------------------- Like -------------------
+                    if self.ftfollow:
+                        self.new_auto_mod_follow()
+                    # ------------------- Follow -------------------
+                    
+                    # ------------------- Unfollow -----------------
+                    
+                    # ------------------- Comment ------------------
+                    #self.new_auto_mod_comments()
+                    # Bot iteration in 1 sec
+                    #if self.ceiling_number !=0:
+                    #    print(count_ngage(self.task_id))
+                    #    if count_ngage(self.task_id)>=self.ceiling_number:
+                    #        self.cleanup()
+                    #else:
+                    #    self.write_log("No hay techo de followers")
+                    time.sleep(3)
+                    # print("Tic!")
+
+                elif self.ft_friendlist==True:#cambiar si el friendlist esta activo que se meta aqui
+                #----------------------TASK BY FRIENDLIST---------------    
+                        if len(self.media_by_user) == 0:
+                            #users_scrapy_list=friendScrapi(self.user_login,self.user_password,random.choice(self.tag_list))
+                            users_scrapy_list=friendScrapi(self.user_login,self.user_password,random.choice(self.tag_list))
+                            #solo para la task de los usuarios
+                            self.scraped_user=users_scrapy_list
+                            #aqui tengo que hacer el scrap para poder pasarle una lista a la funcion para poder leer cada uno de esos usuarios
+                            #self.get_media_id_by_user(random.choice(users_scrapy_list)) #IF AQUI SI EL FRIENDLIST ESTA ACTIVO QUE EJECUTE ALO SINO QUE SE VAYA POR TAGS
+                            #en la linea anterior se debera dar un usuario ya scrapeado para poder jugar con el 
+                            self.this_tag_like_count = 0
+                            self.max_tag_like_count = random.randint(
+                                1, self.max_like_for_one_tag)
+                            #self.remove_already_liked()
+                        # ------------------- Like y follow -------------------
+                        if self.ftfollow and self.ftlike:
+                            self.new_auto_mod_follow_user()
+                            self.new_auto_mod_like_user()
+                        # ------------------- Only like -------------------
+                        elif self.ftlike:
+                            self.new_auto_mod_like_user()
+                        #--------------------Only follow------------------
+                        elif self.ftfollow:
+                            self.new_auto_mod_follow_user()
+                        # ------------------- Unfollow -----------------
+                        
+                        # ------------------- Comment ------------------
+                        #self.new_auto_mod_comments()
+                        # Bot iteration in 1 sec
+                        #if self.ceiling_number !=0:
+                        #    print(count_ngage(self.task_id))
+                        #    if count_ngage(self.task_id)>=self.ceiling_number:
+                        #        self.cleanup()
+                        #else:
+                        #    self.write_log("No hay techo de followers")
+                        time.sleep(3)
+
+                    #--------------------------------UNFOLLOW TASK------------------------
+                elif self.ft_unfollow== True:
+                    users_scrapy_list=friendScrapi(self.user_login,self.user_password,self.user_login)
+                            #solo para la task de los usuarios
+                    self.scraped_user=users_scrapy_list
+                            #aqui tengo que hacer el scrap para poder pasarle una lista a la funcion para poder leer cada uno de esos usuarios
+                    self.get_media_id_by_user(random.choice(users_scrapy_list))
+
+                    if self.ft_all:
+                        self.unfollow_all()
+                    else:
+                        self.new_auto_mod_unfollow()
+                    # print("Tic!")
             else:
                 print("sleeping until {hour}:{min}".format(hour=self.start_at_h,min=self.start_at_m), end="\r")
                 time.sleep(100)
@@ -1074,8 +1123,9 @@ class InstaBot:
 
 
     def new_auto_mod_follow(self): # da follow en base a la media que tiene en media_by_tag
-
-        if time.time() > self.next_iteration["Follow"] and self.follow_per_day != 0 and len(self.media_by_user) > 0:
+        #crear un if para ver si esta corriendo con la task de like o sin la task de like
+        if time.time() > self.next_iteration["Follow"] and self.follow_per_day != 0 and len(self.media_by_tag) > 0:
+            #se puede quitar el validador del tiempo en el if anterior y dejar solamente el follow per day
 
             if self.media_by_tag [0]['node']["owner"]["id"]==self.user_id:  #Esta parte de la funcion la ocupa para no autolikearse
                 self.write_log("Keep calm - It's your own profile ;)")
@@ -1083,15 +1133,26 @@ class InstaBot:
 
             if check_already_followed(self, user_id=self.media_by_tag[0]['node']["owner"]["id"]) == 1:
                 self.write_log("Already followed before " + self.media_by_tag[0]['node']["owner"]["id"]) #aqui se cuestiona si el usuario ya fue followed para no darle follow de nuevo
-                self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay / 2)
+                aux=random.choice(self.sec)
+                print(aux)
+                self.media_by_tag.remove(self.media_by_tag[0])
+                    #aqui espera la siguiente iteracion
+                
                 return
+                #self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay / 2)
 
             log_string = "Trying to follow: %s" % (self.media_by_tag[0]['node']["owner"]["id"])
-            self.write_log(log_string)
-
+            self.write_log(log_string)                
             if self.follow(self.media_by_tag[0]['node']["owner"]["id"]) != False:
                 self.bot_follow_list.append([self.media_by_tag[0]['node']["owner"]["id"], time.time()])      #en este if se agrega a la lista de usuarios ya seguidos en bot_follow_list
-                self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay)     #aqui espera la siguiente iteracion
+                aux=random.choice(self.sec)
+                print(aux)
+                time.sleep(aux)    #aqui espera la siguiente iteracion
+                
+            
+            #time.sleep(random.choice(self.sec))    
+            #self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay)
+   
 
     def new_auto_mod_follow_user(self):
         if time.time() > self.next_iteration["Follow"] and self.follow_per_day != 0 and len(self.scraped_user) > 0:
@@ -1101,10 +1162,13 @@ class InstaBot:
                 id=self.get_userID_by_name(us)
                 if id==self.user_id:
                     self.write_log("Keep calm - It's your own profile ;)")
+                    
                     return
                 if check_already_followed(self,id)==1:
                     self.write_log("Already followed before " + id) #aqui se cuestiona si el usuario ya fue followed para no darle follow de nuevo
                     self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay / 2)
+                    self.scraped_user.remove(us)
+                    print(self.scraped_user)
                     return
 
                 log_string = "Trying to follow: %s" % (id)
@@ -1112,7 +1176,7 @@ class InstaBot:
 
                 if self.follow(id)!=False:
                     self.bot_follow_list.append([id, time.time()])
-
+                    
                 time.sleep(random.choice(self.sec))
                     
                 self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay)
@@ -1149,8 +1213,8 @@ class InstaBot:
                 log_string = "Trying to unfollow #%i: " % (self.unfollow_counter + 1)
                 self.write_log(log_string)
                 self.auto_unfollow()
-                self.next_iteration["Unfollow"] = time.time() + \
-                                                  self.add_time(self.unfollow_delay)
+                self.next_iteration["Unfollow"] = time.time() + self.add_time(self.unfollow_delay)
+                time.sleep(random.choice(self.sec))
             if self.bot_mode == 1:
                 unfollow_protocol(self)
 
@@ -1206,12 +1270,11 @@ class InstaBot:
         if len(self.scraped_user)!=0:
             for use in self.scraped_user:
                 id=self.get_userID_by_name(use)
+                #followed_ngage(id)
                 self.unfollow(id)
-                self.scraped_user.remove(use)
-                time.sleep(random.choice(self.sec))
                 #llenar una variable con un numero random luego evaluar si ese numero no es tan exagerado y luego multiplicarlo po 60 que en segundos equivale a un minuto
                 #insert_unfollow_count(user_id=id)
-                #followed_ngage(id)
+                time.sleep(random.choice(self.sec))
         else:
             self.write_log("Looks like there is nobody to unfollow.")
 
@@ -1397,21 +1460,6 @@ class InstaBot:
                 print("Your text has unicode problem!")
 
     
-    #FUNCION ISNTASWELL
-    #def get_us_id_by_location(self, tag):  #seguir a un usuario por medio de un post con una ubicacion como la seleccionada 
-    #   if tag.startswith('l:'):     #si en la lista de tags el tag empieza por una l: entra al if como una locacion
-    #            tag = tag.replace('l:', '')
-    #           self.by_location = True
-    #            try:                
-    #                r = self.s.get(url_location)
-    #                data_location = json.loads(r.text)
-    #                user_name = data_location['location']['edge_location_to_top_post']['edges']['0']['node']['owner']
-    #                return user_name
-    #            except:
-    #                write_log("Locations is wrong")
-
-    #    else:
-    #        write_log("This in not a location")
 
 
 

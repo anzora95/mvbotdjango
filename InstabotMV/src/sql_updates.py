@@ -198,6 +198,18 @@ def insert_tag(self, catalogo, hashtags_names):
 #     return
 
 def count_ngage(task_id):
-    us=Username.objects.count(unfollow_count=0, task_id=task_id)
-    return us
+    us=Username.objects.filter(unfollow_count=0, task_id=task_id)
 
+    return len(us)
+
+def followed_ngage(usr_id):
+
+    try:
+        username=Username.objects.get(username_id=usr_id)
+    except Username.DoesNotExist:
+        username = None
+
+    if username:
+        insert_unfollow_count(usr_id)
+    else:
+        print("Usuario no seguido por ngage")

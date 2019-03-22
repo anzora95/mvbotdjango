@@ -25,8 +25,9 @@ from InstabotMV.src.unfollow_protocol import unfollow_protocol
 from InstabotMV.src.bsScarp import scrapImg, scrap_us
 from InstabotMV.forms import ComboTagHijo
 from InstabotMV.src.us_scrap import scrapUsr
+from InstabotMV.src.friendListscrap import validat
 
-
+import smtplib
 import datetime
 import logging
 import random
@@ -34,6 +35,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.views.generic.edit import FormView
 from django.shortcuts import redirect
+
 
 from .forms import GenerateRandomUserForm
 from InstabotMV.task import create_random_user_accounts,imprimir,runbot,stop
@@ -233,20 +235,22 @@ class UserAccounts(LoginRequiredMixin, View):
         ll=LastLogin.objects.get(user=user)
         cred=ll.cred
         fo_info=scrap_us(request.POST.get('insta_user'))
-        if request.method == 'POST':            
-            user=User.objects.get(id=request.user.id) # Se toma el usuario django que eta logeado.
-            cred = Creds()  # inicializacion de Credentials
-            cred.user = user  # Se le asigna un usuario a la task
-            cred.insta_user=request.POST.get('insta_user')
-            cred.insta_pass=request.POST.get('insta_pass')
-            cred.imgUrl=scrapImg(request.POST.get('insta_user'))
-            cred.pack_id=request.POST.get('pack')
-            cred.insta_followers=fo_info[0]
-            cred.insta_followings=fo_info[1]
-            cred.save()
-
-            
-            return redirect('instabot:userAccounts')
+        if request.method == 'POST':
+            valid=validat( request.POST.get('insta_user'), request.POST.get('insta_pass') )
+            if valid==2:
+                user=User.objects.get(id=request.user.id) # Se toma el usuario django que eta logeado.
+                cred = Creds()  # inicializacion de Credentials
+                cred.user = user  # Se le asigna un usuario a la task
+                cred.insta_user=request.POST.get('insta_user')
+                cred.insta_pass=request.POST.get('insta_pass')
+                cred.imgUrl=scrapImg(request.POST.get('insta_user'))
+                cred.pack_id=request.POST.get('pack')
+                cred.insta_followers=fo_info[0]
+                cred.insta_followings=fo_info[1]
+                cred.save()            
+                return redirect('instabot:userAccounts')
+            else:
+                return redirect('instabot:userAccounts')
         
         return redirect('instabot:dashboard')
 
@@ -388,6 +392,7 @@ def NewFollowLike(request):
             task.dontlikemedia=TrueOrFalse(request.POST.get('dont'))
             task.dontfollow=TrueOrFalse(request.POST.get('dontfollow'))
             task.search=TrueOrFalse(request.POST.get('search'))
+            task.friendlist=False
         else:
             task.likemedia=TrueOrFalse(request.POST.get('like2'))
             task.followuser=TrueOrFalse(request.POST.get('follow2'))
@@ -395,6 +400,7 @@ def NewFollowLike(request):
             task.dontfollow=TrueOrFalse(request.POST.get('dontfollow2'))
             task.tags=request.POST.get('tags-inputs')
             task.search=TrueOrFalse(request.POST.get('search2'))
+            task.friendlist=True
         task.antispamfilter=TrueOrFalse(request.POST.get('antispam'))
         task.randomlylike=TrueOrFalse(request.POST.get('randomly'))
         task.unfollow=False
@@ -452,10 +458,11 @@ def UnfollowTask(request):
         task = Task()  # inicializacion de task
         task.user = user  # Se le asigna un usuario a la task
         task.creds=cred
-        task.tags="All users followed by Instaswell"
+        
         task.active = False
         task.likemedia=False
         task.followuser=False
+        task.friendlist=False
         task.dontlikemedia=False
         task.dontfollow=False
         task.randomlylike=False
@@ -465,6 +472,12 @@ def UnfollowTask(request):
         task.unfollow=True
         task.ghost=TrueOrFalse(request.POST.get('ghost'))
         task.back=TrueOrFalse(request.POST.get('back'))
+        if request.POST.get('optradio')=='True':
+            task.allusers=False
+            task.tags="All users followed by Ngage"
+        else:
+            task.allusers=True
+            task.tags="All users"
         task.save()
         t=thread()
         t.task=task
@@ -670,6 +683,7 @@ def start(request, task):
     ftLike=task.likemedia
     ftFollow=task.followuser
     ftUnfollow =task.unfollow
+    friend=task.friendlist #bandera para saber si es friendlist o no tiene que guardarse en runbot e inicializarse dentro de instabot
     if task.active:
         task.active=False
     else:
@@ -679,7 +693,7 @@ def start(request, task):
     hl=strtask.split(",")
     print(hl)
     user=User.objects.get(id=request.user.id)
-    runbot.delay(u,p,hl,ide,ftLike,ftFollow,ftUnfollow,pa,n_ceil)
+    runbot.delay(u,p,hl,ide,ftLike,ftFollow,ftUnfollow,pa,n_ceil) #aqui debe de haber otro parametro que sea lo de el friend list para que se inicialize en instabot
     return redirect('instabot:dashboard')
 
 class StopBot(LoginRequiredMixin, View):

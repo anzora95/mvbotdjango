@@ -30,7 +30,7 @@ def stop(codigo):
     return 'Finished'
 
 @shared_task
-def runbot(user,p,hl,i,like,follow,unfollow,pa,n_ceil):
+def runbot(user,p,hl,i,like,follow,unfollow,pa,n_ceil): #recoger el valor del friendlist 
     ceiling=n_ceil
     pack=Packages.objects.get(id=pa)
     pak_follows=pack.follows_by_pack

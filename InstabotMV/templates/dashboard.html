@@ -87,17 +87,26 @@
     <div class="col-sm-4 col-sm-offset-4  text-center">
         <div id="myGroup">
             
-            <div class="accordion-group">
+            <div class=" accordion-group">
                 <div class="collapse indent" id="1{{task.id}}">
                         <div class="tick">
-                                {% for u in UN%}
-                                {% if ll.cred.insta_user == u.cred_us%}
+                                {% for u in UX%}
+                                
                                 {% if task.id == u.task.id%}
                                 <a  href="https://www.instagram.com/{{u.username}}/">
                                 <img class="ticker" style="border-radius: 50%; width: 40px;
                         height: 40px;" src="{{u.picUrl}}" alt="user-pic">
                         </a>
-                                {% endif%}
+                        {% if task.unfollow%}
+                        <i class="glyphicon glyphicon-minus-sign"></i>
+                        
+                        
+                        {%else%}
+                        <i class="glyphicon glyphicon-user"></i>
+                        {%endif%}
+                        
+                        
+                        
                                 {% endif%}
                                 {% endfor%}
                                  </div>

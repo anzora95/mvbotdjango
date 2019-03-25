@@ -147,8 +147,16 @@ def DashboardView(request):
     ticklimit=0
     AT=Task.objects.all() #Get All the Task in system
     LT=[] ##Empty list for List of Task
-    UN=Username.objects.all().order_by('-id')[:250] #Limit the ticker number.
-    print(len(UN))
+    UX=[]
+    z="Hola esto es una prueba"
+    count=0
+    UN=Username.objects.all() #Limit the ticker number.
+    for t in range(0,len(UN)):
+        if UN[t].cred_us==ll.cred.insta_user and count<=550:
+            count+=1
+            UX.append(UN[t])
+    print(ll.cred.insta_user)
+    print(len(UX))
     for x in range(0,len(AT)):
        if AT[x].creds==cred:#If the task has the current logged user add it to the LT list
            #print(AT[x].user.username)
@@ -159,7 +167,7 @@ def DashboardView(request):
         print(LT)
         return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'empty':empty,'UN':UN}) 
 
-    return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'UN':UN})
+    return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'UN':UN,'UX':UX})
 
 def changeAccount(request,cred):
     user = User.objects.get(id=request.user.id)

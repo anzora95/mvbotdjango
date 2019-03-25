@@ -21,14 +21,14 @@ def friendScrapi(sc_us, sc_pas,sc_account):
 
     username = sc_us  # <username here>
     password = sc_pas  # <password here>
-    list_css: str = "div[role='dialog'] a.notranslate"
+    list_css = "div[role='dialog'] a.notranslate"
 
     #def driver
     driver=webdriver.Firefox()
 
     # Load page
     driver.get("https://www.instagram.com/accounts/login/")
-    driver.minimize_window()
+    #driver.minimize_window()
     driver.implicitly_wait(10)
     #sleep(5)
 
@@ -60,25 +60,23 @@ def friendScrapi(sc_us, sc_pas,sc_account):
     while True:
         count=0
         #second scroll on the popup
-        driver.execute_script("arguments[0].scrollTop=arguments[1];",fal,700000)
+        driver.execute_script("arguments[0].scrollTop=arguments[1];",fal,70000)
         sleep(2)
         new_height=driver.execute_script("return arguments[0].scrollHeight;",fal)
 
         if new_height == last_height:  
-                
+            
             break
         else:
             last_height=new_height
             count=count+1
-
-
-    
+   
     #
-    _followers: List = driver.find_elements_by_css_selector(list_css)
+    _followers= driver.find_elements_by_css_selector(list_css)
     followers = [i.text for i in _followers]
-    print(followers)
-    return(followers)
     driver.close()
+    return(followers)
+    
     #print("por aqui ya paso")
 
 

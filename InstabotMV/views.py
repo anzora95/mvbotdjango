@@ -122,10 +122,10 @@ class LoginView(View):
         print(user)
         if user.is_superuser == 1:
             login_django(request, user)
-            return redirect('instabot:dashboard')
+            return redirect('instabot:userAccounts')
         elif user.is_superuser == 0:
             login_django(request, user)
-            return redirect('instabot:dashboard')
+            return redirect('instabot:userAccounts')
         else:
             self.message = "Username o password incorrectos"
 
@@ -141,7 +141,7 @@ def logout(request):
     return redirect('instabot:login')
 @login_required(login_url='/instabotmv/login')
 def DashboardView(request):
-    user = User.objects.get(id=request.user.id) #Get the current user logged in
+    """ user = User.objects.get(id=request.user.id) #Get the current user logged in
     ll=LastLogin.objects.get(user=user)
     cred=ll.cred
     AT=Task.objects.all() #Get All the Task in system
@@ -156,6 +156,25 @@ def DashboardView(request):
         empty=True
         print(LT)
         return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'empty':empty,'UN':UN}) 
+
+    return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'UN':UN}) """
+    user = User.objects.get(id=request.user.id) #Get the current user logged in
+    ll=LastLogin.objects.get(user=user)
+    cred=ll.cred
+    ticklimit=0
+    AT=Task.objects.all() #Get All the Task in system
+    LT=[] ##Empty list for List of Task
+    UN=Username.objects.all().order_by('-id')[:250] #Limit the ticker number.
+    print(len(UN))
+    for x in range(0,len(AT)):
+       if AT[x].creds==cred:#If the task has the current logged user add it to the LT list
+           #print(AT[x].user.username)
+ 
+           LT.append(AT[x])
+    if len(LT)==0:
+        empty=True
+        print(LT)
+        return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'empty':empty,'UN':UN})
 
     return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'UN':UN})
 
@@ -661,7 +680,7 @@ def start(request, task):
     hl=strtask.split(",")
     print(hl)
     user=User.objects.get(id=request.user.id)
-    runbot.delay(u,p,hl,ide,ftLike,ftFollow,ftUnfollow,pa,n_ceil) #aqui debe de haber otro parametro que sea lo de el friend list para que se inicialize en instabot
+    runbot.delay(u,p,hl,ide,ftLike,ftFollow,ftUnfollow,pa,n_ceil,friend) #aqui debe de haber otro parametro que sea lo de el friend list para que se inicialize en instabot
     return redirect('instabot:dashboard')
 
 class StopBot(LoginRequiredMixin, View):

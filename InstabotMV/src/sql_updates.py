@@ -2,7 +2,7 @@
 from django.db import connection
 from django.db.models.query import QuerySet
 
-from InstabotMV.models import Media, Username, Creds, HashtagList
+from InstabotMV.models import Media, Username, Creds, HashtagList,Task
 from datetime import datetime, time
 from django.shortcuts import get_object_or_404
 
@@ -93,6 +93,12 @@ def insert_unfollow_count(user_id=False, user=False):
         use.save()
     else:
         return False
+
+
+def sleep_mod(id_task):
+    t= Task.objects.get(id=id_task)
+    t.sleep_mod=1
+    t.save()
 
 
 def get_usernames_first(self):

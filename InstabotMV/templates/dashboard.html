@@ -167,10 +167,15 @@
                     <i class='glyphicon glyphicon-play'></i>
             </a>
             {%endif%}
+            {%if task.friendlist%}
+            <a href="{% url 'instabot:edit_task2' task.id%}" class="btn btn-primary  btn-lit-circle" role="button">
+                    <i class="glyphicon glyphicon-pencil"></i>
+            </a>
+            {%else%}
             <a href="{% url 'instabot:edit_task' task.id%}" class="btn btn-primary  btn-lit-circle" role="button">
                     <i class="glyphicon glyphicon-pencil"></i>
             </a>
-            
+            {%endif%}
             <a href="{% url 'instabot:del_task' task.id%}" class="btn btn-primary btn-lit-circle" role="button">
                     <i class="glyphicon glyphicon-trash"></i>
             </a>

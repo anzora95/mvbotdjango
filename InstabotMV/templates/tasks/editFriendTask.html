@@ -96,7 +96,15 @@
     <hr class="divider">
 
     <div id="exTab2" class="container">
-        
+        <ul class="nav nav-tabs nav-justified">
+            <li class="active">
+                <a href="#1" data-toggle="tab">Hashtags</a>
+            </li>
+            <li><a href="#2" data-toggle="tab">Friend List</a>
+            </li>
+            <li><a href="#3" data-toggle="tab">Location</a>
+            </li>
+        </ul>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <script type="text/javascript" src="{% static 'js/ajax.js' %}"></script>
@@ -112,145 +120,184 @@
             <br>
             <div class="tab-content">
             <div class="tab-pane fade in active" id="1">
-                {% csrf_token %}
-                <select style="width: 100%;" onchange="getTags()">
-                     <span class="input-group" >Type in your hashtags or select from a list</span>
+                    <form method="POST" id="formu" >
+                            <script>
+                                document.getElementById("formu").onkeypress = function(e) {
+                              var key = e.charCode || e.keyCode || 0;     
+                              if (key == 13) {
+                                
+                                e.preventDefault();
+                                
+                              }
+                            }</script>
+                                {% csrf_token %}
+                        <h3 >Type in Instagram  <span style="color:#2C7CB2;">username </span>which followers or following you want to <span style="color:#2C7CB2;">target</span> </h3>
+           
+                        <input id="friend" name="friend" type="hidden" value="friend">
+                        <div class="row">
+
+                                <div class="col-xs-8 col-sm-10 pr0">
+                                        <input type="text" name="username" style="margin-top: 6px;"id="tags-input" class="friendsearch" placeholder="Instagram username">
+                                    </div>
+                                    
+                                    <div class="col-xs-4 col-sm-2 pl5"><button style="float: right; margin-top:4px;width:100%;"type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Search</button></div>
+                                    
+                                    <div id="demo" class="collapse col-md-12" style="float:left;">
+                                            <br>
+                                            <div class="col-md-1"><img id="imgurl"style="border-radius: 50%; width: 65px;
+                                              height: 65px;" src="" alt="">
+                                            </div>
+                                            
+                                              
+                                            <div class="col-md-9" style="padding-top: 8px;">
+                                                <p style="padding-bottom:-3px;"><b id="username"></b></p>
+                                                <p id="followers"style="margin-top: -10px;"></p></div>
+                                            <div class="col-md-2" style="padding-top: 15px;">
+                                                    <button  id="addt"data-toggle="collapse" data-target="#demo2" type="button"  class="btn btn-success">Add to task</button>
+                                            </div>
+                                            <div class="col-md-12">
+                                                
+
+                                                <div id="demo2" class="collapse">
+                                                    <div style="width:100%;" class="tags-inputs" data-name="tags-inputs">
+                                                        <section id="xd">
+                                        
+                                                        </section>
+                                                        </div>
+                                                    
+                                    <script>
+                                    </script>
+                                                </div> 
+                                            </div>
+                                            <hr class="divider">
+                                        </div>
+                                        <script>
+[].forEach.call(document.getElementsByClassName('tags-inputs'), function (el) {
+var data;
+let hiddenInput = document.createElement('input'),
+    mainInput = document.createElement('label'),
+    tags = [];
+
+hiddenInput.setAttribute('type', 'hidden');
+
+hiddenInput.setAttribute('name', el.getAttribute('data-name'));
+
+mainInput.setAttribute('type', 'text');
+mainInput.classList.add('main-input');
+mainInput.addEventListener('input', function () {
+    let enteredTags = mainInput.value.split(" ");
+    if (enteredTags.length > 1) {
+        enteredTags.forEach(function (t) {
+            let filteredTag = filterTag(t);
+            if (filteredTag.length > 0)
+                addTag(filteredTag);
+        });
+        mainInput.value = '';
+    }
+});
+
+
+
+mainInput.addEventListener('keydown', function (e) {
+    let keyCode = e.which || e.keyCode;
+    if (keyCode === 8 && mainInput.value.length === 0 && tags.length > 0) {
+        removeTag(tags.length - 1);
+    }
+    
+});
+
+el.appendChild(mainInput);
+el.appendChild(hiddenInput);
+
+
+
+$("#tags-input").change(function () {
+                                            var username = $(this).val();
+
+  $.ajax({
+    url: '/instabotmv/ajax/validate_username/',
+    data: {
+      'username': username
+    },
+    dataType: 'json',
+    success: function (data) {
+     
+        document.getElementById('username').innerHTML =data[1];
+        document.getElementById('followers').innerHTML =data[2];
+        document.getElementById("imgurl").src = data[0];
+        data=username;
+        document.getElementById("addt").onclick = function() {myFunction()};
+
+function myFunction() {
+  addTag(data);
+}
+        
+        
        
-           {% for  Hasgtag in Hasgtags %}
-       <option value="{{Hasgtag.id}}">{{Hasgtag.category}}</option>
-           {% endfor%}
-   </select>
-                  <script>
-                      
-                  </script>
-                   <h1 ></h1>
+    }
+  });
+
+});
 
 
-   </a>
-   <link rel="stylesheet" href="{% static 'css/tags.css' %}">
-   <div style="width:100%;" class="tags-input" data-name="tags-input">
-       <section id="xd">
+                 
+function addTag (text) {
+    let tag = {
+        text: text,
+        element: document.createElement('span'),
+    };
 
-       </section>
-       </div>
-       
-</div>
-<script>
- [].forEach.call(document.getElementsByClassName('tags-input'), function (el) {
-     let hiddenInput = document.createElement('input'),
-         mainInput = document.createElement('input'),
-         tags = [];
-     
-     hiddenInput.setAttribute('type', 'hidden');
- 
-     hiddenInput.setAttribute('name', el.getAttribute('data-name'));
- 
-     mainInput.setAttribute('type', 'text');
-     mainInput.classList.add('main-input');
-     mainInput.addEventListener('input', function () {
-         let enteredTags = mainInput.value.split(' ');
-         if (enteredTags.length > 1) {
-             enteredTags.forEach(function (t) {
-                 let filteredTag = filterTag(t);
-                 if (filteredTag.length > 0)
-                     addTag(filteredTag);
-             });
-             mainInput.value = '';
-         }
-     });
- 
-     mainInput.addEventListener('keydown', function (e) {
-         let keyCode = e.which || e.keyCode;
-         if (keyCode === 8 && mainInput.value.length === 0 && tags.length > 0) {
-             removeTag(tags.length - 1);
-         }
-     });
- 
-     el.appendChild(mainInput);
-     el.appendChild(hiddenInput);
- 
-     
-     
-     $('select').on('change',inicio);
- 
-                                function inicio(){
-                                var id= $(this).val();
-                                $.ajax({
-                                data: {'id':id},
-                                url:'/instabotmv/hashtag_ajax/',
-                                type: 'get',
-                                success: function(data){
-                                var html=""
-                                var lista=[]
-                                
-                                for(var i=0;i<data.length;i++){
-                                 
-                                addTag(data[i].fields.insta_tag);
-                                lista[i]=i;
-                                }
-                                for(var i=0;i<lista.length;i++){
-                                 
-                                 removeTag(i);
-                                 
-                                 }
- 
-                                
-                                
-                                $('#xd').html(html);
-                                }
-                                });
-                                }
-                                var array={{tags|safe}}.split(',')
-                                for (var count=0;count<array.length;count++){
-                                 addTag(array[count])
-                                }
-                                
-                                addTag(array[l])
-                                 
-     function addTag (text) {
-         let tag = {
-             text: text,
-             element: document.createElement('span'),
-         };
- 
-         tag.element.classList.add('tag');
-         tag.element.textContent = tag.text;
- 
-         let closeBtn = document.createElement('span');
-         closeBtn.classList.add('close');
-         closeBtn.addEventListener('click', function () {
-             removeTag(tags.indexOf(tag));
-         });
-         tag.element.appendChild(closeBtn);
- 
-         tags.push(tag);
- 
-         el.insertBefore(tag.element, mainInput);
- 
-         refreshTags();
-     }
- 
-     function removeTag (index) {
-         let tag = tags[index];
-         tags.splice(index, 1);
-         el.removeChild(tag.element);
-         refreshTags();
-     }
- 
-     function refreshTags () {
-         let tagsList = [];
-         tags.forEach(function (t) {
-             tagsList.push(t.text);
-         });
-         hiddenInput.value = tagsList.join(',');
-     }
- 
-     function filterTag (tag) {
-         return tag.replace(/[^\w -]/g, '').trim().replace(/\W+/g, '-');
-     }
- });
- 
- </script>
+    tag.element.classList.add('tag');
+    tag.element.textContent = tag.text;
+
+    let closeBtn = document.createElement('span');
+    closeBtn.classList.add('close');
+    closeBtn.addEventListener('click', function () {
+        removeTag(tags.indexOf(tag));
+    });
+    tag.element.appendChild(closeBtn);
+
+    tags.push(tag);
+
+    el.insertBefore(tag.element, mainInput);
+
+    refreshTags();
+}
+
+function removeTag (index) {
+    let tag = tags[index];
+    tags.splice(index, 1);
+    el.removeChild(tag.element);
+    refreshTags();
+}
+
+function refreshTags () {
+    let tagsList = [];
+    tags.forEach(function (t) {
+        tagsList.push(t.text);
+    });
+    hiddenInput.value = tagsList.join(',');
+}
+
+function filterTag (tag) {
+    return tag.replace(/[^\w -]/g, '').trim().replace(/\W+/g, '-');
+}
+});
+
+                                          
+                                        </script>
+                                                           
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                          <label style="margin-left: 40px;  margin-top: 15px;" class="radio">
+                            <input  style="transform: scale(1.5); " type="radio" name="foll" id="foll" checked>Target followers of selected users 
+                          </label>
+                          <label style="margin-left: 40px;  margin-top: 15px;" class="radio">
+                            <input  style="transform: scale(1.5); " type="radio" name="foll" >Target following of selected users
+                          </label>
+                        </div>
+                        </div>
                      
  
  

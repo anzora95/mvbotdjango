@@ -364,7 +364,30 @@ def EditTask(request,id_task):
         return redirect('instabot:dashboard')
     return render(request,'tasks/edittask.html',{'Hasgtags':Hasgtags,'task':task,'ll':ll,"tags" : json_tags})
 
-
+def EditTask2(request,id_task):
+    Hasgtags = HashtagList.objects.all()
+    user = User.objects.get(id=request.user.id)
+    ll=LastLogin.objects.get(user=user)
+    task=Task.objects.get(id=id_task)
+    json_tags = json.dumps(task.tags)
+    if request.method == 'POST':
+        task.tags=request.POST.get('tags-input')
+        task.active = False
+        task.likemedia=TrueOrFalse(request.POST.get('like'))
+        task.followuser=TrueOrFalse(request.POST.get('follow'))
+        task.dontlikemedia=TrueOrFalse(request.POST.get('dont'))
+        task.dontfollow=TrueOrFalse(request.POST.get('dontfollow'))
+        task.randomlylike=TrueOrFalse(request.POST.get('randomly'))
+        task.search=TrueOrFalse(request.POST.get('search'))
+        task.antispamfilter=TrueOrFalse(request.POST.get('antispam'))
+        task.unfollow=False
+        task.ghost=False
+        task.back=False
+        task.custowordfilter=TrueOrFalse(request.POST.get('custom'))
+        task.save()
+        
+        return redirect('instabot:dashboard')
+    return render(request,'tasks/editFriendTask.html',{'Hasgtags':Hasgtags,'task':task,'ll':ll,"tags" : json_tags})
 
 def DeleteAccount(request,id_cred):
     user = User.objects.get(id=request.user.id)

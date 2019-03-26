@@ -13,6 +13,7 @@ urlpatterns = [
     url('dashboard/$', views.DashboardView, name='dashboard'),
     url('dashboard/$', views.tag_child, name='dashload'),
     url('reports/$', views.report, name='report'),
+    url('ajax/ticker/$', views.ticker, name='counter'),
     url('ajax/validate_username/$', views.test, name='test2'),
     url('hashtag_ajax/$', views.hashtags.as_view(), name='hashtags'),
     url('prueba_ajax/$', views.prueba.as_view(), name='prueba'),

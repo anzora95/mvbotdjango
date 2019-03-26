@@ -50,6 +50,7 @@
 
     {%endif%}
     
+    
 {% for task in LT %}
 
 
@@ -90,6 +91,7 @@
             <div class=" accordion-group">
                 <div class="collapse indent" id="1{{task.id}}">
                         <div class="tick">
+                            
                                 {% for u in UX%}
                                 
                                 {% if task.id == u.task.id%}
@@ -97,6 +99,7 @@
                                 <img class="ticker" style="border-radius: 50%; width: 40px;
                         height: 40px;" src="{{u.picUrl}}" alt="user-pic">
                         </a>
+                        
                         {% if task.unfollow%}
                         <i class="glyphicon glyphicon-minus-sign"></i>
                         

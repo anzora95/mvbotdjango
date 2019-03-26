@@ -297,7 +297,16 @@ def test(request):
     print(scrap[0])
     data = scrap
     return HttpResponse(json.dumps(data), content_type="application/json")
-    
+
+def ticker(request):
+    count=1000
+    while count>0:
+        data=count
+        return HttpResponse(json.dumps(data), content_type="application/json")
+        count=count-1
+        time.sleep(60)
+    return HttpResponse(json.dumps(data), content_type="application/json")
+
 
 def tags_serializer(tag):
     return {'id':tag.id,'name':tag.insta_tag}

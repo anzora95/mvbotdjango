@@ -271,13 +271,14 @@
 .tooltip:checked .tooltiptext {
   visibility: visible;
 }
+
 .glyphicon-user{
   color:#2C7CB2;
   margin-bottom: 40px;
   margin-right: 1px;
   margin-left: -18px;
   font-size: 15px;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 .glyphicon-minus-sign{
   color:#2C7CB2;
@@ -285,6 +286,6 @@
   margin-right: 1px;
   margin-left: -18px;
   font-size: 15px;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 

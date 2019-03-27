@@ -30,7 +30,7 @@ def stop(codigo):
     return 'Finished'
 
 @shared_task
-def runbot(user,p,hl,i,like,follow,unfollow,pa,n_ceil,friend): #recoger el valor del friendlist 
+def runbot(user,p,hl,i,like,follow,unfollow,pa,n_ceil,friend,all_us): #recoger el valor del friendlist 
     ceiling=n_ceil
     pack=Packages.objects.get(id=pa)
     pak_follows=pack.follows_by_pack
@@ -42,6 +42,7 @@ def runbot(user,p,hl,i,like,follow,unfollow,pa,n_ceil,friend): #recoger el valor
     ft_like=like
     ft_follow=follow
     ft_unfollow=unfollow
+    ft_all=all_us
     bot = InstaBot(
         login=user,
         password=p,
@@ -88,7 +89,8 @@ def runbot(user,p,hl,i,like,follow,unfollow,pa,n_ceil,friend): #recoger el valor
         ft_unfollow=unfollow,
         task_id=i,
         ceil=ceiling,
-        ft_friendlist=friend,)
+        ft_friendlist=friend,
+        ft_all=all_us)
     
     while True:
 

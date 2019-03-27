@@ -29,7 +29,7 @@ from InstabotMV.models import Task
 from InstabotMV.models import *
 from InstabotMV.src.mail_send import mail_notify
 from InstabotMV.src.friendListscrap import friendScrapi
-from .sql_updates import sleep_mod
+from .sql_updates import sleep_mod, sleep_mod_off
 
 
 class InstaBot:
@@ -232,10 +232,10 @@ class InstaBot:
         self.hour_start=range(15,16)
         self.hour_end=range(16,17)
 
-        self.start_at_h = random.choice(self.hour_start)
-        self.start_at_m = random.choice(self.min)
-        self.end_at_h = random.choice(self.hour_end)
-        self.end_at_m = random.choice(self.min)
+        self.start_at_h = start_at_h #random.choice(self.hour_start)
+        self.start_at_m = start_at_m#random.choice(self.min)
+        self.end_at_h = end_at_h#random.choice(self.hour_end)
+        self.end_at_m = end_at_m#random.choice(self.min)
 
         # Don't like if media have more than n likes.
         self.media_max_like = media_max_like
@@ -518,7 +518,17 @@ class InstaBot:
             else:
                 return False
 
-
+    def follow_back(self, username):
+        url_info = self.url_user_detail % (username)
+        try:
+            r = self.s.get(url_info)
+            all_data = json.loads(r.text)
+            ret_follow = all_data['graphql']['user']['follows_viewer']
+            print(ret_follow)
+            return ret_follow    #aqui retorna el user info con todos los valores llenos si el usuario targeteado no sigue a nuestra cuenta
+        except:
+            logging.exception("Except on get follow_viewer of user")
+            return None
 
     def get_userinfo_by_name(self, username):
         """ Get user info by name """
@@ -996,12 +1006,13 @@ class InstaBot:
     def new_auto_mod(self):
         while True:
             now = datetime.datetime.now()
-            print("bot termina a :" + str(datetime.time(self.end_at_h, self.end_at_m)))
-            print("bot inicia a :" + str(datetime.time(self.start_at_h, self.start_at_m)))
+            print("bot termina a :" + str(datetime.time(self.end_at_h, self.end_at_m)))# impresiones del tiempo en el cual el bot iniciara 
+            print("bot inicia a :" + str(datetime.time(self.start_at_h, self.start_at_m)))#impresion del tiempo en el que el bot va  parar
             if (
                     datetime.time(self.start_at_h, self.start_at_m) <= now.time() #funcion simulating human pordria usarse aqui
                     and now.time() <= datetime.time(self.end_at_h, self.end_at_m)
             ):
+                sleep_mod_off(self.task_id)
                 # ------------------- TASK BY HASHTAG -------------------
                 if self.ft_friendlist ==False and self.ft_unfollow== False:
 
@@ -1288,12 +1299,23 @@ class InstaBot:
             if len(username_row)!=0:
                 for x in range(0,len(username_row)):
                     unl.append(username_row[x])
-                    self.unfollow(unl[x].username_id)
-                    #llenar una variable con un numero random luego evaluar si ese numero no es tan exagerado y luego multiplicarlo po 60 que en segundos equivale a un minuto
-                    insert_unfollow_count(user_id=unl[x].username_id)
-                    tempo=random.choice(self.sec)
-                    print(tempo)
-                    time.sleep(tempo)
+                    if self.ft_back==True:
+                        if self.follow_back(unl[x].username)==False:
+                            self.unfollow(unl[x].username_id)
+                            #llenar una variable con un numero random luego evaluar si ese numero no es tan exagerado y luego multiplicarlo po 60 que en segundos equivale a un minuto
+                            insert_unfollow_count(user_id=unl[x].username_id)
+                            tempo=random.choice(self.sec)
+                            print(tempo)
+                            time.sleep(tempo)
+                        else:
+                            print("evitar el unfollow")
+                    else:
+                        self.unfollow(unl[x].username_id)
+                        #llenar una variable con un numero random luego evaluar si ese numero no es tan exagerado y luego multiplicarlo po 60 que en segundos equivale a un minuto
+                        insert_unfollow_count(user_id=unl[x].username_id)
+                        tempo=random.choice(self.sec)
+                        print(tempo)
+                        time.sleep(tempo)
             else:
                 self.write_log("Looks like there is nobody to unfollow.")
 

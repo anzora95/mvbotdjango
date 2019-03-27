@@ -54,7 +54,7 @@ class Task(models.Model):
     followuser=models.BooleanField()
     dontlikemedia=models.BooleanField()
     dontfollow=models.BooleanField()
-    sleep_mod=models.BooleanField()
+    sleep_mod=models.BooleanField(default=False)
     search=models.BooleanField()
     unfollow=models.BooleanField()
     ghost=models.BooleanField()

@@ -100,6 +100,10 @@ def sleep_mod(id_task):
     t.sleep_mod=1
     t.save()
 
+def sleep_mod_off(id_task):
+    t= Task.objects.get(id=id_task)
+    t.sleep_mod=0
+    t.save()
 
 def get_usernames_first(self):
     """ Gets first element of usernames table """

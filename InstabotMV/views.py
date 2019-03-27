@@ -670,6 +670,7 @@ def start(request, task):
     ftLike=task.likemedia
     ftFollow=task.followuser
     ftUnfollow =task.unfollow
+    ft_all=task.allusers
     friend=task.friendlist #bandera para saber si es friendlist o no tiene que guardarse en runbot e inicializarse dentro de instabot
     if task.active:
         task.active=False
@@ -680,7 +681,7 @@ def start(request, task):
     hl=strtask.split(",")
     print(hl)
     user=User.objects.get(id=request.user.id)
-    runbot.delay(u,p,hl,ide,ftLike,ftFollow,ftUnfollow,pa,n_ceil,friend) #aqui debe de haber otro parametro que sea lo de el friend list para que se inicialize en instabot
+    runbot.delay(u,p,hl,ide,ftLike,ftFollow,ftUnfollow,pa,n_ceil,friend,ft_all) #aqui debe de haber otro parametro que sea lo de el friend list para que se inicialize en instabot
     return redirect('instabot:dashboard')
 
 class StopBot(LoginRequiredMixin, View):

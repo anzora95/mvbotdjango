@@ -96,15 +96,7 @@
     <hr class="divider">
 
     <div id="exTab2" class="container">
-        <ul class="nav nav-tabs nav-justified">
-            <li class="active">
-                <a href="#1" data-toggle="tab">Hashtags</a>
-            </li>
-            <li><a href="#2" data-toggle="tab">Friend List</a>
-            </li>
-            <li><a href="#3" data-toggle="tab">Location</a>
-            </li>
-        </ul>
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <script type="text/javascript" src="{% static 'js/ajax.js' %}"></script>
@@ -116,6 +108,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.js"></script>
     <div class="tab-content ">
+            <link rel="stylesheet" href="{% static 'css/tags.css' %}">
             <form method="POST" id="formulario" >
             <br>
             <div class="tab-content">
@@ -142,7 +135,7 @@
                                     
                                     <div class="col-xs-4 col-sm-2 pl5"><button style="float: right; margin-top:4px;width:100%;"type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Search</button></div>
                                     
-                                    <div id="demo" class="collapse col-md-12" style="float:left;">
+                                    <div id="" class=" col-md-12" style="float:left;">
                                             <br>
                                             <div class="col-md-1"><img id="imgurl"style="border-radius: 50%; width: 65px;
                                               height: 65px;" src="" alt="">
@@ -158,7 +151,7 @@
                                             <div class="col-md-12">
                                                 
 
-                                                <div id="demo2" class="collapse">
+                                                <div id="" class="">
                                                     <div style="width:100%;" class="tags-inputs" data-name="tags-inputs">
                                                         <section id="xd">
                                         
@@ -240,12 +233,16 @@ function myFunction() {
 });
 
 
-                 
+var array={{tags|safe}}.split(',')
+                                for (var count=0;count<array.length;count++){
+                                 addTag(array[count])
+                                }             
 function addTag (text) {
     let tag = {
         text: text,
         element: document.createElement('span'),
     };
+    
 
     tag.element.classList.add('tag');
     tag.element.textContent = tag.text;

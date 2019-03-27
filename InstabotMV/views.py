@@ -371,7 +371,7 @@ def EditTask2(request,id_task):
     task=Task.objects.get(id=id_task)
     json_tags = json.dumps(task.tags)
     if request.method == 'POST':
-        task.tags=request.POST.get('tags-input')
+        task.tags=request.POST.get('tags-inputs')
         task.active = False
         task.likemedia=TrueOrFalse(request.POST.get('like'))
         task.followuser=TrueOrFalse(request.POST.get('follow'))
@@ -388,6 +388,25 @@ def EditTask2(request,id_task):
         
         return redirect('instabot:dashboard')
     return render(request,'tasks/editFriendTask.html',{'Hasgtags':Hasgtags,'task':task,'ll':ll,"tags" : json_tags})
+
+def EditUnfollow(request,id_task):
+    
+    user = User.objects.get(id=request.user.id)
+    ll=LastLogin.objects.get(user=user)
+    task=Task.objects.get(id=id_task)
+    Hola="Hola"
+    if request.method == 'POST':
+        task.ghost=TrueOrFalse(request.POST.get('ghost'))
+        task.back=TrueOrFalse(request.POST.get('back'))
+        if request.POST.get('optradio')=='True':
+            task.allusers=False
+            task.tags="All users followed by Ngage"
+        else:
+            task.allusers=True
+            task.tags="All users"
+        task.save()
+        return redirect('instabot:dashboard')
+    return render(request,'tasks/editunfollow_task.html',{'Hola':Hola,'task':task,'ll':ll})
 
 def DeleteAccount(request,id_cred):
     user = User.objects.get(id=request.user.id)

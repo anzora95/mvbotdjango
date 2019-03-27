@@ -30,6 +30,7 @@ urlpatterns = [
     url('delete_task/(?P<id_task>\d+)/$', views.DeleteTask,name="del_task"),
     url('edit_task/(?P<id_task>\d+)/$', views.EditTask,name="edit_task"),
     url('edit_friendtask/(?P<id_task>\d+)/$', views.EditTask2,name="edit_task2"),
+    url('edit_unfollowtask/(?P<id_task>\d+)/$', views.EditUnfollow,name="edit_unfollow"),
 
     # # ******************************** bot url's ************************************************************
     url('start-bot/$', views.StartBot.as_view(),name='start'),

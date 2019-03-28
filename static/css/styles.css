@@ -289,3 +289,48 @@
   opacity: 0.9;
 }
 
+.head{
+  padding: 50px 0;
+  height: 300px;;
+  background-color:#66d6fe;
+  color: #fff;
+  text-align: left;
+}
+.feat{
+  margin-left: 30px;
+  
+}
+
+.head2{
+  padding: 70px 0;
+
+  background-color:white;
+  height: 300px;
+  margin: auto;
+}
+.loginbg{
+  background-color: #16214d;
+}
+.fullscreen{
+  padding: 140px 0;
+  margin: auto;
+}
+.roundedinput{
+  border: 1px solid #ccc;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	-moz-box-shadow: 2px 2px 3px #fff;
+	-webkit-box-shadow: 2px 2px 3px #fff;
+  box-shadow: 2px 2px 3px #fff;
+	font-size: 20px;
+	padding: 4px 7px;
+	outline: 0;
+  -webkit-appearance: none;
+  margin-left: 80px; 
+  margin-bottom: 40px;
+  }
+.btns{
+  margin-top: -20px;
+  margin-left: 170px;
+}

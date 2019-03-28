@@ -80,13 +80,17 @@ def insert_username(self, username_id, username, unfollow, us, picUrl, task_id):
     user_insert.save()
 
 
-def insert_unfollow_count(user_id=False, user=False):
+def insert_unfollow_count(use_nam,user_id=False, user=False):
     """ track unfollow count for new futures """
 
     if user_id:
-        us = Username.objects.get(username_id=user_id)
-        us.unfollow_count = us.unfollow_count+1
-        us.save()
+        try:
+            us = Username.objects.get(username_id=user_id, cred_us=use_nam)
+        #print(str(us.username))
+            us.unfollow_count = us.unfollow_count+1
+            us.save()
+        except:
+            print('No se pudo hay registro repetido')    
     elif user:
         use = Username.objects.get(username=user)
         use.unfollow_count = use.unfollow_count+1

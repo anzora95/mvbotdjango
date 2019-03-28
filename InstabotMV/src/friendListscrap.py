@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.firefox.options import Options
 from bs4 import BeautifulSoup as soup
 from time import sleep
 from typing import List, Set
@@ -24,6 +25,9 @@ def friendScrapi(sc_us, sc_pas,sc_account):
     list_css = "div[role='dialog'] a.notranslate"
 
     #def driver
+    #options=Options()
+    #options.add_argument('-headless')
+    #driver=webdriver.Firefox(options=options)
     driver=webdriver.Firefox()
 
     # Load page

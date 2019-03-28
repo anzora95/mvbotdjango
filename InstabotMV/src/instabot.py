@@ -1296,6 +1296,8 @@ class InstaBot:
         #while checking:
             username_row = Username.objects.filter(cred_us = self.us , unfollow_count = 0)
             unl=[]
+            print(self.user_login)
+            print(self.ft_back)
             if len(username_row)!=0:
                 for x in range(0,len(username_row)):
                     unl.append(username_row[x])
@@ -1303,7 +1305,7 @@ class InstaBot:
                         if self.follow_back(unl[x].username)==False:
                             self.unfollow(unl[x].username_id)
                             #llenar una variable con un numero random luego evaluar si ese numero no es tan exagerado y luego multiplicarlo po 60 que en segundos equivale a un minuto
-                            insert_unfollow_count(user_id=unl[x].username_id)
+                            insert_unfollow_count(use_nam=self.user_login,user_id=unl[x].username_id)
                             tempo=random.choice(self.sec)
                             print(tempo)
                             time.sleep(tempo)
@@ -1312,7 +1314,7 @@ class InstaBot:
                     else:
                         self.unfollow(unl[x].username_id)
                         #llenar una variable con un numero random luego evaluar si ese numero no es tan exagerado y luego multiplicarlo po 60 que en segundos equivale a un minuto
-                        insert_unfollow_count(user_id=unl[x].username_id)
+                        insert_unfollow_count(use_nam=self.user_login,user_id=unl[x].username_id)
                         tempo=random.choice(self.sec)
                         print(tempo)
                         time.sleep(tempo)

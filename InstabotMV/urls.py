@@ -11,6 +11,7 @@ urlpatterns = [
     url('login/$', views.LoginView.as_view(), name='login'),
     url('logout/$', views.logout, name='logout'),
     url('dashboard/$', views.DashboardView, name='dashboard'),
+    url('newaccount/$', views.NewAccount, name='addaccount'),
     url('dashboard/$', views.tag_child, name='dashload'),
     url('reports/$', views.report, name='report'),
     url('ajax/ticker/$', views.ticker, name='counter'),

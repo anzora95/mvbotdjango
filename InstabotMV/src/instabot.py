@@ -230,7 +230,7 @@ class InstaBot:
             self.comments_delay = self.time_in_day / self.comments_per_day
 
         #timer
-        self.sec=range(40,130)
+        self.sec=range(40,90)
         self.min=range(1,61)
         self.hour=range(1,11)
 

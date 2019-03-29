@@ -300,7 +300,9 @@
   margin-left: 30px;
   
 }
-
+.acc{
+  padding: 100px 0;
+}
 .head2{
   padding: 70px 0;
 
@@ -314,6 +316,31 @@
 .fullscreen{
   padding: 140px 0;
   margin: auto;
+}
+.fullscreen2{
+  border-radius: 20px;
+  padding: 10px 0;
+  margin: auto;
+  margin-top: 155px;
+  margin-left: 10px;
+  text-align: center;
+  background-color: #d6dbdf;
+  height: 350px;
+  text-align: center;
+}
+.roundedinput2{
+  border: 1px solid #ccc;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	-moz-box-shadow: 2px 2px 3px #fff;
+	-webkit-box-shadow: 2px 2px 3px #fff;
+  box-shadow: 2px 2px 3px #fff;
+	font-size: 20px;
+	padding: 4px 7px;
+	outline: 0;
+  -webkit-appearance: none;
+  margin-bottom: 10px;
 }
 .roundedinput{
   border: 1px solid #ccc;

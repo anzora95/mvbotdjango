@@ -3,75 +3,31 @@
 {% block body %}
 
     <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <h4 class="left">Accounts</h4>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h4 class="center">Accounts</h4>
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <a href="{% url 'instabot:dashboard' %}" class="btn btn-primary pull-right">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                 Back
             </a>
+            <a href="{% url 'instabot:addaccount' %}" class="btn btn-primary pull-left">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    New Account
+                </a>
         </div>
     </div>
 
     <hr class="divider">
 
     <div class="row">
-        <div class="col-md-4">
-            <h5 class="center">Add another account</h5>
-            <form action="" method="post">
-                {% csrf_token %}
-
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <label class="mdl-textfield__label" for="id_insta_user">Insta user:</label>
-                    <input class="mdl-textfield__input" type="text" name="insta_user" id="insta_user" maxlength="30" required=""
-                           id="id_insta_user">
-                </div>
-                <br>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <label class="mdl-textfield__label" for="id_insta_pass">Insta pass:</label>
-                    <input class="mdl-textfield__input" type="password" name="insta_pass" id="insta_pass" maxlength="30" required="">
-                    <input type="checkbox" onclick="myFunction()">Show Password
-                </div>
-                <div>
-                    <br>
-                        <p  for="id_insta_pass">Please check your credentials</p>
-                    
-                        <p  for="id_insta_pass">Please select your package</p>
-                </div>
-                {% csrf_token %}
-                <select style="width: 100%;", name="pack" >
-                    <span class="input-group" >Type in your hashtags or select from a list</span>
-      
-                    {% for  pack in packs %}
-                    <option value="{{pack.id}}">{{pack.pack_name}}</option>
-                    {% endfor%}
-                </select><!-- -->
-                <br>
-                <br>
-                <script>
-                        function myFunction() {
-                          var x = document.getElementById("insta_pass");
-                          if (x.type === "password") {
-                            x.type = "text";        
-                          } else {
-                            x.type = "password";
-                          }
-                        }
-                        </script>
-                <input class="btn btn-primary" type="submit"
-                
-                       value="Add account">
-                <br><br>
-            </form>
-        </div>
+        
         {% load static %}
         
         
             <div class="row">
                     {% for cred in lcreds %}
-                    
-                <div class="col-md-3" style="margin-right:-100px;margin-left: px;">
+                   
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="margin-right:-100px;margin-left: px;">
                     <div class="thumbnail">
                         <img style="border-radius: 50%; width: 75px;
                         height: 75px;" src="{{cred.imgUrl}}" alt="user-pic">

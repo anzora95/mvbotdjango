@@ -260,6 +260,32 @@ class UserAccounts(LoginRequiredMixin, View):
         
         return redirect('instabot:dashboard')
 
+def NewAccount(request):
+    user = User.objects.get(id=request.user.id)
+    ll=LastLogin.objects.get(user=user)
+    user = User.objects.get(id=request.user.id) #Get the current user logged in
+    cred=ll.cred
+    packs= Packages.objects.all()
+    if request.method == 'POST':
+        #valid=validat( request.POST.get('insta_user'), request.POST.get('insta_pass') )
+        valid=2
+        if valid==2:
+            user=User.objects.get(id=request.user.id) # Se toma el usuario django que eta logeado.
+            cred = Creds()  # inicializacion de Credentials
+            cred.user = user  # Se le asigna un usuario a la task
+            cred.insta_user=request.POST.get('insta_user')
+            cred.insta_pass=request.POST.get('insta_pass')
+            cred.imgUrl=scrapImg(request.POST.get('insta_user'))
+            cred.pack_id=request.POST.get('pack')
+            cred.insta_followers=0
+            cred.insta_followings=1
+            cred.save()            
+            return redirect('instabot:userAccounts')
+        else:
+            return redirect('instabot:userAccounts')
+    return render(request, 'users/addaccount.html', {'ll':ll, 'packs':packs})
+
+
 
 def NewTask(request):
     user = User.objects.get(id=request.user.id) #Get the current user logged in

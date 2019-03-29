@@ -107,7 +107,7 @@ class ShowView(DetailView):
 
 class LoginView(View):
     form = LoginForm()
-    message = None
+    message = " "
     template = "login.html"
 
     def get(self, request, *args, **kwargs):
@@ -120,14 +120,12 @@ class LoginView(View):
         password_post = request.POST['password']
         user = authenticate(username=username_post, password=password_post)
         print(user)
-        if user.is_superuser == 1:
-            login_django(request, user)
-            return redirect('instabot:dashboard')
-        elif user.is_superuser == 0:
-            login_django(request, user)
-            return redirect('instabot:dashboard')
+        if user== None:
+            self.message = "Wrong username or password "
         else:
-            self.message = "Username o password incorrectos"
+            login_django(request, user)
+            return redirect('instabot:dashboard')
+            
 
         return render(request, self.template, self.get_context())
 

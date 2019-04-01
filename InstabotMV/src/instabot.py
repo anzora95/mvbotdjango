@@ -227,8 +227,14 @@ class InstaBot:
             self.comments_delay = self.time_in_day / self.comments_per_day
 
         #timer
-        self.sec=range(40,130)
+        #for skyrocketUp plan and scaling up likes plan
+        self.sec=range(40,55)#al rededor de 2 minutos para que en 17 horas maximo llegue a los 500 aproximadamente eso nos da 7 horas de reposo del bot
         self.min=range(40,59)
+
+        #for startingUp plan and scaling up follows plan
+        self.sec_low=range(100,120)#al rededor de 2 minutos para que en 17 horas maximo llegue a los 500 aproximadamente eso nos da 7 horas de reposo del bot
+        
+        #controla los estados de reposo del bot
         self.hour_start=range(15,16)
         self.hour_end=range(16,17)
 

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.core import serializers
+from django.contrib import messages
 
 from django.contrib.auth import authenticate, login as login_django, logout as logout_django
 from django.contrib.auth.decorators import login_required
@@ -264,9 +265,11 @@ class UserAccounts(LoginRequiredMixin, View):
                 cred.pack_id=request.POST.get('pack')
                 cred.insta_followers=fo_info[0]
                 cred.insta_followings=fo_info[1]
-                cred.save()            
+                cred.save()          
+                messages.success(request, 'You are welcome %s to Ngage Social' % (request.POST.get('insta_user')))
                 return redirect('instabot:userAccounts')
             else:
+                messages.warning(request, 'Something went wrong, please check your credentials')
                 return redirect('instabot:userAccounts')
         
         return redirect('instabot:dashboard')

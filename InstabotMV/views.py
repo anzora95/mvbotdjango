@@ -285,6 +285,23 @@ def NewAccount(request):
             return redirect('instabot:userAccounts')
     return render(request, 'users/addaccount.html', {'ll':ll, 'packs':packs})
 
+def Settings(request):
+    user = User.objects.get(id=request.user.id)
+    ll=LastLogin.objects.get(user=user)
+    user = User.objects.get(id=request.user.id) #Get the current user logged in
+    cred=ll.cred
+    if request.method == 'POST':
+        if request.POST.get('ceili')==None:
+            cred.ceiling=False
+            cred.save()
+        else:
+            cred.ceiling=True
+            cred.number_ceiling=request.POST.get('Ceiling')
+            cred.save()
+        print(request.POST.get('ceili'))
+    return render(request, 'settings.html', {'ll':ll,'cred':cred})
+
+
 
 
 def NewTask(request):
@@ -497,7 +514,7 @@ def NewFollowLike(request):
         t.codigo=''
         t.save()
         #Ceiling user instagram
-        user_inst.number_ceiling=request.POST.get('Ceiling')
+        #user_inst.number_ceiling=request.POST.get('Ceiling')
         user_inst.save()
         return redirect('instabot:dashboard')
     return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags,'ll':ll,'ceil_number':ceil_number,'scrap':scrap})

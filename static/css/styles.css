@@ -272,7 +272,7 @@
   visibility: visible;
 }
 
-.glyphicon-user{
+.gli{
   color:#2C7CB2;
   margin-bottom: 40px;
   margin-right: 1px;
@@ -280,7 +280,8 @@
   font-size: 15px;
   opacity: 0.9;
 }
-.glyphicon-minus-sign{
+
+.min{
   color:#2C7CB2;
   margin-bottom: 40px;
   margin-right: 1px;
@@ -318,7 +319,7 @@
   margin: auto;
 }
 .fullscreen2{
-  border-radius: 20px;
+  
   padding: 10px 0;
   margin: auto;
   margin-top: 155px;
@@ -354,12 +355,12 @@
 	padding: 4px 7px;
 	outline: 0;
   -webkit-appearance: none;
-  margin-left: 80px; 
+  margin-left: 30px; 
   margin-bottom: 20px;
   }
 .btns{
   margin-top: -50px;
-  margin-left: 170px;
+  margin-left: 110px;
 }
 .msj{
   margin-left: 105px;

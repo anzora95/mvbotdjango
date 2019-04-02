@@ -27,6 +27,7 @@ from InstabotMV.src.bsScarp import scrapImg, scrap_us
 from InstabotMV.forms import ComboTagHijo
 from InstabotMV.src.us_scrap import scrapUsr
 from InstabotMV.src.friendListscrap import validat
+from InstabotMV.src.sql_updates import update_creds
 
 import smtplib
 import datetime
@@ -475,6 +476,14 @@ def UnfollowTask(request):
         t.save()
         return redirect('instabot:dashboard')
     return render(request, 'tasks/unfollow_task.html', {'Hasgtags': Hasgtags,'ll':ll})
+
+#*******************************************Credenciales update*******************************************************
+
+""" def CredsUpdate(request):
+    if request.method == 'POST':
+        valor = update_creds(request.POST.get('us_actual'),request.POST.get('new_pass'),request.POST.get('new_name'))  
+        return redirect('instabot:dashboard')
+    return render(request, 'tasks/unfollow_task.html', {'Hasgtags': Hasgtags,'ll':ll}) """
 
 # **************************************************Bot****************************************************************
 

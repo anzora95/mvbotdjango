@@ -14,7 +14,7 @@
             <input type="text" id="Ceiling" name="Ceiling" value="{{cred.number_ceiling}}" >
             {%else%}
             <label style="margin-left:-20px; margin-top: 5px;" ><input type="checkbox" name="ceili" value="True" id="ceili" >Follow limit:</label>
-            <input type="text" id="Ceiling" name="Ceiling" value="" disabled>
+            <input type="text" id="Ceiling" name="Ceiling" value="" disabled required>
             <script>
                     document.getElementById('ceili').onchange = function() {
                     document.getElementById('Ceiling').disabled = !this.checked;

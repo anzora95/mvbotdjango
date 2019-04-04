@@ -40,10 +40,12 @@
                                 <a href="{% url 'instabot:changeAccount' cred.id %}" style="margin-bottom: 3px;" class="btn btn-primary center-block"  
                                 role="button">Current</a>
                                 {%else%}
+                                
                                 <a href="{% url 'instabot:changeAccount' cred.id %}" style="margin-bottom: 3px;" class="btn btn-success center-block"  
                                 role="button">Switch</a>
                                 {%endif%}
-                                
+                                <a href="{% url 'instabot:edit_acc' cred.id %}" style="margin-bottom: 3px;" class="btn btn-info center-block"  
+                                role="button">Edit</a>
                                 <a href="{% url 'instabot:delaccount' cred.id %}" class="btn btn-danger center-block"  
                                 role="button">Delete</a>
                             </p>

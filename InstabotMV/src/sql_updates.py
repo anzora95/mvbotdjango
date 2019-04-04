@@ -5,6 +5,7 @@ from django.db.models.query import QuerySet
 from InstabotMV.models import Media, Username, Creds, HashtagList
 from datetime import datetime, time
 from django.shortcuts import get_object_or_404
+from InstabotMV.src.friendListscrap import validat
 
 
 def check_and_update(self):
@@ -94,6 +95,47 @@ def insert_unfollow_count(user_id=False, user=False):
     else:
         return False
 
+def update_creds(us_actual,new_pass=False,new_name=False):
+    try:
+        cr = Creds.objects.get(insta_user=us_actual)
+        credito=1
+    except:
+        credito=0
+        print(us_actual+"hola")
+        print('El usuario no ha podido ser encontrado')
+    if credito==1:
+        if new_pass and new_name:
+            valid=validat(new_name,new_pass)
+            if valid==2:
+                cr.insta_user=new_name
+                cr.insta_pass=new_pass
+                cr.save()
+                return 1#valor de retorno bandera para el mensaje
+            else:
+                print("El usuario y/o contraseña no son validos")
+                return 2 #El usuario y/o contraseña no son validos
+        elif new_pass:
+            valid=validat(us_actual,new_pass)
+            if valid==2:
+                cr.insta_pass=new_pass
+                cr.save()
+                return 1#valor de retorno bandera para el mensaje
+            else:
+                print("La contraseña no es valida")
+                return 3 #La contraseña no es valida
+        elif new_name:
+            pasw=cr.insta_pass
+            valid=validat(new_name,pasw)
+            if valid==2:
+                cr.insta_user=new_name
+                cr.save()
+                return 1#valor de retorno bandera para el mensaje
+            else:
+                print("el usuario es incorrecto")
+                return 4 #el usuario es incorrecto
+    else:
+        print("El usuario actual no es el correcto")
+        return 5 #El usuario no ha podido ser encontrado
 
 def get_usernames_first(self):
     """ Gets first element of usernames table """

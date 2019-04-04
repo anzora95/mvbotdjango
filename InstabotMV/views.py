@@ -13,6 +13,8 @@ from django.views.generic import View, DetailView, TemplateView, UpdateView, Del
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.http import JsonResponse
+import urllib, json
+from InstabotMV.src.sql_updates import update_creds
 # *************************************************Bot imports**********************************************************
 
 import time
@@ -430,6 +432,29 @@ def EditTask2(request,id_task):
         return redirect('instabot:dashboard')
     return render(request,'tasks/editFriendTask.html',{'Hasgtags':Hasgtags,'task':task,'ll':ll,"tags" : json_tags})
 
+def EditAccount(request,id_acc):
+    user = User.objects.get(id=request.user.id)
+    ll=LastLogin.objects.get(user=user)
+    user = User.objects.get(id=request.user.id) #Get the current user logged in
+    cred=ll.cred
+    modcred=Creds.objects.get(id=id_acc)
+    print(modcred.insta_user)
+    packs= Packages.objects.all()
+    aux1=False
+    aux2=False
+    aux3=False
+    if request.method == 'POST':
+        if request.POST.get('insta_user')=="":
+            aux1=False
+        else:
+            aux1=request.POST.get('insta_user')
+        if request.POST.get('insta_pass')=="":
+            aux2=False
+        else:
+            aux2=request.POST.get('insta_pass')
+        aux3=request.POST.get('insta_pass')
+        update_creds(modcred.insta_user,aux1,aux2)
+    return render(request, 'users/editaccount.html', {'ll':ll, 'packs':packs,'modcred':modcred})
 def EditUnfollow(request,id_task):
     
     user = User.objects.get(id=request.user.id)
@@ -520,19 +545,20 @@ def NewFollowLike(request):
     return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags,'ll':ll,'ceil_number':ceil_number,'scrap':scrap})
 def report(request):
     scrap=[]
-    u_account='mercadomanhattanbeach'
-    scrap = scrapUsr(u_account) #Devulve un arreglo 1 url 2 username 3 N#followers
-    
+    u_account='red_kanto333'
+    scrap = scrap_us(u_account) #Devulve un arreglo 1 url 2 username 3 N#followers
+    img=scrapUsr(u_account)
     cred =Creds.objects.get(insta_user=u_account)
     packa=cred.pack.pack_name
     media=Media.objects.filter(cred_us=u_account)
     followers=0
     following=0
-    likes=len(media)
+    likes=len(media) #Cantidad de likes realizados
     query=[]
-    filterdate="2019-03-08"
-    query=filterby(u_account,filterdate)
-    follows=(len(query))
+    filterdate="2019-03-21" #Fecha de filtro
+    query=filterby(u_account,filterdate,True) #Se filtra desde la filterdate hasta la actualidad de FOLLOWS
+    unfollows=len(filterby(u_account,filterdate,False))
+    follows=(len(query))# Se cuentan los follows
     u=Username.objects.all()
     
     for x in u:
@@ -542,11 +568,14 @@ def report(request):
     #scrap2.followers
     #Packa=Package
     #filterdate=Filtered date
-    return render(request,'reports.html',{'u_account':u_account,'followers':followers,'following':following,'scrap':scrap,'packa':packa,'likes':likes,'follows':follows,'filterdate':filterdate})
+    return render(request,'reports.html',{'u_account':u_account,'img':img,'followers':followers,'unfollows':unfollows,'following':following,'scrap':scrap,'packa':packa,'likes':likes,'follows':follows,'filterdate':filterdate})
 
-def filterby(account,filter):
-    u=Username.objects.filter(cred_us=account,last_followed_time__startswith=filter)
-    
+def filterby(account,filter,follow):
+
+    if follow==True:
+        u=Username.objects.filter(cred_us=account,last_followed_time__range=[filter, "2019-03-31"])
+    else:
+        u=Username.objects.filter(cred_us=account,unfollow_count=1,last_followed_time__range=[filter, "2019-03-22"])
     return u
 
 def UnfollowTask(request):

@@ -14,6 +14,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.http import JsonResponse
 import urllib, json
+from datetime import date, timedelta
 from InstabotMV.src.sql_updates import update_creds
 # *************************************************Bot imports**********************************************************
 
@@ -543,6 +544,8 @@ def NewFollowLike(request):
         user_inst.save()
         return redirect('instabot:dashboard')
     return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags,'ll':ll,'ceil_number':ceil_number,'scrap':scrap})
+
+
 def report(request):
     scrap=[]
     u_account='red_kanto333'
@@ -556,9 +559,31 @@ def report(request):
     likes=len(media) #Cantidad de likes realizados
     query=[]
     filterdate="2019-03-21" #Fecha de filtro
+    current_date = date.today().isoformat()   
+    listday=[]
+    followings=[]
+    aux=[]
+    for i in range(0,31):
+        dat=(date.today()-timedelta(days=i)).isoformat()
+        print(dat)
+        listday.append((date.today()-timedelta(days=i)).isoformat())
+        try:
+            aux=Username.objects.get(last_followed_time__startswith=str(dat))
+        except:
+            print("error")
+        print(len(aux),"2")
+        followings.append(len(aux))
+    reversedays=[]
+    reversefollowings=[]
+    reversefollowings=followings[::-1]
+    reversedays=listday[::-1]
+    print(*reversedays)
+    #print(len(listday),"Aqui")
+    #print(date_N_days_ago = datetime.now() - timedelta(days=N))
+    followlist=[]
     query=filterby(u_account,filterdate,True) #Se filtra desde la filterdate hasta la actualidad de FOLLOWS
     unfollows=len(filterby(u_account,filterdate,False))
-    follows=(len(query))# Se cuentan los follows
+    followings=(len(query))# Se cuentan los followings
     u=Username.objects.all()
     
     for x in u:
@@ -568,7 +593,7 @@ def report(request):
     #scrap2.followers
     #Packa=Package
     #filterdate=Filtered date
-    return render(request,'reports.html',{'u_account':u_account,'img':img,'followers':followers,'unfollows':unfollows,'following':following,'scrap':scrap,'packa':packa,'likes':likes,'follows':follows,'filterdate':filterdate})
+    return render(request,'reports/index.html',{'reversedays':reversedays,'u_account':u_account,'img':img,'followers':followers,'unfollows':unfollows,'scrap':scrap,'packa':packa,'likes':likes,'followings':followings,'filterdate':filterdate})
 
 def filterby(account,filter,follow):
 

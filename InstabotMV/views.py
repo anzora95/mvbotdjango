@@ -127,9 +127,7 @@ class LoginView(View):
         password_post = request.POST['password']
         user = authenticate(username=username_post, password=password_post)
         print(user)
-        if user== None:
-            self.message = "Wrong username or password "
-        else:
+        if user.is_superuser == 1:
             login_django(request, user)
             return redirect('instabot:userAccounts')
         elif user.is_superuser == 0:
@@ -286,8 +284,7 @@ def NewAccount(request):
     cred=ll.cred
     packs= Packages.objects.all()
     if request.method == 'POST':
-        #valid=validat( request.POST.get('insta_user'), request.POST.get('insta_pass') )
-        valid=2
+        valid=validat( request.POST.get('insta_user'), request.POST.get('insta_pass') )
         if valid==2:
             user=User.objects.get(id=request.user.id) # Se toma el usuario django que eta logeado.
             cred = Creds()  # inicializacion de Credentials

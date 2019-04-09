@@ -27209,3 +27209,405 @@ Traceback (most recent call last):
     followings.append(len(aux))
 AttributeError: 'int' object has no attribute 'append'
 WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /instabotmv/dashboard/reports/panel-page-profile.html
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /instabotmv/dashboard/reports/panel-page-products-create.html
+WARNING:django.request:Not Found: /instabotmv/dashboard/reports/panel-page-products.html
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /instabotmv/dashboard/reports/index.html
+WARNING:django.request:Not Found: /instabotmv/dashboard/reports/panel-element-colors.html
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /instabotmv/dashboard/login2/assets/js/app.js
+WARNING:django.request:Not Found: /instabotmv/dashboard/login2/assets/css/app.css
+WARNING:django.request:Not Found: /instabotmv/dashboard/login2/assets/img/icon/icon-plane.png
+WARNING:django.request:Not Found: /instabotmv/dashboard/login2/assets/img/basic/favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.security.csrf:Forbidden (CSRF token missing or incorrect.): /instabotmv/dashboard/login2/
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/login2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 556, in loginReport
+    return redirect(request,user.insta_user)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 58, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/urls/resolvers.py", line 622, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: POST '/instabotmv/dashboard/login2/'>' not found. '<WSGIRequest: POST '/instabotmv/dashboard/login2/'>' is not a valid view function or pattern name.
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/login2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/http/response.py", line 51, in __init__
+    self.status_code = int(status)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'dict'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 556, in loginReport
+    return redirect(report(request,user.insta_user))
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 606, in report
+    return HttpResponse(request,'reports/index.html',{'reversedays':reversedays,'u_account':u_account,'img':img,'followers':followers,'unfollows':unfollows,'scrap':scrap,'packa':packa,'likes':likes,'followings':followings,'filterdate':filterdate})
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/http/response.py", line 289, in __init__
+    super().__init__(*args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/http/response.py", line 53, in __init__
+    raise TypeError('HTTP status code must be an integer.')
+TypeError: HTTP status code must be an integer.
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/login2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 556, in loginReport
+    return redirect(report(request,user.insta_user))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 58, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/urls/resolvers.py", line 622, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for '<HttpResponse status_code=200, "text/html; charset=utf-8">' not found. '<HttpResponse status_code=200, "text/html; charset=utf-8">' is not a valid view function or pattern name.
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/login2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 556, in loginReport
+    return redirect(report(user.insta_user))
+TypeError: report() missing 1 required positional argument: 'u_account'
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/login2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 556, in loginReport
+    return redirect(report(user.insta_user))
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 606, in report
+    return render(request,'reports/index.html',{'reversedays':reversedays,'u_account':u_account,'img':img,'followers':followers,'unfollows':unfollows,'scrap':scrap,'packa':packa,'likes':likes,'followings':followings,'filterdate':filterdate})
+NameError: name 'request' is not defined
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/login2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 556, in loginReport
+    return redirect(report(user.insta_user))
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 606, in report
+    return render('reports/index.html',{'reversedays':reversedays,'u_account':u_account,'img':img,'followers':followers,'unfollows':unfollows,'scrap':scrap,'packa':packa,'likes':likes,'followings':followings,'filterdate':filterdate})
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loaders/base.py", line 24, in get_template
+    contents = self.get_contents(origin)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/template/loaders/filesystem.py", line 23, in get_contents
+    with open(origin.name, encoding=self.engine.file_charset) as fp:
+OSError: [Errno 63] File name too long: "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/templates/{'reversedays': ['2019-03-08', '2019-03-09', '2019-03-10', '2019-03-11', '2019-03-12', '2019-03-13', '2019-03-14', '2019-03-15', '2019-03-16', '2019-03-17', '2019-03-18', '2019-03-19', '2019-03-20', '2019-03-21', '2019-03-22', '2019-03-23', '2019-03-24', '2019-03-25', '2019-03-26', '2019-03-27', '2019-03-28', '2019-03-29', '2019-03-30', '2019-03-31', '2019-04-01', '2019-04-02', '2019-04-03', '2019-04-04', '2019-04-05', '2019-04-06', '2019-04-07'], 'u_account': 'red_kanto333', 'img': ['https:/instagram.fsal5-1.fna.fbcdn.net/vp/37719312253620f5b1ba0a904c8cbe34/5D4A0DDE/t51.2885-19/s150x150/52980142_1957856544324826_5487746840143069184_n.jpg?_nc_ht=instagram.fsal5-1.fna.fbcdn.net', 'Red Kanto (@red_kanto333)', '632 Followers,'], 'followers': 0, 'unfollows': 1, 'scrap': ['632', 'Followers,', '5,060', 'Following,', '0'], 'packa': 'Starting Up', 'likes': 457, 'followings': 441, 'filterdate': '2019-03-21'}"
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/login2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 556, in loginReport
+    return redirect(report(request,user.insta_user))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 58, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/urls/resolvers.py", line 622, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for '<HttpResponse status_code=200, "text/html; charset=utf-8">' not found. '<HttpResponse status_code=200, "text/html; charset=utf-8">' is not a valid view function or pattern name.
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/login2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 556, in loginReport
+    return redirect(reverse(report(request,user.insta_user)))
+NameError: name 'reverse' is not defined
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/login2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 557, in loginReport
+    return redirect(reverse(report(request,user.insta_user)))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/urls/resolvers.py", line 622, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for '<HttpResponse status_code=200, "text/html; charset=utf-8">' not found. '<HttpResponse status_code=200, "text/html; charset=utf-8">' is not a valid view function or pattern name.
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/login2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 557, in loginReport
+    return redirect(report(request,user.insta_user))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 58, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/urls/resolvers.py", line 622, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for '<HttpResponse status_code=200, "text/html; charset=utf-8">' not found. '<HttpResponse status_code=200, "text/html; charset=utf-8">' is not a valid view function or pattern name.
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/login2/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/http/response.py", line 51, in __init__
+    self.status_code = int(status)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'dict'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 557, in loginReport
+    return redirect(report(request,user.insta_user))
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 607, in report
+    return HttpResponse(request,'reports/index.html',{'reversedays':reversedays,'u_account':u_account,'img':img,'followers':followers,'unfollows':unfollows,'scrap':scrap,'packa':packa,'likes':likes,'followings':followings,'filterdate':filterdate})
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/http/response.py", line 289, in __init__
+    super().__init__(*args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/http/response.py", line 53, in __init__
+    raise TypeError('HTTP status code must be an integer.')
+TypeError: HTTP status code must be an integer.
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/reports/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: report() missing 1 required positional argument: 'u_account'
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/statics/
+Traceback (most recent call last):
+  File "/usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/urllib/request.py", line 1317, in do_open
+    encode_chunked=req.has_header('Transfer-encoding'))
+  File "/usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/http/client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/http/client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/http/client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/http/client.py", line 1016, in _send_output
+    self.send(msg)
+  File "/usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/http/client.py", line 956, in send
+    self.connect()
+  File "/usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/http/client.py", line 1384, in connect
+    super().connect()
+  File "/usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/http/client.py", line 928, in connect
+    (self.host,self.port), self.timeout, self.source_address)
+  File "/usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/socket.py", line 707, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+  File "/usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 557, in loginReport
+    return report(request,user.insta_user)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 563, in report
+    scrap = scrap_us(u_account) #Devulve un arreglo 1 url 2 username 3 N#followers
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/src/bsScarp.py", line 21, in scrap_us
+    uClient= uReq(my_url)
+  File "/usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/urllib/request.py", line 222, in urlopen
+    return opener.open(url, data, timeout)
+  File "/usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/urllib/request.py", line 525, in open
+    response = self._open(req, data)
+  File "/usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/urllib/request.py", line 543, in _open
+    '_open', req)
+  File "/usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/urllib/request.py", line 503, in _call_chain
+    result = func(*args)
+  File "/usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/urllib/request.py", line 1360, in https_open
+    context=self._context, check_hostname=self._check_hostname)
+  File "/usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/urllib/request.py", line 1319, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/reports/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: report() missing 1 required positional argument: 'u_account'
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /instabotmv/dashboard/statics/panel-page-users-create.html
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/statics/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 557, in loginReport
+    return report(request,user.insta_user)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 581, in report
+    aux=Username.objects.get(cred_us=u_account,last_followed_time__range=[listday[i],listday[i]])
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/db/models/query.py", line 399, in get
+    self.model._meta.object_name
+InstabotMV.models.Username.DoesNotExist: Username matching query does not exist.
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/statics/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 583, in report
+    print(listday[i],listday[i]+datetime.timedelta(days=1))
+TypeError: can only concatenate str (not "datetime.timedelta") to str
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 557, in loginReport
+    return report(request,user.insta_user)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 587, in report
+    print(listday[i],listday[i]+datetime.timedelta(days=1))
+TypeError: can only concatenate str (not "datetime.timedelta") to str
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/statics/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 583, in report
+    vc=listday[i]+datetime.timedelta(days=1)
+TypeError: can only concatenate str (not "datetime.timedelta") to str
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 557, in loginReport
+    return report(request,user.insta_user)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 588, in report
+    print(listday[i],vc)
+UnboundLocalError: local variable 'vc' referenced before assignment
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/statics/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 583, in report
+    vc=listday[i]+datetime.timedelta(days=1)
+TypeError: can only concatenate str (not "datetime.timedelta") to str
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 557, in loginReport
+    return report(request,user.insta_user)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 588, in report
+    vc=listday[i]+datetime.timedelta(days=1)
+TypeError: can only concatenate str (not "datetime.timedelta") to str
+ERROR:django.request:Internal Server Error: /instabotmv/dashboard/statics/
+Traceback (most recent call last):
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/user/Documents/Code/MyV/instabot/thanos/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 557, in loginReport
+    return report(request,user.insta_user)
+  File "/Users/user/Documents/Code/MyV/instabot/mvbotdjango/InstabotMV/views.py", line 591, in report
+    reversefollowings=followings[::-1]
+TypeError: 'int' object is not subscriptable
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico

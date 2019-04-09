@@ -94,7 +94,7 @@
                     </div>
                     <ul class="sidebar-menu">
                         <li class="treeview">
-                            <a href="index.html">
+                            <a href="#index.html">
                             <i class="icon icon-sailing-boat-water s-24"></i> <span>Dashboard</span>
                             </a>
                         </li>
@@ -866,7 +866,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div><i class="icon-user-circle-o s-18"></i></div>
-                                    <div><span class="badge badge-pill badge-danger">{{filterdate}} to 2019-03-31</span></div>
+                                    <div><span class="badge badge-pill badge-danger">Since Ngage Social</span></div>
                                 </div>
                                 <div class="text-center">
                                     <div class="s-48 my-3 font-weight-lighter">{{followings}}</div>
@@ -881,7 +881,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div><i class="icon-user-times s-18"></i></div>
-                                    <div><span class="badge badge-pill badge-danger">{{filterdate}} to 2019-03-31</span></div>
+                                    <div><span class="badge badge-pill badge-danger">Since Ngage Social </span></div>
                                 </div>
                                 <div class="text-center">
                                     <div class="s-48 my-3 font-weight-lighter">{{likes}}</div>
@@ -905,7 +905,7 @@
                                                         [{{followings}}, {{unfollows}},{{likes}}],
 
                                                     ]"
-                                        data-labels="[['Followings'],['Unfollow'],['Likes'],['Database2']]"
+                                        data-labels="[['Followings'],['Unfollow'],['Likes']]"
                                         data-dataset-options="[
                                                     {
                                                         label: 'Disk',
@@ -935,9 +935,9 @@
                     <canvas
                             data-chart="bar"
                             data-dataset="[
-                                        [21, 90, 55, 0, 59,21, 90, 55, 0, 59,21, 90, 55, 0, 59,21, 90, 55,55, 0, 59,12, 40, 16, 17, 89,12, 40, 16, 17, 89],
-                                        [12, 40, 16, 17, 89,12, 40, 16, 17, 89,12, 40, 16, 17, 89,12, 40, 55,16, 17, 89,12, 40, 16, 17, 89,12, 40, 16, 17],
-                                        [12, 40, 16, 17, 89,12, 40, 16, 17, 89,12, 40, 16, 17, 89,12, 40, 16, 17,55, 89,12, 40, 16, 17, 89,12, 40, 16, 17, 89],
+                                        [{% for folli in reversefolligs%}'{{folli}}',{%endfor%}],
+                                        [{% for unfo in reverseunfo%}'{{unfo}}',{%endfor%}],
+                                        [{% for likes in reverseliks%}'{{likes}}',{%endfor%}],
                                         ]"
                             data-labels="[{% for days in reversedays%}'{{days}}',{%endfor%}]"
                             data-dataset-options="[
@@ -948,7 +948,7 @@
 
                                     },
                                     {
-                                         label: 'Followers',
+                                         label: 'Unfollows',
                                          backgroundColor: '#88e2ff',
                                          borderWidth: 0,
 

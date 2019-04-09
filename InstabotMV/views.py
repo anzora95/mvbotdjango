@@ -5,9 +5,11 @@ from django.contrib.auth import authenticate, login as login_django, logout as l
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from .models import *
+from django.urls import reverse
 from InstabotMV.models import Creds, List_Tag, Media,HashtagList,Packages
 from .forms import LoginForm, CreateUserForm, TaglistForm, UserlistForm, ComboTagHijo
 from InstabotMV.forms import InstaCredsForm
+from django.db.models import Q
 
 from django.views.generic import View, DetailView, TemplateView, UpdateView, DeleteView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -545,10 +547,19 @@ def NewFollowLike(request):
         return redirect('instabot:dashboard')
     return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags,'ll':ll,'ceil_number':ceil_number,'scrap':scrap})
 
+def loginReport(request):
+    if request.method == 'POST':
+        print(request.POST.get('insta_user'))
+        print(request.POST.get('insta_pass'))
+        user=Creds.objects.get(insta_user=request.POST.get('insta_user'))
+        print(user.insta_pass,"aqui")
+        if user.insta_pass==request.POST.get('insta_pass'):
+            return report(request,user.insta_user)
+        
+    return render(request, 'reports/login-2.html', {})
 
-def report(request):
+def report(request,u_account):
     scrap=[]
-    u_account='red_kanto333'
     scrap = scrap_us(u_account) #Devulve un arreglo 1 url 2 username 3 N#followers
     img=scrapUsr(u_account)
     cred =Creds.objects.get(insta_user=u_account)
@@ -561,21 +572,34 @@ def report(request):
     filterdate="2019-03-21" #Fecha de filtro
     current_date = date.today().isoformat()   
     listday=[]
-    followings=[]
+    folligs=[]
+    liks=[]
+    unfo=[]
     aux=[]
-    for i in range(0,31):
+    for i in range(0,32):
         dat=(date.today()-timedelta(days=i)).isoformat()
-        print(dat)
         listday.append((date.today()-timedelta(days=i)).isoformat())
+    for i in range(0,31):
         try:
-            aux=Username.objects.get(last_followed_time__startswith=str(dat))
+            aux=Username.objects.filter(cred_us=u_account,last_followed_time__range=[listday[i+1],listday[i]])
+            aux2=Media.objects.filter(cred_us=u_account,datetime__range=[listday[i+1],listday[i]])
+            aux3=Username.objects.filter(cred_us=u_account,unfollow_count=1,last_followed_time__range=[listday[i+1],listday[i]])
+
+            #print(listday[i],listday[i+1])
+            folligs.append(len(aux))
+            liks.append(len(aux2))
+            unfo.append(len(aux3))
+            print("Followings:",len(aux),"Likes:",len(aux2),"Unfollow:",len(aux3),listday[i])
         except:
-            print("error")
-        print(len(aux),"2")
-        followings.append(len(aux))
+            print("err")
+        
     reversedays=[]
-    reversefollowings=[]
-    reversefollowings=followings[::-1]
+    reverseunfo=[]
+    reversefolligs=[]
+    reverseliks=[]
+    reverseunfo=unfo[::-1]
+    reverseliks=liks[::-1]
+    reversefolligs=folligs[::-1]
     reversedays=listday[::-1]
     print(*reversedays)
     #print(len(listday),"Aqui")
@@ -593,14 +617,14 @@ def report(request):
     #scrap2.followers
     #Packa=Package
     #filterdate=Filtered date
-    return render(request,'reports/index.html',{'reversedays':reversedays,'u_account':u_account,'img':img,'followers':followers,'unfollows':unfollows,'scrap':scrap,'packa':packa,'likes':likes,'followings':followings,'filterdate':filterdate})
+    return render(request,'reports/index.html',{'reverseunfo':reverseunfo,'reverseliks':reverseliks,'reversefolligs':reversefolligs,'reversedays':reversedays,'u_account':u_account,'img':img,'followers':followers,'unfollows':unfollows,'scrap':scrap,'packa':packa,'likes':likes,'followings':followings,'filterdate':filterdate})
 
 def filterby(account,filter,follow):
 
     if follow==True:
-        u=Username.objects.filter(cred_us=account,last_followed_time__range=[filter, "2019-03-31"])
+        u=Username.objects.filter(cred_us=account,last_followed_time__range=[filter, "2019-04-08"])
     else:
-        u=Username.objects.filter(cred_us=account,unfollow_count=1,last_followed_time__range=[filter, "2019-03-22"])
+        u=Username.objects.filter(cred_us=account,unfollow_count=1,last_followed_time__range=[filter, "2019-04-08"])
     return u
 
 def UnfollowTask(request):

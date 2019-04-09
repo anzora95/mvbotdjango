@@ -12,6 +12,7 @@ urlpatterns = [
     url('logout/$', views.logout, name='logout'),
     url('dashboard/$', views.DashboardView, name='dashboard'),
     url('newaccount/$', views.NewAccount, name='addaccount'),
+    url('statics/$', views.loginReport, name='login2'),
     url('dashboard/$', views.tag_child, name='dashload'),
     url('settings/$', views.Settings, name='settings'),
     url('reports/$', views.report, name='report'),

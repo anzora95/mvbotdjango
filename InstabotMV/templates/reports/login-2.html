@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -5,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="assets/img/basic/favicon.ico" type="image/x-icon">
-    <title>Paper</title>
+    <link rel="icon" href="{% static 'assets/img/basic/favicon.ico' %}" type="image/x-icon">
+    <title>Ngage Social</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="{% static 'assets/css/app.css' %}">
 
 </head>
 <body class="light sidebar-mini sidebar-collapse">
@@ -64,32 +65,31 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <img src="assets/img/icon/icon-plane.png" alt="">
+                    <img src="{% static 'assets/img/icon/laptopng.png' %}" alt="">
                 </div>
                 <div class="col-lg-6 p-t-100">
-                    <div class="text-white">
-                        <h1>Welcome Back</h1>
-                        <p class="s-18 p-t-b-20 font-weight-lighter">Hey Soldier welcome back signin now there is lot of
-                            new stuff waiting
-                            for you</p>
+                    <div  class="text-white12">
+                        <h1>Welcome</h1>
+                        <p class="s-18 p-t-b-20 font-weight-lighter">Login to check your account stats</p>
                     </div>
-                    <form action="dashboard.html">
+                    <form action="" method="POST">
+                        {% csrf_token %}
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group has-icon"><i class="icon-envelope-o"></i>
-                                    <input type="text" class="form-control form-control-lg no-b"
-                                           placeholder="Email Address">
+                                    <input type="text" name="insta_user" id="insta_user" class="form-control form-control-lg no-b"
+                                           placeholder="username">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group has-icon"><i class="icon-user-secret"></i>
-                                    <input type="text" class="form-control form-control-lg no-b"
+                                    <input type="password" name="insta_pass" id="insta_pass" class="form-control form-control-lg no-b"
                                            placeholder="Password">
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <input type="submit" class="btn btn-success btn-lg btn-block" value="Let me enter">
-                                <p class="forget-pass text-white">Have you forgot your username or password ?</p>
+                                <!-- <p class="forget-pass text-white">Have you forgot your username or password ?</p> -->
                             </div>
                         </div>
                     </form>
@@ -261,7 +261,7 @@
 <div class="control-sidebar-bg shadow white fixed"></div>
 </div>
 <!--/#app -->
-<script src="assets/js/app.js"></script>
+<script src="{% static 'assets/js/app.js' %}"></script>
 
 </body>
 </html>

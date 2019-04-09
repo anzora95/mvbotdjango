@@ -295,9 +295,11 @@ def NewAccount(request):
             cred.pack_id=request.POST.get('pack')
             cred.insta_followers=0
             cred.insta_followings=1
-            cred.save()            
+            cred.save()          
+            messages.success(request, 'You are welcome %s to Ngage Social' % (request.POST.get('insta_user')))
             return redirect('instabot:userAccounts')
         else:
+            messages.warning(request, 'Something went wrong, please check your credentials')
             return redirect('instabot:userAccounts')
     return render(request, 'users/addaccount.html', {'ll':ll, 'packs':packs})
 

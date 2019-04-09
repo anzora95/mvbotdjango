@@ -16,12 +16,13 @@
                 </a>
         </div>
     </div>
+    <br>
     {% if messages %}
         <div class="row">
-            <div class="col-sm-6, col-sm-offset-3">
-                    {% for message in messages %}
-                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                    {% endfor %}
+            <div class="col-sm-12">
+                {% for message in messages %}
+                    <h2{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h2>
+                {% endfor %}
             </div>
         </div>
     {% endif %}    

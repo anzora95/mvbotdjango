@@ -3,6 +3,15 @@
 {% block body %}
 <div class="col-md-3"></div>
 <div class="container col-md-5 fullscreen2">
+    {% if messages %}
+        <div class="row">
+            <div class="col-sm-12">
+                {% for message in messages %}
+                    <h2{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h2>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}    
         <h3 class="center">{{modcred.insta_user}} account </h3>
         <form action="" method="post">
             {% csrf_token %}
@@ -47,7 +56,7 @@
                     </script>
             <input class="btn btn-success" type="submit"
             
-                   value="Add account">
+                   value="Change credential">
             <br><br>
         </form>
     </div>

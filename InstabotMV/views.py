@@ -19,6 +19,7 @@ from django.http import JsonResponse
 import urllib, json
 from datetime import date, timedelta
 from InstabotMV.src.sql_updates import update_creds
+from switchcase import switch
 # *************************************************Bot imports**********************************************************
 
 import time
@@ -159,7 +160,7 @@ def DashboardView(request):
     count=0
     UN=Username.objects.all() #Limit the ticker number.
     for t in range(0,len(UN)):
-        if UN[t].cred_us==ll.cred.insta_user and count<=550:
+        if UN[t].cred_us==ll.cred.insta_user and count<=350:
             count+=1
             UX.append(UN[t])
     print(ll.cred.insta_user)
@@ -461,16 +462,36 @@ def EditAccount(request,id_acc):
     aux3=False
     if request.method == 'POST':
         if request.POST.get('insta_user')=="":
-            aux1=False
-        else:
-            aux1=request.POST.get('insta_user')
-        if request.POST.get('insta_pass')=="":
             aux2=False
         else:
-            aux2=request.POST.get('insta_pass')
+            aux2=request.POST.get('insta_user')
+        if request.POST.get('insta_pass')=="":
+            aux1=False
+        else:
+            aux1=request.POST.get('insta_pass')
         aux3=request.POST.get('insta_pass')
-        update_creds(modcred.insta_user,aux1,aux2)
+        value=update_creds(modcred.insta_user,aux1,aux2)
+        for case in switch(value):
+            if case(1):
+                messages.success(request, 'Your credentials have been changed' )
+                break
+            if case(2):
+                messages.warning(request, 'User and password are wrong' )
+                break
+            if case(3):
+                messages.warning(request, 'Password are wrong')
+                break
+            if case(4):
+                messages.warning(request, 'User are wrong')
+                break
+            if case(5):
+                messages.warning(request, 'User not found in the database')
+                break
+            else:
+                messages.info(request,'Something went wrong, try again')
+
     return render(request, 'users/editaccount.html', {'ll':ll, 'packs':packs,'modcred':modcred})
+
 def EditUnfollow(request,id_task):
     
     user = User.objects.get(id=request.user.id)

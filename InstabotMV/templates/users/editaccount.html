@@ -1,0 +1,55 @@
+{% extends 'dashboard.html' %}
+
+{% block body %}
+<div class="col-md-3"></div>
+<div class="container col-md-5 fullscreen2">
+        <h3 class="center">{{modcred.insta_user}} account </h3>
+        <form action="" method="post">
+            {% csrf_token %}
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                
+                    <input type="text" placeholder="New username"  class="roundedinput2" name="insta_user" maxlength="40"  id="insta_user">
+            </div>
+            <br>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                
+
+                    <input class="roundedinput2" style="" type="password" name="insta_pass" id="insta_pass" placeholder="New password" maxlength="20" id="id_password">
+               
+                <br><input type="checkbox" onclick="myFunction()">Show Password
+            </div>
+            <div>
+                <br>
+                    
+                
+                    <h5>Please select your package</h5> 
+            </div>
+            {% csrf_token %}
+            <select style="width: 80%;", name="pack" >
+                <span class="input-group" >Type in your hashtags or select from a list</span>
+                <option value="{{modcred.pack.id}}">{{modcred.pack.pack_name}}</option>
+                {% for  pack in packs %}
+                <option value="{{pack.id}}">{{pack.pack_name}}</option>
+                {% endfor%}
+            </select><!-- -->
+            <br>
+            <br>
+            <script>
+                    function myFunction() {
+                      var x = document.getElementById("insta_pass");
+                      if (x.type === "password") {
+                        x.type = "text";        
+                      } else {
+                        x.type = "password";
+                      }
+                    }
+                    </script>
+            <input class="btn btn-success" type="submit"
+            
+                   value="Add account">
+            <br><br>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+    {% endblock %}

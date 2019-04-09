@@ -19,7 +19,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="{% url 'instabot:userAccounts' %}">Accounts</a></li>
                             <li><a href="#">Billing Profile</a></li>
-                            <li><a href="#">Support</a></li>
+                            <li><a href="{% url 'instabot:settings' %}">Settings</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{% url 'instabot:logout' %}">Logout</a></li>
                         </ul>
@@ -49,6 +49,7 @@
     <h3 class="text-center">Welcome, <span style="color:#2C7CB2;">{{ll.cred.insta_user}}</span>! Let's start your promotion. Please create a new <span style="color:#2C7CB2;">Task</span> </h3>
 
     {%endif%}
+    
     
 {% for task in LT %}
 
@@ -87,17 +88,28 @@
     <div class="col-sm-4 col-sm-offset-4  text-center">
         <div id="myGroup">
             
-            <div class="accordion-group">
+            <div class=" accordion-group">
                 <div class="collapse indent" id="1{{task.id}}">
                         <div class="tick">
-                                {% for u in UN%}
-                                {% if ll.cred.insta_user == u.cred_us%}
+                            
+                                {% for u in UX%}
+                                
                                 {% if task.id == u.task.id%}
                                 <a  href="https://www.instagram.com/{{u.username}}/">
                                 <img class="ticker" style="border-radius: 50%; width: 40px;
                         height: 40px;" src="{{u.picUrl}}" alt="user-pic">
                         </a>
-                                {% endif%}
+                        
+                        {% if task.unfollow%}
+                        <i class="glyphicon min glyphicon-minus-sign"></i>
+                        
+                        
+                        {%else%}
+                        <i class="glyphicon glyphicon-user gli"></i>
+                        {%endif%}
+                        
+                        
+                        
                                 {% endif%}
                                 {% endfor%}
                                  </div>
@@ -155,10 +167,21 @@
                     <i class='glyphicon glyphicon-play'></i>
             </a>
             {%endif%}
-            <a href="{% url 'instabot:edit_task' task.id%}" class="btn btn-primary  btn-lit-circle" role="button">
+            {%if task.friendlist%}
+                
+            <a href="{% url 'instabot:edit_task2' task.id%}" class="btn btn-primary  btn-lit-circle" role="button">
                     <i class="glyphicon glyphicon-pencil"></i>
             </a>
+            {%elif task.unfollow%}
+            <a href="{% url 'instabot:edit_unfollow' task.id%}" class="btn btn-primary  btn-lit-circle" role="button">
+                <i class="glyphicon glyphicon-pencil"></i>
+        </a>
             
+            {%else %}
+            <a href="{% url 'instabot:edit_task' task.id%}" class="btn btn-primary  btn-lit-circle" role="button">
+                <i class="glyphicon glyphicon-pencil"></i>
+        </a>
+            {%endif%}
             <a href="{% url 'instabot:del_task' task.id%}" class="btn btn-primary btn-lit-circle" role="button">
                     <i class="glyphicon glyphicon-trash"></i>
             </a>

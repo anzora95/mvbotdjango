@@ -11,8 +11,12 @@ urlpatterns = [
     url('login/$', views.LoginView.as_view(), name='login'),
     url('logout/$', views.logout, name='logout'),
     url('dashboard/$', views.DashboardView, name='dashboard'),
+    url('newaccount/$', views.NewAccount, name='addaccount'),
+    url('statics/$', views.loginReport, name='login2'),
     url('dashboard/$', views.tag_child, name='dashload'),
-    
+    url('settings/$', views.Settings, name='settings'),
+    url('reports/$', views.report, name='report'),
+    #url('ajax/ticker/$', views.ticker, name='counter'),
     url('ajax/validate_username/$', views.test, name='test2'),
     url('hashtag_ajax/$', views.hashtags.as_view(), name='hashtags'),
     url('prueba_ajax/$', views.prueba.as_view(), name='prueba'),
@@ -27,7 +31,10 @@ urlpatterns = [
     url('store-new-task/$', views.StoreTask.as_view(), name='storeTask'),
     url('store-new-task-u/$', views.StoreTaskUser.as_view(), name='storeTaskU'),
     url('delete_task/(?P<id_task>\d+)/$', views.DeleteTask,name="del_task"),
+    url('edit_acc/(?P<id_acc>\d+)/$', views.EditAccount,name="edit_acc"),
     url('edit_task/(?P<id_task>\d+)/$', views.EditTask,name="edit_task"),
+    url('edit_friendtask/(?P<id_task>\d+)/$', views.EditTask2,name="edit_task2"),
+    url('edit_unfollowtask/(?P<id_task>\d+)/$', views.EditUnfollow,name="edit_unfollow"),
 
     # # ******************************** bot url's ************************************************************
     url('start-bot/$', views.StartBot.as_view(),name='start'),

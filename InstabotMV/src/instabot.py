@@ -278,8 +278,8 @@ class InstaBot:
         self.write_log(log_string)
         self.login()
         self.populate_user_blacklist()
-        signal.signal(signal.SIGTERM, self.cleanup)
-        atexit.register(self.cleanup)
+        #signal.signal(signal.SIGTERM, self.cleanup)
+        #atexit.register(self.cleanup)
 
     def populate_user_blacklist(self):
         for user in self.user_blacklist:
@@ -351,15 +351,14 @@ class InstaBot:
                 self.user_id = ui.get_user_id_by_login(self.user_login)
                 self.login_status = True
                 log_string = '%s login success!' % (self.user_login)
-                #mail_notify("!!Ups¡¡ login error on Ngage, please check %s" %(self.user_login),"hello@ngagesocial.co","jose@mvagency.co","Deuk1979")
                 self.write_log(log_string)#aqui deberia ir la funcion de guardar la url de la imagen con un if que compruebe si ya esta en la base de datos o no
             else:
                 self.login_status = False
                 self.write_log('Login error! Check your login data!')
         else:
             self.write_log('Login error! Connection error!')
-            #mail_notify("No se pudo conectar revise su cuenta por favor", "josephelop07@gmail.com","josephe95@hotmail.com","pass")
-            
+            mail_notify("No Se pudo conectar con su cuenta", "cristianarielzelaya@hotmail.com","ariel@mvagency.co","Canela12mojarro")
+
     def logout(self):
         now_time = datetime.datetime.now()
         log_string = 'Logout: likes - %i, follow - %i, unfollow - %i, comments - %i.' % \
@@ -1154,8 +1153,11 @@ class InstaBot:
 
             if check_already_followed(self, user_id=self.media_by_tag[0]['node']["owner"]["id"]) == 1:
                 self.write_log("Already followed before " + self.media_by_tag[0]['node']["owner"]["id"]) #aqui se cuestiona si el usuario ya fue followed para no darle follow de nuevo
-                self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay / 2)
-                print(self.next_iteration["Follow"])
+                aux=random.choice(self.sec)
+                print(aux)
+                self.media_by_tag.remove(self.media_by_tag[0])
+                    #aqui espera la siguiente iteracion
+                
                 return
                 #self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay / 2)
 
@@ -1165,11 +1167,12 @@ class InstaBot:
                 self.bot_follow_list.append([self.media_by_tag[0]['node']["owner"]["id"], time.time()])      #en este if se agrega a la lista de usuarios ya seguidos en bot_follow_list
                 aux=random.choice(self.sec)
                 print(aux)
-                time.sleep(aux)
+                time.sleep(aux)    #aqui espera la siguiente iteracion
+                
             
             #time.sleep(random.choice(self.sec))    
             #self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay)
-    #mail_notify("!!Ups¡¡ login error on Ngage, please check yours accounts" ,"josephelop07@gmail.com","marvin@mvagency.co","laplace euler")
+   
 
     def new_auto_mod_follow_user(self):
         if time.time() > self.next_iteration["Follow"] and self.follow_per_day != 0 and len(self.scraped_user) > 0:
@@ -1179,6 +1182,7 @@ class InstaBot:
                 id=self.get_userID_by_name(us)
                 if id==self.user_id:
                     self.write_log("Keep calm - It's your own profile ;)")
+                    
                     return
                 if check_already_followed(self,id)==1:
                     self.write_log("Already followed before " + id) #aqui se cuestiona si el usuario ya fue followed para no darle follow de nuevo
@@ -1493,6 +1497,5 @@ class InstaBot:
     
 
     
-
 
 

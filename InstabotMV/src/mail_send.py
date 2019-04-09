@@ -2,7 +2,7 @@ import smtplib
 
 #parametros:
 #Correo Destinatario //addressee
-#contraseña destinatario  //adds_pass
+#contraseña Emisor  //adds_pass
 #Correo receptor  //receiver
 #Cuerpo del mensaje dependiendo del tipo de notificacion //body_m
 

@@ -39,9 +39,11 @@
   color: #757575;
 }
 .tick{
-  width: 100vw;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 90vw;
  position: relative;
- margin-left: -50vw;
+ margin-left: -45vw;
  height: 300px;
  overflow: scroll;
  left: 50%;
@@ -283,16 +285,97 @@
   visibility: visible;
 }
 
-.r2 {
-   transform: scale(2);
+.gli{
+  color:#2C7CB2;
+  margin-bottom: 40px;
+  margin-right: 1px;
+  margin-left: -18px;
+  font-size: 15px;
+  opacity: 0.9;
 }
 
-@font-face {
-  font-family: 'zcool_xiaoweiregular';
-  src: url('zcoolxiaowei-regular-webfont.woff2') format('woff2'),
-       url('zcoolxiaowei-regular-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-
+.min{
+  color:#2C7CB2;
+  margin-bottom: 40px;
+  margin-right: 1px;
+  margin-left: -18px;
+  font-size: 15px;
+  opacity: 0.9;
 }
 
+.head{
+  padding: 50px 0;
+  height: 300px;;
+  background-color:#66d6fe;
+  color: #fff;
+  text-align: left;
+}
+.feat{
+  margin-left: 30px;
+  
+}
+.acc{
+  padding: 100px 0;
+}
+.head2{
+  padding: 70px 0;
+
+  background-color:white;
+  height: 300px;
+  margin: auto;
+}
+.loginbg{
+  background-color: #16214d;
+}
+.fullscreen{
+  padding: 140px 0;
+  margin: auto;
+}
+.fullscreen2{
+  
+  padding: 10px 0;
+  margin: auto;
+  margin-top: 155px;
+  margin-left: 10px;
+  text-align: center;
+  background-color: #d6dbdf;
+  height: 350px;
+  text-align: center;
+}
+.roundedinput2{
+  border: 1px solid #ccc;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 0px;
+	-moz-box-shadow: 2px 2px 3px #fff;
+	-webkit-box-shadow: 2px 2px 3px #fff;
+  box-shadow: 2px 2px 3px #fff;
+	font-size: 20px;
+	padding: 4px 7px;
+	outline: 0;
+  -webkit-appearance: none;
+  margin-bottom: 10px;
+}
+.roundedinput{
+  border: 1px solid #ccc;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 0px;
+	-moz-box-shadow: 2px 2px 3px #fff;
+	-webkit-box-shadow: 2px 2px 3px #fff;
+  box-shadow: 2px 2px 3px #fff;
+	font-size: 20px;
+	padding: 4px 7px;
+	outline: 0;
+  -webkit-appearance: none;
+  margin-left: 30px; 
+  margin-bottom: 20px;
+  }
+.btns{
+  margin-top: -50px;
+  margin-left: 110px;
+}
+.msj{
+  margin-left: 105px;
+  margin-top: 20px;
+}

@@ -6,14 +6,19 @@ from django.contrib.auth import authenticate, login as login_django, logout as l
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from .models import *
+from django.urls import reverse
 from InstabotMV.models import Creds, List_Tag, Media,HashtagList,Packages
 from .forms import LoginForm, CreateUserForm, TaglistForm, UserlistForm, ComboTagHijo
 from InstabotMV.forms import InstaCredsForm
+from django.db.models import Q
 
 from django.views.generic import View, DetailView, TemplateView, UpdateView, DeleteView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.http import JsonResponse
+import urllib, json
+from datetime import date, timedelta
+from InstabotMV.src.sql_updates import update_creds
 # *************************************************Bot imports**********************************************************
 
 import time
@@ -109,7 +114,7 @@ class ShowView(DetailView):
 
 class LoginView(View):
     form = LoginForm()
-    message = None
+    message = " "
     template = "login.html"
 
     def get(self, request, *args, **kwargs):
@@ -122,7 +127,9 @@ class LoginView(View):
         password_post = request.POST['password']
         user = authenticate(username=username_post, password=password_post)
         print(user)
-        if user.is_superuser == 1:
+        if user== None:
+            self.message = "Wrong username or password "
+        else:
             login_django(request, user)
             return redirect('instabot:userAccounts')
         elif user.is_superuser == 0:
@@ -143,42 +150,33 @@ def logout(request):
     return redirect('instabot:login')
 @login_required(login_url='/instabotmv/login')
 def DashboardView(request):
-    """ user = User.objects.get(id=request.user.id) #Get the current user logged in
-    ll=LastLogin.objects.get(user=user)
-    cred=ll.cred
-    AT=Task.objects.all() #Get All the Task in system
-    LT=[] ##Empty list for List of Task
-    UN=Username.objects.all()
-    print(len(UN))
-    for x in range(0,len(AT)):
-       if AT[x].creds==cred:#If the task has the current logged user add it to the LT list
-           #print(AT[x].user.username)
-           LT.append(AT[x])
-    if len(LT)==0:
-        empty=True
-        print(LT)
-        return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'empty':empty,'UN':UN}) 
-
-    return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'UN':UN}) """
     user = User.objects.get(id=request.user.id) #Get the current user logged in
     ll=LastLogin.objects.get(user=user)
     cred=ll.cred
     ticklimit=0
     AT=Task.objects.all() #Get All the Task in system
     LT=[] ##Empty list for List of Task
-    UN=Username.objects.all().order_by('-id')[:250] #Limit the ticker number.
-    print(len(UN))
+    UX=[]
+    z="Hola esto es una prueba"
+    count=0
+    UN=Username.objects.all() #Limit the ticker number.
+    for t in range(0,len(UN)):
+        if UN[t].cred_us==ll.cred.insta_user and count<=550:
+            count+=1
+            UX.append(UN[t])
+    print(ll.cred.insta_user)
+    print(len(UX))
     for x in range(0,len(AT)):
        if AT[x].creds==cred:#If the task has the current logged user add it to the LT list
            #print(AT[x].user.username)
- 
+           
            LT.append(AT[x])
     if len(LT)==0:
         empty=True
         print(LT)
-        return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'empty':empty,'UN':UN})
+        return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'empty':empty,'UN':UN}) 
 
-    return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'UN':UN})
+    return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'UN':UN,'UX':UX})
 
 def changeAccount(request,cred):
     user = User.objects.get(id=request.user.id)
@@ -281,6 +279,49 @@ class UserAccounts(LoginRequiredMixin, View):
         
         return redirect('instabot:dashboard')
 
+def NewAccount(request):
+    user = User.objects.get(id=request.user.id)
+    ll=LastLogin.objects.get(user=user)
+    user = User.objects.get(id=request.user.id) #Get the current user logged in
+    cred=ll.cred
+    packs= Packages.objects.all()
+    if request.method == 'POST':
+        #valid=validat( request.POST.get('insta_user'), request.POST.get('insta_pass') )
+        valid=2
+        if valid==2:
+            user=User.objects.get(id=request.user.id) # Se toma el usuario django que eta logeado.
+            cred = Creds()  # inicializacion de Credentials
+            cred.user = user  # Se le asigna un usuario a la task
+            cred.insta_user=request.POST.get('insta_user')
+            cred.insta_pass=request.POST.get('insta_pass')
+            cred.imgUrl=scrapImg(request.POST.get('insta_user'))
+            cred.pack_id=request.POST.get('pack')
+            cred.insta_followers=0
+            cred.insta_followings=1
+            cred.save()            
+            return redirect('instabot:userAccounts')
+        else:
+            return redirect('instabot:userAccounts')
+    return render(request, 'users/addaccount.html', {'ll':ll, 'packs':packs})
+
+def Settings(request):
+    user = User.objects.get(id=request.user.id)
+    ll=LastLogin.objects.get(user=user)
+    user = User.objects.get(id=request.user.id) #Get the current user logged in
+    cred=ll.cred
+    if request.method == 'POST':
+        if request.POST.get('ceili')==None:
+            cred.ceiling=False
+            cred.save()
+        else:
+            cred.ceiling=True
+            cred.number_ceiling=request.POST.get('Ceiling')
+            cred.save()
+        print(request.POST.get('ceili'))
+    return render(request, 'settings.html', {'ll':ll,'cred':cred})
+
+
+
 
 def NewTask(request):
     user = User.objects.get(id=request.user.id) #Get the current user logged in
@@ -316,7 +357,16 @@ def test(request):
     print(scrap[0])
     data = scrap
     return HttpResponse(json.dumps(data), content_type="application/json")
-    
+
+def ticker(request):
+    count=1000
+    while count>0:
+        data=count
+        return HttpResponse(json.dumps(data), content_type="application/json")
+        count=count-1
+        time.sleep(60)
+    return HttpResponse(json.dumps(data), content_type="application/json")
+
 
 def tags_serializer(tag):
     return {'id':tag.id,'name':tag.insta_tag}
@@ -374,7 +424,72 @@ def EditTask(request,id_task):
         return redirect('instabot:dashboard')
     return render(request,'tasks/edittask.html',{'Hasgtags':Hasgtags,'task':task,'ll':ll,"tags" : json_tags})
 
+def EditTask2(request,id_task):
+    Hasgtags = HashtagList.objects.all()
+    user = User.objects.get(id=request.user.id)
+    ll=LastLogin.objects.get(user=user)
+    task=Task.objects.get(id=id_task)
+    json_tags = json.dumps(task.tags)
+    if request.method == 'POST':
+        task.tags=request.POST.get('tags-inputs')
+        task.active = False
+        task.likemedia=TrueOrFalse(request.POST.get('like'))
+        task.followuser=TrueOrFalse(request.POST.get('follow'))
+        task.dontlikemedia=TrueOrFalse(request.POST.get('dont'))
+        task.dontfollow=TrueOrFalse(request.POST.get('dontfollow'))
+        task.randomlylike=TrueOrFalse(request.POST.get('randomly'))
+        task.search=TrueOrFalse(request.POST.get('search'))
+        task.antispamfilter=TrueOrFalse(request.POST.get('antispam'))
+        task.unfollow=False
+        task.ghost=False
+        task.back=False
+        task.custowordfilter=TrueOrFalse(request.POST.get('custom'))
+        task.save()
+        
+        return redirect('instabot:dashboard')
+    return render(request,'tasks/editFriendTask.html',{'Hasgtags':Hasgtags,'task':task,'ll':ll,"tags" : json_tags})
 
+def EditAccount(request,id_acc):
+    user = User.objects.get(id=request.user.id)
+    ll=LastLogin.objects.get(user=user)
+    user = User.objects.get(id=request.user.id) #Get the current user logged in
+    cred=ll.cred
+    modcred=Creds.objects.get(id=id_acc)
+    print(modcred.insta_user)
+    packs= Packages.objects.all()
+    aux1=False
+    aux2=False
+    aux3=False
+    if request.method == 'POST':
+        if request.POST.get('insta_user')=="":
+            aux1=False
+        else:
+            aux1=request.POST.get('insta_user')
+        if request.POST.get('insta_pass')=="":
+            aux2=False
+        else:
+            aux2=request.POST.get('insta_pass')
+        aux3=request.POST.get('insta_pass')
+        update_creds(modcred.insta_user,aux1,aux2)
+    return render(request, 'users/editaccount.html', {'ll':ll, 'packs':packs,'modcred':modcred})
+def EditUnfollow(request,id_task):
+    
+    user = User.objects.get(id=request.user.id)
+    ll=LastLogin.objects.get(user=user)
+    task=Task.objects.get(id=id_task)
+    Hola="Hola"
+    if request.method == 'POST':
+        task.ghost=TrueOrFalse(request.POST.get('ghost'))
+        task.back=TrueOrFalse(request.POST.get('back'))
+        if request.POST.get('optradio')=='True':
+            task.allusers=False
+            task.tags="All users followed by Ngage"
+        else:
+            task.allusers=True
+            task.tags="All users"
+        task.save()
+        return redirect('instabot:dashboard')
+    return render(request,'tasks/editunfollow_task.html',{'Hola':Hola,'task':task,'ll':ll})
 
 def DeleteAccount(request,id_cred):
     user = User.objects.get(id=request.user.id)
@@ -441,10 +556,90 @@ def NewFollowLike(request):
         t.codigo=''
         t.save()
         #Ceiling user instagram
-        user_inst.number_ceiling=request.POST.get('Ceiling')
+        #user_inst.number_ceiling=request.POST.get('Ceiling')
         user_inst.save()
         return redirect('instabot:dashboard')
     return render(request, 'tasks/followAndLike.html', {'Hasgtags': Hasgtags,'ll':ll,'ceil_number':ceil_number,'scrap':scrap})
+
+def loginReport(request):
+    if request.method == 'POST':
+        print(request.POST.get('insta_user'))
+        print(request.POST.get('insta_pass'))
+        user=Creds.objects.get(insta_user=request.POST.get('insta_user'))
+        print(user.insta_pass,"aqui")
+        if user.insta_pass==request.POST.get('insta_pass'):
+            return report(request,user.insta_user)
+        
+    return render(request, 'reports/login-2.html', {})
+
+def report(request,u_account):
+    scrap=[]
+    scrap = scrap_us(u_account) #Devulve un arreglo 1 url 2 username 3 N#followers
+    img=scrapUsr(u_account)
+    cred =Creds.objects.get(insta_user=u_account)
+    packa=cred.pack.pack_name
+    media=Media.objects.filter(cred_us=u_account)
+    followers=0
+    following=0
+    likes=len(media) #Cantidad de likes realizados
+    query=[]
+    filterdate="2019-03-21" #Fecha de filtro
+    current_date = date.today().isoformat()   
+    listday=[]
+    folligs=[]
+    liks=[]
+    unfo=[]
+    aux=[]
+    for i in range(0,32):
+        dat=(date.today()-timedelta(days=i)).isoformat()
+        listday.append((date.today()-timedelta(days=i)).isoformat())
+    for i in range(0,31):
+        try:
+            aux=Username.objects.filter(cred_us=u_account,last_followed_time__range=[listday[i+1],listday[i]])
+            aux2=Media.objects.filter(cred_us=u_account,datetime__range=[listday[i+1],listday[i]])
+            aux3=Username.objects.filter(cred_us=u_account,unfollow_count=1,last_followed_time__range=[listday[i+1],listday[i]])
+
+            #print(listday[i],listday[i+1])
+            folligs.append(len(aux))
+            liks.append(len(aux2))
+            unfo.append(len(aux3))
+            print("Followings:",len(aux),"Likes:",len(aux2),"Unfollow:",len(aux3),listday[i])
+        except:
+            print("err")
+        
+    reversedays=[]
+    reverseunfo=[]
+    reversefolligs=[]
+    reverseliks=[]
+    reverseunfo=unfo[::-1]
+    reverseliks=liks[::-1]
+    reversefolligs=folligs[::-1]
+    reversedays=listday[::-1]
+    print(*reversedays)
+    #print(len(listday),"Aqui")
+    #print(date_N_days_ago = datetime.now() - timedelta(days=N))
+    followlist=[]
+    query=filterby(u_account,filterdate,True) #Se filtra desde la filterdate hasta la actualidad de FOLLOWS
+    unfollows=len(filterby(u_account,filterdate,False))
+    followings=(len(query))# Se cuentan los followings
+    u=Username.objects.all()
+    
+    for x in u:
+        if x.cred_us == u_account:
+            following+=1
+    #u_account=Account
+    #scrap2.followers
+    #Packa=Package
+    #filterdate=Filtered date
+    return render(request,'reports/index.html',{'reverseunfo':reverseunfo,'reverseliks':reverseliks,'reversefolligs':reversefolligs,'reversedays':reversedays,'u_account':u_account,'img':img,'followers':followers,'unfollows':unfollows,'scrap':scrap,'packa':packa,'likes':likes,'followings':followings,'filterdate':filterdate})
+
+def filterby(account,filter,follow):
+
+    if follow==True:
+        u=Username.objects.filter(cred_us=account,last_followed_time__range=[filter, "2019-04-08"])
+    else:
+        u=Username.objects.filter(cred_us=account,unfollow_count=1,last_followed_time__range=[filter, "2019-04-08"])
+    return u
 
 def UnfollowTask(request):
     Hasgtags = HashtagList.objects.all()

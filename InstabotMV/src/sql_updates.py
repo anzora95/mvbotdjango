@@ -101,7 +101,7 @@ def insert_unfollow_count(use_nam,user_id=False, user=False):
 
 def update_creds(us_actual,new_pass=False,new_name=False):
     try:
-        cr = Username.objects.get(insta_user=us_actual)
+        cr = Creds.objects.get(insta_user=us_actual)
         credito=1
     except:
         credito=0

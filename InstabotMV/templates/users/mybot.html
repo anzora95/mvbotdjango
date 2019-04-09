@@ -85,8 +85,12 @@
                         height: 75px;" src="{{cred.imgUrl}}" alt="user-pic">
                         <div class="caption">
                             <h4 class="text-center">{{cred.insta_user}}</h4>
+                            {% if cred.insta_followers %}
                             <p>Followers: {{cred.insta_followers}}</p>
                             <p>Followings: {{cred.insta_followings}}</p>
+                            {%else %}
+                            <p>Please check yours credentials or Update your credentials</p>
+                            {%endif %}
                             <p>
                                     {% if ll.cred.insta_user == cred.insta_user%}
                                 <a href="{% url 'instabot:changeAccount' cred.id %}" style="margin-bottom: 3px;" class="btn btn-primary center-block"  

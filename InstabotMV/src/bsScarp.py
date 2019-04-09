@@ -17,12 +17,15 @@ def scrapImg(username): #Devulve un arreglo 1 url 2 username 3 N#followers
 def scrap_us(username):
     my_url = 'https://www.instagram.com/%s/' % (username)
 #    return(us_info)
-
-    uClient= uReq(my_url)
-    page_html = uClient.read()
-    s=soup(page_html, "html.parser")
-    container=s.findAll("meta",{"property":"og:description"})
-    valor=str(container).replace('[<meta content="', '')
-    valor2=valor[0:33]
-    ul=valor2.split(" ")
-    return(ul)
+    try:
+        uClient= uReq(my_url)
+        page_html = uClient.read()
+        s=soup(page_html, "html.parser")
+        container=s.findAll("meta",{"property":"og:description"})
+        valor=str(container).replace('[<meta content="', '')
+        valor2=valor[0:33]
+        ul=valor2.split(" ")
+        return(ul)
+    except:
+        ul=False
+        return(ul)

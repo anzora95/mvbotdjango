@@ -1179,11 +1179,10 @@ class InstaBot:
                 id=self.get_userID_by_name(us)
                 if id==self.user_id:
                     self.write_log("Keep calm - It's your own profile ;)")
-                    
                     return
                 if check_already_followed(self,id)==1:
                     self.write_log("Already followed before " + id) #aqui se cuestiona si el usuario ya fue followed para no darle follow de nuevo
-                    self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay / 2)
+                    #self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay / 2)
                     self.scraped_user.remove(us)
                     print(self.scraped_user)
                     return

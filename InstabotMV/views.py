@@ -244,10 +244,16 @@ class UserAccounts(LoginRequiredMixin, View):
             if creds[x].user==user:
                 lcreds.append(creds[x])
                 finfo=scrap_us(creds[x].insta_user)
-                creds[x].insta_followers=finfo[0]
-                creds[x].insta_followings=finfo[2]
+                if finfo:
+                    creds[x].insta_followers=finfo[0]
+                    creds[x].insta_followings=finfo[2]
+                else:
+                    creds[x].insta_followers=False
+                    creds[x].insta_followings=False
+                    
+
        
-        return render(request, 'users/mybot.html', {'lcreds':lcreds,'ll':ll, 'packs':packs,})
+        return render(request, 'users/mybot.html', {'lcreds':lcreds,'ll':ll, 'packs':packs})
 
     def post(self, request):
         user = User.objects.get(id=request.user.id) #Get the current user logged in

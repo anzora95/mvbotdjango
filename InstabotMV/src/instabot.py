@@ -1292,8 +1292,17 @@ class InstaBot:
                 id=self.get_userID_by_name(use)
                 #followed_ngage(id)
                 self.unfollow(id)
+                print(str(use))
+                name_val=str(use)
+                try:
+                    us = Username.objects.get(username_id=id, cred_us=name_val)
+                    us.unfollow_count=1
+                    us.save()
+                except:
+                    #get_userPic_by_name(self, username)
+                    img_url=self.get_userPic_by_name(name_val)
                 #llenar una variable con un numero random luego evaluar si ese numero no es tan exagerado y luego multiplicarlo po 60 que en segundos equivale a un minuto
-                #insert_unfollow_count(user_id=id)
+                    insert_username(self, username_id=id, username=name_val, unfollow=1, us=self.user_login, picUrl= img_url,task_id=self.task_id  )
                 time.sleep(random.choice(self.sec))
         else:
             self.write_log("Looks like there is nobody to unfollow.")

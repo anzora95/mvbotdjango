@@ -238,6 +238,8 @@ class InstaBot:
         self.hour_start=range(15,16)
         self.hour_end=range(16,17)
 
+        self.ran_counters=range()
+
         self.start_at_h = start_at_h #random.choice(self.hour_start)
         self.start_at_m = start_at_m#random.choice(self.min)
         self.end_at_h = end_at_h#random.choice(self.hour_end)
@@ -1502,6 +1504,28 @@ class InstaBot:
                 self.logger.info(log_text)
             except UnicodeEncodeError:
                 print("Your text has unicode problem!")
+
+    """ def valid_sleep(self):
+        self.start_at_h=random.choice(self.hour_start)
+        self.end_at_h=random.choice(self.hour_end)
+
+        if self.start_at_h < self.end_at_h:
+            print("Empieza a : %s" % self.start_at_h)
+            print("Termina a las : %s" % self.end_at_h)
+            var3 = self.end_at_h-self.start_at_h
+            if var3<=7:
+                print("1")
+                print("Durara lo justo")
+            else:
+                print("2")
+                print("Dura demasiado")
+        elif var2==var1:
+            print("3")
+            print("misma hora no se puede")
+        else:
+            print("4")
+            print("la hora de inicio es mayoa la de fin durara mas de un dia") """
+
 
     
 

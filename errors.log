@@ -27611,3 +27611,7 @@ WARNING:django.request:Not Found: /favicon.ico
 WARNING:django.request:Not Found: /favicon.ico
 WARNING:django.request:Not Found: /favicon.ico
 WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /instabotmv/dashboard/statics/panel-element-float.html
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /instabotmv/dashboard/statics/panel-element-charts-js.html
+WARNING:django.request:Not Found: /instabotmv/dashboard/statics/panel-page-profile.html

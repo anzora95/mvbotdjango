@@ -16,7 +16,7 @@ Parametro si sera followers o followings
 """
 
 """funcion para friendlist"""
-def friendScrapi(sc_us, sc_pas,sc_account):
+def friendScrapi(sc_us, sc_pas,sc_account,target):
 
     #def login(driver):
 
@@ -47,7 +47,10 @@ def friendScrapi(sc_us, sc_pas,sc_account):
     driver.get("https://www.instagram.com/%s/" %(sc_account))
     sleep(4)
     #Select followers or followings links on profile target page
-    fol=driver.find_element_by_css_selector("a[href*='following'] span")
+    if target==False:
+        fol=driver.find_element_by_css_selector("a[href*='following'] span")
+    else:
+        fol=driver.find_element_by_css_selector("a[href*='followers'] span")
     fol.click()
     sleep(4)
     

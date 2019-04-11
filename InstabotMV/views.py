@@ -562,6 +562,10 @@ def NewFollowLike(request):
             task.dontfollow=TrueOrFalse(request.POST.get('dontfollow2'))
             task.tags=request.POST.get('tags-inputs')
             task.search=TrueOrFalse(request.POST.get('search2'))
+            if request.POST.get('foll')=='True':
+                task.follwers_user=True
+            else:
+                task.followeds_user=True
             task.friendlist=True
         task.antispamfilter=TrueOrFalse(request.POST.get('antispam'))
         task.randomlylike=TrueOrFalse(request.POST.get('randomly'))
@@ -905,6 +909,8 @@ def start(request, task):
     ftUnfollow =task.unfollow
     ft_all=task.allusers
     ft_back=task.back
+    ft_followings=task.followeds_user
+    ft_followers=task.follwers_user
     friend=task.friendlist #bandera para saber si es friendlist o no tiene que guardarse en runbot e inicializarse dentro de instabot
     if task.active:
         task.active=False
@@ -915,7 +921,7 @@ def start(request, task):
     hl=strtask.split(",")
     print(hl)
     user=User.objects.get(id=request.user.id)
-    runbot.delay(u,p,hl,ide,ftLike,ftFollow,ftUnfollow,pa,n_ceil,friend,ft_all,ft_back) #aqui debe de haber otro parametro que sea lo de el friend list para que se inicialize en instabot
+    runbot.delay(u,p,hl,ide,ftLike,ftFollow,ftUnfollow,pa,n_ceil,friend,ft_all,ft_back, ft_followers,ft_followings) #aqui debe de haber otro parametro que sea lo de el friend list para que se inicialize en instabot
     return redirect('instabot:dashboard')
 
 class StopBot(LoginRequiredMixin, View):

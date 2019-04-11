@@ -241,10 +241,11 @@ class InstaBot:
 
         #self.ran_counters=range()
 
-        self.start_at_h = start_at_h #random.choice(self.hour_start)
+
         self.start_at_m = start_at_m#random.choice(self.min)
-        self.end_at_h = end_at_h#random.choice(self.hour_end)
         self.end_at_m = end_at_m#random.choice(self.min)
+        self.start_at_h = start_at_h #random.choice(self.hour_start)
+        self.end_at_h = end_at_h#random.choice(self.hour_end)
 
         # Don't like if media have more than n likes.
         self.media_max_like = media_max_like
@@ -1012,69 +1013,35 @@ class InstaBot:
                                               (1, self.max_like_for_one_tag))
 
     def new_auto_mod(self):
+        
         while True:
             now = datetime.datetime.now()
-            print("bot termina a :" + str(datetime.time(self.end_at_h, self.end_at_m)))# impresiones del tiempo en el cual el bot iniciara 
-            print("bot inicia a :" + str(datetime.time(self.start_at_h, self.start_at_m)))#impresion del tiempo en el que el bot va  parar
-            if (
-                    datetime.time(self.start_at_h, self.start_at_m) <= now.time() #funcion simulating human pordria usarse aqui
-                    and now.time() <= datetime.time(self.end_at_h, self.end_at_m)
-            ):
-                sleep_mod_off(self.task_id)
-                # ------------------- TASK BY HASHTAG -------------------
-                if self.ft_friendlist ==False and self.ft_unfollow== False:
+            if now==now:
+                #self.valid_sleep()
+                print("hello")
+            else:
 
-                    if len(self.media_by_tag) == 0:
-                        #self.get_media_id_by_user() #IF AQUI SI EL FRIENDLIST ESTA ACTIVO QUE EJECUTE ALO SINO QUE SE VAYA POR TAGS
-                        self.get_media_id_by_tag(random.choice(self.tag_list))
-                        self.this_tag_like_count = 0
-                        self.max_tag_like_count = random.randint(
-                        1, self.max_like_for_one_tag)
-                        #self.remove_already_liked()
-                    # ------------------- Like -------------------
-                    if self.ftfollow:
-                        self.new_auto_mod_follow()
-                    # ------------------- Follow -------------------
-                    if self.ftlike:
-                        self.new_auto_mod_like()
-                    # ------------------- Unfollow -----------------
-                    
-                    # ------------------- Comment ------------------
-                    #self.new_auto_mod_comments()
-                    # Bot iteration in 1 sec
-                    #if self.ceiling_number !=0:
-                    #    print(count_ngage(self.task_id))
-                    #    if count_ngage(self.task_id)>=self.ceiling_number:
-                    #        self.cleanup()
-                    #else:
-                    #    self.write_log("No hay techo de followers")
-                    time.sleep(3)
-                    # print("Tic!")
+                if (
+                        datetime.time(self.start_at_h, self.start_at_m) <= now.time() #funcion simulating human pordria usarse aqui
+                        and now.time() <= datetime.time(self.end_at_h, self.end_at_m)
+                ):
+                    sleep_mod_off(self.task_id)
+                    # ------------------- TASK BY HASHTAG -------------------
+                    if self.ft_friendlist ==False and self.ft_unfollow== False:
 
-                elif self.ft_friendlist==True:#cambiar si el friendlist esta activo que se meta aqui
-                #----------------------TASK BY FRIENDLIST---------------    
-                        if len(self.media_by_user) == 0:
-                            #users_scrapy_list=friendScrapi(self.user_login,self.user_password,random.choice(self.tag_list))
-                            users_scrapy_list=friendScrapi(self.user_login,self.user_password,random.choice(self.tag_list))
-                            #solo para la task de los usuarios
-                            self.scraped_user=users_scrapy_list
-                            #aqui tengo que hacer el scrap para poder pasarle una lista a la funcion para poder leer cada uno de esos usuarios
-                            #self.get_media_id_by_user(random.choice(users_scrapy_list)) #IF AQUI SI EL FRIENDLIST ESTA ACTIVO QUE EJECUTE ALO SINO QUE SE VAYA POR TAGS
-                            #en la linea anterior se debera dar un usuario ya scrapeado para poder jugar con el 
+                        if len(self.media_by_tag) == 0:
+                            #self.get_media_id_by_user() #IF AQUI SI EL FRIENDLIST ESTA ACTIVO QUE EJECUTE ALO SINO QUE SE VAYA POR TAGS
+                            self.get_media_id_by_tag(random.choice(self.tag_list))
                             self.this_tag_like_count = 0
                             self.max_tag_like_count = random.randint(
-                                1, self.max_like_for_one_tag)
+                            1, self.max_like_for_one_tag)
                             #self.remove_already_liked()
-                        # ------------------- Like y follow -------------------
-                        if self.ftfollow and self.ftlike:
-                            self.ultra_follow_user_friend()
-                            self.new_auto_mod_like_user()
-                        # ------------------- Only like -------------------
-                        elif self.ftlike:
-                            self.new_auto_mod_like_user()
-                        #--------------------Only follow------------------
-                        elif self.ftfollow:
-                            self.new_auto_mod_follow_user()
+                        # ------------------- Like -------------------
+                        if self.ftfollow:
+                            self.new_auto_mod_follow()
+                        # ------------------- Follow -------------------
+                        if self.ftlike:
+                            self.new_auto_mod_like()
                         # ------------------- Unfollow -----------------
                         
                         # ------------------- Comment ------------------
@@ -1087,23 +1054,66 @@ class InstaBot:
                         #else:
                         #    self.write_log("No hay techo de followers")
                         time.sleep(3)
+                        # print("Tic!")
 
-                    #--------------------------------UNFOLLOW TASK------------------------
-                elif self.ft_unfollow== True:
-                    if self.ft_all:
-                        users_scrapy_list=friendScrapi(self.user_login,self.user_password,self.user_login)
-                            #solo para la task de los usuarios
-                        self.scraped_user=users_scrapy_list
-                            #aqui tengo que hacer el scrap para poder pasarle una lista a la funcion para poder leer cada uno de esos usuarios
-                        self.get_media_id_by_user(random.choice(users_scrapy_list))
-                        self.unfollow_all()
-                    else:
-                        self.new_auto_mod_unfollow()
-                    # print("Tic!")
-            else:
-                print("sleeping until {hour}:{min}".format(hour=self.start_at_h,min=self.start_at_m), end="\r")
-                sleep_mod(self.task_id)
-                time.sleep(100)
+                    elif self.ft_friendlist==True:#cambiar si el friendlist esta activo que se meta aqui
+                    #----------------------TASK BY FRIENDLIST---------------    
+                            if len(self.media_by_user) == 0:
+                                #users_scrapy_list=friendScrapi(self.user_login,self.user_password,random.choice(self.tag_list))
+                                if self.ft_followers_us==True:
+                                    target=True
+                                else:
+                                    target=False
+
+                                users_scrapy_list=friendScrapi(self.user_login,self.user_password,random.choice(self.tag_list),target)
+                                #solo para la task de los usuarios
+                                self.scraped_user=users_scrapy_list
+                                #aqui tengo que hacer el scrap para poder pasarle una lista a la funcion para poder leer cada uno de esos usuarios
+                                #self.get_media_id_by_user(random.choice(users_scrapy_list)) #IF AQUI SI EL FRIENDLIST ESTA ACTIVO QUE EJECUTE ALO SINO QUE SE VAYA POR TAGS
+                                #en la linea anterior se debera dar un usuario ya scrapeado para poder jugar con el 
+                                self.this_tag_like_count = 0
+                                self.max_tag_like_count = random.randint(
+                                    1, self.max_like_for_one_tag)
+                                #self.remove_already_liked()
+                            # ------------------- Like y follow -------------------
+                            if self.ftfollow and self.ftlike:
+                                self.ultra_follow_user_friend()
+                                self.new_auto_mod_like_user()
+                            # ------------------- Only like -------------------
+                            elif self.ftlike:
+                                self.new_auto_mod_like_user()
+                            #--------------------Only follow------------------
+                            elif self.ftfollow:
+                                self.new_auto_mod_follow_user()
+                            # ------------------- Unfollow -----------------
+                            
+                            # ------------------- Comment ------------------
+                            #self.new_auto_mod_comments()
+                            # Bot iteration in 1 sec
+                            #if self.ceiling_number !=0:
+                            #    print(count_ngage(self.task_id))
+                            #    if count_ngage(self.task_id)>=self.ceiling_number:
+                            #        self.cleanup()
+                            #else:
+                            #    self.write_log("No hay techo de followers")
+                            time.sleep(3)
+
+                        #--------------------------------UNFOLLOW TASK------------------------
+                    elif self.ft_unfollow== True:
+                        if self.ft_all:
+                            users_scrapy_list=friendScrapi(self.user_login,self.user_password,self.user_login, False)
+                                #solo para la task de los usuarios
+                            self.scraped_user=users_scrapy_list
+                                #aqui tengo que hacer el scrap para poder pasarle una lista a la funcion para poder leer cada uno de esos usuarios
+                            self.get_media_id_by_user(random.choice(users_scrapy_list))
+                            self.unfollow_all()
+                        else:
+                            self.new_auto_mod_unfollow()
+                        # print("Tic!")
+                else:
+                    print("sleeping until {hour}:{min}".format(hour=self.start_at_h,min=self.start_at_m), end="\r")
+                    sleep_mod(self.task_id)
+                    time.sleep(100)
 
     def remove_already_liked(self):
         self.write_log("Removing already liked medias..")
@@ -1531,26 +1541,19 @@ class InstaBot:
             except UnicodeEncodeError:
                 print("Your text has unicode problem!")
 
-    """ def valid_sleep(self):
-        self.start_at_h=random.choice(self.hour_start)
-        self.end_at_h=random.choice(self.hour_end)
+    def valid_sleep(self):
 
-        if self.start_at_h > self.end_at_h:
-            print("Empieza a : %s" % self.start_at_h)
-            print("Termina a las : %s" % self.end_at_h)
-            var3 = self.end_at_h-self.start_at_h
-            if var3<=7:
-                print("1")
-                print("Durara lo justo")
-            else:
-                print("2")
-                print("Dura demasiado")
-        elif var2==var1:
-            print("3")
-            print("misma hora no se puede")
-        else:
-            print("4")
-            print("la hora de inicio es mayoa la de fin durara mas de un dia") """
+        self.start_at_h=random.choice(self.hour_start) #el bot vuelve a iniciar
+        self.end_at_h=random.choice(self.hour_end) #el bot se detiene
+
+        while (self.end_at_h>self.start_at_h or self.start_at_h-self.end_at_h >= 7):
+            self.start_at_h=random.choice(self.hour_start) #el bot vuelve a iniciar
+        self.end_at_h=random.choice(self.hour_end) #el bot se detiene
+        
+        print (self.end_at_h)
+        print (self.start_at_h)
+        
+
 
 
     

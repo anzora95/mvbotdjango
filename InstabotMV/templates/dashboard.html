@@ -137,11 +137,20 @@
     <form>
     <div class="text-center">
         {% if task.active%}
-       <div class="simulating">
+        {% if task.sleep_mod%}
+        <div class="simulating">
+            <h3>Simulating human behaviour.
+                    Swell is coming in some minutes.Feel free to close this window. Task is running in Cloud.</h3>
+       </div>
+       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        {%else%}
+        <div class="simulating">
             <h3>Simulating human behaviour.
                     Feel free to close this window. Task is running in Cloud.</h3>
        </div>
        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+      
+        {%endif%}
        {% endif%}
        <div class="text-center" display="inline-block-elements">
 

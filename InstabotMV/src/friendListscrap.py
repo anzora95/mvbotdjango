@@ -64,15 +64,20 @@ def friendScrapi(sc_us, sc_pas,sc_account):
     while True:
         count=0
         #second scroll on the popup
-        driver.execute_script("arguments[0].scrollTop=arguments[1];",fal,1000)
+        driver.execute_script("arguments[0].scrollTop=arguments[1];",fal,10000)
         sleep(2)
         new_height=driver.execute_script("return arguments[0].scrollHeight;",fal)
 
         if new_height == last_height:  
-            
+            print("this is the last_height")
+            print(last_height)
+            print("This is new_height")
+            print(new_height)
             break
         else:
             last_height=new_height
+            driver.execute_script("arguments[0].scrollTop=arguments[1];",fal,500)
+            print(last_height)
             count=count+1
    
     #
@@ -81,7 +86,7 @@ def friendScrapi(sc_us, sc_pas,sc_account):
     driver.close()
     return(followers)
     
-    #print("por aqui ya paso")
+
 
 
 

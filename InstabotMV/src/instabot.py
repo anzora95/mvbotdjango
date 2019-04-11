@@ -30,6 +30,7 @@ from InstabotMV.models import *
 from InstabotMV.src.mail_send import mail_notify
 from InstabotMV.src.friendListscrap import friendScrapi
 from .sql_updates import sleep_mod, sleep_mod_off
+from switchcase import switch # probar nuevo modo de switch para la funcion de follow user
 
 
 class InstaBot:
@@ -238,7 +239,7 @@ class InstaBot:
         self.hour_start=range(15,16)
         self.hour_end=range(16,17)
 
-        self.ran_counters=range()
+        #self.ran_counters=range()
 
         self.start_at_h = start_at_h #random.choice(self.hour_start)
         self.start_at_m = start_at_m#random.choice(self.min)
@@ -1066,7 +1067,7 @@ class InstaBot:
                             #self.remove_already_liked()
                         # ------------------- Like y follow -------------------
                         if self.ftfollow and self.ftlike:
-                            self.new_auto_mod_follow_user()
+                            self.ultra_follow_user_friend()
                             self.new_auto_mod_like_user()
                         # ------------------- Only like -------------------
                         elif self.ftlike:
@@ -1188,7 +1189,6 @@ class InstaBot:
                     return
                 if check_already_followed(self,id)==1:
                     self.write_log("Already followed before " + id) #aqui se cuestiona si el usuario ya fue followed para no darle follow de nuevo
-                    #self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay / 2)
                     self.scraped_user.remove(us)
                     print(self.scraped_user)
                     return
@@ -1228,6 +1228,32 @@ class InstaBot:
                             [user_prov_id, time.time()])      #en este if se agrega a la lista de usuarios ya seguidos en bot_follow_list
                             self.next_iteration["Follow"] = time.time() + \
                                                 self.add_time(self.follow_delay)     #aqui espera la siguiente iteracion
+
+    def ultra_follow_user_friend(self):
+            print(self.scraped_user)
+            for us in self.scraped_user:
+                id=self.get_userID_by_name(us)
+                if id==self.user_id:
+                    vers=0
+                elif check_already_followed(self,id)==1:
+                    vers=1
+                else:
+                    vers=2
+                for case in switch(vers):
+                    if case(0):
+                        self.write_log("Keep calm - It's your own profile ;)")
+                        time.sleep(5)
+                        break
+                    if case(1):
+                        self.write_log("Already followed before " + id) #aqui se cuestiona si el usuario ya fue followed para no darle follow de nuevo
+                        time.sleep(5)
+                        break
+                    else:
+                        log_string = "Trying to follow: %s" % (id)
+                        self.write_log(log_string)                        
+                        self.follow(id)
+                        time.sleep(random.choice(self.sec))
+                        vers=2
 
     def new_auto_mod_unfollow(self):
         if time.time() > self.next_iteration["Unfollow"] and self.unfollow_per_day != 0:
@@ -1509,7 +1535,7 @@ class InstaBot:
         self.start_at_h=random.choice(self.hour_start)
         self.end_at_h=random.choice(self.hour_end)
 
-        if self.start_at_h < self.end_at_h:
+        if self.start_at_h > self.end_at_h:
             print("Empieza a : %s" % self.start_at_h)
             print("Termina a las : %s" % self.end_at_h)
             var3 = self.end_at_h-self.start_at_h

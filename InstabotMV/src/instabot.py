@@ -1016,7 +1016,7 @@ class InstaBot:
         
         while True:
             now = datetime.datetime.now()
-            if now==now:
+            if now==datetime.time(23,0):
                 #self.valid_sleep()
                 print("hello")
             else:
@@ -1548,7 +1548,7 @@ class InstaBot:
 
         while (self.end_at_h>self.start_at_h or self.start_at_h-self.end_at_h >= 7):
             self.start_at_h=random.choice(self.hour_start) #el bot vuelve a iniciar
-        self.end_at_h=random.choice(self.hour_end) #el bot se detiene
+            self.end_at_h=random.choice(self.hour_end) #el bot se detiene
         
         print (self.end_at_h)
         print (self.start_at_h)

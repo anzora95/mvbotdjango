@@ -48,7 +48,7 @@ def friendScrapi(sc_us, sc_pas,sc_account,target):
     sleep(4)
     #Select followers or followings links on profile target page
     if target==False:
-        fol=driver.find_element_by_css_selector("a[href*='following'] span")
+        fol=driver.find_element_by_css_selector("a[href*='followings'] span")
     else:
         fol=driver.find_element_by_css_selector("a[href*='followers'] span")
     fol.click()

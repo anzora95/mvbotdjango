@@ -144,7 +144,7 @@ class InstaBot:
                  start_at_h=0,
                  start_at_m=0,
                  end_at_h=23,
-                 end_at_m=59,
+                 end_at_m=0,
                  comment_list=[],
                  comments_per_day=0,
                  tag_list=['misamigos'],
@@ -188,8 +188,7 @@ class InstaBot:
         self.ceiling_number=ceil
         self.us=us
         fake_ua = UserAgent()
-        self.user_agent = "Mozilla/5.0 (Windows; U; Windows NT 6.0; fr-FR) AppleWebKit/533.18.1 (KHTML, like Gecko) " \
-                          "Version/5.0.2 Safari/533.18.5"
+        self.user_agent = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36")
         self.bot_start = datetime.datetime.now()
         self.unfollow_break_min = unfollow_break_min
         self.unfollow_break_max = unfollow_break_max
@@ -319,7 +318,7 @@ class InstaBot:
         }
 
         self.s.headers.update({
-            'Accept': '*/*',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
             'Accept-Language': self.accept_language,
             'Accept-Encoding': 'gzip, deflate, br',
             'Connection': 'keep-alive',
@@ -1111,6 +1110,7 @@ class InstaBot:
                             self.new_auto_mod_unfollow()
                         # print("Tic!")
                 else:
+                    
                     print("sleeping until {hour}:{min}".format(hour=self.start_at_h,min=self.start_at_m), end="\r")
                     sleep_mod(self.task_id)
                     time.sleep(100)

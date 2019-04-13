@@ -269,3 +269,8 @@ def followed_ngage(usr_id):
         insert_unfollow_count(usr_id)
     else:
         print("Usuario no seguido por ngage")
+
+def update_sleep(task_id):
+    tsk=Task.objects.get(task_id=task_id)
+    tsk.sleep_mod=1
+    tsk.save()

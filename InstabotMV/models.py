@@ -73,7 +73,7 @@ class Task(models.Model):
 
 
 class Media(models.Model):
-    task=models.ForeignKey(Task, on_delete=models.CASCADE) 
+    task=models.IntegerField()
     media_id = models.CharField(max_length=300)
     status = models.IntegerField()
     datetime = models.DateTimeField()
@@ -85,7 +85,7 @@ class Media(models.Model):
 
 
 class Username(models.Model):
-    task=models.ForeignKey(Task, on_delete=models.CASCADE)
+    task=models.IntegerField()
     username = models.CharField(max_length=300)
     username_id = models.CharField(max_length=300)
     unfollow_count = models.IntegerField()

@@ -691,9 +691,9 @@ class InstaBot:
                                     log_string = "Liked: %s. Like #%i." % \
                                                  (self.media_by_tag[i]['node']['id'],
                                                   self.like_counter)
-                                    insert_media(self,
+                                    insert_media(self, task=self.task_id,
                                                  media_id=self.media_by_tag[i]['node']['id'],
-                                                 status="200", code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name=self.get_username_by_media_id(self.media_by_tag[i]['node']['id']), us=self.us, picUrl=self.get_userPic_by_name(self.get_username_by_media_id(self.media_by_tag[i]['node']['id'])), task_id=self.task_id)
+                                                 status="200", code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name=self.get_username_by_media_id(self.media_by_tag[i]['node']['id']), us=self.us, picUrl=self.get_userPic_by_name(self.get_username_by_media_id(self.media_by_tag[i]['node']['id'])))
                                     #log__string= "el url es  %s" %(url_media)
                                     #log__string=get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id'],True,None)   #se saca el url del media para poder ejecutarlo para asi ver el json para poder extraerel json del los datos del usuario
                                     self.write_log(log_string)
@@ -701,9 +701,9 @@ class InstaBot:
                                     log_string = "Not liked: %i" \
                                                  % (like.status_code)
                                     self.write_log(log_string)                                   
-                                    insert_media(self,
+                                    insert_media(self, task=self.task_id,
                                                  media_id=self.media_by_tag[i]['node']['id'],
-                                                 status="400", code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name = self.get_username_by_media_id(self.media_by_tag[i]['node']['id']),us=self.us, picUrl=self.get_userPic_by_name(self.get_username_by_media_id(self.media_by_tag[i]['node']['id'])), task_id=self.task_id)
+                                                 status="400", code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name = self.get_username_by_media_id(self.media_by_tag[i]['node']['id']),us=self.us, picUrl=self.get_userPic_by_name(self.get_username_by_media_id(self.media_by_tag[i]['node']['id'])))
                                     # Some error. If repeated - can be ban!
                                     if self.error_400 >= self.error_400_to_ban:
                                         # Look like you banned!
@@ -714,9 +714,9 @@ class InstaBot:
                                     log_string = "Not liked: %i" \
                                                  % (like.status_code)
 
-                                    insert_media(self,
+                                    insert_media(self, task=self.task_id,
                                                  media_id=self.media_by_tag[i]['node']['id'],
-                                                 status=str(like.status_code),code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name = self.get_username_by_media_id(self.media_by_tag[i]['node']['id']),us=self.us, picUrl=self.get_userPic_by_name(self.get_username_by_media_id(self.media_by_tag[i]['node']['id'])), task_id=self.task_id)
+                                                 status=str(like.status_code),code=self.get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id']), owner_name = self.get_username_by_media_id(self.media_by_tag[i]['node']['id']),us=self.us, picUrl=self.get_userPic_by_name(self.get_username_by_media_id(self.media_by_tag[i]['node']['id'])))
                                     log2extra="Estado del bot %i" %(self.bot_mode)
                                     self.write_log(log_string)                                 
                                     return False
@@ -844,9 +844,9 @@ class InstaBot:
                                     log_string = "Liked: %s. Like #%i." % \
                                                  (self.media_by_user[i]['node']['id'],
                                                   self.like_counter)
-                                    insert_media(self,
+                                    insert_media(self, task=self.task_id,
                                                  media_id=self.media_by_user[i]['node']['id'],
-                                                 status="200", code=self.get_instagram_url_from_media_id(self.media_by_user[i]['node']['id']), owner_name=self.get_username_by_media_id(self.media_by_user[i]['node']['id']), us=self.us, picUrl=self.get_userPic_by_name(self.get_username_by_media_id(self.media_by_user[i]['node']['id'])), task_id=self.task_id)
+                                                 status="200", code=self.get_instagram_url_from_media_id(self.media_by_user[i]['node']['id']), owner_name=self.get_username_by_media_id(self.media_by_user[i]['node']['id']), us=self.us, picUrl=self.get_userPic_by_name(self.get_username_by_media_id(self.media_by_user[i]['node']['id'])))
                                     #log__string= "el url es  %s" %(url_media)
                                     #log__string=get_instagram_url_from_media_id(self.media_by_tag[i]['node']['id'],True,None)   #se saca el url del media para poder ejecutarlo para asi ver el json para poder extraerel json del los datos del usuario
                                     self.write_log(log_string)
@@ -854,9 +854,9 @@ class InstaBot:
                                     log_string = "Not liked: %i" \
                                                  % (like.status_code)
                                     self.write_log(log_string)                                   
-                                    insert_media(self,
+                                    insert_media(self, task=self.task_id,
                                                  media_id=self.media_by_user[i]['node']['id'],
-                                                 status="400", code=self.get_instagram_url_from_media_id(self.media_by_user[i]['node']['id']), owner_name=self.get_username_by_media_id(self.media_by_user[i]['node']['id']), us=self.us, picUrl=self.get_userPic_by_name(self.get_username_by_media_id(self.media_by_user[i]['node']['id'])), task_id=self.task_id)
+                                                 status="400", code=self.get_instagram_url_from_media_id(self.media_by_user[i]['node']['id']), owner_name=self.get_username_by_media_id(self.media_by_user[i]['node']['id']), us=self.us, picUrl=self.get_userPic_by_name(self.get_username_by_media_id(self.media_by_user[i]['node']['id'])))
                                     # Some error. If repeated - can be ban!
                                     if self.error_400 >= self.error_400_to_ban:
                                         # Look like you banned!
@@ -867,9 +867,9 @@ class InstaBot:
                                     log_string = "Not liked: %i" \
                                                  % (like.status_code)
 
-                                    insert_media(self,
+                                    insert_media(self, task=self.task_id,
                                                  media_id=self.media_by_user[i]['node']['id'],
-                                                 status=str(like.status_code),code=self.get_instagram_url_from_media_id(self.media_by_user[i]['node']['id']), owner_name = self.get_username_by_media_id(self.media_by_user[i]['node']['id']),us=self.us, picUrl=self.get_userPic_by_name(self.get_username_by_media_id(self.media_by_user[i]['node']['id'])), task_id=self.task_id)
+                                                 status=str(like.status_code),code=self.get_instagram_url_from_media_id(self.media_by_user[i]['node']['id']), owner_name = self.get_username_by_media_id(self.media_by_user[i]['node']['id']),us=self.us, picUrl=self.get_userPic_by_name(self.get_username_by_media_id(self.media_by_user[i]['node']['id'])))
                                     log2extra="Estado del bot %i" %(self.bot_mode)
                                     self.write_log(log_string)                                 
                                     return False
@@ -947,7 +947,7 @@ class InstaBot:
                     self.write_log(log_string)
                     username = self.get_username_by_user_id(user_id=user_id)
                     pic= self.get_userPic_by_name(username)
-                    insert_username(self, username_id=user_id, username=username, unfollow=0,us=self.us,picUrl=pic,task_id=self.task_id)
+                    insert_username(self, task=self.task_id,username_id=user_id, username=username, unfollow=0,us=self.us,picUrl=pic)
                 return follow
             except:
                 logging.exception("Except on follow!")
@@ -1340,11 +1340,10 @@ class InstaBot:
                     #get_userPic_by_name(self, username)
                     img_url=self.get_userPic_by_name(name_val)
                 #llenar una variable con un numero random luego evaluar si ese numero no es tan exagerado y luego multiplicarlo po 60 que en segundos equivale a un minuto
-                    insert_username(self, username_id=id, username=name_val, unfollow=1, us=self.user_login, picUrl= img_url,task_id=self.task_id  )
+                    insert_username(self,task=self.task_id, username_id=id, username=name_val, unfollow=1, us=self.user_login, picUrl= img_url  )
                 time.sleep(random.choice(self.sec))
         else:
             self.write_log("Looks like there is nobody to unfollow.")
-
 
 
     def auto_unfollow(self):

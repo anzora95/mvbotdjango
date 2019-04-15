@@ -48,9 +48,9 @@ def friendScrapi(sc_us, sc_pas,sc_account,target):
     sleep(4)
     #Select followers or followings links on profile target page
     if target==False:
-        fol=driver.find_element_by_css_selector("a[href*='followings'] span")
+        fol=driver.find_element_by_css_selector("a[href*='following'] span")
     else:
-        fol=driver.find_element_by_css_selector("a[href*='followers'] span")
+        fol=driver.find_element_by_css_selector("a[href*='follower'] span")
     fol.click()
     sleep(4)
     
@@ -67,7 +67,7 @@ def friendScrapi(sc_us, sc_pas,sc_account,target):
     while True:
         count=0
         #second scroll on the popup
-        driver.execute_script("arguments[0].scrollTop=arguments[1];",fal,10000)
+        driver.execute_script("arguments[0].scrollTop=arguments[1];",fal,1000)
         sleep(2)
         new_height=driver.execute_script("return arguments[0].scrollHeight;",fal)
 

@@ -17,9 +17,11 @@ Parametro si sera followers o followings
 
 """funcion para friendlist"""
 def friendScrapi(sc_us, sc_pas,sc_account,target):
+    #scroll
+    scroll=500
 
     #def login(driver):
-
+    print(sc_account)
     username = sc_us  # <username here>
     password = sc_pas  # <password here>
     list_css = "div[role='dialog'] a.notranslate"
@@ -65,10 +67,11 @@ def friendScrapi(sc_us, sc_pas,sc_account,target):
     last_height=driver.execute_script("return arguments[0].scrollHeight;", fal)
     print(last_height)
     while True:
-        count=0
+        scroll=scroll+500
+        #count=0
         #second scroll on the popup
-        driver.execute_script("arguments[0].scrollTop=arguments[1];",fal,1000)
-        sleep(2)
+        driver.execute_script("arguments[0].scrollTop=arguments[1];",fal,scroll)
+        sleep(4)
         new_height=driver.execute_script("return arguments[0].scrollHeight;",fal)
 
         if new_height == last_height:  
@@ -78,15 +81,17 @@ def friendScrapi(sc_us, sc_pas,sc_account,target):
             print(new_height)
             break
         else:
+            scroll=scroll+500
             last_height=new_height
-            driver.execute_script("arguments[0].scrollTop=arguments[1];",fal,500)
             print(last_height)
-            count=count+1
+            #count=count+1
    
     #
     _followers= driver.find_elements_by_css_selector(list_css)
     followers = [i.text for i in _followers]
     driver.close()
+    cou=len(followers)
+    print(cou)
     return(followers)
     
 

@@ -94,11 +94,10 @@
                             
                                 {% for u in UX%}
                                 
-                                {% if task.id == u.task.id%}
+                                {% if task.id == u.task %}
                                 <a  href="https://www.instagram.com/{{u.username}}/">
-                                <img class="ticker" style="border-radius: 50%; width: 40px;
-                        height: 40px;" src="{{u.picUrl}}" alt="user-pic">
-                        </a>
+                                <img class="ticker" style="border-radius: 50%; width: 40px;height: 40px;" src="{{u.picUrl}}" alt="user-pic">
+                                </a>
                         
                         {% if task.unfollow%}
                         <i class="glyphicon min glyphicon-minus-sign"></i>

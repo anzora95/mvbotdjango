@@ -160,7 +160,7 @@ def DashboardView(request):
     count=0
     UN=Username.objects.all() #Limit the ticker number.
     for t in range(0,len(UN)):
-        if UN[t].cred_us==ll.cred.insta_user and count<=350:
+        if UN[t].cred_us==ll.cred.insta_user and count<=75:
             count+=1
             UX.append(UN[t])
     print(ll.cred.insta_user)
@@ -168,11 +168,12 @@ def DashboardView(request):
     for x in range(0,len(AT)):
        if AT[x].creds==cred:#If the task has the current logged user add it to the LT list
            #print(AT[x].user.username)
-           
            LT.append(AT[x])
+           #print("lt se acaba de llenar")
     if len(LT)==0:
         empty=True
         print(LT)
+        print("lt esta vacio")
         return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'empty':empty,'UN':UN}) 
 
     return render(request, 'dashboard.html', {'ll':ll,'LT':LT,'UN':UN,'UX':UX})

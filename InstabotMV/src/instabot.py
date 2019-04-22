@@ -144,7 +144,7 @@ class InstaBot:
                  start_at_h=0,
                  start_at_m=0,
                  end_at_h=23,
-                 end_at_m=0,
+                 end_at_m=30,
                  comment_list=[],
                  comments_per_day=0,
                  tag_list=['misamigos'],
@@ -225,6 +225,10 @@ class InstaBot:
         self.comments_per_day = comments_per_day
         if self.comments_per_day != 0:
             self.comments_delay = self.time_in_day / self.comments_per_day
+        
+        #hour range for sleep bot
+        self.start_time=range(0,23)
+        self.stop_time=range(0,23)
 
         #timer
         #for skyrocketUp plan and scaling up likes plan
@@ -355,6 +359,7 @@ class InstaBot:
                 self.login_status = True
                 log_string = '%s login success!' % (self.user_login)
                 self.write_log(log_string)#aqui deberia ir la funcion de guardar la url de la imagen con un if que compruebe si ya esta en la base de datos o no
+                #self.valid_sleep()#determina la hora a la cual dormir
             else:
                 self.login_status = False
                 self.write_log('Login error! Check your login data!')
@@ -1015,12 +1020,11 @@ class InstaBot:
         
         while True:
             now = datetime.datetime.now()
-            if now==datetime.time(23,0):
-                #self.valid_sleep()
-                print("hello")
-            else:
+            #print(now.time())
+            #print(datetime.time(self.start_at_h, self.start_at_m))
+            #print(datetime.time(self.end_at_h, self.end_at_m))
 
-                if (
+            if (
                         datetime.time(self.start_at_h, self.start_at_m) <= now.time() #funcion simulating human pordria usarse aqui
                         and now.time() <= datetime.time(self.end_at_h, self.end_at_m)
                 ):
@@ -1083,7 +1087,7 @@ class InstaBot:
                                 self.new_auto_mod_like_user()
                             #--------------------Only follow------------------
                             elif self.ftfollow:
-                                self.new_auto_mod_follow_user()
+                                self.ultra_follow_user_friend()
                             # ------------------- Unfollow -----------------
                             
                             # ------------------- Comment ------------------
@@ -1109,7 +1113,7 @@ class InstaBot:
                         else:
                             self.new_auto_mod_unfollow()
                         # print("Tic!")
-                else:
+            else:
                     
                     print("sleeping until {hour}:{min}".format(hour=self.start_at_h,min=self.start_at_m), end="\r")
                     sleep_mod(self.task_id)
@@ -1541,17 +1545,32 @@ class InstaBot:
                 print("Your text has unicode problem!")
 
     def valid_sleep(self):
+        
+        rango_stop=range(0,23)
+        rango_start=range(0,23)
+        rango_minuto=range(0,58)
 
-        self.start_at_h=random.choice(self.hour_start) #el bot vuelve a iniciar
-        self.end_at_h=random.choice(self.hour_end) #el bot se detiene
+        self.start_at_h=random.choice(rango_stop) #el bot vuelve a iniciar
+        self.end_at_h=random.choice(rango_start) #el bot se detiene
 
         while (self.end_at_h>self.start_at_h or self.start_at_h-self.end_at_h >= 7):
-            self.start_at_h=random.choice(self.hour_start) #el bot vuelve a iniciar
-            self.end_at_h=random.choice(self.hour_end) #el bot se detiene
+            print("hola")
+            self.start_at_h=random.choice(rango_start) #el bot vuelve a iniciar
+            self.start_at_m=random.choice(rango_minuto)
+            self.end_at_h=random.choice(rango_start) #el bot se detiene
+            self.end_at_m=random.choice(rango_minuto)
         
         print (self.end_at_h)
         print (self.start_at_h)
-        
+        print("Se detiene a : ")
+        print(self.end_at_h)
+        print("con: ")
+        print(self.end_at_m)
+        print("Empieza a las :" )
+        print(self.start_at_h)
+        print("con:")
+        print(self.start_at_m)
+
 
 
 

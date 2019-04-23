@@ -158,13 +158,25 @@ def DashboardView(request):
     UX=[]
     z="Hola esto es una prueba"
     count=0
+    t=Task.objects.all()
+    print(len(t))
+    listtask=[]
+    for i in range(0,len(t)):
+        if t[i].creds.insta_user==ll.cred.insta_user:
+            listtask.append(t[i])
+    print(len(listtask),"Lista del usuario")
+    print(listtask[0].id)
     UN=Username.objects.all() #Limit the ticker number.
-    for t in range(0,len(UN)):
-        if UN[t].cred_us==ll.cred.insta_user and count<=350:
-            count+=1
-            UX.append(UN[t])
+    print(len(UN),"Impresion")
+    for i in range(0,len(listtask)):
+        count=0
+        for t in range(0,len(UN)):
+            
+            if UN[t].cred_us==ll.cred.insta_user and UN[t].task ==listtask[i].id and count<=75:
+                count+=1
+                UX.append(UN[t])
     print(ll.cred.insta_user)
-    print(len(UX))
+    print(len(UX),"NUeva lista del ticker")
     for x in range(0,len(AT)):
        if AT[x].creds==cred:#If the task has the current logged user add it to the LT list
            #print(AT[x].user.username)

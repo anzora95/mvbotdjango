@@ -42,7 +42,7 @@
                         height: 75px;" src="{{cred.imgUrl}}" alt="user-pic">
                         <div class="caption">
                             <h4 class="text-center">{{cred.insta_user}}</h4>
-                            {% if cred.insta_followers %}
+                            {% if cred.insta_followers and cred.ceiling %}
                             <p>Followers: {{cred.insta_followers}}</p>
                             <p>Followings: {{cred.insta_followings}}</p>
                             {%else %}

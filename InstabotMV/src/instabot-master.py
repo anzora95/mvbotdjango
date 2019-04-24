@@ -20,7 +20,6 @@ from .sql_updates import insert_media, insert_username, insert_unfollow_count
 from .sql_updates import get_username_random
 from .sql_updates import count_ngage
 from .sql_updates import followed_ngage
-from .sql_updates import bad_pass
 from fake_useragent import UserAgent
 import re
 from .location_follow import get_us_id_by_location
@@ -75,7 +74,7 @@ class InstaBot:
     # If you have 3 400 error in row - looks like you banned.
     error_400_to_ban = 3
     # If InstaBot think you are banned - going to sleep.
-    ban_sleep_time = 6 * 60 * 60
+    ban_sleep_time = 2 * 60 * 60
 
     # All counter.
     bot_mode = 0
@@ -142,10 +141,10 @@ class InstaBot:
                  follow_per_day=300,
                  follow_time=5 * 60 * 60,
                  unfollow_per_day=300,
-                 start_at_h=0,
-                 start_at_m=0,
-                 end_at_h=23,
-                 end_at_m=30,
+                 start_at_h=13,
+                 start_at_m=30,
+                 end_at_h=13,
+                 end_at_m=21,
                  comment_list=[],
                  comments_per_day=0,
                  tag_list=['misamigos'],
@@ -363,12 +362,10 @@ class InstaBot:
                 #self.valid_sleep()#determina la hora a la cual dormir
             else:
                 self.login_status = False
-                self.write_log('Login error! Check your login data!, plz review your credentials ')
-                bad_pass(self.user_login)
-
+                self.write_log('Login error! Check your login data!')
         else:
             self.write_log('Login error! Connection error!')
-            #mail_notify("", "","","")
+            mail_notify("No Se pudo conectar con su cuenta", "cristianarielzelaya@hotmail.com","ariel@mvagency.co","Canela12mojarro")
 
     def logout(self):
         now_time = datetime.datetime.now()
@@ -956,12 +953,6 @@ class InstaBot:
                     username = self.get_username_by_user_id(user_id=user_id)
                     pic= self.get_userPic_by_name(username)
                     insert_username(self, task=self.task_id,username_id=user_id, username=username, unfollow=0,us=self.us,picUrl=pic)
-                    print("El valor de el request es:")
-                    print(follow.status_code)
-                else:
-                    time.sleep(self.ban_sleep_time)
-                    print("El valor de el request es:")
-                    print(follow.status_code)
                 return follow
             except:
                 logging.exception("Except on follow!")
@@ -1029,13 +1020,13 @@ class InstaBot:
         
         while True:
             now = datetime.datetime.now()
-            #print(now.time())
-            #print(datetime.time(self.start_at_h, self.start_at_m))
-            #print(datetime.time(self.end_at_h, self.end_at_m))
+            print(now.time())
+            print(datetime.time(self.start_at_h, self.start_at_m))
+            print(datetime.time(self.end_at_h, self.end_at_m))
 
             if (
                         datetime.time(self.start_at_h, self.start_at_m) <= now.time() #funcion simulating human pordria usarse aqui
-                        and now.time() <= datetime.time(self.end_at_h, self.end_at_m)
+                        and now.time() >= datetime.time(self.end_at_h, self.end_at_m)
                 ):
                     sleep_mod_off(self.task_id)
                     # ------------------- TASK BY HASHTAG -------------------
@@ -1194,9 +1185,6 @@ class InstaBot:
                 aux=random.choice(self.sec)
                 print(aux)
                 time.sleep(aux)    #aqui espera la siguiente iteracion
-            
-            else:
-                print("el follow regresa un false")
                 
             
             #time.sleep(random.choice(self.sec))    
@@ -1582,10 +1570,6 @@ class InstaBot:
         print(self.start_at_h)
         print("con:")
         print(self.start_at_m)
-
-"""     def limit_insta_foll(folls_num):
-    if folls_num<=7500 and folls_num >= 7200:
-        mail_notify("", "","","") """
 
 
 

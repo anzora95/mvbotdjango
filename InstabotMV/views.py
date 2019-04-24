@@ -13,6 +13,7 @@ from InstabotMV.forms import InstaCredsForm
 from django.db.models import Q
 
 from django.views.generic import View, DetailView, TemplateView, UpdateView, DeleteView, ListView
+from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.http import JsonResponse
@@ -20,6 +21,7 @@ import urllib, json
 from datetime import date, timedelta
 from InstabotMV.src.sql_updates import update_creds
 from switchcase import switch
+from InstabotMV.src.sql_updates import good_pass
 # *************************************************Bot imports**********************************************************
 
 import time
@@ -63,6 +65,13 @@ def pruebaimpresion(self):
     return redirect('instabot:dashboard')
 aux=1
 
+def compar_task(task_id, user_n):
+    valu=False
+    task=Task.objects.all()
+    for t in range(0,len(task)):
+        if user_n.task==task[t]:
+            valu=True
+    return valu
 
 
 
@@ -160,7 +169,7 @@ def DashboardView(request):
     count=0
     UN=Username.objects.all() #Limit the ticker number.
     for t in range(0,len(UN)):
-        if UN[t].cred_us==ll.cred.insta_user and count<=75:
+        if UN[t].cred_us==ll.cred.insta_user and count<=75 :
             count+=1
             UX.append(UN[t])
     print(ll.cred.insta_user)
@@ -239,6 +248,7 @@ class UserAccounts(LoginRequiredMixin, View):
         finfo=[]
 
         for x in range(0,len(creds)):
+            #print(creds[x].ceiling)
             if creds[x].user==user:
                 lcreds.append(creds[x])
                 finfo=scrap_us(creds[x].insta_user)
@@ -248,9 +258,8 @@ class UserAccounts(LoginRequiredMixin, View):
                 else:
                     creds[x].insta_followers=False
                     creds[x].insta_followings=False
-                    
+            
 
-       
         return render(request, 'users/mybot.html', {'lcreds':lcreds,'ll':ll, 'packs':packs})
 
     def post(self, request):
@@ -312,10 +321,10 @@ def Settings(request):
     cred=ll.cred
     if request.method == 'POST':
         if request.POST.get('ceili')==None:
-            cred.ceiling=False
+            cred.ceiling=True
             cred.save()
         else:
-            cred.ceiling=True
+            cred.ceiling=False
             cred.number_ceiling=request.POST.get('Ceiling')
             cred.save()
         print(request.POST.get('ceili'))

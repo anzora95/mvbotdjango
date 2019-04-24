@@ -93,7 +93,8 @@
                         <div class="tick">
                             
                                 {% for u in UX%}
-                                
+                                <p>{{task.id}}--l---{{u.task}}</p>
+                                <p>             v             </p>
                                 {% if task.id == u.task %}
                                 <a  href="https://www.instagram.com/{{u.username}}/">
                                 <img class="ticker" style="border-radius: 50%; width: 40px;height: 40px;" src="{{u.picUrl}}" alt="user-pic">

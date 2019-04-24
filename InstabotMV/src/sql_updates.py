@@ -123,6 +123,7 @@ def update_creds(us_actual,new_pass=False,new_name=False):
             if valid==2:
                 cr.insta_pass=new_pass
                 cr.save()
+                good_pass(us_actual)
                 return 1#valor de retorno bandera para el mensaje
             else:
                 print("La contraseña no es valida")
@@ -275,3 +276,14 @@ def update_sleep(task_id):
     tsk=Task.objects.get(task_id=task_id)
     tsk.sleep_mod=1
     tsk.save()
+
+def bad_pass(user):
+    u=Creds.objects.get(insta_user=user)
+    u.ceiling=False
+    u.save()
+
+def good_pass(user):
+    u=Creds.objects.get(insta_user=user)
+    u.ceiling=True
+    u.save()
+    

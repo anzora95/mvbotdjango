@@ -142,10 +142,10 @@ class InstaBot:
                  follow_per_day=300,
                  follow_time=5 * 60 * 60,
                  unfollow_per_day=300,
-                 start_at_h=0,
-                 start_at_m=0,
-                 end_at_h=23,
-                 end_at_m=30,
+                 start_at_h=11,
+                 start_at_m=30,
+                 end_at_h=11,
+                 end_at_m=10,
                  comment_list=[],
                  comments_per_day=0,
                  tag_list=['misamigos'],
@@ -1030,13 +1030,23 @@ class InstaBot:
         while True:
             now = datetime.datetime.now()
             #print(now.time())
-            #print(datetime.time(self.start_at_h, self.start_at_m))
-            #print(datetime.time(self.end_at_h, self.end_at_m))
+            print(datetime.time(self.start_at_h, self.start_at_m))
+            print(datetime.time(self.end_at_h, self.end_at_m))
 
-            if (
-                        datetime.time(self.start_at_h, self.start_at_m) <= now.time() #funcion simulating human pordria usarse aqui
-                        and now.time() <= datetime.time(self.end_at_h, self.end_at_m)
-                ):
+            #if (
+            #            datetime.time(self.start_at_h, self.start_at_m) <= now.time() #funcion simulating human pordria usarse aqui
+            #            and now.time() <= datetime.time(self.end_at_h, self.end_at_m)
+            #):
+            # distance between start time and now
+            start=datetime.time(self.start_at_h,self.start_at_m)
+            dns = self.time_dist(start,now.time())
+
+            
+            # distance between end time and now
+            end=datetime.time(self.end_at_h,self.end_at_m)
+            dne = self.time_dist(end,now.time())
+
+            if (dns == 0 or dne < dns) and dne != 0:
                     sleep_mod_off(self.task_id)
                     # ------------------- TASK BY HASHTAG -------------------
                     if self.ft_friendlist ==False and self.ft_unfollow== False:
@@ -1556,38 +1566,24 @@ class InstaBot:
             except UnicodeEncodeError:
                 print("Your text has unicode problem!")
 
-    def valid_sleep(self):
-        
-        rango_stop=range(0,23)
-        rango_start=range(0,23)
-        rango_minuto=range(0,58)
-
-        self.start_at_h=random.choice(rango_stop) #el bot vuelve a iniciar
-        self.end_at_h=random.choice(rango_start) #el bot se detiene
-
-        while (self.end_at_h>self.start_at_h or self.start_at_h-self.end_at_h >= 7):
-            print("hola")
-            self.start_at_h=random.choice(rango_start) #el bot vuelve a iniciar
-            self.start_at_m=random.choice(rango_minuto)
-            self.end_at_h=random.choice(rango_start) #el bot se detiene
-            self.end_at_m=random.choice(rango_minuto)
-        
-        print (self.end_at_h)
-        print (self.start_at_h)
-        print("Se detiene a : ")
-        print(self.end_at_h)
-        print("con: ")
-        print(self.end_at_m)
-        print("Empieza a las :" )
-        print(self.start_at_h)
-        print("con:")
-        print(self.start_at_m)
-
-"""     def limit_insta_foll(folls_num):
-    if folls_num<=7500 and folls_num >= 7200:
-        mail_notify("", "","","") """
-
-
+    
+    def time_dist(self,to_time, from_time):
+        """
+        Method to compare time.
+        In terms of minutes result is
+        from_time + result == to_time
+        Args:
+            to_time: datetime.time() object.
+            from_time: datetime.time() object.
+        Returns: int
+            how much minutes between from_time and to_time
+            if to_time < from_time then it means that
+                to_time is on the next day.
+        """
+        to_t = to_time.hour * 60 + to_time.minute
+        from_t = from_time.hour * 60 + from_time.minute
+        midnight_t = 24 * 60
+        return (midnight_t - from_t) + to_t if to_t < from_t else to_t - from_t
 
 
     

@@ -89,7 +89,8 @@ class Username(models.Model):
     username = models.CharField(max_length=300)
     username_id = models.CharField(max_length=300)
     unfollow_count = models.IntegerField()
-    last_followed_time = models.DateTimeField()
+    last_followed_time = models.DateTimeField(null=True)
+    unfollowed_time=models.DateTimeField(null=True)
     cred_us = models.CharField(max_length=100)
     picUrl=models.TextField()
     
@@ -175,4 +176,8 @@ class thread(models.Model):
         return '%s' % (self.task.tags)
 
 
-        
+class bitacora(models.Model):
+    Cred=models.ForeignKey(Creds,on_delete=models.CASCADE)
+    followers=models.IntegerField()
+    followings=models.IntegerField()
+    datetime=models.DateTimeField()        

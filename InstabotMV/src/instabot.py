@@ -925,9 +925,23 @@ class InstaBot:
                 unlike = 0
             return unlike
 
-    def saludo(self):
-        print("hola")
-        return 0
+    def bitacora_info(self, username):
+        url_info = self.url_user_detail % (username)
+        try:
+            r = self.s.get(url_info)
+            all_data = json.loads(r.text)
+            ret_follow = all_data['graphql']['user']#Todo el Json del usuario
+            followers_d=ret_follow['edge_followed_by']['count'] #Followers
+            followings_d=ret_follow['edge_follow']['count']#Followings
+
+            
+            """  print(url1) """
+            print(followers_d)
+            print(followings_d)
+                #aqui retorna el user info con todos los valores llenos si el usuario targeteado no sigue a nuestra cuenta
+        except:
+            logging.exception("Except on get follow_viewer of user")
+            print ("No es hora de realizar diario")
 
     def comment(self, media_id, comment_text):
         """ Send http request to comment """
@@ -1048,6 +1062,9 @@ class InstaBot:
             # distance between end time and now
             end=datetime.time(self.end_at_h,self.end_at_m)
             dne = self.time_dist(end,now.time())
+
+            if (datetime.time(14, 0) <= now.time() and now.time() <= datetime.time(15,30 )):
+                self.bitacora_info(self.user_login)
 
             if (dns == 0 or dne < dns) and dne != 0:
                     sleep_mod_off(self.task_id)
@@ -1299,7 +1316,12 @@ class InstaBot:
                         log_string = "Trying to follow: %s" % (id)
                         self.write_log(log_string)                        
                         self.follow(id)
-                        time.sleep(random.choice(self.sec))
+                        if self.packagetipe==3:
+                            print("Sky rocket")
+                            aux=random.choice(self.sec)
+                        else:
+                            print("Other account type")
+                            aux=random.choice(self.sec_low)
                         vers=2
 
     def new_auto_mod_unfollow(self):

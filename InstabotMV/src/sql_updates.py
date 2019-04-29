@@ -286,4 +286,9 @@ def good_pass(user):
     u=Creds.objects.get(insta_user=user)
     u.ceiling=True
     u.save()
-    
+
+def get_userpackage(user):
+    usr=Creds.objects.get(insta_user=user)
+    pack=usr.pack_id
+    print(pack)
+    return(pack)

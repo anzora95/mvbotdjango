@@ -21,6 +21,7 @@ from .sql_updates import get_username_random
 from .sql_updates import count_ngage
 from .sql_updates import followed_ngage
 from .sql_updates import bad_pass
+from .sql_updates import get_userpackage
 from fake_useragent import UserAgent
 import re
 from .location_follow import get_us_id_by_location
@@ -142,10 +143,10 @@ class InstaBot:
                  follow_per_day=300,
                  follow_time=5 * 60 * 60,
                  unfollow_per_day=300,
-                 start_at_h=11,
-                 start_at_m=30,
-                 end_at_h=11,
-                 end_at_m=10,
+                 start_at_h=10,
+                 start_at_m=0,
+                 end_at_h=9,
+                 end_at_m=0,
                  comment_list=[],
                  comments_per_day=0,
                  tag_list=['misamigos'],
@@ -244,6 +245,7 @@ class InstaBot:
         self.hour_end=range(16,17)
 
         #self.ran_counters=range()
+
 
 
         self.start_at_m = start_at_m#random.choice(self.min)
@@ -361,6 +363,7 @@ class InstaBot:
                 log_string = '%s login success!' % (self.user_login)
                 self.write_log(log_string)#aqui deberia ir la funcion de guardar la url de la imagen con un if que compruebe si ya esta en la base de datos o no
                 #self.valid_sleep()#determina la hora a la cual dormir
+                self.packagetipe=get_userpackage(self.user_login)
             else:
                 self.login_status = False
                 self.write_log('Login error! Check your login data!, plz review your credentials ')
@@ -1189,7 +1192,7 @@ class InstaBot:
 
             if check_already_followed(self, user_id=self.media_by_tag[0]['node']["owner"]["id"]) == 1:
                 self.write_log("Already followed before " + self.media_by_tag[0]['node']["owner"]["id"]) #aqui se cuestiona si el usuario ya fue followed para no darle follow de nuevo
-                aux=random.choice(self.sec)
+                aux=random.choice(self.sec)   #if la cuenta tiene un paquete tal que lo valide aqui y depende del paquete asi sera la velodidad a la que hara follow
                 print(aux)
                 self.media_by_tag.remove(self.media_by_tag[0])
                     #aqui espera la siguiente iteracion
@@ -1201,7 +1204,12 @@ class InstaBot:
             self.write_log(log_string)                
             if self.follow(self.media_by_tag[0]['node']["owner"]["id"]) != False:
                 self.bot_follow_list.append([self.media_by_tag[0]['node']["owner"]["id"], time.time()])      #en este if se agrega a la lista de usuarios ya seguidos en bot_follow_list
-                aux=random.choice(self.sec)
+                if self.packagetipe==3:
+                    print("Sky rocket")
+                    aux=random.choice(self.sec)
+                else:
+                    print("Other account type")
+                    aux=random.choice(self.sec_low)
                 print(aux)
                 time.sleep(aux)    #aqui espera la siguiente iteracion
             
@@ -1235,7 +1243,10 @@ class InstaBot:
                 if self.follow(id)!=False:
                     self.bot_follow_list.append([id, time.time()])
                     
-                time.sleep(random.choice(self.sec))
+                if self.packagetipe==3: #categorizacion de 
+                    aux=random.choice(self.sec)
+                else:
+                    aux=random.choice(self.sec_low)
                     
                 self.next_iteration["Follow"] = time.time() + self.add_time(self.follow_delay)
 

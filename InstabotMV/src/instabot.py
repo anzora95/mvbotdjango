@@ -22,6 +22,7 @@ from .sql_updates import count_ngage
 from .sql_updates import followed_ngage
 from .sql_updates import bad_pass
 from .sql_updates import get_userpackage
+from .sql_updates import bitacora_update
 from fake_useragent import UserAgent
 import re
 from .location_follow import get_us_id_by_location
@@ -67,8 +68,7 @@ class InstaBot:
     url_user_detail = 'https://www.instagram.com/%s/?__a=1'
     api_user_detail = 'https://i.instagram.com/api/v1/users/%s/info/'
 
-    user_agent = "Mozilla/5.0 (Windows; U; Windows NT 6.0; fr-FR) AppleWebKit/533.18.1 (KHTML, like Gecko) " \
-                 "Version/5.0.2 Safari/533.18.5"
+    user_agent = "Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0"
     accept_language = 'en-US,en;q=0.5'
 
     # If instagram ban you - query return 400 error.
@@ -76,7 +76,8 @@ class InstaBot:
     # If you have 3 400 error in row - looks like you banned.
     error_400_to_ban = 3
     # If InstaBot think you are banned - going to sleep.
-    ban_sleep_time = 6 * 60 * 60
+    #ban_sleep_time = 6 * 60 * 60
+    ban_sleep_time =2 * 60
 
     # All counter.
     bot_mode = 0
@@ -144,8 +145,8 @@ class InstaBot:
                  follow_time=5 * 60 * 60,
                  unfollow_per_day=300,
                  start_at_h=10,
-                 start_at_m=0,
-                 end_at_h=9,
+                 start_at_m=20,
+                 end_at_h=10,
                  end_at_m=0,
                  comment_list=[],
                  comments_per_day=0,
@@ -222,6 +223,7 @@ class InstaBot:
 
         #task_id
         self.task_id=task_id
+        self.bita_count=0
 
         # Comment
         self.comments_per_day = comments_per_day
@@ -933,6 +935,9 @@ class InstaBot:
             ret_follow = all_data['graphql']['user']#Todo el Json del usuario
             followers_d=ret_follow['edge_followed_by']['count'] #Followers
             followings_d=ret_follow['edge_follow']['count']#Followings
+            us=Creds.objects.get(insta_user=username)
+            num=us.id
+            bitacora_update(followers_d,followings_d,num)
 
             
             """  print(url1) """
@@ -975,10 +980,16 @@ class InstaBot:
                     insert_username(self, task=self.task_id,username_id=user_id, username=username, unfollow=0,us=self.us,picUrl=pic)
                     print("El valor de el request es:")
                     print(follow.status_code)
+                    #sleep_mod(self.task_id)
+                    #time.sleep(self.ban_sleep_time)
+                    #sleep_mod_off(self.task_id)
                 else:
-                    time.sleep(self.ban_sleep_time)
                     print("El valor de el request es:")
                     print(follow.status_code)
+                    sleep_mod(self.id_task)
+                    time.sleep(self.ban_sleep_time)
+                    sleep_mod_off(self.task_id)
+                    
                 return follow
             except:
                 logging.exception("Except on follow!")
@@ -1033,6 +1044,117 @@ class InstaBot:
                 logging.exception(log_string)
         return False
 
+    def jsonfun(self, username):
+        uxs=Creds.objects.get(insta_user=username)
+        url_info = self.url_user_detail % (username)
+        try:
+            r = self.s.get(url_info)
+            all_data = json.loads(r.text)
+            ret_follow = all_data['graphql']['user']#Todo el Json del usuario
+            jsonmedia=ret_follow['edge_owner_to_timeline_media']['edges']#MEdia del Json
+            totalmedia=ret_follow['edge_owner_to_timeline_media']['count']#Number of the total media
+            if totalmedia >0:
+                #Capture of media number 0
+                url0=jsonmedia[0]['node']['display_url']
+                time0=str(datetime.datetime.fromtimestamp(jsonmedia[0]['node']['taken_at_timestamp']).isoformat())
+                date0=time0[0:10]
+                comments0=jsonmedia[0]['node']['edge_media_to_comment']['count']
+                like0=jsonmedia[0]['node']['edge_liked_by']['count']
+                totalcomments= comments0
+                totallikes= like0
+                #media0=MediaClass(url0,like0,comments0,date0)
+                p=post.objects.get(number=0,Cred=username)
+                p.Cred = username
+                p.urlpic = url0
+                p.date = date0
+                p.comments = comments0
+                p.like = like0 
+                p.save()
+                #medialist.append(media0)
+                print("Capture 1")
+                if totalmedia>1:
+                    #Capturar
+                    url1=jsonmedia[1]['node']['display_url']
+                    time1=str(datetime.datetime.fromtimestamp(jsonmedia[1]['node']['taken_at_timestamp']).isoformat())
+                    date1=time1[0:10]
+                    comments1=jsonmedia[1]['node']['edge_media_to_comment']['count']
+                    like1=jsonmedia[1]['node']['edge_liked_by']['count']
+                    totalcomments= comments0 + comments1
+                    totallikes= like0 + like1
+                    print("Capture 2")
+                    #media1=MediaClass(url1,like1,comments1,date1)
+                    p=post.objects.get(number=1,Cred=username)
+                    p.Cred = username
+                    p.urlpic = url1
+                    p.date = date1
+                    p.comments = comments1
+                    p.like = like1 
+                    p.save()
+                    #medialist.append(media1)
+                    if totalmedia>2:
+                        #Capturar
+                        url2=jsonmedia[2]['node']['display_url']
+                        time2=str(datetime.datetime.fromtimestamp(jsonmedia[2]['node']['taken_at_timestamp']).isoformat())
+                        date2=time2[0:10]
+                        comments2=jsonmedia[2]['node']['edge_media_to_comment']['count']
+                        like2=jsonmedia[2]['node']['edge_liked_by']['count']
+                        totalcomments= comments0 + comments1 + comments2
+                        totallikes= like0 + like1 + like2
+                        print("Capture 3")
+                        #media2=MediaClass(url2,like2,comments2,date2)
+                        p=post.objects.get(number=2,Cred=username)
+                        p.Cred = username
+                        p.urlpic = url2
+                        p.date = date2
+                        p.comments = comments2
+                        p.like = like2 
+                        p.save()
+                        #medialist.append(media2)
+                        if totalmedia>3:
+                            #Capturar
+                            url3=jsonmedia[3]['node']['display_url']
+                            time3=str(datetime.datetime.fromtimestamp(jsonmedia[3]['node']['taken_at_timestamp']).isoformat())
+                            date3=time3[0:10]
+                            comments3=jsonmedia[3]['node']['edge_media_to_comment']['count']
+                            like3=jsonmedia[3]['node']['edge_liked_by']['count']
+                            totalcomments= comments0 + comments1 + comments2 + comments3 
+                            totallikes= like0 + like1 + like2 + like3
+                            print("Capture 4")
+                            #media3=MediaClass(url3,like3,comments3,date3)
+                            p=post.objects.get(number=3,Cred=username)
+                            p.Cred = username
+                            p.urlpic = url3
+                            p.date = date3
+                            p.comments = comments3
+                            p.like = like3 
+                            p.save()
+                            #medialist.append(media3)
+                            if totalmedia>4:
+                                #Capturar
+                                url4=jsonmedia[4]['node']['display_url']
+                                time4=str(datetime.datetime.fromtimestamp(jsonmedia[4]['node']['taken_at_timestamp']).isoformat())
+                                date4=time4[0:10]
+                                comments4=jsonmedia[4]['node']['edge_media_to_comment']['count']
+                                like4=jsonmedia[4]['node']['edge_liked_by']['count']
+                                totalcomments= comments0 + comments1 + comments2 + comments3 + comments4
+                                totallikes= like0 + like1 + like2 + like3 + like4
+                                print("Capture 5")
+                                #media4=MediaClass(url4,like4,comments4,date4)
+                                p=post.objects.get(number=4)
+                                p.Cred = username
+                                p.urlpic = url4
+                                p.date = date4
+                                p.comments = comments4
+                                p.like = like4
+                                p.save()
+                                #medialist.append(media4)
+            """  print(url1) """
+            return ret_follow
+                #aqui retorna el user info con todos los valores llenos si el usuario targeteado no sigue a nuestra cuenta
+        except:
+            logging.exception("Except on get follow_viewer of user")
+            return None
+
     def auto_mod(self):
         """ Star loop, that get media ID by your tag list, and like it """
         if self.login_status:
@@ -1062,9 +1184,14 @@ class InstaBot:
             # distance between end time and now
             end=datetime.time(self.end_at_h,self.end_at_m)
             dne = self.time_dist(end,now.time())
-
-            if (datetime.time(14, 0) <= now.time() and now.time() <= datetime.time(15,30 )):
-                self.bitacora_info(self.user_login)
+            if self.bita_count==0:
+                if (datetime.time(16, 50) <= now.time() and now.time() <= datetime.time(16,57)):
+                    self.bitacora_info(self.user_login)
+                    self.bita_count=1
+                    print("entro en el true")
+            else:
+                self.bita_count=0
+                print("Entro en el else")
 
             if (dns == 0 or dne < dns) and dne != 0:
                     sleep_mod_off(self.task_id)
@@ -1207,10 +1334,10 @@ class InstaBot:
                 self.write_log("Keep calm - It's your own profile ;)")
                 return
 
-            if check_already_followed(self, user_id=self.media_by_tag[0]['node']["owner"]["id"]) == 1:
+            if check_already_followed(self, user_id=self.media_by_tag[0]['node']["owner"]["id"], cred_owner=self.user_login) == 1:
                 self.write_log("Already followed before " + self.media_by_tag[0]['node']["owner"]["id"]) #aqui se cuestiona si el usuario ya fue followed para no darle follow de nuevo
-                aux=random.choice(self.sec)   #if la cuenta tiene un paquete tal que lo valide aqui y depende del paquete asi sera la velodidad a la que hara follow
-                print(aux)
+                #aux=random.choice(self.sec)   #if la cuenta tiene un paquete tal que lo valide aqui y depende del paquete asi sera la velodidad a la que hara follow
+                #print(aux)
                 self.media_by_tag.remove(self.media_by_tag[0])
                     #aqui espera la siguiente iteracion
                 
@@ -1248,7 +1375,7 @@ class InstaBot:
                     self.write_log("Keep calm - It's your own profile ;)")
                     
                     return
-                if check_already_followed(self,id)==1:
+                if check_already_followed(self,id, self.user_login)==1:
                     self.write_log("Already followed before " + id) #aqui se cuestiona si el usuario ya fue followed para no darle follow de nuevo
                     self.scraped_user.remove(us)
                     print(self.scraped_user)
@@ -1279,7 +1406,7 @@ class InstaBot:
                     self.write_log("Its your own profile")                 #Esta parte de la funcion la ocupa para no autoagregarse lño cual es imposible pero daria un error en ejecucion
 
                     return
-                    if check_already_followed(self, user_id=user_prov_id) == 1:
+                    if check_already_followed(self, user_id=user_prov_id, cred_owner=self.user_login) == 1:
                         self.write_log("Already followed before " + user_prov_id) #aqui se cuestiona si el usuario ya fue followed para no darle follow de nuevo
                         self.next_iteration["Follow"] = time.time() + \
                                                 self.add_time(self.follow_delay / 2)
@@ -1299,7 +1426,7 @@ class InstaBot:
                 id=self.get_userID_by_name(us)
                 if id==self.user_id:
                     vers=0
-                elif check_already_followed(self,id)==1:
+                elif check_already_followed(self,id, self.user_login)==1:
                     vers=1
                 else:
                     vers=2

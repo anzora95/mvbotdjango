@@ -667,12 +667,18 @@ def report(request,u_account):
     #filterdate=Filtered date
     return render(request,'reports/index.html',{'reverseunfo':reverseunfo,'reverseliks':reverseliks,'reversefolligs':reversefolligs,'reversedays':reversedays,'u_account':u_account,'img':img,'followers':followers,'unfollows':unfollows,'scrap':scrap,'packa':packa,'likes':likes,'followings':followings,'filterdate':filterdate})
 
-def filterby(account,filter,follow):
+def filterby(account,filter,current_date,follow):
 
     if follow==True:
-        u=Username.objects.filter(cred_us=account,last_followed_time__range=[filter, "2019-04-08"])
+        try:
+            u=Username.objects.filter(cred_us=account)
+        except:
+            u=0
     else:
-        u=Username.objects.filter(cred_us=account,unfollow_count=1,last_followed_time__range=[filter, "2019-04-08"])
+        try:
+            u=Username.objects.filter(cred_us=account,unfollow_count=1)
+        except:
+            u=0
     return u
 
 def UnfollowTask(request):
@@ -1092,3 +1098,345 @@ class MediaList(ListView):
     model=Media
     template_name = 'dashboard.html'
 
+class MediaClass:
+  def __init__(self, url, like,comments,date):
+    self.url = url
+    self.like = like
+    self.comments= comments
+    self.date= date
+
+def report(request):
+    user = User.objects.get(id=request.user.id)
+    ll=LastLogin.objects.get(user=user)
+    cred=ll.cred
+    u_account=cred.insta_user
+    #Solo si se va a dejar cred como foreing Key
+    uxs=Creds.objects.get(insta_user=u_account)
+    jsontotal=""
+    print("Aqui entro")
+    aux=True
+    """ while aux:
+        print("hOLA1")
+        bot = InstaBot(login=u_account,password=accountus=u_account)
+        
+        while aux:
+
+            # print("# MODE 0 = ORIGINAL MODE BY LEVPASHA")
+            # print("## MODE 1 = MODIFIED MODE BY KEMONG")
+            # print("### MODE 2 = ORIGINAL MODE + UNFOLLOW WHO DON'T FOLLOW BACK")
+            # print("#### MODE 3 = MODIFIED MODE : UNFOLLOW USERS WHO DON'T FOLLOW YOU BASED ON RECENT FEED")
+            # print("##### MODE 4 = MODIFIED MODE : FOLLOW USERS BASED ON RECENT FEED ONLY")
+            # print("###### MODE 5 = MODIFIED MODE : JUST UNFOLLOW EVERYBODY, EITHER YOUR FOLLOWER OR NOT")
+
+            ################################
+            ##  WARNING   ###
+            ################################
+
+            # DON'T USE MODE 5 FOR A LONG PERIOD. YOU RISK YOUR ACCOUNT FROM GETTING BANNED
+            ## USE MODE 5 IN BURST MODE, USE IT TO UNFOLLOW PEOPLE AS MANY AS YOU WANT IN SHORT TIME PERIOD
+
+            mode = 0
+
+            # print("You choose mode : %i" %(mode))
+            # print("CTRL + C to cancel this operation or wait 30 seconds to start")
+            # time.sleep(30)
+
+            if mode == 0:
+                jsontotal=bot.new_auto_mod()#Obtencion del Json user completo
+                aux=False
+                
+
+
+            elif mode == 1:
+                check_status(bot)
+                while bot.self_following - bot.self_follower > 200:
+                    unfollow_protocol(bot)
+                    time.sleep(10 * 60)
+                    check_status(bot)
+                while bot.self_following - bot.self_follower < 400:
+                    while len(bot.user_info_list) < 50:
+                        feed_scanner(bot)
+                        time.sleep(5 * 60)
+                        follow_protocol(bot)
+                        time.sleep(10 * 60)
+                        check_status(bot)
+
+            elif mode == 2:
+                bot.bot_mode = 1
+                bot.new_auto_mod()
+                media=MediaClass.objects.All().OrderBy('datetime')
+
+
+            elif mode == 3:
+                unfollow_protocol(bot)
+                time.sleep(10 * 60)
+
+            elif mode == 4:
+                feed_scanner(bot)
+                time.sleep(60)
+                follow_protocol(bot)
+                time.sleep(10 * 60)
+
+            elif mode == 5:
+                bot.bot_mode = 2
+                unfollow_protocol(bot)
+                media=MediaClass.objects.All().OrderBy('datetime')
+
+
+            else:
+                print("Wrong mode!") 
+                HASTA AQUI LLEGA LA FUNCION START BOT2 
+            
+    """  """ """
+
+    #print(jsontotal,"El JSON")
+    jsonfollowers=3250#jsontotal['edge_followed_by']['count']
+    jsonfollowings=6540#jsontotal['edge_follow']['count']
+    #jsonmedia=jsontotal['edge_owner_to_timeline_media']['edges']#MEdia del Json
+    totalmedia=5#jsontotal['edge_owner_to_timeline_media']['count']#Number of the total media
+    medialist=[]
+    url0=0
+    date0=0
+    comments0=0
+    like0=0
+    url1=0
+    date1=0
+    comments1=0
+    like1=0
+    url2=0
+    date2=0
+    comments2=0
+    like2=0
+    url3=0
+    date3=0
+    comments3=0
+    like3=0
+    url4=0
+    date4=0
+    comments4=0
+    like4=0
+    if totalmedia >0:
+        #Capture of media number 0
+        url0="https://instagram.fsal1-1.fna.fbcdn.net/vp/4e008028d78413d353937df8a22a17b5/5D5EB41C/t51.2885-15/e35/54511712_2091295827625620_6733597258003202093_n.jpg?_nc_ht=instagram.fsal1-1.fna.fbcdn.net"#jsonmedia[0]['node']['display_url']
+        #time0=str(datetime.datetime.fromtimestamp(jsonmedia[0]['node']['taken_at_timestamp']).isoformat())
+        date0="2019-04-15"#time0[0:10]
+        comments0=13#jsonmedia[0]['node']['edge_media_to_comment']['count']
+        like0=135#jsonmedia[0]['node']['edge_liked_by']['count']
+        totalcomments= comments0
+        totallikes= like0
+        media0=MediaClass(url0,like0,comments0,date0)
+        medialist.append(media0)
+        print("Capture 1")
+        if totalmedia>1:
+            #Capturar
+            url1="https://instagram.fsal1-1.fna.fbcdn.net/vp/6329acbe40a6f957622de200ba7df963/5D5FB5F6/t51.2885-15/e35/56711308_2380884695478340_1460425091729343705_n.jpg?_nc_ht=instagram.fsal1-1.fna.fbcdn.net"#jsonmedia[1]['node']['display_url']
+            #time1=str(datetime.datetime.fromtimestamp(jsonmedia[1]['node']['taken_at_timestamp']).isoformat())
+            date1="2019-04-15"#time1[0:10]
+            comments1=8#jsonmedia[1]['node']['edge_media_to_comment']['count']
+            like1=72#jsonmedia[1]['node']['edge_liked_by']['count']
+            totalcomments= comments0 + comments1
+            totallikes= like0 + like1
+            print("Capture 2")
+            media1=MediaClass(url1,like1,comments1,date1)
+            medialist.append(media1)
+            if totalmedia>2:
+                #Capturar
+                url2="https://instagram.fsal1-1.fna.fbcdn.net/vp/040678a9f544a4bed51e4dc838053bc2/5D671DC9/t51.2885-15/e35/56418392_195473171440564_1183865839941224623_n.jpg?_nc_ht=instagram.fsal1-1.fna.fbcdn.net"#jsonmedia[2]['node']['display_url']
+                #time2=str(datetime.datetime.fromtimestamp(jsonmedia[2]['node']['taken_at_timestamp']).isoformat())
+                date2="2019-04-15"#time2[0:10]
+                comments2=6#jsonmedia[2]['node']['edge_media_to_comment']['count']
+                like2=55#jsonmedia[2]['node']['edge_liked_by']['count']
+                totalcomments= comments0 + comments1 + comments2
+                totallikes= like0 + like1 + like2
+                print("Capture 3")
+                media2=MediaClass(url2,like2,comments2,date2)
+                medialist.append(media2)
+                if totalmedia>3:
+                    #Capturar
+                    url3="https://instagram.fsal1-1.fna.fbcdn.net/vp/cc721be43bfe297b65bf7e302e345db7/5D5D4C38/t51.2885-15/e35/54513467_346455589205619_2060670682410143085_n.jpg?_nc_ht=instagram.fsal1-1.fna.fbcdn.net"#jsonmedia[3]['node']['display_url']
+                    #time3=str(datetime.datetime.fromtimestamp(jsonmedia[3]['node']['taken_at_timestamp']).isoformat())
+                    date3="2019-04-13"#time3[0:10]
+                    comments3=3#jsonmedia[3]['node']['edge_media_to_comment']['count']
+                    like3=50#jsonmedia[3]['node']['edge_liked_by']['count']
+                    totalcomments= comments0 + comments1 + comments2 + comments3 
+                    totallikes= like0 + like1 + like2 + like3
+                    print("Capture 4")
+                    media3=MediaClass(url3,like3,comments3,date3)
+                    medialist.append(media3)
+                    if totalmedia>4:
+                        #Capturar
+                        url4="https://instagram.fsal1-1.fna.fbcdn.net/vp/3d698297ad9fb5d3c7bf82588f0ccc18/5D765B1B/t51.2885-15/e35/57110012_818348635198082_4296226183046036573_n.jpg?_nc_ht=instagram.fsal1-1.fna.fbcdn.net"#jsonmedia[4]['node']['display_url']
+                        #time4=str(datetime.datetime.fromtimestamp(jsonmedia[4]['node']['taken_at_timestamp']).isoformat())
+                        date4="2019-03-13"#time4[0:10]
+                        comments4=2#jsonmedia[4]['node']['edge_media_to_comment']['count']
+                        like4=41#jsonmedia[4]['node']['edge_liked_by']['count']
+                        totalcomments= comments0 + comments1 + comments2 + comments3 + comments4
+                        totallikes= like0 + like1 + like2 + like3 + like4
+                        print("Capture 5")
+                        media4=MediaClass(url4,like4,comments4,date4)
+                        medialist.append(media4)
+
+    """ scrap=[]
+    scrap = scrap_us(u_account) """ #Devulve un arreglo 1 url 2 username 3 N#followers
+    img=scrapUsr(u_account)
+    cred =Creds.objects.get(insta_user=u_account)
+    packa=cred.pack.pack_name
+    media=Media.objects.filter(cred_us=u_account)
+    followers=0
+    following=0
+    try:
+        likes=len(media) #Cantidad de likes realizados
+    except:
+        likes=0
+    query=[]    
+    current_date = date.today().isoformat() 
+    tomorrow_date=datetime.date.today() + datetime.timedelta(days=1)
+    filterdate=(date.today()-timedelta(days=30)).isoformat() #Fecha de filtro  
+    listday=[]
+    folligs=[]
+    liks=[]
+    unfo=[]
+    followersbita=[]
+    followingsbitacora=[]
+    aux=[]
+    aux4=bitacora.objects.filter(Cred=uxs)
+    print("Resultado de bitacora")
+    print(len(aux4))
+    for i in range(0,32):
+        dat=(date.today()-timedelta(days=i)).isoformat()
+        listday.append((date.today()-timedelta(days=i)).isoformat())
+    for i in range(0,31):
+        try:
+            aux=Username.objects.filter(cred_us=u_account,last_followed_time__range=[listday[i+1],listday[i]])
+            aux2=Media.objects.filter(cred_us=u_account,datetime__range=[listday[i+1],listday[i]])
+            aux3=Username.objects.filter(cred_us=u_account,unfollow_count=1,last_followed_time__range=[listday[i+1],listday[i]])
+            print("LOgre entrar hasta aqui")
+            print(len(aux))
+            try:
+                aux4=bitacora.objects.filter(Cred=uxs,datetime__range=[listday[i+1],listday[i]])
+                if aux4.exists():
+                    query=aux4.get()
+                    print("Bitacora")
+                    print(query.followers)
+                    followersbita.append(query.followers)
+                    followingsbitacora.append(query.followings)
+                else:
+                    followersbita.append(0)
+                    followingsbitacora.append(0)
+            except:
+                print("error de bitacora")
+            #followersbita.append(aux4.followers)
+            #followingsbitacora.append(aux4.followings)
+            
+            """ print(aux4.followings) """
+            
+            #print(listday[i],listday[i+1])
+            folligs.append(len(aux))
+            #print(folligs)
+            liks.append(len(aux2))
+            unfo.append(len(aux3))
+            #print("Followings:",len(aux),"Likes:",len(aux2),"Unfollow:",len(aux3),listday[i])
+        except:
+            print("err")
+    reversefollowersbita=[]
+    reversefollowersbita=followersbita[::-1]
+    try:
+        presentfollowers=bitacora.objects.filter(Cred=uxs,datetime__range=[current_date,tomorrow_date])
+        presentfol=presentfollowers.get()
+        reversefollowersbita.append(presentfol.followers)
+    except:
+        presentfollowers=0
+        presentfol=presentfollowers
+    #FOLLOWERS DIARIOS RESTA DIA ACTUAL MENOS ANTERIOR
+    followdiarios=[]
+    ultimoauxiliar=0
+    for i in range(len(reversefollowersbita)):
+
+        if reversefollowersbita[i-1]>0:
+            auxiliar=reversefollowersbita[i]-reversefollowersbita[i-1]
+            ultimoauxiliar=reversefollowersbita[i-1]
+            if auxiliar >=0:
+                followdiarios.append(auxiliar)
+            else:
+                followdiarios.append(0)
+        else:
+            auxiliar=reversefollowersbita[i]-ultimoauxiliar
+            if auxiliar >=0:
+                followdiarios.append(auxiliar)
+            else:
+                followdiarios.append(0)
+        print("Followers diarios")
+        print(followdiarios)
+
+
+    #FIN RESTA DE FOLLOWERS DIARIOS
+    presentfolligs=Username.objects.filter(cred_us=u_account,last_followed_time__range=[current_date,tomorrow_date])
+    presentmedia=Media.objects.filter(cred_us=u_account,datetime__range=[current_date,tomorrow_date])
+    presentunfo=Username.objects.filter(cred_us=u_account,unfollow_count=1,last_followed_time__range=[current_date,tomorrow_date])
+    print(len(presentfolligs))
+    print(folligs)
+    reversedays=[]
+    reverseunfo=[]
+    reversefolligs=[]
+    reverseliks=[]
+    
+    reversefollowingsbitacora=[]
+    reverseunfoweek=[]
+    reverseliksweek=[]
+    reversefolligsweek=[]
+    reverselistday=[]
+    reverseunfo=unfo[::-1]
+    reverseliks=liks[::-1]
+    reversefolligs=folligs[::-1]
+    reversedays=listday[::-1]
+    
+    reversefollowingsbitacora=followingsbitacora [::-1]
+    reversefolligs.append(len(presentfolligs))
+    reverseliks.append(len(presentmedia))
+    reverseunfo.append(len(presentunfo))
+    print(*reversedays)
+    """ date0 = date.today() - timedelta(1)
+    print(yesterday.strftime("%A")) """
+    for i in range(0,7):
+        day=date.today() - timedelta(i)
+        reverselistday.append(day.strftime("%A"))
+        print(reverselistday[i])
+    print(len(reverseunfo),"cantidad de dias")
+    print(len(reverseunfo)-7)
+    
+    
+
+    for i in range(31,24):
+        reverseunfoweek.append(unfo[i])
+        reverseliksweek.append(liks[i])
+        reversefolligsweek.append(folligs[i])
+        print(reverseunfoweek[i])
+        print(reverseliksweek[i])
+        print(reversefolligsweek[i])
+    reverselistdayweek=reverselistday[::-1]
+    #print(len(listday),"Aqui")
+    #print(date_N_days_ago = datetime.now() - timedelta(days=N))
+    followlist=[]
+    print("Followers de bitacora")
+    print(*followersbita)
+    query=filterby(u_account,filterdate,current_date,True) #Se filtra desde la filterdate hasta la actualidad de FOLLOWS
+    unfollows=len(filterby(u_account,filterdate,current_date,False))
+    fowers=reversefollowersbita[-1]
+    followings=(len(query))# Se cuentan los followings
+    u=Username.objects.all()
+    
+    for x in u:
+        if x.cred_us == u_account:
+            following+=1
+    #u_account=Account
+    #scrap2.followers
+    #Packa=Package
+    #filterdate=Filtered date
+    return render(request,'reports/index.html',{'date0':date0,'date1':date1,'date2':date2,'date3':date3,'date4':date4,'presentfolligs':presentfolligs,
+    'totallikes':totallikes,'totalcomments':totalcomments,'totalmedia':totalmedia,'presentmedia':presentmedia,'presentunfo':presentunfo,'presentfollowers':presentfollowers,
+    'reversefollowersbita':reversefollowersbita,'fowers':fowers,'comments0':comments0,'comments1':comments1,'comments2':comments2,'comments3':comments3,'comments4':comments4,
+    'reverseunfoweek':reverseunfoweek,'reverseliksweek':reverseliksweek,'reversefolligs':reversefolligs,'like0':like0,'like1':like1,'like2':like2,'like3':like3,'like4':like4,
+    'url0':url0,'url1':url1,'url2':url2,'url3':url3,'url4':url4,'medialist':medialist,'reverselistday':reverselistday,
+    'reverseunfo':reverseunfo,'followdiarios':followdiarios,'reverseliks':reverseliks,'reversefolligs':reversefolligs,'reverselistdayweek':reverselistdayweek,
+    'reversedays':reversedays,'u_account':u_account,'img':img,'followers':followers,'unfollows':unfollows,
+    'jsonfollowers':jsonfollowers,'jsonfollowings':jsonfollowings,'packa':packa,'likes':likes,'followings':followings,'filterdate':filterdate})

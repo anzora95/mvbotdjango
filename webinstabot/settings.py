@@ -132,3 +132,5 @@ STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'),)
 
 #################TUTORIALcelery
 CELERY_BROKER_URL = 'amqp://localhost'
+
+#CSRF_COOKIE_NAME = 'localhost_csrf'

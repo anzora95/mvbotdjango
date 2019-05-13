@@ -2,7 +2,7 @@
 from django.db import connection
 from django.db.models.query import QuerySet
 
-from InstabotMV.models import Media, Username, Creds, HashtagList,Task
+from InstabotMV.models import Media, Username, Creds, HashtagList,Task, bitacora
 from datetime import datetime, time
 from django.shortcuts import get_object_or_404
 from InstabotMV.src.friendListscrap import validat
@@ -29,10 +29,10 @@ def check_already_liked(self, media_id): #media_ parametro cambiado el nombre a 
             return 0
 
 
-def check_already_followed(self, user_id):
+def check_already_followed(self, user_id, cred_owner):
         """ controls if user already followed before """
         try:
-            followed = Username.objects.get(username_id=user_id)
+            followed = Username.objects.get(username_id=user_id, cred_us=cred_owner)
         except Username.DoesNotExist:
             followed = None
 
@@ -292,3 +292,33 @@ def get_userpackage(user):
     pack=usr.pack_id
     print(pack)
     return(pack)
+
+def bitacora_update(followers, followings, user):
+    now = datetime.now()
+
+    bitacora_insert = bitacora(
+        followers=followers,
+        followings=followings,
+        datetime=datetime.now(),
+        Cred_id=user,
+    )
+
+    bitacora_insert.save()
+
+def checkbitacora(cred,follo,folli,date,folloinc,folliinc):
+    try:
+        bit = bitacora.objects.filter(Cred=cred,datetime=date)
+        bit.followers=follo
+        bit.followings=folli
+        bit.datetime=date
+        bit.followincrease=folloinc
+        bit.followingincrease=folliinc
+        bit.save()
+    except bitacora.DoesNotExist:
+        bit =bitacora()
+        bit.followers = follo
+        bit.followings = folli
+        bit.datetime = date
+        bit.followincrease = folloinc
+        bit.followingincrease = folliinc
+        bit.save()

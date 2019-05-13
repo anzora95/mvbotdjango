@@ -180,4 +180,14 @@ class bitacora(models.Model):
     Cred=models.ForeignKey(Creds,on_delete=models.CASCADE)
     followers=models.IntegerField()
     followings=models.IntegerField()
-    datetime=models.DateTimeField()        
+    datetime=models.DateTimeField()
+    #followincrease=models.IntegerField()
+    #followingincrease=models.IntegerField()       
+
+class post(models.Model):
+    Cred=models.ForeignKey(Creds,on_delete=models.CASCADE)
+    number=models.IntegerField()
+    urlpic=models.CharField(max_length=1000)
+    date=models.CharField(max_length=1000)
+    comments=models.CharField(max_length=1000)
+    like=models.CharField(max_length=1000)

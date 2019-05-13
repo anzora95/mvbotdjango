@@ -20,6 +20,7 @@
                             <li><a href="{% url 'instabot:userAccounts' %}">Accounts</a></li>
                             <li><a href="#">Billing Profile</a></li>
                             <li><a href="{% url 'instabot:settings' %}">Settings</a></li>
+                            <li><a href="{% url 'instabot:report'%}">Reports</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{% url 'instabot:logout' %}">Logout</a></li>
                         </ul>
@@ -140,7 +141,7 @@
         {% if task.sleep_mod%}
         <div class="simulating">
             <h3>Simulating human behaviour.
-                    Swell is coming in some minutes.Feel free to close this window. Task is running in Cloud.</h3>
+                    Ngage is coming in some minutes.Feel free to close this window. Task is running in Cloud.</h3>
        </div>
        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         {%else%}

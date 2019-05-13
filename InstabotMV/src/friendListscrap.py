@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from bs4 import BeautifulSoup as soup
 from time import sleep
 from typing import List, Set
@@ -108,7 +109,6 @@ def validat(user,contra):
     password = contra  # <password here>
     login_url="https://www.instagram.com/accounts/login/"
     saver=0
-        
 
         #def driver
     driver=webdriver.PhantomJS()
@@ -132,3 +132,17 @@ def validat(user,contra):
         driver.close()
         saver=2
     return saver
+
+def challenge_validate(user,contra):
+    username = user  # <username here>
+    password = contra  # <password here>
+    login_url="https://www.instagram.com/accounts/login/"
+
+    dcap= dict(DesiredCapabilities.PHANTOMJS)
+    dcap["phantomjs.page.settings.userAgent"]=("Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0")
+
+        #def driver
+    driver=webdriver.PhantomJS(desired_capabilities=dcap)
+    user_agent = driver.execute_script("return navigator.userAgent;")
+    print(user_agent)
+    driver.close()

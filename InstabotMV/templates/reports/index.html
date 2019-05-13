@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{% static 'assets/img/basic/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'assets/img/basic/16.png' %}" type="image/x-icon">
     <title>Reports</title>
     <!-- CSS -->
     <link rel="stylesheet" href="{% static 'assets/css/app.css' %}">
@@ -66,13 +66,14 @@
             <div class="indigo text-white">
                 <div class="nav mt-5 pt-5 flex-column nav-pills" id="v-pills-tab" role="tablist"
                      aria-orientation="vertical">
-                    <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                    <!-- <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
                        aria-controls="v-pills-home" aria-selected="true"><i class="icon-inbox2"></i></a>
                     <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
-                       aria-controls="v-pills-profile" aria-selected="false"><i class="icon-add"></i></a>
+                       aria-controls="v-pills-profile" aria-selected="false"><i class="icon-add"></i></a> -->
+                    <!-- <a class="nav-link  skin_handle"  href="#"><i class="icon-arrow_back"></i></a>  -->  
                     <a class="nav-link blink skin_handle"  href="#"><i class="icon-lightbulb_outline"></i></a>
-                    <a class="nav-link" id="v-pills-messages-tab" href="#"><i class="icon-message"></i></a>
-                    <a class="nav-link" id="v-pills-settings-tab" href="#"><i class="icon-settings"></i></a>
+                    <!-- <a class="nav-link" id="v-pills-messages-tab" href="#"><i class="icon-message"></i></a>
+                    <a class="nav-link" id="v-pills-settings-tab" href="#"><i class="icon-settings"></i></a> -->
                     <a href="">
                         <figure class="avatar">
                             <img src="{{img.0}}" alt="">
@@ -89,11 +90,11 @@
                             <div class="text-xs-center">
                                 <span class="font-weight-lighter s-18">Menu</span>
                             </div>
-                            <div class="badge badge-danger r-0">New Panel</div>
+                            <!-- <div class="badge badge-danger r-0">New Panel</div> -->
                         </div>
                     </div>
                     <ul class="sidebar-menu">
-                        <li class="treeview">
+                        <!-- <li class="treeview">
                             <a href="#index.html">
                             <i class="icon icon-sailing-boat-water s-24"></i> <span>Dashboard</span>
                             </a>
@@ -306,8 +307,8 @@
                                     Tables</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="treeview"><a href="#">
+                        </li> -->
+                        <!-- <li class="treeview"><a href="#">
                             <i class="icon icon-bar-chart2  s-24"></i>
                             <span>Charts</span>
                             <i class=" icon-angle-left  pull-right"></i>
@@ -343,13 +344,13 @@
                                         <i class="icon icon-pie-chart pink-text s-14"></i>Float Charts</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="treeview"><a href="#">
-                            <i class="icon icon-dialpad  s-24"></i>
-                            <span>Extra</span>
+                        </li> -->
+                        <li class="treeview"><a href="{% url 'instabot:login2' %}">
+                            <i class="icon icon-close  s-24"></i>
+                            <span>LOGOUT</span>
                             <i class=" icon-angle-left  pull-right"></i>
                         </a>
-                            <ul class="treeview-menu">
+                            <!-- <ul class="treeview-menu">
                                 <li>
                                     <a href="panel-element-letters.html">
                                         <i class="icon icon-brightness_auto light-blue-text s-14"></i>
@@ -365,7 +366,7 @@
                                     <i class="icon icon-palette light-blue-text s-14"></i> <span>Colors</span>
                                 </a>
                                 </li>
-                            </ul>
+                            </ul> -->
                         </li>
                     </ul>
                 </div>
@@ -611,13 +612,14 @@
                 <input class="transparent s-24 text-white b-0 font-weight-lighter w-128 height-50" type="text"
                        placeholder="start typing...">
             </div>
-            <a href="#" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-expanded="false"
-               aria-label="Toggle navigation" class="paper-nav-toggle paper-nav-white active "><i></i></a>
+            <a class="nav-link  skin_handle"  href="#"><i class="icon-arrow_back"></i></a> 
+            <!-- <a href="#" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-expanded="false"
+               aria-label="Toggle navigation" class="paper-nav-toggle paper-nav-white active "><i></i></a> -->
         </div>
     </div>
 </div>
 </div>
-<a href="#" data-toggle="push-menu" class="paper-nav-toggle left ml-2 fixed">
+<a href="{% url 'instabot:dashboard' %}" data-toggle="push-menu" class="paper-nav-toggle left ml-2 fixed">
     <i></i>
 </a>
 <div class="has-sidebar-left has-sidebar-tabs">
@@ -631,196 +633,7 @@
                     </div>
                 </div>
             </div>
-            <!--Top Menu Start -->
-<div class="navbar-custom-menu">
-    <ul class="nav navbar-nav">
-        <!-- Messages-->
-        <li class="dropdown custom-dropdown messages-menu">
-            <a href="#" class="nav-link" data-toggle="dropdown">
-                <i class="icon-envelope-o"></i>
-                <span class="badge badge-success badge-mini rounded-circle">4</span>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-right">
-                <li>
-                    <!-- inner menu: contains the actual data -->
-                    <ul class="menu pl-2 pr-2">
-                        <!-- start message -->
-                        <li>
-                            <a href="#">
-                                <div class="avatar float-left">
-                                    <img src="{% static 'assets/img/dummy/u4.png' %}" alt="">
-                                    <span class="avatar-badge busy"></span>
-                                </div>
-                                <h4>
-                                    Support Team
-                                    <small><i class="icon icon-clock-o"></i> 5 mins</small>
-                                </h4>
-                                <p>Why not buy a new awesome theme?</p>
-                            </a>
-                        </li>
-                        <!-- end message -->
-                        <!-- start message -->
-                        <li>
-                            <a href="#">
-                                <div class="avatar float-left">
-                                    <img src="{% static 'assets/img/dummy/u1.png' %}" alt="">
-                                    <span class="avatar-badge online"></span>
-                                </div>
-                                <h4>
-                                    Support Team
-                                    <small><i class="icon icon-clock-o"></i> 5 mins</small>
-                                </h4>
-                                <p>Why not buy a new awesome theme?</p>
-                            </a>
-                        </li>
-                        <!-- end message -->
-                        <!-- start message -->
-                        <li>
-                            <a href="#">
-                                <div class="avatar float-left">
-                                    <img src="{% static 'assets/img/dummy/u2.png' %}" alt="">
-                                    <span class="avatar-badge idle"></span>
-                                </div>
-                                <h4>
-                                    Support Team
-                                    <small><i class="icon icon-clock-o"></i> 5 mins</small>
-                                </h4>
-                                <p>Why not buy a new awesome theme?</p>
-                            </a>
-                        </li>
-                        <!-- end message -->
-                        <!-- start message -->
-                        <li>
-                            <a href="#">
-                                <div class="avatar float-left">
-                                    <img src="{% static 'assets/img/dummy/u3.png' %}" alt="">
-                                    <span class="avatar-badge busy"></span>
-                                </div>
-                                <h4>
-                                    Support Team
-                                    <small><i class="icon icon-clock-o"></i> 5 mins</small>
-                                </h4>
-                                <p>Why not buy a new awesome theme?</p>
-                            </a>
-                        </li>
-                        <!-- end message -->
-                    </ul>
-                </li>
-                <li class="footer s-12 p-2 text-center"><a href="#">See All Messages</a></li>
-            </ul>
-        </li>
-        <!-- Notifications -->
-        <li class="dropdown custom-dropdown notifications-menu">
-            <a href="#" class=" nav-link" data-toggle="dropdown" aria-expanded="false">
-                <i class="icon-notifications_none"></i>
-                <span class="badge badge-danger badge-mini rounded-circle">4</span>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-right">
-                <li class="header">You have 10 notifications</li>
-                <li>
-                    <!-- inner menu: contains the actual data -->
-                    <ul class="menu">
-                        <li>
-                            <a href="#">
-                                <i class="icon icon-data_usage text-success"></i> 5 new members joined today
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="icon icon-data_usage text-danger"></i> 5 new members joined today
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="icon icon-data_usage text-yellow"></i> 5 new members joined today
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="footer p-2 text-center"><a href="#">View all</a></li>
-            </ul>
-        </li>
-        <li>
-            <a class="nav-link " data-toggle="collapse" data-target="#navbarToggleExternalContent"
-               aria-controls="navbarToggleExternalContent"
-               aria-expanded="false" aria-label="Toggle navigation">
-                <i class="icon-search3"></i>
-            </a>
-        </li>
-        <!-- Right Sidebar Toggle Button -->
-        <li>
-            <a class="nav-link ml-2" data-toggle="control-sidebar">
-                <i class="icon-format_align_right"></i>
-            </a>
-        </li>
-        <!-- User Account-->
-        <li class="dropdown custom-dropdown user user-menu ">
-            <a href="#" class="nav-link" data-toggle="dropdown">
-                <img src="{{img.0}}" class="user-image" alt="User Image">
-                <i class="icon-more_vert "></i>
-            </a>
-            <div class="dropdown-menu p-4 dropdown-menu-right">
-                <div class="row box justify-content-between my-4">
-                    <div class="col">
-                        <a href="#">
-                            <i class="icon-apps purple lighten-2 avatar  r-5"></i>
-                            <div class="pt-1">Apps</div>
-                        </a>
-                    </div>
-                    <div class="col"><a href="#">
-                        <i class="icon-beach_access pink lighten-1 avatar  r-5"></i>
-                        <div class="pt-1">Profile</div>
-                    </a></div>
-                    <div class="col">
-                        <a href="#">
-                            <i class="icon-perm_data_setting indigo lighten-2 avatar  r-5"></i>
-                            <div class="pt-1">Settings</div>
-                        </a>
-                    </div>
-                </div>
-                <div class="row box justify-content-between my-4">
-                    <div class="col">
-                        <a href="#">
-                            <i class="icon-star light-green lighten-1 avatar  r-5"></i>
-                            <div class="pt-1">Favourites</div>
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a href="#">
-                            <i class="icon-save2 orange accent-1 avatar  r-5"></i>
-                            <div class="pt-1">Saved</div>
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a href="#">
-                            <i class="icon-perm_data_setting grey darken-3 avatar  r-5"></i>
-                            <div class="pt-1">Settings</div>
-                        </a>
-                    </div>
-                </div>
-                <hr>
-                <div class="row box justify-content-between my-4">
-                    <div class="col">
-                        <a href="#">
-                            <i class="icon-apps purple lighten-2 avatar  r-5"></i>
-                            <div class="pt-1">Apps</div>
-                        </a>
-                    </div>
-                    <div class="col"><a href="#">
-                        <i class="icon-beach_access pink lighten-1 avatar  r-5"></i>
-                        <div class="pt-1">Profile</div>
-                    </a></div>
-                    <div class="col">
-                        <a href="#">
-                            <i class="icon-perm_data_setting indigo lighten-2 avatar  r-5"></i>
-                            <div class="pt-1">Settings</div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </li>
-    </ul>
-</div>
+
         </div>
     </div>
     <!--#navbar-->
@@ -832,11 +645,16 @@
                         <div class="card no-b mb-3 bg-danger text-white">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div><i class="icon-timer s-18"></i></div>
+                                    <div><i class="icon-user-circle s-18"></i></div>
                                     <div><span class="badge badge-pill badge-primary">Actual</span></div>
                                 </div>
                                 <div class="text-center">
-                                    <div class="s-48 my-3 font-weight-lighter">{{scrap.0}}</div>
+
+                                <div class="s-48 my-3 font-weight-lighter"> 
+                                    <!-- JAVASCRIPT COUNTER -->
+                                    <span class="count">{{jsonfollowers}}</span>
+                                    
+                                </div>
                                     Followers
                                 </div>
 
@@ -847,11 +665,16 @@
                         <div class="card no-b mb-3">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div><i class="icon-timer s-18"></i></div>
+                                    <div><i class="icon-user-circle s-18"></i></div>
                                     <div><span class="badge badge-pill badge-primary">Actual</span></div>
                                 </div>
                                 <div class="text-center">
-                                    <div class="s-48 my-3 font-weight-lighter">{{scrap.2}}</div>
+                                        <div class="s-48 my-3 font-weight-lighter"> 
+                                                <!-- JAVASCRIPT COUNTER -->
+                                                <span class="count">{{jsonfollowings}}</span>
+                                                
+                                            </div>
+                                    <!-- <div class="s-48 my-3 font-weight-lighter">{{scrap.2}}</div> -->
                                     Followings
                                 </div>
 
@@ -863,13 +686,18 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
                         <div class="card no-b mb-3">
-                            <div class="card-body">
+                            <div style="max-height: 244px;" class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div><i class="icon-user-circle-o s-18"></i></div>
                                     <div><span class="badge badge-pill badge-danger">Since Ngage Social</span></div>
                                 </div>
-                                <div class="text-center">
-                                    <div class="s-48 my-3 font-weight-lighter">{{followings}}</div>
+                                <div  class="text-center">
+                                        <div class="s-48 my-3 font-weight-lighter"> 
+                                                <!-- JAVASCRIPT COUNTER -->
+                                                <span class="count">{{followings}}</span>
+                                                
+                                            </div>
+                                    <!-- <div class="s-48 my-3 font-weight-lighter">{{followings}}</div> -->
                                     Followings
                                 </div>
 
@@ -878,13 +706,18 @@
                     </div>
                     <div class="col-md-6 col-sm-6">
                         <div class="card no-b mb-3">
-                            <div class="card-body">
+                            <div  style="max-height: 244px;" class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div><i class="icon-user-times s-18"></i></div>
+                                    <div><i class="icon-heart s-18"></i></div>
                                     <div><span class="badge badge-pill badge-danger">Since Ngage Social </span></div>
                                 </div>
                                 <div class="text-center">
-                                    <div class="s-48 my-3 font-weight-lighter">{{likes}}</div>
+                                        <div class="s-48 my-3 font-weight-lighter"> 
+                                                <!-- JAVASCRIPT COUNTER -->
+                                                <span class="count">{{likes}}</span>
+                                                
+                                            </div>
+                                    <!-- <div class="s-48 my-3 font-weight-lighter">{{likes}}</div> -->
                                     Likes
                                 </div>
 
@@ -902,14 +735,15 @@
                                         data-chart="chartJs"
                                         data-chart-type="doughnut"
                                         data-dataset="[
-                                                        [{{followings}}, {{unfollows}},{{likes}}],
+                                                        [{{fowers}},{{followings}}, {{unfollows}},{{likes}}],
 
                                                     ]"
-                                        data-labels="[['Followings'],['Unfollow'],['Likes']]"
+                                        data-labels="[['Followers'],['Followings'],['Unfollow'],['Likes']]"
                                         data-dataset-options="[
                                                     {
                                                         label: 'Disk',
                                                         backgroundColor: [
+                                                            '#ed5564',
                                                             '#03a9f4',
                                                             '#8f5caf',
                                                             '#3f51b5'
@@ -929,12 +763,14 @@
                 </div>
             </div>
         </div>
+
         <div class="card no-b my-3">
             <div class="card-body">
                 <div class="my-2 height-300">
                     <canvas
                             data-chart="bar"
                             data-dataset="[
+                                        [{% for follo in followdiarios%}'{{follo}}',{%endfor%}],
                                         [{% for folli in reversefolligs%}'{{folli}}',{%endfor%}],
                                         [{% for unfo in reverseunfo%}'{{unfo}}',{%endfor%}],
                                         [{% for likes in reverseliks%}'{{likes}}',{%endfor%}],
@@ -942,20 +778,26 @@
                             data-labels="[{% for days in reversedays%}'{{days}}',{%endfor%}]"
                             data-dataset-options="[
                                     {
+                                        label: 'Followers',
+                                        backgroundColor: '#ed5564',
+                                        borderWidth: 0,
+
+                                    },
+                                    {
                                         label: 'Followings',
-                                        backgroundColor: '#7986cb',
+                                        backgroundColor: '#03a9f4',
                                         borderWidth: 0,
 
                                     },
                                     {
                                          label: 'Unfollows',
-                                         backgroundColor: '#88e2ff',
+                                         backgroundColor: '#8f5caf',
                                          borderWidth: 0,
 
                                      },
                                     {
                                           label: 'Likes',
-                                          backgroundColor: '#e2e8f0',
+                                          backgroundColor: '#3f51b5',
                                           borderWidth: 0,
 
                                       }
@@ -987,74 +829,59 @@
             </div>
             <div class="card-body">
                 <div class="row my-3 no-gutters">
-                    <div class="col-md-3">
-                        <h1>Tasks</h1>
-                        Currently assigned tasks to team.
+                    <div class="col-md-4 text-center">
+                        <h1 style="font-weight: bold;">{{u_account}}</h1>
+                          <span class="text-center" >Account statistics.</span> 
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-8">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="mb-3">
-                                        <h6>New Layout</h6>
-                                        <small>75% Completed</small>
+                                        <h3>{{totalmedia}} Media</h3>
+                                        <h5>Post uploaded</h5>
                                     </div>
-                                    <figure class="avatar">
-                                        <img src="{% static 'assets/img/dummy/u12.png' %}" alt=""></figure>
+                                    
                                 </div>
                                 <div class="progress progress-xs mb-3">
                                     <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75"
                                          aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="mb-3">
-                                        <h6>New Layout</h6>
-                                        <small>75% Completed</small>
+                                        <h3>{{totalcomments}} Comments</h3>
+                                        <h5>On recent uploads</h5>
                                     </div>
-                                    <figure class="avatar">
-                                        <img src="{% static 'assets/img/dummy/u2.png' %}" alt=""></figure>
+                                   
                                 </div>
                                 <div class="progress progress-xs mb-3">
                                     <div class="progress-bar bg-indigo" role="progressbar" style="width: 75%;"
                                          aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="mb-3">
-                                        <h6>New Layout</h6>
-                                        <small>75% Completed</small>
+                                        <h3>{{totallikes}} Likes</h3>
+                                        <h5>On recent uploads</h5>
                                     </div>
                                     <div class="avatar-group">
-                                        <figure class="avatar">
+                                        <!-- <figure class="avatar">
                                             <img src="{% static 'assets/img/dummy/u4.png' %}" alt=""></figure>
                                         <figure class="avatar">
                                             <img src="{% static 'assets/img/dummy/u11.png' %}" alt=""></figure>
                                         <figure class="avatar">
-                                            <img src="{% static 'assets/img/dummy/u1.png' %}" alt=""></figure>
+                                            <img src="{% static 'assets/img/dummy/u1.png' %}" alt=""></figure> -->
                                     </div>
                                 </div>
                                 <div class="progress progress-xs mb-3">
-                                    <div class="progress-bar yellow" role="progressbar" style="width: 75%;"
+                                    <div class="progress-bar yellow" role="progressbar" style="width: 30%;"
                                          aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="mb-3">
-                                        <h6>New Layout</h6>
-                                        <small>75% Completed</small>
-                                    </div>
-                                    <figure class="avatar">
-                                        <img src="{% static 'assets/img/dummy/u5.png' %}" alt=""></figure>
-                                </div>
-                                <div class="progress progress-xs mb-3">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 75%;"
-                                         aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -1065,7 +892,8 @@
             <div class="col-md-6">
                 <div class=" card b-0">
                     <div class="card-body p-5">
-                        <canvas id="gradientChart" width="600" height="340"></canvas>
+                        <h3 class="text-center">Media statistics</h3>
+                        <div id="bar-chart"></div>
                     </div>
                 </div>
             </div>
@@ -1074,71 +902,27 @@
                     <div class="card-body">
                         <table class="table table-hover earning-box">
                             <tbody>
-                            <tr class="no-b">
-                                <td class="w-10">
-                                    <a href="panel-page-profile.html" class="avatar avatar-lg">
-                                        <img src="{% static 'assets/img/dummy/u6.png' %}" alt="">
-                                    </a>
-                                </td>
-                                <td>
-                                    <h6>Sara Kamzoon</h6>
-                                    <small class="text-muted">Marketing Manager</small>
-                                </td>
-                                <td>25</td>
-                                <td>$250</td>
-                            </tr>
                             <tr>
+                            <th><i class="icon icon-photo  s-24"></i></th>
+                            <th><i class="icon  icon-calendar s-24"></i></th>
+                            <th><i class="icon icon-insert_comment  s-24"></i></th>
+                            <th><i class="icon icon-heart  s-24"></i></th>
+                            </tr>
+                            {% for media in medialist%}
+                                <tr>
                                 <td class="w-10">
-                                    <a href="panel-page-profile.html" class="avatar avatar-lg">
-                                        <img src="{% static 'assets/img/dummy/u9.png' %}" alt="">
+                                    <a href="{{media.url}}" class="avatar avatar-lg">
+                                        <img src="{{media.url}}" alt="">
                                     </a>
                                 </td>
                                 <td>
-                                    <h6>Sara Kamzoon</h6>
-                                    <small class="text-muted">Marketing Manager</small>
+                                    <h6>{{media.date}}</h6>
+                                    <!-- <small class="text-muted">Marketing Manager</small> -->
                                 </td>
-                                <td>25</td>
-                                <td>$250</td>
+                                <td>{{media.comments}}</td>
+                                <td>{{media.like}}</td>
                             </tr>
-                            <tr>
-                                <td class="w-10">
-                                    <a href="panel-page-profile.html" class="avatar avatar-lg">
-                                        <img src="{% static 'assets/img/dummy/u11.png' %}" alt="">
-                                    </a>
-                                </td>
-                                <td>
-                                    <h6>Sara Kamzoon</h6>
-                                    <small class="text-muted">Marketing Manager</small>
-                                </td>
-                                <td>25</td>
-                                <td>$250</td>
-                            </tr>
-                            <tr>
-                                <td class="w-10">
-                                    <a href="panel-page-profile.html" class="avatar avatar-lg">
-                                        <img src="{% static 'assets/img/dummy/u12.png' %}" alt="">
-                                    </a>
-                                </td>
-                                <td>
-                                    <h6>Sara Kamzoon</h6>
-                                    <small class="text-muted">Marketing Manager</small>
-                                </td>
-                                <td>25</td>
-                                <td>$250</td>
-                            </tr>
-                            <tr>
-                                <td class="w-10">
-                                    <a href="panel-page-profile.html" class="avatar avatar-lg">
-                                        <img src="{% static 'assets/img/dummy/u5.png' %}" alt="">
-                                    </a>
-                                </td>
-                                <td>
-                                    <h6>Sara Kamzoon</h6>
-                                    <small class="text-muted">Marketing Manager</small>
-                                </td>
-                                <td>25</td>
-                                <td>$250</td>
-                            </tr>
+                                {% endfor%}
                             </tbody>
                         </table>
                     </div>
@@ -1311,6 +1095,52 @@
 </div>
 <!--/#app -->
 <script src="{% static 'assets/js/app.js' %}"></script>
+<link rel="stylesheet" href="https://www.cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="https://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+<script>
+$('.count').each(function () {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 4000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now));
+        }
+    });
+});
+</script>
+<script>
+    $(document).ready(function() {
+  barChart();
+
+
+  $(window).resize(function() {
+    window.barChart.redraw();
+  });
+});
+function barChart() {
+  window.barChart = Morris.Bar({
+    element: 'bar-chart',
+    data: [
+      { y: '{{date0}}', a: {{comments0}}, b:  {{like0}} },
+      { y: '{{date1}}', a: {{comments1}},  b: {{like1}} },
+      { y: '{{date2}}', a: {{comments2}},  b: {{like2}} },
+      { y: '{{date3}}', a: {{comments3}},  b: {{like3}} },
+      { y: '{{date4}}', a: {{comments4}},  b: {{like4}} }
+    ],
+    xkey: 'y',
+    ykeys: ['a', 'b'],
+    labels: ['Comments', 'Likes'],
+    lineColors: ['#52bfee','#3f51b5'],
+    lineWidth: '2px',
+    resize: true,
+    redraw: true
+  });
+}
+</script>
 
 </body>
 </html>

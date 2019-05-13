@@ -61,6 +61,17 @@
 </div>
 <div id="app">
 <main>
+
+        <!-- TOAST -->
+        {% if wrongpassword%}
+        <div class="toast"
+            data-title="Hi, there!"
+            data-message="Wrong username or password"
+            data-type="error">
+        </div>
+        {% endif%}
+        <!-- END TOAST -->
+   
     <div id="primary" class="blue4 p-t-b-100 height-full responsive-phone">
         <div class="container">
             <div class="row">
